@@ -1,0 +1,111 @@
+﻿@model IEnumerable<DreamHoliday.Models.Message>
+
+@{
+    ViewBag.Title = "mesMessages";
+}
+
+<h2>mesMessages</h2>
+
+<table class="table highlight table-striped" id="table">
+    <tr >
+        <th>
+            @Html.DisplayNameFor(model => model.dateEnvoi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sujet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prenom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.libelle)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr >
+            <td>
+                @Html.DisplayFor(modelItem => item.dateEnvoi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sujet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prenom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mail)
+            </td>
+                @{
+                    if (item.libelle.Length >= 50)
+                    {
+                    <td>
+                        @item.libelle.Substring(0, 50)...
+                    </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.libelle)
+                        </td>
+                    }
+                }
+                <td>
+
+                    <button id="@item.idMessage" class="btnDetailMessage btn-success" type="button">détail</button>
+                </td>
+            </tr>
+
+                    }
+
+</table>
+<div id="monModal" class="modal">
+    <p id="maTable">
+
+
+    </p>
+</div>
+
+@section Scripts {
+
+
+    @Scripts.Render("~/bundles/jquery-ui")
+
+    <script type="text/javascript">
+
+        $('.btnDetailMessage').click(function () {
+            $.ajax({
+                type: "GET",
+                datatype: "html",
+                url: '@Url.Action("detailMessage", "Membre")',
+                data: { idMessage: $(this).attr("id") },
+                success:
+                function(response) {
+                    $('#maTable').html(response);
+                    $("#monModal").dialog({
+                        height: "auto",
+                        width: "550",
+                        modal: true,
+                        title: "message",
+                        
+                    });
+                }
+            })
+        });
+
+
+    </script>
+}
+

@@ -1,0 +1,317 @@
+﻿@model DreamHoliday.Models.LocationBien
+
+@{
+    ViewBag.Title = "LouerUnBien";
+}
+
+<h2>@Resource.louerUnBien</h2>
+
+@using (Html.BeginForm("LouerUnBien", "Bien"))
+{
+    @Html.AntiForgeryToken()
+
+    var prob = ViewBag.probleme;
+    var message = ViewBag.message;
+
+    <div id="messageErreur" style="display:none; background-color:orange">
+        <p>@message</p>
+    </div>
+    <div class="form-horizontal">
+        <div class="form-group col-lg-12 col-md-12 row" style="display:none">
+            <label class="col-md-3">@Resource.idMembre : </label>
+            <div class="col-md-4">
+                        <input name="idMembre" id="idMembre" class="LocationInputDate"  type="text" value="@Model.idMembre">
+            </div>
+        </div>
+        <div>
+            <div class="form-group col-lg-12 col-md-12 row ">
+                <label class="col-md-3">@Resource.tarifNuit : </label>
+                <div class="col-md-4">
+                    <input name="Nuit" id="prixNuit" class="LocationInput" type="text" readonly="readonly" value="@Model.tarifNuit"> €
+                </div>
+            </div>
+
+            <div>
+                <div class="col-lg-5 col-md-5">
+                    <div class="form-group">
+                        <label class="col-md-7">@Resource.DateArrivees : </label>
+                        <div class="col-md-4">
+                            @{
+                                if (prob == 1)
+                                {
+                                    <input name="dateArrivee" id="dateArrivee" class="LocationInputDateProblem" type="date" value=@Model.dateArrivee>
+                                }
+                                else
+                                {
+                                    <input name="dateArrivee" id="dateArrivee" class="LocationInputDate" type="date">
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5">
+                    <div class="form-group">
+                        <label class="col-md-7">@Resource.DateRetour : </label>
+                        <div class="col-md-4">
+                            @{
+                                if (prob == 1)
+                                {
+                                    <input name="dateDepart" id="dateDepart" class="LocationInputDateProblem" type="date" value=@Model.dateDepart>
+                                }
+                                else
+                                {
+                                    <input name="dateDepart" id="dateDepart" class="LocationInputDate" type="date">
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col-lg-12 col-md-12 row">
+                <label class="col-md-3">@Resource.nombreDeNuits : </label>
+                <div class="col-md-4">
+                    @{
+                        if (@Model.nbNuits == 0)
+                        {
+                            <input name="nbNuits" id="nbNuit" class="LocationInput" type="text" readonly="readonly">
+                        }
+                        else
+                        {
+                            <input name="nbNuits" id="nbNuit" class="LocationInput" type="text" readonly="readonly" value="@Model.nbNuits">
+                        }
+                    }
+
+                </div>
+            </div>
+            <div class="form-group col-lg-12 col-md-12 row">
+                <label class="col-md-3">@Resource.coutSejour : </label>
+                <div class="col-md-4">
+                    <input name="coutVoyage" id="coutSejour" class="LocationInput" type="text" readonly="readonly" value="@Model.prixSejour"> €
+                </div>
+            </div>
+            <div class="form-group col-lg-12 col-md-12 row ">
+                <label class="col-md-3">@Resource.tarifNettoyage : </label>
+                <div class="col-md-4">
+                    <input name="Nettoyage" id="prixNettoyage" readonly="readonly" class="LocationInput" type="text" value="@Model.tarifNettoyage "> €
+                </div>
+            </div>
+            <div class="form-group col-lg-12 col-md-12 row">
+                <label class="col-md-3">@Resource.coutAdmin ( 5% ) : </label>
+                <div class="col-md-4">
+                    <input name="coutAdmin" id="coutAdmin" class="LocationInput" type="text" readonly="readonly" value="@Model.tarifAdmin"> €
+                </div>
+            </div>
+            <br />
+            <div class="form-group col-md-12 row " id="blocCoutTot">
+                <label class="col-md-4">@Resource.coutTot : </label>
+                <div class="col-md-4">
+                    <input name="coutTotal" id="coutTot" class="LocationInput" type="text" readonly="readonly" value="@Model.prixtotal"> €
+                </div>
+            </div>
+            <input name="idBien" style="display: none" value=@Model.idBien />
+            <input id="prob" style="display: none" value=@prob />
+            <input id="message" style="display: none" value=@message type="text" />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Louer" class="btn btn-group-justified btn-success col-md-12" />
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <input id="idB" value="@Model.idBien" style="display:none" />
+    
+                        }
+
+
+
+<div>
+    @Html.ActionLink("Retour", "Index", "Home")
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryui-datepicker-fr")
+    @Styles.Render("~/Content/cssjqryUi")
+    @Scripts.Render("~/bundles/jquery-ui")
+
+    <script type="text/javascript">
+
+        var idB = $('#idB').val();
+        
+        
+        var tableau;
+
+        // récupération des dates d'indisponibilité du bien lors du chargement de la page
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                datatype: 'json',
+                url: '@Url.Action("RechercheDatesPasDispo", "Bien")',
+                data: { idBien: idB },
+                success:
+                function (response) {
+
+                    if (response.result == "OK") {
+                        var tab = new Array(l);
+                        var l = response.dates.length;
+                        var x = 0;
+                        $.each(response.dates, function (k, v) {
+                            // converti la valeur récupérée du Json en date
+                            var milli = v.replace(/\/Date\((-?\d+)\)\//, '$1');
+                            var d = new Date(parseInt(milli));
+                            // convertion de la date en d/m/yyyy
+                            var tabl = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+                            tab[x] = tabl;
+                            x += 1;
+                        });
+                        tableau = tab;
+                    }
+                }
+            }
+            )
+        });
+
+        // fonction qui vérifie les dates d'indisponibilité du bien
+
+        function unavailable(date) {
+            dmy = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+            if ($.inArray(dmy, tableau) == -1) {
+                return [true, ""];
+            } else {
+                return [false, "", "Unavailable"];
+            }
+        };
+        
+        // gestion de l'erreur si il y en a une
+        $(function () {
+            var prob = $('#prob').val();
+            if (prob == 1) {
+                $("#messageErreur").dialog();
+            }
+
+        })
+
+        // création du datetimepicker da la date d arrivee
+        $('#dateArrivee').datepicker({
+            dateFormat: "dd/mm/yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-100:+0",
+            minDate: 0,
+            showTime: false,
+            showAnim: "clip",
+            beforeShowDay: unavailable
+        });
+
+        // création du datetimepicker da la date de depart
+
+        $('#dateDepart').datepicker({
+            dateFormat: "dd/mm/yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-100:+5",
+            showTime: false,
+            showAnim: "bounce",
+            beforeShowDay: unavailable
+        });
+
+        $('#dateArrivee').change(function () {
+            var v = $('#dateArrivee').val();
+            $('#dateDepart').datepicker("option", "minDate", v);
+        });
+        
+
+        // récupération de la date d'arrivée'
+        $('#dateArrivee').change(function () {
+
+            var start = $('#dateArrivee').datepicker('getDate');
+            var end = $('#dateDepart').datepicker('getDate');
+
+            if (end != null) {
+                var days = (end - start) / 1000 / 60 / 60 / 24;
+                $('#nbNuit').val(days)
+
+                var prixNettoyage = parseFloat($('#prixNettoyage').val());
+
+                var prixNuit = $('#prixNuit').val();
+                alert(prixNuit);
+
+                var prixSej = prixNuit * days;
+                $('#coutSejour').val(prixSej);
+
+                var coutAdmin = prixSej * 5 / 100;
+                $('#coutAdmin').val(coutAdmin);
+
+                var prixTot = (prixSej + coutAdmin + prixNettoyage);
+                $('#coutTot').val(prixTot);
+
+
+                var v = $('#dateArrivee').val();
+                $('#dateDepart').datepicker("option", "minDate", v);
+            }
+            else {
+
+                $('#nbNuit').val(0)
+
+                var prixSej = prixNuit * days;
+                $('#coutSejour').val(0);
+
+                $('#coutAdmin').val(0);
+
+                $('#coutTot').val(null);
+            }
+
+        })
+
+
+
+        // récupération de la date de départ
+
+        $('#dateDepart').change(function () {
+            var start = $('#dateArrivee').datepicker('getDate');
+            var end = $('#dateDepart').datepicker('getDate');
+            if (start != null) {
+                var days = (end - start) / 1000 / 60 / 60 / 24;
+                $('#nbNuit').val(days)
+
+                var prixNettoyage = parseFloat($('#prixNettoyage').val());
+
+                var prixNuit = $('#prixNuit').val();
+
+                var prixSej = prixNuit * days;
+                $('#coutSejour').val(prixSej);
+
+                var coutAdmin = prixSej * 5 / 100;
+                $('#coutAdmin').val(coutAdmin);
+
+                var prixTot = (prixSej + coutAdmin + prixNettoyage);
+                $('#coutTot').val(prixTot);
+            }
+            else {
+
+                $('#nbNuit').val(0)
+
+                var prixSej = prixNuit * days;
+                $('#coutSejour').val(0);
+
+                $('#coutAdmin').val(0);
+
+                $('#coutTot').val(null);
+            }
+
+
+        })
+
+    </script>
+}

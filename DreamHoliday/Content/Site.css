@@ -1,0 +1,240 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+
+.myBody div
+{
+    text-align:right;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.Locationlabel
+{
+    width:75px;
+    height:34px;
+}
+
+.LocationInput {
+    width: 110px;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color:white;
+    background-color: #808080;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    text-align:center;
+}
+
+.LocationInputDate {
+    width: 110px;
+    display: block;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    text-align:center;
+}
+.LocationInputDateProblem {
+    width: 110px;
+    display: block;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-color:red;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+#coutTot {
+    background-color: deepskyblue;
+    color: deeppink;
+    font-size: 1.5em;
+    font-style: italic;
+}
+#blocCoutTot 
+{
+    margin-top:3%;
+    padding-top:2%;
+    padding-bottom:2%;
+    width:50%;
+    border-style:double;
+    text-align:center;
+    
+}
+
+#blocOptions div {
+    height: 100%;
+    text-align:left;
+}
+
+    #blocOptions ul li {
+        list-style: none;
+    }
+
+.checkbox
+{
+    padding-left:45px;
+}
+#formSearch
+{
+    font-size: 0.9em;
+}
+.bouton_a {
+    color: #000;
+    background: #444;
+    background: linear-gradient( #555, #2C2C2C);
+    box-shadow: 1px 1px 10px black inset, 0 1px 0 rgba( 255, 255, 255, 0.4);
+    height: 100px;
+    border-radius: 20px;
+}
+
+    .bouton_a:hover {
+        color: #222;
+        background: #555;
+        background: linear-gradient( #777, #333);
+    }
+
+.jumbotron01 {
+    padding: 15px;
+    color: inherit;
+    background-color: lightgrey;
+    border-radius: 12px;
+}
+.jumbotron02 {
+    padding:15px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: orange;
+    border-radius: 12px;
+}
+.dl-horizontals dt {
+    float: left;
+    width: 160px;
+    overflow: hidden;
+    clear: left;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dl-horizontals dd {
+    margin-left: 180px;
+}
+input.checkbox:checked
+{
+    border-color:red;
+}
+input.checkbox:checked
+{
+    border-color: red;
+    background-color:blue;
+}
+#table,  th
+{
+    text-align:center;
+}
+.navbar-inverses {
+    background-color: #18d7f2;
+    border-color: #080808;
+}
+
+/*-----  le modal  -----*/
+
+#monModal {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 1s;
+}
+
+/* l'animation du modal */
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+.btnProfile
+{
+    
+    height:75px;
+    text-align:center;
+    width:100%;
+    
+}
+
+.DetailBien_Tarif dt
+{
+    margin-right:40px;
+    height:50px;
+    width:70%;
+    font-size:20px;
+    color:green;
+}
+
+.DetailBien_Tarif dd {
+    height: 50px;
+    width: 70%;
+    font-size: 20px;
+    color: green;
+}
+
+.mesLocations td {
+    text-align: center;
+    padding-top: 200px;
+    vertical-align: middle;
+}
+
+.mesLocations button
+{
+    width:80%;
+}
+
+

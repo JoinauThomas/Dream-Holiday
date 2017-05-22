@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    
+    @{
+        var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+        if (culture == null)
+        {
+            culture = "fr";
+        }
+        string sColorSelected = "background-color:white;color:black";
+    }
+    <div class=" navbar-inverses navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            @{
+                if (Session["monCompte"] != null)
+                {
+                   
+                    <div class="navbar-default">
+                        <div class="navbar-header">
+                            <ul>
+                                <li class="navbar-brand nav col-md-1">
+                                    <button type="button" class="glyphicon glyphicon-home" style="background-color:transparent; border:none" onclick="location.href = '@Url.Action("Index", "Home")'"></button>
+                                    
+                                </li>
+                            </ul>
+                        </div>
+                        <ul class="nav navbar-nav col-md-4">
+                            <li>@Html.ActionLink(Resource.btnContact, "Contact", "Home", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink(Resource.btnLesBiens, "BigSearchBien", "Bien", new { area = "" }, null)</li>
+                        </ul>
+                        <ul class="nav navbar-nav  col-md-4" style="float:right">
+                            <li>@Html.ActionLink( Resource.btnMonProfil, "VoirMonProfile", "Membre", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink( @Resource.btnDeconnect, "deconnexion", "Compte", new { area = "" }, null)</li>
+                            <li>
+                                @Html.ActionLink("FR", "SetCulture", "Home", new { culture = "fr" }, new { @style = (culture == "fr" ? sColorSelected : "") })
+                            </li>
+                            <li>
+                                @Html.ActionLink("EN", "SetCulture", "Home", new { culture = "en" }, new { @style = (culture == "en" ? sColorSelected : "") })
+                            </li>
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <div class="navbar-default">
+                        <div class="navbar-header">
+                            <ul class="navbar-brand nav col-md-1">
+                                <li >
+                                    <button type="button" class="glyphicon glyphicon-home" style="background-color:transparent; border:none" onclick="location.href = '@Url.Action("Index", "Home")'"></button>
+                                </li>
+                            </ul>
+                        </div>
+                        <ul class="nav navbar-nav col-md-7">
+                            <li style="text-align:center" class="col-md-3">@Html.ActionLink(Resource.btnContact, "Contact", "Home", new { area = "" }, null)</li>
+                            <li style="text-align:center" class="col-md-3">@Html.ActionLink(Resource.btnNvBien, "BigSearchBien", "Bien", new { area = "" }, null)</li>
+                        
+                            <li style="text-align:center" class="col-md-3">@Html.ActionLink(Resource.btnNvMembre, "InsertNewMembre", "Membre", new { area = "" }, null)</li>
+                            <li style="text-align:center" class="col-md-3">@Html.ActionLink(Resource.btnConnect, "connection", "Compte", new { area = "" }, null)</li>
+                         </ul>
+                        <ul class="nav navbar-nav  col-md-2" style="float:right">
+                            <li  style="text-align:center">
+                                @Html.ActionLink("FR", "SetCulture", "Home", new { culture = "fr" }, new { @style = (culture == "fr" ? sColorSelected : "") })
+                            </li>
+                            <li  style="text-align:center">
+                                @Html.ActionLink("EN", "SetCulture", "Home", new { culture = "en" }, new { @style = (culture == "en" ? sColorSelected : "") })
+                            </li>
+                        </ul>
+                    </div>
+                }
+            }
+
+
+        </div>
+    </div>
+
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer class="col-md-12">
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <!-- Compiled and minified CSS -->
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">*@
+
+</body>
+</html>

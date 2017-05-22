@@ -1,0 +1,452 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="adresse" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Bienvenue01" xml:space="preserve">
+    <value>Hello, welcome to our site.</value>
+  </data>
+  <data name="Bienvenue02" xml:space="preserve">
+    <value>Do you have a well-being and would like to make money by renting it? Or you want to go as a couple or among friends without breaking your tire-reading?
+DREAMHOLIDAY is for YOU!
+We allow owners to safely rent their property ..</value>
+  </data>
+  <data name="btnAccueil" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="btnConnect" xml:space="preserve">
+    <value>login</value>
+  </data>
+  <data name="btnContact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="btnDeconnect" xml:space="preserve">
+    <value>logout</value>
+  </data>
+  <data name="btnLesBiens" xml:space="preserve">
+    <value>Our properties</value>
+  </data>
+  <data name="btnMonProfil" xml:space="preserve">
+    <value>my profile</value>
+  </data>
+  <data name="btnNvBien" xml:space="preserve">
+    <value>new property</value>
+  </data>
+  <data name="btnNvMembre" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Contact01" xml:space="preserve">
+    <value>a question?</value>
+  </data>
+  <data name="Contact02" xml:space="preserve">
+    <value>Contactez us at :</value>
+  </data>
+  <data name="Contact03" xml:space="preserve">
+    <value>Address :</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DateArrivees" xml:space="preserve">
+    <value>Arrival date</value>
+  </data>
+  <data name="dateDeNaissance" xml:space="preserve">
+    <value>Birth date</value>
+  </data>
+  <data name="DateRetour" xml:space="preserve">
+    <value>Return date</value>
+  </data>
+  <data name="enregistrezVsIci" xml:space="preserve">
+    <value>Register here</value>
+  </data>
+  <data name="envoyer" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Error_adresseRequise" xml:space="preserve">
+    <value>Address required</value>
+  </data>
+  <data name="Error_DateNaissRequis" xml:space="preserve">
+    <value>date of birth required</value>
+  </data>
+  <data name="Error_identifiantRequis" xml:space="preserve">
+    <value>Login requiered</value>
+  </data>
+  <data name="Error_mailRequis" xml:space="preserve">
+    <value>mail required</value>
+  </data>
+  <data name="Error_MessageRequis" xml:space="preserve">
+    <value>message required</value>
+  </data>
+  <data name="Error_nomRequis" xml:space="preserve">
+    <value>name required</value>
+  </data>
+  <data name="Error_NumeroRequis" xml:space="preserve">
+    <value>house number required</value>
+  </data>
+  <data name="Error_PasswordRequis" xml:space="preserve">
+    <value>Password required</value>
+  </data>
+  <data name="Error_PaysRequis" xml:space="preserve">
+    <value>country required</value>
+  </data>
+  <data name="Error_PrenomRequis" xml:space="preserve">
+    <value>first name required</value>
+  </data>
+  <data name="Error_rueRequis" xml:space="preserve">
+    <value>street required</value>
+  </data>
+  <data name="Error_SujetRequis" xml:space="preserve">
+    <value>subject required</value>
+  </data>
+  <data name="Error_telephoneRequis" xml:space="preserve">
+    <value>Phone required</value>
+  </data>
+  <data name="Error_VilleRequis" xml:space="preserve">
+    <value>city required</value>
+  </data>
+  <data name="estProprio" xml:space="preserve">
+    <value>Is owner</value>
+  </data>
+  <data name="idMembre" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="mail" xml:space="preserve">
+    <value>Mail</value>
+  </data>
+  <data name="message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="nbreDePers" xml:space="preserve">
+    <value>number of persons</value>
+  </data>
+  <data name="nom" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="parcourir" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="password2" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="PasswordProp" xml:space="preserve">
+    <value>min 6 characters</value>
+  </data>
+  <data name="paysOuVille" xml:space="preserve">
+    <value>Country or city</value>
+  </data>
+  <data name="photo" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="prenom" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="Rechercher" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="sujet" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="telephone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="TitreHome" xml:space="preserve">
+    <value>Welcome to DREAMHOLIDAY</value>
+  </data>
+  <data name="trouvezVacDeReve" xml:space="preserve">
+    <value>Find your dream holiday</value>
+  </data>
+  <data name="bbq" xml:space="preserve">
+    <value>barbecue</value>
+  </data>
+  <data name="chambre" xml:space="preserve">
+    <value>bedroom</value>
+  </data>
+  <data name="cuisine" xml:space="preserve">
+    <value>cooked</value>
+  </data>
+  <data name="cuisineEq" xml:space="preserve">
+    <value>equipped kitchen</value>
+  </data>
+  <data name="dressing" xml:space="preserve">
+    <value>dressing</value>
+  </data>
+  <data name="idBien" xml:space="preserve">
+    <value>Property ID</value>
+  </data>
+  <data name="jacuzzi" xml:space="preserve">
+    <value>jacuzzi</value>
+  </data>
+  <data name="jardin" xml:space="preserve">
+    <value>garden</value>
+  </data>
+  <data name="libelle" xml:space="preserve">
+    <value>descrription</value>
+  </data>
+  <data name="machineALaver" xml:space="preserve">
+    <value>washing machine</value>
+  </data>
+  <data name="nbPersMax" xml:space="preserve">
+    <value>Max number of people</value>
+  </data>
+  <data name="noteMoyenne" xml:space="preserve">
+    <value>average grade</value>
+  </data>
+  <data name="numero" xml:space="preserve">
+    <value>number</value>
+  </data>
+  <data name="parking" xml:space="preserve">
+    <value>car park</value>
+  </data>
+  <data name="pays" xml:space="preserve">
+    <value>country</value>
+  </data>
+  <data name="pingpong" xml:space="preserve">
+    <value>pingpong</value>
+  </data>
+  <data name="piscine" xml:space="preserve">
+    <value>pool</value>
+  </data>
+  <data name="rue" xml:space="preserve">
+    <value>street</value>
+  </data>
+  <data name="salon" xml:space="preserve">
+    <value>living room</value>
+  </data>
+  <data name="sam" xml:space="preserve">
+    <value>dining room</value>
+  </data>
+  <data name="sauna" xml:space="preserve">
+    <value>sauna</value>
+  </data>
+  <data name="sdb" xml:space="preserve">
+    <value>bathroom</value>
+  </data>
+  <data name="tarifNettoyage" xml:space="preserve">
+    <value>Cleaning fee</value>
+  </data>
+  <data name="tarifNuit" xml:space="preserve">
+    <value>Price per night</value>
+  </data>
+  <data name="teledistrib" xml:space="preserve">
+    <value>Tv-distribution</value>
+  </data>
+  <data name="tennis" xml:space="preserve">
+    <value>tennis</value>
+  </data>
+  <data name="toilette" xml:space="preserve">
+    <value>toilet</value>
+  </data>
+  <data name="transat" xml:space="preserve">
+    <value>deck chair</value>
+  </data>
+  <data name="tv" xml:space="preserve">
+    <value>television</value>
+  </data>
+  <data name="veranda" xml:space="preserve">
+    <value>veranda</value>
+  </data>
+  <data name="ville" xml:space="preserve">
+    <value>city</value>
+  </data>
+  <data name="wifi" xml:space="preserve">
+    <value>wifi</value>
+  </data>
+  <data name="contacterLeProprio" xml:space="preserve">
+    <value>Contact the owner</value>
+  </data>
+  <data name="coutAdmin" xml:space="preserve">
+    <value>Administrative cost</value>
+  </data>
+  <data name="coutSejour" xml:space="preserve">
+    <value>Cost of stay</value>
+  </data>
+  <data name="coutTot" xml:space="preserve">
+    <value>Total cost of stay</value>
+  </data>
+  <data name="description" xml:space="preserve">
+    <value>description</value>
+  </data>
+  <data name="detailDuBien" xml:space="preserve">
+    <value>Detail of the property</value>
+  </data>
+  <data name="equipement" xml:space="preserve">
+    <value>equipment</value>
+  </data>
+  <data name="lesPieces" xml:space="preserve">
+    <value>rooms</value>
+  </data>
+  <data name="louer" xml:space="preserve">
+    <value>to rent</value>
+  </data>
+  <data name="louerUnBien" xml:space="preserve">
+    <value>Rent a property</value>
+  </data>
+  <data name="nombreDeNuits" xml:space="preserve">
+    <value>Number of nights</value>
+  </data>
+  <data name="ajouterUnBien" xml:space="preserve">
+    <value>add property</value>
+  </data>
+  <data name="mesBiens" xml:space="preserve">
+    <value>my properties</value>
+  </data>
+  <data name="mesLocations" xml:space="preserve">
+    <value>My rentals</value>
+  </data>
+  <data name="mesMessages" xml:space="preserve">
+    <value>my messages</value>
+  </data>
+  <data name="modifier" xml:space="preserve">
+    <value>edit</value>
+  </data>
+  <data name="vousAvezPasDeBien1" xml:space="preserve">
+    <value>You do not have</value>
+  </data>
+  <data name="vousAvezPasDeLoc1" xml:space="preserve">
+    <value>You have not yet</value>
+  </data>
+  <data name="vousAvezPasDeMsg1" xml:space="preserve">
+    <value>You have not yet</value>
+  </data>
+  <data name="identifiezVous" xml:space="preserve">
+    <value>Please log in.</value>
+  </data>
+  <data name="Modal_sIdentifierPourLouer" xml:space="preserve">
+    <value>Please login to be able to rent a property</value>
+  </data>
+  <data name="vousAvezPasDeBien2" xml:space="preserve">
+    <value>any property yet</value>
+  </data>
+  <data name="vousAvezPasDeLoc2" xml:space="preserve">
+    <value>rented property</value>
+  </data>
+  <data name="vousAvezPasDeMsg2" xml:space="preserve">
+    <value>received a message</value>
+  </data>
+  <data name="commentaire" xml:space="preserve">
+    <value>comment</value>
+  </data>
+  <data name="dernierComment" xml:space="preserve">
+    <value>Latest comments</value>
+  </data>
+</root>

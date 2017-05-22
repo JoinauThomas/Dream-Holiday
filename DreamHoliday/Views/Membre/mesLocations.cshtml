@@ -1,0 +1,122 @@
+﻿@model IEnumerable<DreamHoliday.Models.MesLocations>
+
+@{
+    ViewBag.Title = "mesLocations";
+}
+
+<h2>mesLocations</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateEnregistrement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateArrivee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateDepart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nbNuits)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adresse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.photo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="mesLocations" style="vertical-align:middle">
+        <td style="vertical-align:middle">
+            @Html.DisplayFor(modelItem => item.idLocation)
+        </td>
+        <td style="vertical-align:middle">
+            @Html.DisplayFor(modelItem => item.dateEnregistrement)
+        </td>
+        <td style="vertical-align:middle">
+            @Html.DisplayFor(modelItem => item.dateArrivee)
+        </td>
+        <td style="vertical-align:middle">
+            @Html.DisplayFor(modelItem => item.dateDepart)
+        </td>
+        <td style="vertical-align:middle">
+            @Html.DisplayFor(modelItem => item.nbNuits)
+        </td>
+        <td style="vertical-align:middle">
+            @Html.DisplayFor(modelItem => item.adresse)
+        </td>
+        <td style="vertical-align:middle">
+            <img src="~/Img/Biens/photo@(item.idBien).jpg" height="70" />
+        </td>
+        <td style="vertical-align:middle">
+            @{
+                DateTime dateAujourdhui = DateTime.Now;
+                if (item.estNote == false && item.dateDepart < dateAujourdhui)
+                {
+                    <button id="@item.idLocation" type="button" class="btnComment btn btn-warning" style="margin-bottom:5%" >commenter ou noter</button>
+            }
+            }
+            
+        </td>
+    </tr>
+}
+
+</table>
+
+<div id="modalCommand" style="display:none">
+
+</div>
+
+@section Scripts 
+    {
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryui-datepicker-fr")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <script type="text/javascript">
+
+        $('.btnComment').click(function () {
+            //$("#chargement").show();
+            
+
+            $.ajax({
+                type: 'GET',
+                datatype: 'html',
+                url: '@Url.Action("PostCommentAndNote", "Bien")',
+                data: { idLoc: $(this).attr("id") },
+                
+                success:
+                function (response) {
+                    $("#chargement").hide();
+                    $('#modalCommand').html(response);
+                    $('#modalCommand').dialog({
+                        height: "auto",
+                        width: "450",
+                        modal: true,
+                        title: "mettre une note et un commentaire",
+                    });
+                },
+                error:
+                function () {
+                    $("#chargement").hide();
+                    alert("un problème a été détecté...");
+                }
+            })
+        });
+
+
+
+    </script>
+    }

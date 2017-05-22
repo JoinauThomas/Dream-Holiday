@@ -1,0 +1,54 @@
+﻿
+@model IEnumerable<DreamHoliday.Models.Bien>
+
+<table class="table" id="table">
+    <tr>
+        <th>
+
+        </th>
+        <th>
+            @Html.DisplayName("lieux, prix ")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.noteMoyenne)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.libelle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nbPersonnesMax)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="~/Img/Biens/photo@(item.idBien).jpg" height="70" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pays) <br />
+
+                @Html.DisplayFor(modelItem => item.ville)<br />
+
+                @Html.DisplayFor(modelItem => item.tarifParNuit)
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.noteMoyenne)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.libelle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nbPersonnesMax)
+            </td>
+            <td>
+                <button class="btn-warning" style="height:50px" onclick="location.href = '@Url.Action("DetailBien", "Bien", new { idBien = item.idBien })'">Détail</button>
+
+            </td>
+        </tr>
+    }
+
+</table>

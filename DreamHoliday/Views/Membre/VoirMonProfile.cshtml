@@ -1,0 +1,211 @@
+﻿@model DreamHoliday.Models.editProfile
+
+@{
+    ViewBag.Title = "VoirMonProfile";
+
+    int prob = (int)Session["probleme"];
+
+    string message = (string)Session["message"];
+
+}
+<input id="prob" value="@prob" style="display:none" />
+<div id="messageErreur" style="display:none; background-color:orange">
+    <p>@message</p>
+</div>
+
+<h2>Mon Profile</h2>
+
+@using (Html.BeginForm("updateMembre", "Membre"))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="col-md-12 row" style="margin-top:5%">
+
+
+
+
+            <section class="col-md-3">
+                <div>
+                    <img src="~/Img/Membres/photo@(Model.idMembre).jpg" style="width:100%" class="img-circle" />
+                </div>
+
+            </section>
+
+            <section class="col-md-6">
+
+
+                <div class="form-group ">
+                    @Html.LabelFor(model => model.idMembre, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        <input id="idMembre" name="idMembre" value="@Model.idMembre" class="form-control" readonly="readonly" />
+                        @Html.ValidationMessageFor(model => model.idMembre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.nom, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.nom, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.nom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.prenom, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.prenom, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.prenom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.adresse, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.adresse, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.adresse, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.dateDeNaissance, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.dateDeNaissance, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.dateDeNaissance, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.telephone, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.telephone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.telephone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.mail, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-9">
+                        <input type="submit" value=@Resource.modifier class="btn btn-warning col-md-12" style="margin-top:5%" />
+                    </div>
+                </div>
+
+
+
+            </section>
+
+            <nav class="col-md-3">
+
+                <ul class="list-group" style="list-style-type:none">
+                    @{
+                        <li>
+                            <button type="button" id="msg" class="btnProfile btn btn-warning col-md-12 " style="margin-bottom:5%" onclick="location.href = '@Url.Action("addNewBien", "Bien")'">@Resource.btnNvBien</button>
+                        </li>
+
+                        if (Model.estProprietaire == false)
+                        {
+                    <li>
+                        <button type="button" id="msg" class="btnProfile btn btn-warning col-md-12 " style="margin-bottom:5%" disabled="disabled">@Resource.vousAvezPasDeBien1 <br />@Resource.vousAvezPasDeBien2</button>
+                    </li>
+                        }
+                        else
+                        {
+                    <li>
+                        <button type="button" id="msg" class="btnProfile btn btn-warning col-md-12 " style="margin-bottom:5%" onclick="location.href = '@Url.Action("VoirMesBiens", "Bien", new { idMembre = Model.idMembre })'">@Resource.mesBiens</button>
+                    </li>
+                        }
+
+                        if (ViewBag.nombreLoc > 0)
+                        {
+                    <li>
+                        <button type="button" id="msg" class="btnProfile btn btn-warning col-md-12 " style="margin-bottom:5%" onclick="location.href = '@Url.Action("mesLocations", "Membre")'">@Resource.mesLocations</button>
+                    </li>
+                        }
+                        else
+                        {
+                    <li>
+                        <button type="button" id="msg" class="btnProfile btn btn-warning col-md-12 " style="margin-bottom:5%" disabled="disabled">@Resource.vousAvezPasDeLoc1 <br />@Resource.vousAvezPasDeLoc2</button>
+                    </li>
+                        }
+
+                        if (ViewBag.nbMsg == 0)
+                        {
+                    <li>
+                        <button type="button" id="msg" class="btnProfile btn btn-warning col-md-12 " style="margin-bottom:5%" disabled="disabled">@Resource.vousAvezPasDeMsg1 <br />@Resource.vousAvezPasDeMsg2 <i class="glyphicon glyphicon-envelope"></i></button>
+                    </li>
+                        }
+                        else
+                        {
+                    <li>
+                        <button type="button" id="msg" class="btnProfile btn btn-warning col-md-12 " style="margin-bottom:5%" onclick="location.href = '@Url.Action("mesMessages", "Membre", new { idMembre = Model.idMembre })'">@Resource.mesMessages  <i class="glyphicon glyphicon-envelope"></i></button>
+                    </li>
+                        }
+                    }
+                </ul>
+            </nav>
+
+
+        </div>
+
+    </div>
+                        }
+<div>
+    @Html.ActionLink("Retour", "Index")
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryui-datepicker-fr")
+    @Styles.Render("~/Content/cssjqryUi")
+    @Scripts.Render("~/bundles/jquery-ui")
+
+    <script type="text/javascript">
+
+        var dateInit = $('#dateDeNaissance').val();
+
+        $('#dateDeNaissance').datepicker({
+            dateFormat: "dd-mm-yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-100:+0",
+            showTime: false,
+            showAnim: "clip",
+            defaultDate: dateInit
+        });
+
+        var dateInit = $('#dateDeNaissance').datepicker('getDate');
+
+
+
+        $('#msg').click(function () {
+            var prob = $('#prob').val();
+            if (prob == 1) {
+                $("#messageErreur").dialog({
+                    modal: true,
+                    title: "connection impossible",
+                });
+            }
+
+        });
+
+    </script>
+
+
+}
