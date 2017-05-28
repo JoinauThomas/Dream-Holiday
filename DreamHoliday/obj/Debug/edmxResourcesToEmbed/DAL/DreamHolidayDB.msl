@@ -52,42 +52,6 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="VerifSiDateEstDispo21" FunctionName="DreamHollidayModel.Store.VerifSiDateEstDispo2" />
     <FunctionImportMapping FunctionImportName="VerifSiDateEstDispos1" FunctionName="DreamHollidayModel.Store.VerifSiDateEstDispos" />
-    <FunctionImportMapping FunctionImportName="SearchBiensDispo1" FunctionName="DreamHollidayModel.Store.SearchBiensDispo1">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="DreamHollidayModel.SearchBiensDispo1_Result">
-          <ScalarProperty Name="idBien" ColumnName="idBien" />
-          <ScalarProperty Name="pays" ColumnName="pays" />
-          <ScalarProperty Name="ville" ColumnName="ville" />
-          <ScalarProperty Name="rue" ColumnName="rue" />
-          <ScalarProperty Name="numero" ColumnName="numero" />
-          <ScalarProperty Name="idMembre" ColumnName="idMembre" />
-          <ScalarProperty Name="libelle" ColumnName="libelle" />
-          <ScalarProperty Name="noteMoyenne" ColumnName="noteMoyenne" />
-          <ScalarProperty Name="photo" ColumnName="photo" />
-          <ScalarProperty Name="tarifNettoyage" ColumnName="tarifNettoyage" />
-          <ScalarProperty Name="tarifNuit" ColumnName="tarifNuit" />
-          <ScalarProperty Name="nbPersMax" ColumnName="nbPersMax" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="SearchBiensDispo2" FunctionName="DreamHollidayModel.Store.SearchBiensDispo2">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="DreamHollidayModel.SearchBiensDispo2_Result2">
-          <ScalarProperty Name="idBien" ColumnName="idBien" />
-          <ScalarProperty Name="pays" ColumnName="pays" />
-          <ScalarProperty Name="ville" ColumnName="ville" />
-          <ScalarProperty Name="rue" ColumnName="rue" />
-          <ScalarProperty Name="numero" ColumnName="numero" />
-          <ScalarProperty Name="idMembre" ColumnName="idMembre" />
-          <ScalarProperty Name="libelle" ColumnName="libelle" />
-          <ScalarProperty Name="noteMoyenne" ColumnName="noteMoyenne" />
-          <ScalarProperty Name="photo" ColumnName="photo" />
-          <ScalarProperty Name="tarifNettoyage" ColumnName="tarifNettoyage" />
-          <ScalarProperty Name="tarifNuit" ColumnName="tarifNuit" />
-          <ScalarProperty Name="nbPersMax" ColumnName="nbPersMax" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="verifDates2" FunctionName="DreamHollidayModel.Store.verifDates2">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DreamHollidayModel.verifDates2_Result">
@@ -172,6 +136,96 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="addCommentAndNote" FunctionName="DreamHollidayModel.Store.addCommentAndNote" />
+    <FunctionImportMapping FunctionImportName="detailBienWithIde" FunctionName="DreamHollidayModel.Store.detailBienWithIde">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DreamHollidayModel.detailBienWithIde_Result">
+          <ScalarProperty Name="idBien" ColumnName="idBien" />
+          <ScalarProperty Name="BIEN_Pays" ColumnName="BIEN_Pays" />
+          <ScalarProperty Name="BIEN_ville" ColumnName="BIEN_ville" />
+          <ScalarProperty Name="BIEN_rue" ColumnName="BIEN_rue" />
+          <ScalarProperty Name="BIEN_numero" ColumnName="BIEN_numero" />
+          <ScalarProperty Name="idMembre" ColumnName="idMembre" />
+          <ScalarProperty Name="BIEN_tarifParNuit" ColumnName="BIEN_tarifParNuit" />
+          <ScalarProperty Name="BIEN_tarifNettoyage" ColumnName="BIEN_tarifNettoyage" />
+          <ScalarProperty Name="BIEN_noteMoyenne" ColumnName="BIEN_noteMoyenne" />
+          <ScalarProperty Name="BIEN_libelle" ColumnName="BIEN_libelle" />
+          <ScalarProperty Name="BIEN_photo" ColumnName="BIEN_photo" />
+          <ScalarProperty Name="BIEN_nbMaxPersonnes" ColumnName="BIEN_nbMaxPersonnes" />
+          <ScalarProperty Name="bbq" ColumnName="bbq" />
+          <ScalarProperty Name="piscine" ColumnName="piscine" />
+          <ScalarProperty Name="jacuzzi" ColumnName="jacuzzi" />
+          <ScalarProperty Name="sauna" ColumnName="sauna" />
+          <ScalarProperty Name="tv" ColumnName="tv" />
+          <ScalarProperty Name="teledistribution" ColumnName="teledistribution" />
+          <ScalarProperty Name="wifi" ColumnName="wifi" />
+          <ScalarProperty Name="pingpong" ColumnName="pingpong" />
+          <ScalarProperty Name="tennis" ColumnName="tennis" />
+          <ScalarProperty Name="transat" ColumnName="transat" />
+          <ScalarProperty Name="cuisine_equipee" ColumnName="cuisine equipee" />
+          <ScalarProperty Name="machine_a_laver" ColumnName="machine a laver" />
+          <ScalarProperty Name="jardin" ColumnName="jardin" />
+          <ScalarProperty Name="parking" ColumnName="parking" />
+          <ScalarProperty Name="salleDeBain" ColumnName="salleDeBain" />
+          <ScalarProperty Name="salon" ColumnName="salon" />
+          <ScalarProperty Name="sallaAManger" ColumnName="sallaAManger" />
+          <ScalarProperty Name="toilette" ColumnName="toilette" />
+          <ScalarProperty Name="cuisine" ColumnName="cuisine" />
+          <ScalarProperty Name="chambre" ColumnName="chambre" />
+          <ScalarProperty Name="dressing" ColumnName="dressing" />
+          <ScalarProperty Name="veranda" ColumnName="veranda" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetFiveLastComment" FunctionName="DreamHollidayModel.Store.GetFiveLastComment">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DreamHollidayModel.GetFiveLastComment_Result">
+          <ScalarProperty Name="idCommentaire" ColumnName="idCommentaire" />
+          <ScalarProperty Name="idBien" ColumnName="idBien" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+          <ScalarProperty Name="dateComment" ColumnName="dateComment" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="BigSearchBiens" FunctionName="DreamHollidayModel.Store.BigSearchBiens">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DreamHollidayModel.BigSearchBiens_Result">
+          <ScalarProperty Name="idBien" ColumnName="idBien" />
+          <ScalarProperty Name="bbq" ColumnName="bbq" />
+          <ScalarProperty Name="piscine" ColumnName="piscine" />
+          <ScalarProperty Name="jacuzzi" ColumnName="jacuzzi" />
+          <ScalarProperty Name="sauna" ColumnName="sauna" />
+          <ScalarProperty Name="tv" ColumnName="tv" />
+          <ScalarProperty Name="teleDis" ColumnName="teleDis" />
+          <ScalarProperty Name="wifi" ColumnName="wifi" />
+          <ScalarProperty Name="pingpong" ColumnName="pingpong" />
+          <ScalarProperty Name="tennis" ColumnName="tennis" />
+          <ScalarProperty Name="transat" ColumnName="transat" />
+          <ScalarProperty Name="cuisineEq" ColumnName="cuisineEq" />
+          <ScalarProperty Name="machineALaver" ColumnName="machineALaver" />
+          <ScalarProperty Name="jardin" ColumnName="jardin" />
+          <ScalarProperty Name="parking" ColumnName="parking" />
+          <ScalarProperty Name="sdb" ColumnName="sdb" />
+          <ScalarProperty Name="salon" ColumnName="salon" />
+          <ScalarProperty Name="sam" ColumnName="sam" />
+          <ScalarProperty Name="toilette" ColumnName="toilette" />
+          <ScalarProperty Name="cuisine" ColumnName="cuisine" />
+          <ScalarProperty Name="chambre" ColumnName="chambre" />
+          <ScalarProperty Name="dressing" ColumnName="dressing" />
+          <ScalarProperty Name="veranda" ColumnName="veranda" />
+          <ScalarProperty Name="pays" ColumnName="pays" />
+          <ScalarProperty Name="ville" ColumnName="ville" />
+          <ScalarProperty Name="rue" ColumnName="rue" />
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="inMembre" ColumnName="inMembre" />
+          <ScalarProperty Name="tarifNuit" ColumnName="tarifNuit" />
+          <ScalarProperty Name="tarifNett" ColumnName="tarifNett" />
+          <ScalarProperty Name="noteM" ColumnName="noteM" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="nbPersMax" ColumnName="nbPersMax" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <EntitySetMapping Name="C__MigrationHistory">
       <EntityTypeMapping TypeName="DreamHollidayModel.C__MigrationHistory">
         <MappingFragment StoreEntitySet="__MigrationHistory">
@@ -367,9 +421,27 @@
         <ScalarProperty Name="Id" ColumnName="RoleId" />
       </EndProperty>
     </AssociationSetMapping>
-    <FunctionImportMapping FunctionImportName="detailBienWithIde" FunctionName="DreamHollidayModel.Store.detailBienWithIde">
+    <FunctionImportMapping FunctionImportName="SearchBiensDispo" FunctionName="DreamHollidayModel.Store.SearchBiensDispo">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="DreamHollidayModel.detailBienWithIde_Result">
+        <ComplexTypeMapping TypeName="DreamHollidayModel.SearchBiensDispo_Result">
+          <ScalarProperty Name="idBien" ColumnName="idBien" />
+          <ScalarProperty Name="pays" ColumnName="pays" />
+          <ScalarProperty Name="ville" ColumnName="ville" />
+          <ScalarProperty Name="rue" ColumnName="rue" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="idMembre" ColumnName="idMembre" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+          <ScalarProperty Name="noteMoyenne" ColumnName="noteMoyenne" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="tarifNettoyage" ColumnName="tarifNettoyage" />
+          <ScalarProperty Name="tarifNuit" ColumnName="tarifNuit" />
+          <ScalarProperty Name="nbPersMax" ColumnName="nbPersMax" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllMyBiens" FunctionName="DreamHollidayModel.Store.GetAllMyBiens">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DreamHollidayModel.GetAllMyBiens_Result">
           <ScalarProperty Name="idBien" ColumnName="idBien" />
           <ScalarProperty Name="BIEN_Pays" ColumnName="BIEN_Pays" />
           <ScalarProperty Name="BIEN_ville" ColumnName="BIEN_ville" />
@@ -382,38 +454,6 @@
           <ScalarProperty Name="BIEN_libelle" ColumnName="BIEN_libelle" />
           <ScalarProperty Name="BIEN_photo" ColumnName="BIEN_photo" />
           <ScalarProperty Name="BIEN_nbMaxPersonnes" ColumnName="BIEN_nbMaxPersonnes" />
-          <ScalarProperty Name="bbq" ColumnName="bbq" />
-          <ScalarProperty Name="piscine" ColumnName="piscine" />
-          <ScalarProperty Name="jacuzzi" ColumnName="jacuzzi" />
-          <ScalarProperty Name="sauna" ColumnName="sauna" />
-          <ScalarProperty Name="tv" ColumnName="tv" />
-          <ScalarProperty Name="teledistribution" ColumnName="teledistribution" />
-          <ScalarProperty Name="wifi" ColumnName="wifi" />
-          <ScalarProperty Name="pingpong" ColumnName="pingpong" />
-          <ScalarProperty Name="tennis" ColumnName="tennis" />
-          <ScalarProperty Name="transat" ColumnName="transat" />
-          <ScalarProperty Name="cuisine_equipee" ColumnName="cuisine equipee" />
-          <ScalarProperty Name="machine_a_laver" ColumnName="machine a laver" />
-          <ScalarProperty Name="jardin" ColumnName="jardin" />
-          <ScalarProperty Name="parking" ColumnName="parking" />
-          <ScalarProperty Name="salleDeBain" ColumnName="salleDeBain" />
-          <ScalarProperty Name="salon" ColumnName="salon" />
-          <ScalarProperty Name="sallaAManger" ColumnName="sallaAManger" />
-          <ScalarProperty Name="toilette" ColumnName="toilette" />
-          <ScalarProperty Name="cuisine" ColumnName="cuisine" />
-          <ScalarProperty Name="chambre" ColumnName="chambre" />
-          <ScalarProperty Name="dressing" ColumnName="dressing" />
-          <ScalarProperty Name="veranda" ColumnName="veranda" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="GetFiveLastComment" FunctionName="DreamHollidayModel.Store.GetFiveLastComment">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="DreamHollidayModel.GetFiveLastComment_Result">
-          <ScalarProperty Name="idCommentaire" ColumnName="idCommentaire" />
-          <ScalarProperty Name="idBien" ColumnName="idBien" />
-          <ScalarProperty Name="libelle" ColumnName="libelle" />
-          <ScalarProperty Name="dateComment" ColumnName="dateComment" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

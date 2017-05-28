@@ -252,6 +252,9 @@
     <Compile Include="DAL\BIEN.cs">
       <DependentUpon>DreamHolidayDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\BigSearchBiens_Result.cs">
+      <DependentUpon>DreamHolidayDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\COMMENTAIRE.cs">
       <DependentUpon>DreamHolidayDB.tt</DependentUpon>
     </Compile>
@@ -291,6 +294,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DreamHolidayDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\GetAllMyBiens_Result.cs">
+      <DependentUpon>DreamHolidayDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\GetFiveLastComment_Result.cs">
       <DependentUpon>DreamHolidayDB.tt</DependentUpon>
     </Compile>
@@ -328,6 +334,9 @@
       <DependentUpon>DreamHolidayDB.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\SearchBiensDispo2_Result2.cs">
+      <DependentUpon>DreamHolidayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\SearchBiensDispo_Result.cs">
       <DependentUpon>DreamHolidayDB.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\searchBienWithOptions_Result.cs">
@@ -537,6 +546,11 @@
     <Content Include="Views\Membre\View.cshtml" />
     <Content Include="Views\Membre\mesLocations.cshtml" />
     <Content Include="Views\Bien\_PostCommentAndNote.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Bien\DetailMonBien.cshtml" />
+    <Content Include="Views\Bien\EditBien.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -391,10 +391,36 @@
     <Parameter Name="idBien" Type="int" Mode="In" />
     <Parameter Name="idLocation" Type="int" Mode="In" />
   </Function>
+  <Function Name="BigSearchBiens" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bbq" Type="bit" Mode="In" />
+    <Parameter Name="piscine" Type="bit" Mode="In" />
+    <Parameter Name="jacuzzi" Type="bit" Mode="In" />
+    <Parameter Name="sauna" Type="bit" Mode="In" />
+    <Parameter Name="tv" Type="bit" Mode="In" />
+    <Parameter Name="teleDis" Type="bit" Mode="In" />
+    <Parameter Name="wifi" Type="bit" Mode="In" />
+    <Parameter Name="pingpong" Type="bit" Mode="In" />
+    <Parameter Name="tennis" Type="bit" Mode="In" />
+    <Parameter Name="transat" Type="bit" Mode="In" />
+    <Parameter Name="cuisineEq" Type="bit" Mode="In" />
+    <Parameter Name="machineALaver" Type="bit" Mode="In" />
+    <Parameter Name="jardin" Type="bit" Mode="In" />
+    <Parameter Name="parking" Type="bit" Mode="In" />
+    <Parameter Name="nbSdb" Type="int" Mode="In" />
+    <Parameter Name="nbToilette" Type="int" Mode="In" />
+    <Parameter Name="nbChambre" Type="int" Mode="In" />
+    <Parameter Name="prixMax" Type="int" Mode="In" />
+    <Parameter Name="villeOuPays" Type="nvarchar" Mode="In" />
+    <Parameter Name="nbPersMax" Type="int" Mode="In" />
+    <Parameter Name="noteMoyenneMin" Type="int" Mode="In" />
+  </Function>
   <Function Name="detailBienWithIde" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idBien" Type="int" Mode="In" />
   </Function>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="GetAllMyBiens" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idMembre" Type="int" Mode="In" />
+  </Function>
   <Function Name="GetFiveLastComment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idBien" Type="int" Mode="In" />
   </Function>
@@ -404,13 +430,7 @@
   <Function Name="RechercheDatePasDispo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idBien" Type="int" Mode="In" />
   </Function>
-  <Function Name="SearchBiensDispo1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="paysOuVille" Type="nvarchar" Mode="In" />
-    <Parameter Name="arrivee" Type="datetime" Mode="In" />
-    <Parameter Name="depart" Type="datetime" Mode="In" />
-    <Parameter Name="nbPers" Type="int" Mode="In" />
-  </Function>
-  <Function Name="SearchBiensDispo2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+  <Function Name="SearchBiensDispo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="paysOuVille" Type="nvarchar" Mode="In" />
     <Parameter Name="arrivee" Type="datetime" Mode="In" />
     <Parameter Name="depart" Type="datetime" Mode="In" />
@@ -437,6 +457,7 @@
     <Parameter Name="prixMax" Type="int" Mode="In" />
     <Parameter Name="villeOuPays" Type="nvarchar" Mode="In" />
     <Parameter Name="nbPersMax" Type="int" Mode="In" />
+    <Parameter Name="noteMoyenneMin" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />

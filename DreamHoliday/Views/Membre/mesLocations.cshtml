@@ -4,20 +4,18 @@
     ViewBag.Title = "mesLocations";
 }
 
-<h2>mesLocations</h2>
+<h2>@Resource.mesLocations</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
+
+<table class="table tab" >
+    <tr class="tableaux" >
+        <th >
             @Html.DisplayNameFor(model => model.idLocation)
         </th>
-        <th>
+        <th  >
             @Html.DisplayNameFor(model => model.dateEnregistrement)
         </th>
-        <th>
+        <th >
             @Html.DisplayNameFor(model => model.dateArrivee)
         </th>
         <th>
@@ -63,7 +61,7 @@
                 DateTime dateAujourdhui = DateTime.Now;
                 if (item.estNote == false && item.dateDepart < dateAujourdhui)
                 {
-                    <button id="@item.idLocation" type="button" class="btnComment btn btn-warning" style="margin-bottom:5%" >commenter ou noter</button>
+                    <button id="@item.idLocation" type="button" class="btnComment btn btn-warning" style="margin-bottom:5%; width:100%" >commenter ou noter</button>
             }
             }
             

@@ -70,11 +70,38 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Adresse.
+        /// </summary>
+        public static string adresse1 {
+            get {
+                return ResourceManager.GetString("adresse1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à ajouter un bien.
         /// </summary>
         public static string ajouterUnBien {
             get {
                 return ResourceManager.GetString("ajouterUnBien", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à ajouter un bien.
+        /// </summary>
+        public static string ajouterUnBien1 {
+            get {
+                return ResourceManager.GetString("ajouterUnBien1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à année.
+        /// </summary>
+        public static string annee {
+            get {
+                return ResourceManager.GetString("annee", resourceCulture);
             }
         }
         
@@ -88,11 +115,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à barbecue.
+        /// </summary>
+        public static string bbq1 {
+            get {
+                return ResourceManager.GetString("bbq1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Bonjour, bienvenue sur notre site..
         /// </summary>
         public static string Bienvenue01 {
             get {
                 return ResourceManager.GetString("Bienvenue01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Bonjour, bienvenue sur notre site..
+        /// </summary>
+        public static string Bienvenue011 {
+            get {
+                return ResourceManager.GetString("Bienvenue011", resourceCulture);
             }
         }
         
@@ -109,11 +154,32 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Vous avez un bien inhabité et aimeriez gagner de l&apos;argent en le louant? 
+        ///ou vous voullez partir en couple ou entre amis sans casser votre tire-lire?
+        ///DREAMHOLIDAY est fait pour VOUS!
+        ///Nous permettons aux propriétaires de mettre leur bien en location en toute sécurité....
+        /// </summary>
+        public static string Bienvenue021 {
+            get {
+                return ResourceManager.GetString("Bienvenue021", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Accueil.
         /// </summary>
         public static string btnAccueil {
             get {
                 return ResourceManager.GetString("btnAccueil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Accueil.
+        /// </summary>
+        public static string btnAccueil1 {
+            get {
+                return ResourceManager.GetString("btnAccueil1", resourceCulture);
             }
         }
         
@@ -127,11 +193,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Se connecter.
+        /// </summary>
+        public static string btnConnect1 {
+            get {
+                return ResourceManager.GetString("btnConnect1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Contact.
         /// </summary>
         public static string btnContact {
             get {
                 return ResourceManager.GetString("btnContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Contact.
+        /// </summary>
+        public static string btnContact1 {
+            get {
+                return ResourceManager.GetString("btnContact1", resourceCulture);
             }
         }
         
@@ -145,11 +229,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Se déconnecter.
+        /// </summary>
+        public static string btnDeconnect1 {
+            get {
+                return ResourceManager.GetString("btnDeconnect1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Nos biens .
         /// </summary>
         public static string btnLesBiens {
             get {
                 return ResourceManager.GetString("btnLesBiens", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Nos biens .
+        /// </summary>
+        public static string btnLesBiens1 {
+            get {
+                return ResourceManager.GetString("btnLesBiens1", resourceCulture);
             }
         }
         
@@ -163,11 +265,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mon profile.
+        /// </summary>
+        public static string btnMonProfil1 {
+            get {
+                return ResourceManager.GetString("btnMonProfil1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Nouveau Bien.
         /// </summary>
         public static string btnNvBien {
             get {
                 return ResourceManager.GetString("btnNvBien", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Nouveau Bien.
+        /// </summary>
+        public static string btnNvBien1 {
+            get {
+                return ResourceManager.GetString("btnNvBien1", resourceCulture);
             }
         }
         
@@ -181,11 +301,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à S&apos;enregistrer.
+        /// </summary>
+        public static string btnNvMembre1 {
+            get {
+                return ResourceManager.GetString("btnNvMembre1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à chambre.
         /// </summary>
         public static string chambre {
             get {
                 return ResourceManager.GetString("chambre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à chambre.
+        /// </summary>
+        public static string chambre1 {
+            get {
+                return ResourceManager.GetString("chambre1", resourceCulture);
             }
         }
         
@@ -199,11 +337,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à commentaire.
+        /// </summary>
+        public static string commentaire1 {
+            get {
+                return ResourceManager.GetString("commentaire1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à une question?.
         /// </summary>
         public static string Contact01 {
             get {
                 return ResourceManager.GetString("Contact01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à une question?.
+        /// </summary>
+        public static string Contact011 {
+            get {
+                return ResourceManager.GetString("Contact011", resourceCulture);
             }
         }
         
@@ -217,11 +373,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Contactez nous au :.
+        /// </summary>
+        public static string Contact021 {
+            get {
+                return ResourceManager.GetString("Contact021", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Adresse :.
         /// </summary>
         public static string Contact03 {
             get {
                 return ResourceManager.GetString("Contact03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Adresse :.
+        /// </summary>
+        public static string Contact031 {
+            get {
+                return ResourceManager.GetString("Contact031", resourceCulture);
             }
         }
         
@@ -235,11 +409,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à contacter le propriétaire.
+        /// </summary>
+        public static string contacterLeProprio1 {
+            get {
+                return ResourceManager.GetString("contacterLeProprio1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à coût administratif.
         /// </summary>
         public static string coutAdmin {
             get {
                 return ResourceManager.GetString("coutAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à coût administratif.
+        /// </summary>
+        public static string coutAdmin1 {
+            get {
+                return ResourceManager.GetString("coutAdmin1", resourceCulture);
             }
         }
         
@@ -253,11 +445,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à coût du séjout.
+        /// </summary>
+        public static string coutSejour1 {
+            get {
+                return ResourceManager.GetString("coutSejour1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à cout total du séjour.
         /// </summary>
         public static string coutTot {
             get {
                 return ResourceManager.GetString("coutTot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à cout total du séjour.
+        /// </summary>
+        public static string coutTot1 {
+            get {
+                return ResourceManager.GetString("coutTot1", resourceCulture);
             }
         }
         
@@ -271,11 +481,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à cuisine.
+        /// </summary>
+        public static string cuisine1 {
+            get {
+                return ResourceManager.GetString("cuisine1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à cuisine équipée.
         /// </summary>
         public static string cuisineEq {
             get {
                 return ResourceManager.GetString("cuisineEq", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à cuisine équipée.
+        /// </summary>
+        public static string cuisineEq1 {
+            get {
+                return ResourceManager.GetString("cuisineEq1", resourceCulture);
             }
         }
         
@@ -289,11 +517,38 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Date.
+        /// </summary>
+        public static string date1 {
+            get {
+                return ResourceManager.GetString("date1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Date d&apos;arrivée.
         /// </summary>
         public static string DateArrivees {
             get {
                 return ResourceManager.GetString("DateArrivees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Date d&apos;arrivée.
+        /// </summary>
+        public static string DateArrivees1 {
+            get {
+                return ResourceManager.GetString("DateArrivees1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à date de départ.
+        /// </summary>
+        public static string dateDeDepart {
+            get {
+                return ResourceManager.GetString("dateDeDepart", resourceCulture);
             }
         }
         
@@ -307,11 +562,38 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Date de naissance.
+        /// </summary>
+        public static string dateDeNaissance1 {
+            get {
+                return ResourceManager.GetString("dateDeNaissance1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à date d&apos;enregistrement.
+        /// </summary>
+        public static string dateEnregistrement {
+            get {
+                return ResourceManager.GetString("dateEnregistrement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Date de retour.
         /// </summary>
         public static string DateRetour {
             get {
                 return ResourceManager.GetString("DateRetour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Date de retour.
+        /// </summary>
+        public static string DateRetour1 {
+            get {
+                return ResourceManager.GetString("DateRetour1", resourceCulture);
             }
         }
         
@@ -325,11 +607,38 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à derniers commentaires.
+        /// </summary>
+        public static string dernierComment1 {
+            get {
+                return ResourceManager.GetString("dernierComment1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à déscription.
         /// </summary>
         public static string description {
             get {
                 return ResourceManager.GetString("description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à déscription.
+        /// </summary>
+        public static string description1 {
+            get {
+                return ResourceManager.GetString("description1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Desole.
+        /// </summary>
+        public static string desole {
+            get {
+                return ResourceManager.GetString("desole", resourceCulture);
             }
         }
         
@@ -343,11 +652,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à détail du bien.
+        /// </summary>
+        public static string detailDuBien1 {
+            get {
+                return ResourceManager.GetString("detailDuBien1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à dressing.
         /// </summary>
         public static string dressing {
             get {
                 return ResourceManager.GetString("dressing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à dressing.
+        /// </summary>
+        public static string dressing1 {
+            get {
+                return ResourceManager.GetString("dressing1", resourceCulture);
             }
         }
         
@@ -361,11 +688,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Enregistrez-vous ici.
+        /// </summary>
+        public static string enregistrezVsIci1 {
+            get {
+                return ResourceManager.GetString("enregistrezVsIci1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Envoyer.
         /// </summary>
         public static string envoyer {
             get {
                 return ResourceManager.GetString("envoyer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Envoyer.
+        /// </summary>
+        public static string envoyer1 {
+            get {
+                return ResourceManager.GetString("envoyer1", resourceCulture);
             }
         }
         
@@ -379,11 +724,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à équipement.
+        /// </summary>
+        public static string equipement1 {
+            get {
+                return ResourceManager.GetString("equipement1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à adresse requise.
         /// </summary>
         public static string Error_adresseRequise {
             get {
                 return ResourceManager.GetString("Error_adresseRequise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à adresse requise.
+        /// </summary>
+        public static string Error_adresseRequise1 {
+            get {
+                return ResourceManager.GetString("Error_adresseRequise1", resourceCulture);
             }
         }
         
@@ -397,11 +760,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à date de naissance requise.
+        /// </summary>
+        public static string Error_DateNaissRequis1 {
+            get {
+                return ResourceManager.GetString("Error_DateNaissRequis1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Identifiant requis.
         /// </summary>
         public static string Error_identifiantRequis {
             get {
                 return ResourceManager.GetString("Error_identifiantRequis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Identifiant requis.
+        /// </summary>
+        public static string Error_identifiantRequis1 {
+            get {
+                return ResourceManager.GetString("Error_identifiantRequis1", resourceCulture);
             }
         }
         
@@ -415,11 +796,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à mail requis.
+        /// </summary>
+        public static string Error_mailRequis1 {
+            get {
+                return ResourceManager.GetString("Error_mailRequis1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à mesage requis.
         /// </summary>
         public static string Error_MessageRequis {
             get {
                 return ResourceManager.GetString("Error_MessageRequis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à mesage requis.
+        /// </summary>
+        public static string Error_MessageRequis1 {
+            get {
+                return ResourceManager.GetString("Error_MessageRequis1", resourceCulture);
             }
         }
         
@@ -433,11 +832,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à nom requis.
+        /// </summary>
+        public static string Error_nomRequis1 {
+            get {
+                return ResourceManager.GetString("Error_nomRequis1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à numéro requis.
         /// </summary>
         public static string Error_NumeroRequis {
             get {
                 return ResourceManager.GetString("Error_NumeroRequis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à numéro requis.
+        /// </summary>
+        public static string Error_NumeroRequis1 {
+            get {
+                return ResourceManager.GetString("Error_NumeroRequis1", resourceCulture);
             }
         }
         
@@ -451,11 +868,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à mot de passe requis.
+        /// </summary>
+        public static string Error_PasswordRequis1 {
+            get {
+                return ResourceManager.GetString("Error_PasswordRequis1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à pays requis.
         /// </summary>
         public static string Error_PaysRequis {
             get {
                 return ResourceManager.GetString("Error_PaysRequis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à pays requis.
+        /// </summary>
+        public static string Error_PaysRequis1 {
+            get {
+                return ResourceManager.GetString("Error_PaysRequis1", resourceCulture);
             }
         }
         
@@ -469,11 +904,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à prénom requis.
+        /// </summary>
+        public static string Error_PrenomRequis1 {
+            get {
+                return ResourceManager.GetString("Error_PrenomRequis1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à rue requise.
         /// </summary>
         public static string Error_rueRequis {
             get {
                 return ResourceManager.GetString("Error_rueRequis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à rue requise.
+        /// </summary>
+        public static string Error_rueRequis1 {
+            get {
+                return ResourceManager.GetString("Error_rueRequis1", resourceCulture);
             }
         }
         
@@ -487,11 +940,38 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à sujet requis.
+        /// </summary>
+        public static string Error_SujetRequis1 {
+            get {
+                return ResourceManager.GetString("Error_SujetRequis1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à nous n&apos;avons pas de biens qui correspond à vos critères..
+        /// </summary>
+        public static string Error_tableVide {
+            get {
+                return ResourceManager.GetString("Error_tableVide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à num de téléphone requis.
         /// </summary>
         public static string Error_telephoneRequis {
             get {
                 return ResourceManager.GetString("Error_telephoneRequis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à num de téléphone requis.
+        /// </summary>
+        public static string Error_telephoneRequis1 {
+            get {
+                return ResourceManager.GetString("Error_telephoneRequis1", resourceCulture);
             }
         }
         
@@ -505,11 +985,47 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à ville requise.
+        /// </summary>
+        public static string Error_VilleRequis1 {
+            get {
+                return ResourceManager.GetString("Error_VilleRequis1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à est commenté.
+        /// </summary>
+        public static string estCommente {
+            get {
+                return ResourceManager.GetString("estCommente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à est noté.
+        /// </summary>
+        public static string estNote {
+            get {
+                return ResourceManager.GetString("estNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Est propriétaire.
         /// </summary>
         public static string estProprio {
             get {
                 return ResourceManager.GetString("estProprio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Est propriétaire.
+        /// </summary>
+        public static string estProprio1 {
+            get {
+                return ResourceManager.GetString("estProprio1", resourceCulture);
             }
         }
         
@@ -523,11 +1039,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à identifiant du bien.
+        /// </summary>
+        public static string idBien1 {
+            get {
+                return ResourceManager.GetString("idBien1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à identifiez-vous svp.
         /// </summary>
         public static string identifiezVous {
             get {
                 return ResourceManager.GetString("identifiezVous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à identifiez-vous svp.
+        /// </summary>
+        public static string identifiezVous1 {
+            get {
+                return ResourceManager.GetString("identifiezVous1", resourceCulture);
             }
         }
         
@@ -541,11 +1075,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Identifiant.
+        /// </summary>
+        public static string idMembre1 {
+            get {
+                return ResourceManager.GetString("idMembre1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à jacuzzi.
         /// </summary>
         public static string jacuzzi {
             get {
                 return ResourceManager.GetString("jacuzzi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à jacuzzi.
+        /// </summary>
+        public static string jacuzzi1 {
+            get {
+                return ResourceManager.GetString("jacuzzi1", resourceCulture);
             }
         }
         
@@ -559,11 +1111,38 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à jardin.
+        /// </summary>
+        public static string jardin1 {
+            get {
+                return ResourceManager.GetString("jardin1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à jour.
+        /// </summary>
+        public static string jour {
+            get {
+                return ResourceManager.GetString("jour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à les pièces.
         /// </summary>
         public static string lesPieces {
             get {
                 return ResourceManager.GetString("lesPieces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à les pièces.
+        /// </summary>
+        public static string lesPieces1 {
+            get {
+                return ResourceManager.GetString("lesPieces1", resourceCulture);
             }
         }
         
@@ -577,11 +1156,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à libelle.
+        /// </summary>
+        public static string libelle1 {
+            get {
+                return ResourceManager.GetString("libelle1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à louer.
         /// </summary>
         public static string louer {
             get {
                 return ResourceManager.GetString("louer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à louer.
+        /// </summary>
+        public static string louer1 {
+            get {
+                return ResourceManager.GetString("louer1", resourceCulture);
             }
         }
         
@@ -595,11 +1192,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à louer un bien.
+        /// </summary>
+        public static string louerUnBien1 {
+            get {
+                return ResourceManager.GetString("louerUnBien1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à machine à laver.
         /// </summary>
         public static string machineALaver {
             get {
                 return ResourceManager.GetString("machineALaver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à machine à laver.
+        /// </summary>
+        public static string machineALaver1 {
+            get {
+                return ResourceManager.GetString("machineALaver1", resourceCulture);
             }
         }
         
@@ -613,11 +1228,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mail.
+        /// </summary>
+        public static string mail1 {
+            get {
+                return ResourceManager.GetString("mail1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à mes biens.
         /// </summary>
         public static string mesBiens {
             get {
                 return ResourceManager.GetString("mesBiens", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à mes biens.
+        /// </summary>
+        public static string mesBiens1 {
+            get {
+                return ResourceManager.GetString("mesBiens1", resourceCulture);
             }
         }
         
@@ -631,11 +1264,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à mes locations.
+        /// </summary>
+        public static string mesLocations1 {
+            get {
+                return ResourceManager.GetString("mesLocations1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à mes messages.
         /// </summary>
         public static string mesMessages {
             get {
                 return ResourceManager.GetString("mesMessages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à mes messages.
+        /// </summary>
+        public static string mesMessages1 {
+            get {
+                return ResourceManager.GetString("mesMessages1", resourceCulture);
             }
         }
         
@@ -649,11 +1300,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Message.
+        /// </summary>
+        public static string message1 {
+            get {
+                return ResourceManager.GetString("message1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à veuillez vous connecter pour pouvoir louer un bien svp.
         /// </summary>
         public static string Modal_sIdentifierPourLouer {
             get {
                 return ResourceManager.GetString("Modal_sIdentifierPourLouer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à veuillez vous connecter pour pouvoir louer un bien svp.
+        /// </summary>
+        public static string Modal_sIdentifierPourLouer1 {
+            get {
+                return ResourceManager.GetString("Modal_sIdentifierPourLouer1", resourceCulture);
             }
         }
         
@@ -667,11 +1336,38 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à modifier.
+        /// </summary>
+        public static string modifier1 {
+            get {
+                return ResourceManager.GetString("modifier1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à mois.
+        /// </summary>
+        public static string mois {
+            get {
+                return ResourceManager.GetString("mois", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à nbre de personne max.
         /// </summary>
         public static string nbPersMax {
             get {
                 return ResourceManager.GetString("nbPersMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à nbre de personne max.
+        /// </summary>
+        public static string nbPersMax1 {
+            get {
+                return ResourceManager.GetString("nbPersMax1", resourceCulture);
             }
         }
         
@@ -685,11 +1381,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à nombre de personne(s).
+        /// </summary>
+        public static string nbreDePers1 {
+            get {
+                return ResourceManager.GetString("nbreDePers1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Nom.
         /// </summary>
         public static string nom {
             get {
                 return ResourceManager.GetString("nom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Nom.
+        /// </summary>
+        public static string nom1 {
+            get {
+                return ResourceManager.GetString("nom1", resourceCulture);
             }
         }
         
@@ -703,11 +1417,38 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à nombre de nuit.
+        /// </summary>
+        public static string nombreDeNuits1 {
+            get {
+                return ResourceManager.GetString("nombreDeNuits1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à nos biens.
+        /// </summary>
+        public static string nosBiens {
+            get {
+                return ResourceManager.GetString("nosBiens", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à note moyenne.
         /// </summary>
         public static string noteMoyenne {
             get {
                 return ResourceManager.GetString("noteMoyenne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à note moyenne.
+        /// </summary>
+        public static string noteMoyenne1 {
+            get {
+                return ResourceManager.GetString("noteMoyenne1", resourceCulture);
             }
         }
         
@@ -721,11 +1462,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à numéro.
+        /// </summary>
+        public static string numero1 {
+            get {
+                return ResourceManager.GetString("numero1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Parcourir.
         /// </summary>
         public static string parcourir {
             get {
                 return ResourceManager.GetString("parcourir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Parcourir.
+        /// </summary>
+        public static string parcourir1 {
+            get {
+                return ResourceManager.GetString("parcourir1", resourceCulture);
             }
         }
         
@@ -739,11 +1498,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à parking.
+        /// </summary>
+        public static string parking1 {
+            get {
+                return ResourceManager.GetString("parking1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à mot de passe.
         /// </summary>
         public static string password {
             get {
                 return ResourceManager.GetString("password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à mot de passe.
+        /// </summary>
+        public static string password1 {
+            get {
+                return ResourceManager.GetString("password1", resourceCulture);
             }
         }
         
@@ -757,11 +1534,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à confirmer.
+        /// </summary>
+        public static string password21 {
+            get {
+                return ResourceManager.GetString("password21", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à min 6 caractères.
         /// </summary>
         public static string PasswordProp {
             get {
                 return ResourceManager.GetString("PasswordProp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à min 6 caractères.
+        /// </summary>
+        public static string PasswordProp1 {
+            get {
+                return ResourceManager.GetString("PasswordProp1", resourceCulture);
             }
         }
         
@@ -775,11 +1570,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à pays.
+        /// </summary>
+        public static string pays1 {
+            get {
+                return ResourceManager.GetString("pays1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Pays ou ville.
         /// </summary>
         public static string paysOuVille {
             get {
                 return ResourceManager.GetString("paysOuVille", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Pays ou ville.
+        /// </summary>
+        public static string paysOuVille1 {
+            get {
+                return ResourceManager.GetString("paysOuVille1", resourceCulture);
             }
         }
         
@@ -793,11 +1606,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Photo.
+        /// </summary>
+        public static string photo1 {
+            get {
+                return ResourceManager.GetString("photo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à pingpong.
         /// </summary>
         public static string pingpong {
             get {
                 return ResourceManager.GetString("pingpong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à pingpong.
+        /// </summary>
+        public static string pingpong1 {
+            get {
+                return ResourceManager.GetString("pingpong1", resourceCulture);
             }
         }
         
@@ -811,11 +1642,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à piscine.
+        /// </summary>
+        public static string piscine1 {
+            get {
+                return ResourceManager.GetString("piscine1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Prénom.
         /// </summary>
         public static string prenom {
             get {
                 return ResourceManager.GetString("prenom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Prénom.
+        /// </summary>
+        public static string prenom1 {
+            get {
+                return ResourceManager.GetString("prenom1", resourceCulture);
             }
         }
         
@@ -829,11 +1678,38 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Rechercher.
+        /// </summary>
+        public static string Rechercher1 {
+            get {
+                return ResourceManager.GetString("Rechercher1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Retour.
+        /// </summary>
+        public static string retour {
+            get {
+                return ResourceManager.GetString("retour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à rue.
         /// </summary>
         public static string rue {
             get {
                 return ResourceManager.GetString("rue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à rue.
+        /// </summary>
+        public static string rue1 {
+            get {
+                return ResourceManager.GetString("rue1", resourceCulture);
             }
         }
         
@@ -847,11 +1723,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à salon.
+        /// </summary>
+        public static string salon1 {
+            get {
+                return ResourceManager.GetString("salon1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à salle à manger.
         /// </summary>
         public static string sam {
             get {
                 return ResourceManager.GetString("sam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à salle à manger.
+        /// </summary>
+        public static string sam1 {
+            get {
+                return ResourceManager.GetString("sam1", resourceCulture);
             }
         }
         
@@ -865,11 +1759,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à sauna.
+        /// </summary>
+        public static string sauna1 {
+            get {
+                return ResourceManager.GetString("sauna1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à salle de bain.
         /// </summary>
         public static string sdb {
             get {
                 return ResourceManager.GetString("sdb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à salle de bain.
+        /// </summary>
+        public static string sdb1 {
+            get {
+                return ResourceManager.GetString("sdb1", resourceCulture);
             }
         }
         
@@ -883,11 +1795,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Sujet.
+        /// </summary>
+        public static string sujet1 {
+            get {
+                return ResourceManager.GetString("sujet1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à tarif pour le nettoyage.
         /// </summary>
         public static string tarifNettoyage {
             get {
                 return ResourceManager.GetString("tarifNettoyage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à tarif pour le nettoyage.
+        /// </summary>
+        public static string tarifNettoyage1 {
+            get {
+                return ResourceManager.GetString("tarifNettoyage1", resourceCulture);
             }
         }
         
@@ -901,11 +1831,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à tarif par nuit.
+        /// </summary>
+        public static string tarifNuit1 {
+            get {
+                return ResourceManager.GetString("tarifNuit1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à télédistribution.
         /// </summary>
         public static string teledistrib {
             get {
                 return ResourceManager.GetString("teledistrib", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à télédistribution.
+        /// </summary>
+        public static string teledistrib1 {
+            get {
+                return ResourceManager.GetString("teledistrib1", resourceCulture);
             }
         }
         
@@ -919,11 +1867,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Téléphone.
+        /// </summary>
+        public static string telephone1 {
+            get {
+                return ResourceManager.GetString("telephone1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à tennis.
         /// </summary>
         public static string tennis {
             get {
                 return ResourceManager.GetString("tennis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à tennis.
+        /// </summary>
+        public static string tennis1 {
+            get {
+                return ResourceManager.GetString("tennis1", resourceCulture);
             }
         }
         
@@ -937,11 +1903,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Bienvenue sur DREAMHOLIDAY.
+        /// </summary>
+        public static string TitreHome1 {
+            get {
+                return ResourceManager.GetString("TitreHome1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à toilette.
         /// </summary>
         public static string toilette {
             get {
                 return ResourceManager.GetString("toilette", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à toilette.
+        /// </summary>
+        public static string toilette1 {
+            get {
+                return ResourceManager.GetString("toilette1", resourceCulture);
             }
         }
         
@@ -955,11 +1939,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à transat.
+        /// </summary>
+        public static string transat1 {
+            get {
+                return ResourceManager.GetString("transat1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Trouvez vos vacances de rêve.
         /// </summary>
         public static string trouvezVacDeReve {
             get {
                 return ResourceManager.GetString("trouvezVacDeReve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Trouvez vos vacances de rêve.
+        /// </summary>
+        public static string trouvezVacDeReve1 {
+            get {
+                return ResourceManager.GetString("trouvezVacDeReve1", resourceCulture);
             }
         }
         
@@ -973,11 +1975,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à télévision.
+        /// </summary>
+        public static string tv1 {
+            get {
+                return ResourceManager.GetString("tv1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à veranda.
         /// </summary>
         public static string veranda {
             get {
                 return ResourceManager.GetString("veranda", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à veranda.
+        /// </summary>
+        public static string veranda1 {
+            get {
+                return ResourceManager.GetString("veranda1", resourceCulture);
             }
         }
         
@@ -991,11 +2011,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à ville.
+        /// </summary>
+        public static string ville1 {
+            get {
+                return ResourceManager.GetString("ville1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à vous n&apos;avez pas.
         /// </summary>
         public static string vousAvezPasDeBien1 {
             get {
                 return ResourceManager.GetString("vousAvezPasDeBien1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à vous n&apos;avez pas.
+        /// </summary>
+        public static string vousAvezPasDeBien11 {
+            get {
+                return ResourceManager.GetString("vousAvezPasDeBien11", resourceCulture);
             }
         }
         
@@ -1009,11 +2047,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à encore de bien.
+        /// </summary>
+        public static string vousAvezPasDeBien21 {
+            get {
+                return ResourceManager.GetString("vousAvezPasDeBien21", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à vous n&apos;avez pas.
         /// </summary>
         public static string vousAvezPasDeLoc1 {
             get {
                 return ResourceManager.GetString("vousAvezPasDeLoc1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à vous n&apos;avez pas.
+        /// </summary>
+        public static string vousAvezPasDeLoc11 {
+            get {
+                return ResourceManager.GetString("vousAvezPasDeLoc11", resourceCulture);
             }
         }
         
@@ -1027,11 +2083,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à encore loué de bien.
+        /// </summary>
+        public static string vousAvezPasDeLoc21 {
+            get {
+                return ResourceManager.GetString("vousAvezPasDeLoc21", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à vous n&apos;avez pas.
         /// </summary>
         public static string vousAvezPasDeMsg1 {
             get {
                 return ResourceManager.GetString("vousAvezPasDeMsg1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à vous n&apos;avez pas.
+        /// </summary>
+        public static string vousAvezPasDeMsg11 {
+            get {
+                return ResourceManager.GetString("vousAvezPasDeMsg11", resourceCulture);
             }
         }
         
@@ -1045,11 +2119,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à encore de message.
+        /// </summary>
+        public static string vousAvezPasDeMsg21 {
+            get {
+                return ResourceManager.GetString("vousAvezPasDeMsg21", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à wifi.
         /// </summary>
         public static string wifi {
             get {
                 return ResourceManager.GetString("wifi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à wifi.
+        /// </summary>
+        public static string wifi1 {
+            get {
+                return ResourceManager.GetString("wifi1", resourceCulture);
             }
         }
     }

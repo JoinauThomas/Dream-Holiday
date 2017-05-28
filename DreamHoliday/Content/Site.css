@@ -237,4 +237,21 @@ input.checkbox:checked
     width:80%;
 }
 
+#equipementDisabled
+{
+}
 
+
+input[type="checkbox"]:checked  {
+    
+    outline: 2px solid green;
+    color:green !important;
+    opacity: 1;
+    
+}
+
+input[type="checkbox"] {
+    outline: 1px solid red;
+    color: green !important;
+    opacity: 1;
+}

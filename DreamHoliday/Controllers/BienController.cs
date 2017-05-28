@@ -13,6 +13,8 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
+// 56077
+
 namespace DreamHoliday.Controllers
 {
     
@@ -40,6 +42,11 @@ namespace DreamHoliday.Controllers
         {
             using (var client = new HttpClient())
             {
+                var token = Request.Cookies["myToken"].Value;
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
                 client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
                 var responseTask = client.PostAsJsonAsync("PostNewBien", nvBien);
                 responseTask.Wait();
@@ -49,26 +56,28 @@ namespace DreamHoliday.Controllers
                 {
                     // le bien a été créé
 
-                    DAL.DreamHollidayEntities dbContext = new DAL.DreamHollidayEntities();
-                    List<DAL.BIEN> BiensListe = dbContext.BIEN.ToList();
-                    List<_Bien_id_adresse> mesBiens = new List<_Bien_id_adresse>();
+
+                    List<_Bien_id_adresse> BiensListe = new List<_Bien_id_adresse>();
+
+                    List<Bien> mesBiens = new List<Bien>();
+                    mesBiens = showAllBiens();
 
 
                     //recherche de l'id du nouveau bien
 
                     foreach (var i in BiensListe)
                     {
-                        mesBiens.Add(new _Bien_id_adresse
+                        BiensListe.Add(new _Bien_id_adresse
                         {
                             idBien = i.idBien,
-                            numero = i.BIEN_numero,
-                            pays = i.BIEN_Pays,
-                            rue = i.BIEN_rue,
-                            ville = i.BIEN_ville
+                            numero = i.numero,
+                            pays = i.pays,
+                            rue = i.rue,
+                            ville = i.ville
                         });
                     }
 
-                    _Bien_id_adresse monBien = mesBiens.Find(x => x.pays == nvBien.pays && x.ville == nvBien.ville && x.rue == nvBien.rue && x.numero == nvBien.numero);
+                    _Bien_id_adresse monBien = BiensListe.Find(x => x.pays == nvBien.pays && x.ville == nvBien.ville && x.rue == nvBien.rue && x.numero == nvBien.numero);
                     nvBien.idBien = monBien.idBien;
 
                     if (monfichier != null && monfichier.ContentLength > 0)
@@ -85,11 +94,17 @@ namespace DreamHoliday.Controllers
 
                     return RedirectToAction("nvBien");
                 }
-                
+
                 return RedirectToAction("index", "Home");
             }
         }
 
+        public ActionResult EditBien(int idBien)
+        {
+            // prochaine etape
+            Bien monBien = GetBienWithId(idBien);
+            return View(monBien);
+        }
 
 
         // faire une recherche en fonction du lieux et des options
@@ -103,7 +118,7 @@ namespace DreamHoliday.Controllers
         [HttpPost]
         public ActionResult BigSearchBien(Model_FormBigSearchBien monBien)
         {
-            if(monBien.paysOuVille == null)
+            if (monBien.paysOuVille == null)
             {
                 monBien.paysOuVille = "";
             }
@@ -155,7 +170,7 @@ namespace DreamHoliday.Controllers
             return View("_SearchBiens", mesBiens);
         }
         [HttpPost]
-        public ActionResult SearchBienss(string paysOuVille,string dateDepart, string dateRetour, int nbPers)
+        public ActionResult SearchBienss(string paysOuVille, string dateDepart, string dateRetour, int nbPers)
         {
             List<Bien> mesBiens = new List<Bien>();
 
@@ -166,7 +181,7 @@ namespace DreamHoliday.Controllers
             {
                 client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
                 var responseTask = client.GetAsync("SearchBiens?paysOuVille=" + paysOuVille + "&dateDepart=" + dateDepart + "&dateRetour=" + dateRetour + "&nbPers=" + nbPers);
-                
+
                 responseTask.Wait();
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
@@ -176,7 +191,7 @@ namespace DreamHoliday.Controllers
                     mesBiens = readTask.Result;
                 }
             }
-            
+
             return PartialView("_SearchBiens", mesBiens);
         }
 
@@ -186,14 +201,8 @@ namespace DreamHoliday.Controllers
         [HttpGet]
         public ActionResult DetailBien(int idBien)
         {
-            DAL.DreamHollidayEntities dbContext = new DAL.DreamHollidayEntities();
-            List<DAL.detailBienWithIde_Result> bienDB = dbContext.detailBienWithIde(idBien).ToList();
-            Bien monBien = new Bien();
+            Bien monBien = GetBienWithId(idBien);
 
-            foreach(var i in bienDB)
-            {
-                monBien = new Bien{ idBien = i.idBien, pays = i.BIEN_Pays, ville = i.BIEN_ville, rue = i.BIEN_rue, numero = i.BIEN_numero, idMembre = i.idMembre, tarifParNuit = i.BIEN_tarifParNuit, tarifNettoyage = i.BIEN_tarifNettoyage, noteMoyenne = (double)i.BIEN_noteMoyenne, libelle = i.BIEN_libelle, photo = i.BIEN_photo, nbPersonnesMax = i.BIEN_nbMaxPersonnes, bbq = i.bbq, piscine = i.piscine, jacuzzi = i.jacuzzi, sauna = i.sauna, tv = i.tv, teleDistribution = i.teledistribution, wifi = i.wifi, pingpong = i.pingpong, tennis = i.tennis, transat = i.transat, cuisineEquipee = i.cuisine_equipee, machineALaver = i.machine_a_laver, jardin = i.jardin, parking = i.parking, salleDeBain = i.salleDeBain, salon = i.salon, salleAManger = i.sallaAManger, toilette = i.toilette, cuisine = i.cuisine, chambre = i.chambre, dressing = i.dressing, veranda = i.veranda };
-            }
 
             List<listeCommentaireDuBien> listeComment = new List<listeCommentaireDuBien>();
             using (var client = new HttpClient())
@@ -212,8 +221,6 @@ namespace DreamHoliday.Controllers
             }
 
             ViewBag.comments = listeComment;
-
-
             return View(monBien);
         }
 
@@ -221,29 +228,35 @@ namespace DreamHoliday.Controllers
         // Louer un Bien
 
         [HttpGet]
-        public ActionResult LouerUnBien (Bien monBien)
+        public ActionResult LouerUnBien(Bien monBien)
         {
             Membre moi = (Membre)Session["monCompte"];
-            LocationBien newLoc = new LocationBien{ idBien = monBien.idBien, tarifNettoyage = monBien.tarifNettoyage, tarifNuit = monBien.tarifParNuit, idMembre = moi.idMembre };
+
+            LocationBien newLoc = new LocationBien { idBien = monBien.idBien, tarifNettoyage = monBien.tarifNettoyage, tarifNuit = monBien.tarifParNuit, idMembre = moi.idMembre };
             ViewBag.probleme = 0;
 
             return View(newLoc);
         }
 
+
         [HttpPost]
         public ActionResult LouerUnBien(string dateArrivee, string dateDepart, int idBien, int idMembre, int Nuit, int Nettoyage, string coutVoyage, string coutTotal, string coutAdmin, int? nbNuits)
         {
-            DateTime dateArrivees = DateTime.ParseExact(dateArrivee, "dd/MM/yyyy", null);
-            DateTime dateDeparts = DateTime.ParseExact(dateDepart, "dd/MM/yyyy", null);
-
-            LocationBien nvLocation = new LocationBien { dateArrivee = dateArrivees, dateDepart = dateDeparts, idBien = idBien, idMembre = idMembre, tarifNettoyage = Nettoyage, tarifNuit = Nuit, nbNuits = (int)nbNuits, prixSejour = coutVoyage, prixtotal = coutTotal, tarifAdmin = coutAdmin  };
-            using (var client = new HttpClient())
+            try
             {
-                
-                DAL.DreamHollidayEntities dbContext = new DAL.DreamHollidayEntities();
-                List<DAL.verifDates2_Result> verif = dbContext.verifDates2(idBien, dateArrivees, dateDeparts).ToList();
-                if(verif.Count == 0)
+                DateTime dateArrivees = DateTime.ParseExact(dateArrivee, "dd/MM/yyyy", null);
+                DateTime dateDeparts = DateTime.ParseExact(dateDepart, "dd/MM/yyyy", null);
+
+
+                using (var client = new HttpClient())
                 {
+                    var token = Request.Cookies["myToken"].Value;
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                    LocationBien nvLocation = new LocationBien { dateArrivee = dateArrivees, dateDepart = dateDeparts, idBien = idBien, idMembre = idMembre, tarifNettoyage = Nettoyage, tarifNuit = Nuit, nbNuits = (int)nbNuits, prixSejour = coutVoyage, prixtotal = coutTotal, tarifAdmin = coutAdmin };
+
                     client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
                     var responseTask = client.PostAsJsonAsync("PostNewLocation", nvLocation);
                     responseTask.Wait();
@@ -258,19 +271,15 @@ namespace DreamHoliday.Controllers
                         return View(nvLocation);
                     }
                 }
-                else
-                {
-                    
-                    
-                    ViewBag.probleme = 1;
-                    ViewBag.message = "dates deja prises à ces dates la. Reessayez en choisissant one autre période.";
-                    return View(nvLocation);
-                }
-
-                
-                
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
         }
+
 
 
         // Montre les biens d'un membre
@@ -278,24 +287,27 @@ namespace DreamHoliday.Controllers
         [HttpGet]
         public ActionResult VoirMesBiens(int idMembre)
         {
-            
-            
             List<Bien> mesBiens = new List<Bien>();
 
-            List<Bien>tousLesBiens = showAllBiens();
-
-            mesBiens = tousLesBiens.FindAll(m => m.idMembre == idMembre);
+            mesBiens = GetMesBiens(idMembre);
 
             return View(mesBiens);
         }
 
+        public ActionResult DetailMonBien(int idBien)
+        {
+            Bien monBien = GetBienWithId(idBien);
+
+            return View(monBien);
+        }
+
         [HttpGet]
-        public ActionResult PostCommentAndNote(int idLoc )
+        public ActionResult PostCommentAndNote(int idLoc)
         {
             Membre moi = (Membre)Session["monCompte"];
 
 
-            commentaireEtNote monCommentaire = new commentaireEtNote{ idMembre = moi.idMembre, idLocation = idLoc};
+            commentaireEtNote monCommentaire = new commentaireEtNote { idMembre = moi.idMembre, idLocation = idLoc };
 
             return PartialView("_PostCommentAndNote", monCommentaire);
         }
@@ -305,6 +317,11 @@ namespace DreamHoliday.Controllers
         {
             using (var client = new HttpClient())
             {
+                var token = Request.Cookies["myToken"].Value;
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
                 client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
                 var responseTask = client.PostAsJsonAsync("PostCommentAndNote", monCommEtNote);
                 double aaa = monCommEtNote.note;
@@ -319,7 +336,7 @@ namespace DreamHoliday.Controllers
                 {
                     return View("mesLocations", "Membre");
                 }
-                
+
             }
         }
 
@@ -333,12 +350,12 @@ namespace DreamHoliday.Controllers
         {
             HttpCookie monCookie = Request.Cookies["monToken"];
             string token = "";
-            if(monCookie != null)
+            if (monCookie != null)
             {
                 token = monCookie["monToken"];
             }
 
-            List <Bien> mesBiens = new List<Bien>();
+            List<Bien> mesBiens = new List<Bien>();
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
@@ -355,6 +372,52 @@ namespace DreamHoliday.Controllers
             return (mesBiens);
         }
 
+        [HttpGet]
+        public Bien GetBienWithId(int idBien)
+        {
+            Bien monBien = new Bien();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                var responseTask = client.GetAsync("GetBienWithId?idBien=" + idBien);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<Bien>();
+                    readTask.Wait();
+                    monBien = readTask.Result;
+                }
+            }
+            return (monBien);
+        }
+
+        public List<Bien> GetMesBiens(int idMembre)
+        {
+            List<Bien> mesBiens = new List<Bien>();
+
+            using (var client = new HttpClient())
+            {
+                var token = Request.Cookies["myToken"].Value;
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                var responseTask = client.GetAsync("GetmesBiens?idMembre=" + idMembre);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<List<Bien>>();
+                    readTask.Wait();
+                    mesBiens = readTask.Result;
+                }
+            }
+            return mesBiens;
+        }
+
+
 
         // récupere les dates pas disponibles
         [HttpGet]
@@ -363,7 +426,7 @@ namespace DreamHoliday.Controllers
             List<DateTime> dates = new List<DateTime>();
             List<string> datesStr = new List<string>();
 
-           
+
 
             using (var client = new HttpClient())
             {
@@ -418,7 +481,7 @@ namespace DreamHoliday.Controllers
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                
+
 
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -443,7 +506,7 @@ namespace DreamHoliday.Controllers
                     //get access token from response body
                     var jObject = JObject.Parse(responseString.Result);
                     string access_token = jObject.GetValue("access_token").ToString();
-                    CookieHeaderValue cookie = new CookieHeaderValue("myToken", access_token );
+                    CookieHeaderValue cookie = new CookieHeaderValue("myToken", access_token);
                 }
 
                 var responseTask = client.GetAsync("GetAllBiens");
@@ -456,7 +519,7 @@ namespace DreamHoliday.Controllers
                     mesBiens = readTask.Result;
                 }
             }
-            return View (mesBiens);
+            return View(mesBiens);
         }
 
         [HttpGet]
@@ -466,7 +529,7 @@ namespace DreamHoliday.Controllers
             List<Bien> mesBiens = new List<Bien>();
             using (var client = new HttpClient())
             {
-               
+
                 string token = (string)Session["monToken"];
 
                 client.BaseAddress = new Uri("http://localhost:56077/api/Values/");
@@ -490,6 +553,8 @@ namespace DreamHoliday.Controllers
             }
             return View("showAllBiens22", mesBiens);
         }
+
+        
 
 
     }

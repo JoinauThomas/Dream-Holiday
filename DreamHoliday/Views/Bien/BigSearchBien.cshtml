@@ -269,7 +269,6 @@
     <div class="row" >
 
             <input type="button" id="envoiForm" value="rechercher" class=" btn-default col-md-12" />
-       
     </div>
 
 </form>
@@ -279,6 +278,9 @@
 </div>
 <img id="chargement" src="~/img/loaders/ajax-loader.gif" style="display: none" alt="Chargement en cours..." class="col-md-offset-5 col-md-2 col-md-offset-5" />
 <div id="table"></div>
+<div id="ModalBigSearch" class="modals" style="display:none">
+    <p class="modal-contents">@Resource.Error_tableVide</p>
+</div>
 
 
 @section Scripts {
@@ -300,11 +302,35 @@
                 data: $("#formSearch").serialize(),
                 success:
                 function (response) {
+                    var res = (response.length);
+                    if (res == 308)
+                    {
+                        $("#chargement").hide();
+                        $('#table').html("");
+                        $('#ModalBigSearch').dialog({
+                            resizable: false,
+                            height: "auto",
+                            width: "400",
+                            modal: true,
+                            title: '@Resource.desole',
+                            
+                            buttons: {
+                                "ok": function () { $(this).dialog("close") }
+                            }
+                        });
+                        
+                    }
+                    else
+                    {
                         $("#chargement").hide();
                         $('#table').html(response);
-
-
+                    }
+                },
+                Error:
+                function () {
+                    alert("pas ok");
                 }
+                
             });
         });
 

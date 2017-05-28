@@ -1,0 +1,302 @@
+﻿@model DreamHoliday.Models.Bien
+
+@{
+    ViewBag.Title = "DeatilBien";
+}
+
+<h2>@Resource.detailDuBien</h2>
+<br />
+
+
+@*  image et lieu du bien  *@
+
+<div class=" row jumbotron02">
+
+    <div class="col-md-3">
+        <img src="~/img/Biens/photo@(Model.idBien).jpg" height="170" />
+    </div>
+    <div class="col-md-offset-1 col-md-8 jumbotron01">
+        <dl class="dl-horizontals col-md-6">
+            <dt>
+                @Html.DisplayName(Resource.pays + ": ")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.pays)
+            </dd>
+
+            <dt>
+                @Html.DisplayName(Resource.ville + " : ")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ville)
+            </dd>
+
+            <dt>
+                @Html.DisplayName(Resource.rue + " : ")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.rue)
+            </dd>
+
+            <dt>
+                @Html.DisplayName(Resource.numero + " : ")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.numero)
+            </dd>
+            <dt>
+                @Html.DisplayName(Resource.noteMoyenne + " : ")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.noteMoyenne)
+            </dd>
+        </dl>
+        <div class="col-md-6">
+            @*  TARIFS  *@
+
+
+            <dl class="dl-horizontals DetailBien_Tarif">
+                <dt>
+                    @Html.DisplayName(Resource.tarifNuit + " : ")
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tarifParNuit)
+                </dd>
+
+                <dt>
+                    @Html.DisplayName(Resource.tarifNettoyage + " : ")
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tarifNettoyage)
+                </dd>
+            </dl>
+
+        </div>
+    </div>
+</div>
+
+
+@*  déscription du bien  *@
+
+<div class=" row jumbotron02">
+    <h3>@Resource.description</h3>
+    <p>
+        @Html.DisplayFor(model => model.libelle)
+    </p>
+</div>
+
+@*  image et lieu du bien  *@
+<div class="row ">
+
+    @*  PIECES  *@
+
+    <div class=" jumbotron02 col-md-3 ">
+        <h3>@Resource.lesPieces</h3>
+        <dl class="dl-horizontals">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.salleDeBain)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.salleDeBain)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.salon)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.salon)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.salleAManger)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.salleAManger)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.toilette)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.toilette)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.cuisine)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.cuisine)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.chambre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.chambre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.dressing)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dressing)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.veranda)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.veranda)
+            </dd>
+        </dl>
+    </div>
+
+    @*  EQUIPEMENT  *@
+
+    <div class="jumbotron02 col-md-offset-1 col-md-8" id="equipementDisabled">
+        <h3>@Resource.equipement</h3>
+
+
+        <dl class="dl-horizontals col-md-4">
+            <dt>
+                @Html.DisplayNameFor(model => model.bbq)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.bbq)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.piscine)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.piscine)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.jacuzzi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.jacuzzi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.sauna)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.sauna)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.tv)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tv)
+            </dd>
+        </dl>
+        <dl class="dl-horizontals col-md-4">
+            <dt>
+                @Html.DisplayNameFor(model => model.teleDistribution)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.teleDistribution)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.wifi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.wifi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.pingpong)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.pingpong)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.tennis)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tennis)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.transat)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.transat)
+            </dd>
+        </dl>
+        <dl class="dl-horizontals col-md-4">
+            <dt>
+                @Html.DisplayNameFor(model => model.cuisineEquipee)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.cuisineEquipee)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.machineALaver)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.machineALaver)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.jardin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.jardin)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.parking)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.parking)
+            </dd>
+            @{
+                var moi = this.Model;
+            }
+        </dl>
+
+    </div>
+</div>
+
+
+<p class="row col-lg-12 row">
+    @Html.ActionLink(Resource.modifier, "EditBien", new { idBien = Model.idBien }) |
+    @Html.ActionLink(Resource.retour, "VoirMesBiens", new { idMembre = Model.idMembre }))
+    </p>

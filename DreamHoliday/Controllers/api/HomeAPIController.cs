@@ -24,7 +24,7 @@ namespace DreamHoliday.Controllers.api
             }
             catch (Exception ex)
             {
-                return BadRequest(ex+ "le message n'a pas pu etre envoyé");
+                return BadRequest(ex + "le message n'a pas pu etre envoyé");
             }
 
         }

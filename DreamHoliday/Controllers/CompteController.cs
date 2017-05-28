@@ -21,6 +21,7 @@ namespace DreamHoliday.Controllers
         [HttpPost]
         public ActionResult connection(string userName, string Password)
         {
+            string access_token = "";
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:56077");
@@ -49,23 +50,31 @@ namespace DreamHoliday.Controllers
                     responseString.Wait();
                     //get access token from response body
                     var jObject = JObject.Parse(responseString.Result);
-                    string access_token = jObject.GetValue("access_token").ToString();
-
-                    DAL.DreamHollidayEntities dbContext = new DAL.DreamHollidayEntities();
-                    
-                    DAL.MEMBRE moiDB = dbContext.MEMBRE.ToList().Find(m => m.MEM_mail == userName);
-                    Membre moi = new Membre{ mail = moiDB.MEM_mail, nom = moiDB.MEM_nom, adresse = moiDB.MEM_adresse, dateDeNaissance = moiDB.MEM_dateDeNaissance, estProprietaire = moiDB.MEM_propriétaire, idMembre = moiDB.idMembre, photo = moiDB.MEM_Photo, prenom = moiDB.MEM_prenom, telephone = moiDB.MEM_telephone};
-                    //////// test avec Cookies//////////
-                    //HttpCookie monToken = new HttpCookie("myToken");
-                    //monToken["monToken"] = access_token;
-                    //Response.Cookies.Add(monToken);
-
-                    // recupération du token en Session
-                    Session["monToken"] = access_token;
-                    Session["monCompte"] = moi;
-                    return RedirectToAction("Index", "Home");
+                    access_token = jObject.GetValue("access_token").ToString();
+                    CookieHeaderValue cookie = new CookieHeaderValue("myToken", access_token);
                 }
             }
+
+
+            Membre moi = new Membre();
+
+            moi = DreamHoliday.Controllers.MembreController.GetMembreByMail(userName);
+            //////// test avec Cookies//////////
+            //HttpCookie monToken = new HttpCookie("myToken");
+            //monToken["monToken"] = access_token;
+            //Response.Cookies.Add(monToken);
+
+            // recupération du token en Session
+            HttpCookie myToken = new HttpCookie("myToken");
+            myToken.Value = access_token;
+            Response.Cookies.Add(myToken);
+
+            Session["monCompte"] = moi;
+
+
+            return RedirectToAction("Index", "Home");
+
+
         }
 
         public ActionResult deconnexion()

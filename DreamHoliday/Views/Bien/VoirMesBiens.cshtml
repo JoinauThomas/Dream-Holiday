@@ -1,7 +1,7 @@
 ﻿
 @model IEnumerable<DreamHoliday.Models.Bien>
 
-<table class="table" id="table">
+<table class="table " >
     <tr>
         <th>
 
@@ -23,11 +23,11 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
+        <tr class="tableaux" >
+            <td style="vertical-align:middle" >
                 <img src="~/Img/Biens/photo@(item.idBien).jpg" height="70" />
-            </td>
-            <td>
+            </td >
+            <td style="vertical-align:middle">
                 @Html.DisplayFor(modelItem => item.pays) <br />
 
                 @Html.DisplayFor(modelItem => item.ville)<br />
@@ -35,20 +35,22 @@
                 @Html.DisplayFor(modelItem => item.tarifParNuit)
                 
             </td>
-            <td>
+            <td style="vertical-align:middle">
                 @Html.DisplayFor(modelItem => item.noteMoyenne)
             </td>
-            <td>
+            <td style="vertical-align:middle">
                 @Html.DisplayFor(modelItem => item.libelle)
             </td>
-            <td>
+            <td style="vertical-align:middle">
                 @Html.DisplayFor(modelItem => item.nbPersonnesMax)
             </td>
-            <td>
-                <button class="btn-warning" style="height:50px" onclick="location.href = '@Url.Action("DetailBien", "Bien", new { idBien = item.idBien })'">Détail</button>
+            <td style="vertical-align:middle">
+                <button class="btn-warning" style="height:50px" onclick="location.href = '@Url.Action("DetailMonBien", "Bien", new { idBien = item.idBien })'">Détail</button>
 
             </td>
+            
         </tr>
+        
     }
 
 </table>

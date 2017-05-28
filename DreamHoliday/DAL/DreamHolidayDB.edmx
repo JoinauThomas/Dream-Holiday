@@ -396,10 +396,36 @@
           <Parameter Name="idBien" Type="int" Mode="In" />
           <Parameter Name="idLocation" Type="int" Mode="In" />
         </Function>
+        <Function Name="BigSearchBiens" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bbq" Type="bit" Mode="In" />
+          <Parameter Name="piscine" Type="bit" Mode="In" />
+          <Parameter Name="jacuzzi" Type="bit" Mode="In" />
+          <Parameter Name="sauna" Type="bit" Mode="In" />
+          <Parameter Name="tv" Type="bit" Mode="In" />
+          <Parameter Name="teleDis" Type="bit" Mode="In" />
+          <Parameter Name="wifi" Type="bit" Mode="In" />
+          <Parameter Name="pingpong" Type="bit" Mode="In" />
+          <Parameter Name="tennis" Type="bit" Mode="In" />
+          <Parameter Name="transat" Type="bit" Mode="In" />
+          <Parameter Name="cuisineEq" Type="bit" Mode="In" />
+          <Parameter Name="machineALaver" Type="bit" Mode="In" />
+          <Parameter Name="jardin" Type="bit" Mode="In" />
+          <Parameter Name="parking" Type="bit" Mode="In" />
+          <Parameter Name="nbSdb" Type="int" Mode="In" />
+          <Parameter Name="nbToilette" Type="int" Mode="In" />
+          <Parameter Name="nbChambre" Type="int" Mode="In" />
+          <Parameter Name="prixMax" Type="int" Mode="In" />
+          <Parameter Name="villeOuPays" Type="nvarchar" Mode="In" />
+          <Parameter Name="nbPersMax" Type="int" Mode="In" />
+          <Parameter Name="noteMoyenneMin" Type="int" Mode="In" />
+        </Function>
         <Function Name="detailBienWithIde" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idBien" Type="int" Mode="In" />
         </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="GetAllMyBiens" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idMembre" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetFiveLastComment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idBien" Type="int" Mode="In" />
         </Function>
@@ -409,13 +435,7 @@
         <Function Name="RechercheDatePasDispo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idBien" Type="int" Mode="In" />
         </Function>
-        <Function Name="SearchBiensDispo1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="paysOuVille" Type="nvarchar" Mode="In" />
-          <Parameter Name="arrivee" Type="datetime" Mode="In" />
-          <Parameter Name="depart" Type="datetime" Mode="In" />
-          <Parameter Name="nbPers" Type="int" Mode="In" />
-        </Function>
-        <Function Name="SearchBiensDispo2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="SearchBiensDispo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="paysOuVille" Type="nvarchar" Mode="In" />
           <Parameter Name="arrivee" Type="datetime" Mode="In" />
           <Parameter Name="depart" Type="datetime" Mode="In" />
@@ -442,6 +462,7 @@
           <Parameter Name="prixMax" Type="int" Mode="In" />
           <Parameter Name="villeOuPays" Type="nvarchar" Mode="In" />
           <Parameter Name="nbPersMax" Type="int" Mode="In" />
+          <Parameter Name="noteMoyenneMin" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -751,6 +772,7 @@
             <Parameter Name="prixMax" Mode="In" Type="Int32" />
             <Parameter Name="villeOuPays" Mode="In" Type="String" />
             <Parameter Name="nbPersMax" Mode="In" Type="Int32" />
+            <Parameter Name="noteMoyenneMin" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="UpdateMembre">
             <Parameter Name="idMembre" Mode="In" Type="Int32" />
@@ -771,6 +793,35 @@
             <Parameter Name="note" Mode="In" Type="Int32" />
             <Parameter Name="idLocation" Mode="In" Type="Int32" />
             <Parameter Name="libelle" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="detailBienWithIde" ReturnType="Collection(DreamHollidayModel.detailBienWithIde_Result)">
+          <Parameter Name="idBien" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetFiveLastComment" ReturnType="Collection(DreamHollidayModel.GetFiveLastComment_Result)">
+          <Parameter Name="idBien" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="BigSearchBiens" ReturnType="Collection(DreamHollidayModel.BigSearchBiens_Result)">
+            <Parameter Name="bbq" Mode="In" Type="Boolean" />
+            <Parameter Name="piscine" Mode="In" Type="Boolean" />
+            <Parameter Name="jacuzzi" Mode="In" Type="Boolean" />
+            <Parameter Name="sauna" Mode="In" Type="Boolean" />
+            <Parameter Name="tv" Mode="In" Type="Boolean" />
+            <Parameter Name="teleDis" Mode="In" Type="Boolean" />
+            <Parameter Name="wifi" Mode="In" Type="Boolean" />
+            <Parameter Name="pingpong" Mode="In" Type="Boolean" />
+            <Parameter Name="tennis" Mode="In" Type="Boolean" />
+            <Parameter Name="transat" Mode="In" Type="Boolean" />
+            <Parameter Name="cuisineEq" Mode="In" Type="Boolean" />
+            <Parameter Name="machineALaver" Mode="In" Type="Boolean" />
+            <Parameter Name="jardin" Mode="In" Type="Boolean" />
+            <Parameter Name="parking" Mode="In" Type="Boolean" />
+            <Parameter Name="nbSdb" Mode="In" Type="Int32" />
+            <Parameter Name="nbToilette" Mode="In" Type="Int32" />
+            <Parameter Name="nbChambre" Mode="In" Type="Int32" />
+            <Parameter Name="prixMax" Mode="In" Type="Int32" />
+            <Parameter Name="villeOuPays" Mode="In" Type="String" />
+            <Parameter Name="nbPersMax" Mode="In" Type="Int32" />
+            <Parameter Name="noteMoyenneMin" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="C__MigrationHistory" EntityType="DreamHollidayModel.C__MigrationHistory" />
           <EntitySet Name="AspNetRoles" EntityType="DreamHollidayModel.AspNetRoles" />
@@ -826,11 +877,14 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <FunctionImport Name="detailBienWithIde" ReturnType="Collection(DreamHollidayModel.detailBienWithIde_Result)">
-          <Parameter Name="idBien" Mode="In" Type="Int32" />
+          <FunctionImport Name="SearchBiensDispo" ReturnType="Collection(DreamHollidayModel.SearchBiensDispo_Result)">
+            <Parameter Name="paysOuVille" Mode="In" Type="String" />
+            <Parameter Name="arrivee" Mode="In" Type="DateTime" />
+            <Parameter Name="depart" Mode="In" Type="DateTime" />
+            <Parameter Name="nbPers" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetFiveLastComment" ReturnType="Collection(DreamHollidayModel.GetFiveLastComment_Result)">
-            <Parameter Name="idBien" Mode="In" Type="Int32" />
+          <FunctionImport Name="GetAllMyBiens" ReturnType="Collection(DreamHollidayModel.GetAllMyBiens_Result)">
+            <Parameter Name="idMembre" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -1160,6 +1214,84 @@
           <Property Type="Boolean" Name="estCommente" Nullable="true" />
           <Property Type="Boolean" Name="estNote" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="detailBienWithIde_Result">
+          <Property Type="Int32" Name="idBien" Nullable="false" />
+          <Property Type="String" Name="BIEN_Pays" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="BIEN_ville" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="BIEN_rue" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="BIEN_numero" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="idMembre" Nullable="false" />
+          <Property Type="Int32" Name="BIEN_tarifParNuit" Nullable="false" />
+          <Property Type="Int32" Name="BIEN_tarifNettoyage" Nullable="false" />
+          <Property Type="Double" Name="BIEN_noteMoyenne" Nullable="true" />
+          <Property Type="String" Name="BIEN_libelle" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="BIEN_photo" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="BIEN_nbMaxPersonnes" Nullable="false" />
+          <Property Type="Boolean" Name="bbq" Nullable="false" />
+          <Property Type="Boolean" Name="piscine" Nullable="false" />
+          <Property Type="Boolean" Name="jacuzzi" Nullable="false" />
+          <Property Type="Boolean" Name="sauna" Nullable="false" />
+          <Property Type="Boolean" Name="tv" Nullable="false" />
+          <Property Type="Boolean" Name="teledistribution" Nullable="false" />
+          <Property Type="Boolean" Name="wifi" Nullable="false" />
+          <Property Type="Boolean" Name="pingpong" Nullable="false" />
+          <Property Type="Boolean" Name="tennis" Nullable="false" />
+          <Property Type="Boolean" Name="transat" Nullable="false" />
+          <Property Type="Boolean" Name="cuisine_equipee" Nullable="false" />
+          <Property Type="Boolean" Name="machine_a_laver" Nullable="false" />
+          <Property Type="Boolean" Name="jardin" Nullable="false" />
+          <Property Type="Boolean" Name="parking" Nullable="false" />
+          <Property Type="Int32" Name="salleDeBain" Nullable="false" />
+          <Property Type="Int32" Name="salon" Nullable="false" />
+          <Property Type="Int32" Name="sallaAManger" Nullable="false" />
+          <Property Type="Int32" Name="toilette" Nullable="false" />
+          <Property Type="Int32" Name="cuisine" Nullable="false" />
+          <Property Type="Int32" Name="chambre" Nullable="false" />
+          <Property Type="Int32" Name="dressing" Nullable="false" />
+          <Property Type="Int32" Name="veranda" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetFiveLastComment_Result">
+          <Property Type="Int32" Name="idCommentaire" Nullable="true" />
+          <Property Type="Int32" Name="idBien" Nullable="true" />
+          <Property Type="String" Name="libelle" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="dateComment" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="BigSearchBiens_Result">
+          <Property Type="Int32" Name="idBien" Nullable="true" />
+          <Property Type="Boolean" Name="bbq" Nullable="true" />
+          <Property Type="Boolean" Name="piscine" Nullable="true" />
+          <Property Type="Boolean" Name="jacuzzi" Nullable="true" />
+          <Property Type="Boolean" Name="sauna" Nullable="true" />
+          <Property Type="Boolean" Name="tv" Nullable="true" />
+          <Property Type="Boolean" Name="teleDis" Nullable="true" />
+          <Property Type="Boolean" Name="wifi" Nullable="true" />
+          <Property Type="Boolean" Name="pingpong" Nullable="true" />
+          <Property Type="Boolean" Name="tennis" Nullable="true" />
+          <Property Type="Boolean" Name="transat" Nullable="true" />
+          <Property Type="Boolean" Name="cuisineEq" Nullable="true" />
+          <Property Type="Boolean" Name="machineALaver" Nullable="true" />
+          <Property Type="Boolean" Name="jardin" Nullable="true" />
+          <Property Type="Boolean" Name="parking" Nullable="true" />
+          <Property Type="Int32" Name="sdb" Nullable="true" />
+          <Property Type="Int32" Name="salon" Nullable="true" />
+          <Property Type="Int32" Name="sam" Nullable="true" />
+          <Property Type="Int32" Name="toilette" Nullable="true" />
+          <Property Type="Int32" Name="cuisine" Nullable="true" />
+          <Property Type="Int32" Name="chambre" Nullable="true" />
+          <Property Type="Int32" Name="dressing" Nullable="true" />
+          <Property Type="Int32" Name="veranda" Nullable="true" />
+          <Property Type="String" Name="pays" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="ville" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="rue" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="num" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="inMembre" Nullable="true" />
+          <Property Type="Int32" Name="tarifNuit" Nullable="true" />
+          <Property Type="Int32" Name="tarifNett" Nullable="true" />
+          <Property Type="Double" Name="noteM" Nullable="true" />
+          <Property Type="String" Name="libelle" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="photo" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="nbPersMax" Nullable="true" />
+        </ComplexType>
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -1473,7 +1605,21 @@
           <End Type="DreamHollidayModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
           <End Type="DreamHollidayModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
         </Association>
-        <ComplexType Name="detailBienWithIde_Result">
+        <ComplexType Name="SearchBiensDispo_Result">
+          <Property Type="Int32" Name="idBien" Nullable="true" />
+          <Property Type="String" Name="pays" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="ville" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="rue" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="numero" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="idMembre" Nullable="true" />
+          <Property Type="String" Name="libelle" Nullable="true" MaxLength="500" />
+          <Property Type="Decimal" Name="noteMoyenne" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="String" Name="photo" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="tarifNettoyage" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="tarifNuit" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Int32" Name="nbPersMax" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAllMyBiens_Result">
           <Property Type="Int32" Name="idBien" Nullable="false" />
           <Property Type="String" Name="BIEN_Pays" Nullable="false" MaxLength="250" />
           <Property Type="String" Name="BIEN_ville" Nullable="false" MaxLength="250" />
@@ -1486,34 +1632,6 @@
           <Property Type="String" Name="BIEN_libelle" Nullable="false" MaxLength="500" />
           <Property Type="String" Name="BIEN_photo" Nullable="true" MaxLength="250" />
           <Property Type="Int32" Name="BIEN_nbMaxPersonnes" Nullable="false" />
-          <Property Type="Boolean" Name="bbq" Nullable="false" />
-          <Property Type="Boolean" Name="piscine" Nullable="false" />
-          <Property Type="Boolean" Name="jacuzzi" Nullable="false" />
-          <Property Type="Boolean" Name="sauna" Nullable="false" />
-          <Property Type="Boolean" Name="tv" Nullable="false" />
-          <Property Type="Boolean" Name="teledistribution" Nullable="false" />
-          <Property Type="Boolean" Name="wifi" Nullable="false" />
-          <Property Type="Boolean" Name="pingpong" Nullable="false" />
-          <Property Type="Boolean" Name="tennis" Nullable="false" />
-          <Property Type="Boolean" Name="transat" Nullable="false" />
-          <Property Type="Boolean" Name="cuisine_equipee" Nullable="false" />
-          <Property Type="Boolean" Name="machine_a_laver" Nullable="false" />
-          <Property Type="Boolean" Name="jardin" Nullable="false" />
-          <Property Type="Boolean" Name="parking" Nullable="false" />
-          <Property Type="Int32" Name="salleDeBain" Nullable="false" />
-          <Property Type="Int32" Name="salon" Nullable="false" />
-          <Property Type="Int32" Name="sallaAManger" Nullable="false" />
-          <Property Type="Int32" Name="toilette" Nullable="false" />
-          <Property Type="Int32" Name="cuisine" Nullable="false" />
-          <Property Type="Int32" Name="chambre" Nullable="false" />
-          <Property Type="Int32" Name="dressing" Nullable="false" />
-          <Property Type="Int32" Name="veranda" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="GetFiveLastComment_Result">
-          <Property Type="Int32" Name="idCommentaire" Nullable="true" />
-          <Property Type="Int32" Name="idBien" Nullable="true" />
-          <Property Type="String" Name="libelle" Nullable="true" MaxLength="500" />
-          <Property Type="DateTime" Name="dateComment" Nullable="true" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1572,42 +1690,6 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="VerifSiDateEstDispo21" FunctionName="DreamHollidayModel.Store.VerifSiDateEstDispo2" />
           <FunctionImportMapping FunctionImportName="VerifSiDateEstDispos1" FunctionName="DreamHollidayModel.Store.VerifSiDateEstDispos" />
-          <FunctionImportMapping FunctionImportName="SearchBiensDispo1" FunctionName="DreamHollidayModel.Store.SearchBiensDispo1">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DreamHollidayModel.SearchBiensDispo1_Result">
-                <ScalarProperty Name="idBien" ColumnName="idBien" />
-                <ScalarProperty Name="pays" ColumnName="pays" />
-                <ScalarProperty Name="ville" ColumnName="ville" />
-                <ScalarProperty Name="rue" ColumnName="rue" />
-                <ScalarProperty Name="numero" ColumnName="numero" />
-                <ScalarProperty Name="idMembre" ColumnName="idMembre" />
-                <ScalarProperty Name="libelle" ColumnName="libelle" />
-                <ScalarProperty Name="noteMoyenne" ColumnName="noteMoyenne" />
-                <ScalarProperty Name="photo" ColumnName="photo" />
-                <ScalarProperty Name="tarifNettoyage" ColumnName="tarifNettoyage" />
-                <ScalarProperty Name="tarifNuit" ColumnName="tarifNuit" />
-                <ScalarProperty Name="nbPersMax" ColumnName="nbPersMax" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SearchBiensDispo2" FunctionName="DreamHollidayModel.Store.SearchBiensDispo2">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DreamHollidayModel.SearchBiensDispo2_Result2">
-                <ScalarProperty Name="idBien" ColumnName="idBien" />
-                <ScalarProperty Name="pays" ColumnName="pays" />
-                <ScalarProperty Name="ville" ColumnName="ville" />
-                <ScalarProperty Name="rue" ColumnName="rue" />
-                <ScalarProperty Name="numero" ColumnName="numero" />
-                <ScalarProperty Name="idMembre" ColumnName="idMembre" />
-                <ScalarProperty Name="libelle" ColumnName="libelle" />
-                <ScalarProperty Name="noteMoyenne" ColumnName="noteMoyenne" />
-                <ScalarProperty Name="photo" ColumnName="photo" />
-                <ScalarProperty Name="tarifNettoyage" ColumnName="tarifNettoyage" />
-                <ScalarProperty Name="tarifNuit" ColumnName="tarifNuit" />
-                <ScalarProperty Name="nbPersMax" ColumnName="nbPersMax" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="verifDates2" FunctionName="DreamHollidayModel.Store.verifDates2">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DreamHollidayModel.verifDates2_Result">
@@ -1692,6 +1774,96 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="addCommentAndNote" FunctionName="DreamHollidayModel.Store.addCommentAndNote" />
+          <FunctionImportMapping FunctionImportName="detailBienWithIde" FunctionName="DreamHollidayModel.Store.detailBienWithIde">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DreamHollidayModel.detailBienWithIde_Result">
+                <ScalarProperty Name="idBien" ColumnName="idBien" />
+                <ScalarProperty Name="BIEN_Pays" ColumnName="BIEN_Pays" />
+                <ScalarProperty Name="BIEN_ville" ColumnName="BIEN_ville" />
+                <ScalarProperty Name="BIEN_rue" ColumnName="BIEN_rue" />
+                <ScalarProperty Name="BIEN_numero" ColumnName="BIEN_numero" />
+                <ScalarProperty Name="idMembre" ColumnName="idMembre" />
+                <ScalarProperty Name="BIEN_tarifParNuit" ColumnName="BIEN_tarifParNuit" />
+                <ScalarProperty Name="BIEN_tarifNettoyage" ColumnName="BIEN_tarifNettoyage" />
+                <ScalarProperty Name="BIEN_noteMoyenne" ColumnName="BIEN_noteMoyenne" />
+                <ScalarProperty Name="BIEN_libelle" ColumnName="BIEN_libelle" />
+                <ScalarProperty Name="BIEN_photo" ColumnName="BIEN_photo" />
+                <ScalarProperty Name="BIEN_nbMaxPersonnes" ColumnName="BIEN_nbMaxPersonnes" />
+                <ScalarProperty Name="bbq" ColumnName="bbq" />
+                <ScalarProperty Name="piscine" ColumnName="piscine" />
+                <ScalarProperty Name="jacuzzi" ColumnName="jacuzzi" />
+                <ScalarProperty Name="sauna" ColumnName="sauna" />
+                <ScalarProperty Name="tv" ColumnName="tv" />
+                <ScalarProperty Name="teledistribution" ColumnName="teledistribution" />
+                <ScalarProperty Name="wifi" ColumnName="wifi" />
+                <ScalarProperty Name="pingpong" ColumnName="pingpong" />
+                <ScalarProperty Name="tennis" ColumnName="tennis" />
+                <ScalarProperty Name="transat" ColumnName="transat" />
+                <ScalarProperty Name="cuisine_equipee" ColumnName="cuisine equipee" />
+                <ScalarProperty Name="machine_a_laver" ColumnName="machine a laver" />
+                <ScalarProperty Name="jardin" ColumnName="jardin" />
+                <ScalarProperty Name="parking" ColumnName="parking" />
+                <ScalarProperty Name="salleDeBain" ColumnName="salleDeBain" />
+                <ScalarProperty Name="salon" ColumnName="salon" />
+                <ScalarProperty Name="sallaAManger" ColumnName="sallaAManger" />
+                <ScalarProperty Name="toilette" ColumnName="toilette" />
+                <ScalarProperty Name="cuisine" ColumnName="cuisine" />
+                <ScalarProperty Name="chambre" ColumnName="chambre" />
+                <ScalarProperty Name="dressing" ColumnName="dressing" />
+                <ScalarProperty Name="veranda" ColumnName="veranda" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetFiveLastComment" FunctionName="DreamHollidayModel.Store.GetFiveLastComment">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DreamHollidayModel.GetFiveLastComment_Result">
+                <ScalarProperty Name="idCommentaire" ColumnName="idCommentaire" />
+                <ScalarProperty Name="idBien" ColumnName="idBien" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+                <ScalarProperty Name="dateComment" ColumnName="dateComment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BigSearchBiens" FunctionName="DreamHollidayModel.Store.BigSearchBiens">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DreamHollidayModel.BigSearchBiens_Result">
+                <ScalarProperty Name="idBien" ColumnName="idBien" />
+                <ScalarProperty Name="bbq" ColumnName="bbq" />
+                <ScalarProperty Name="piscine" ColumnName="piscine" />
+                <ScalarProperty Name="jacuzzi" ColumnName="jacuzzi" />
+                <ScalarProperty Name="sauna" ColumnName="sauna" />
+                <ScalarProperty Name="tv" ColumnName="tv" />
+                <ScalarProperty Name="teleDis" ColumnName="teleDis" />
+                <ScalarProperty Name="wifi" ColumnName="wifi" />
+                <ScalarProperty Name="pingpong" ColumnName="pingpong" />
+                <ScalarProperty Name="tennis" ColumnName="tennis" />
+                <ScalarProperty Name="transat" ColumnName="transat" />
+                <ScalarProperty Name="cuisineEq" ColumnName="cuisineEq" />
+                <ScalarProperty Name="machineALaver" ColumnName="machineALaver" />
+                <ScalarProperty Name="jardin" ColumnName="jardin" />
+                <ScalarProperty Name="parking" ColumnName="parking" />
+                <ScalarProperty Name="sdb" ColumnName="sdb" />
+                <ScalarProperty Name="salon" ColumnName="salon" />
+                <ScalarProperty Name="sam" ColumnName="sam" />
+                <ScalarProperty Name="toilette" ColumnName="toilette" />
+                <ScalarProperty Name="cuisine" ColumnName="cuisine" />
+                <ScalarProperty Name="chambre" ColumnName="chambre" />
+                <ScalarProperty Name="dressing" ColumnName="dressing" />
+                <ScalarProperty Name="veranda" ColumnName="veranda" />
+                <ScalarProperty Name="pays" ColumnName="pays" />
+                <ScalarProperty Name="ville" ColumnName="ville" />
+                <ScalarProperty Name="rue" ColumnName="rue" />
+                <ScalarProperty Name="num" ColumnName="num" />
+                <ScalarProperty Name="inMembre" ColumnName="inMembre" />
+                <ScalarProperty Name="tarifNuit" ColumnName="tarifNuit" />
+                <ScalarProperty Name="tarifNett" ColumnName="tarifNett" />
+                <ScalarProperty Name="noteM" ColumnName="noteM" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="nbPersMax" ColumnName="nbPersMax" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="DreamHollidayModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
@@ -1887,9 +2059,27 @@
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="detailBienWithIde" FunctionName="DreamHollidayModel.Store.detailBienWithIde">
+          <FunctionImportMapping FunctionImportName="SearchBiensDispo" FunctionName="DreamHollidayModel.Store.SearchBiensDispo">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="DreamHollidayModel.detailBienWithIde_Result">
+              <ComplexTypeMapping TypeName="DreamHollidayModel.SearchBiensDispo_Result">
+                <ScalarProperty Name="idBien" ColumnName="idBien" />
+                <ScalarProperty Name="pays" ColumnName="pays" />
+                <ScalarProperty Name="ville" ColumnName="ville" />
+                <ScalarProperty Name="rue" ColumnName="rue" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="idMembre" ColumnName="idMembre" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+                <ScalarProperty Name="noteMoyenne" ColumnName="noteMoyenne" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="tarifNettoyage" ColumnName="tarifNettoyage" />
+                <ScalarProperty Name="tarifNuit" ColumnName="tarifNuit" />
+                <ScalarProperty Name="nbPersMax" ColumnName="nbPersMax" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllMyBiens" FunctionName="DreamHollidayModel.Store.GetAllMyBiens">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DreamHollidayModel.GetAllMyBiens_Result">
                 <ScalarProperty Name="idBien" ColumnName="idBien" />
                 <ScalarProperty Name="BIEN_Pays" ColumnName="BIEN_Pays" />
                 <ScalarProperty Name="BIEN_ville" ColumnName="BIEN_ville" />
@@ -1902,38 +2092,6 @@
                 <ScalarProperty Name="BIEN_libelle" ColumnName="BIEN_libelle" />
                 <ScalarProperty Name="BIEN_photo" ColumnName="BIEN_photo" />
                 <ScalarProperty Name="BIEN_nbMaxPersonnes" ColumnName="BIEN_nbMaxPersonnes" />
-                <ScalarProperty Name="bbq" ColumnName="bbq" />
-                <ScalarProperty Name="piscine" ColumnName="piscine" />
-                <ScalarProperty Name="jacuzzi" ColumnName="jacuzzi" />
-                <ScalarProperty Name="sauna" ColumnName="sauna" />
-                <ScalarProperty Name="tv" ColumnName="tv" />
-                <ScalarProperty Name="teledistribution" ColumnName="teledistribution" />
-                <ScalarProperty Name="wifi" ColumnName="wifi" />
-                <ScalarProperty Name="pingpong" ColumnName="pingpong" />
-                <ScalarProperty Name="tennis" ColumnName="tennis" />
-                <ScalarProperty Name="transat" ColumnName="transat" />
-                <ScalarProperty Name="cuisine_equipee" ColumnName="cuisine equipee" />
-                <ScalarProperty Name="machine_a_laver" ColumnName="machine a laver" />
-                <ScalarProperty Name="jardin" ColumnName="jardin" />
-                <ScalarProperty Name="parking" ColumnName="parking" />
-                <ScalarProperty Name="salleDeBain" ColumnName="salleDeBain" />
-                <ScalarProperty Name="salon" ColumnName="salon" />
-                <ScalarProperty Name="sallaAManger" ColumnName="sallaAManger" />
-                <ScalarProperty Name="toilette" ColumnName="toilette" />
-                <ScalarProperty Name="cuisine" ColumnName="cuisine" />
-                <ScalarProperty Name="chambre" ColumnName="chambre" />
-                <ScalarProperty Name="dressing" ColumnName="dressing" />
-                <ScalarProperty Name="veranda" ColumnName="veranda" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetFiveLastComment" FunctionName="DreamHollidayModel.Store.GetFiveLastComment">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DreamHollidayModel.GetFiveLastComment_Result">
-                <ScalarProperty Name="idCommentaire" ColumnName="idCommentaire" />
-                <ScalarProperty Name="idBien" ColumnName="idBien" />
-                <ScalarProperty Name="libelle" ColumnName="libelle" />
-                <ScalarProperty Name="dateComment" ColumnName="dateComment" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

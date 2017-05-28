@@ -7,17 +7,17 @@
       <Diagram DiagramId="62acadd7fdb1401a8538360cb646a175" Name="Diagram1">
         <EntityTypeShape EntityType="DreamHollidayModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="DreamHollidayModel.AspNetRoles" Width="1.5" PointX="7.75" PointY="2.5" />
-        <EntityTypeShape EntityType="DreamHollidayModel.AspNetUserClaims" Width="1.5" PointX="12.25" PointY="3.625" />
-        <EntityTypeShape EntityType="DreamHollidayModel.AspNetUserLogins" Width="1.5" PointX="12.25" PointY="1" />
+        <EntityTypeShape EntityType="DreamHollidayModel.AspNetUserClaims" Width="1.5" PointX="12.25" PointY="1" />
+        <EntityTypeShape EntityType="DreamHollidayModel.AspNetUserLogins" Width="1.5" PointX="12.25" PointY="3.75" />
         <EntityTypeShape EntityType="DreamHollidayModel.AspNetUsers" Width="1.5" PointX="10" PointY="1.375" />
         <EntityTypeShape EntityType="DreamHollidayModel.BIEN" Width="1.5" PointX="3" PointY="6.375" />
-        <EntityTypeShape EntityType="DreamHollidayModel.COMMENTAIRE" Width="1.5" PointX="7.5" PointY="11.75" />
-        <EntityTypeShape EntityType="DreamHollidayModel.LOCATION" Width="1.5" PointX="5.25" PointY="9.625" />
+        <EntityTypeShape EntityType="DreamHollidayModel.COMMENTAIRE" Width="1.5" PointX="7.5" PointY="7.75" />
+        <EntityTypeShape EntityType="DreamHollidayModel.LOCATION" Width="1.5" PointX="5.25" PointY="8.625" />
         <EntityTypeShape EntityType="DreamHollidayModel.MEMBRE" Width="1.5" PointX="0.75" PointY="6.875" />
         <EntityTypeShape EntityType="DreamHollidayModel.MESSAGE" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DreamHollidayModel.NOTE" Width="1.5" PointX="7.5" PointY="8.75" />
-        <EntityTypeShape EntityType="DreamHollidayModel.OPTIONS" Width="1.5" PointX="5.25" PointY="4.5" />
-        <EntityTypeShape EntityType="DreamHollidayModel.PIECE" Width="1.5" PointX="5.25" PointY="15.375" />
+        <EntityTypeShape EntityType="DreamHollidayModel.NOTE" Width="1.5" PointX="7.5" PointY="10.875" />
+        <EntityTypeShape EntityType="DreamHollidayModel.OPTIONS" Width="1.5" PointX="5.25" PointY="14.25" />
+        <EntityTypeShape EntityType="DreamHollidayModel.PIECE" Width="1.5" PointX="5.25" PointY="4.5" />
         <EntityTypeShape EntityType="DreamHollidayModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="0.75" />
         <AssociationConnector Association="DreamHollidayModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="DreamHollidayModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />

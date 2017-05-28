@@ -19,21 +19,25 @@ namespace DreamHoliday.Controllers
             CultureInfo maCulture = Thread.CurrentThread.CurrentCulture;
             // Validate input
             culture = CultureHelper.GetImplementedCulture(culture);
-            
-            
+
+
 
 
             DateTimeFormatInfo frenchDateTimeFormat = new CultureInfo("fr").DateTimeFormat;
             Thread.CurrentThread.CurrentCulture.DateTimeFormat = frenchDateTimeFormat;
             maCulture = Thread.CurrentThread.CurrentCulture;
 
-            
+
 
 
             // Save culture in a cookie
             HttpCookie cookie = Request.Cookies["_culture"];
             if (cookie != null)
+            {
                 cookie.Value = culture; // update cookie value
+
+
+            }
             else
             {
                 cookie = new HttpCookie("_culture");
@@ -55,9 +59,9 @@ namespace DreamHoliday.Controllers
             {
                 string lg = Server.HtmlEncode(Request.Cookies["_culture"].Value);
             }
-            
 
-            
+
+
             ViewBag.Title = "Home Page";
 
             return View();
@@ -72,32 +76,45 @@ namespace DreamHoliday.Controllers
         [HttpPost]
         public ActionResult Contact(question questionaire)
         {
-            
-            if (ModelState.IsValid)
+            try
             {
-                using (var client = new HttpClient())
+                if (ModelState.IsValid)
                 {
-                    client.BaseAddress = new Uri("http://localhost:56077/api/HomeAPI/");
-
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    var responseTask = client.PostAsJsonAsync("PostQuestion", questionaire);
-                    responseTask.Wait();
-                    var result = responseTask.Result;
-
-                    if (result.IsSuccessStatusCode)
+                    using (var client = new HttpClient())
                     {
-                        return RedirectToAction("Index", "Home");
-                    }
-                    else
-                    {
-                        return RedirectToAction("Contact");
+                        client.BaseAddress = new Uri("http://localhost:56077/api/HomeAPI/");
+
+                        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                        var responseTask = client.PostAsJsonAsync("PostQuestion", questionaire);
+                        responseTask.Wait();
+                        var result = responseTask.Result;
+
+                        if (result.IsSuccessStatusCode)
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            return RedirectToAction("Contact");
+                        }
                     }
                 }
+                else
+                {
+                    return View();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return View();
+                var s = ex.HResult;
+                if (s == -2146233088)
+                {
+
+                }
+                throw;
+
             }
+
 
         }
 
