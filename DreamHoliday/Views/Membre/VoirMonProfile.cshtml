@@ -188,6 +188,27 @@
 
     <script type="text/javascript">
 
+
+        @*$('#btnModifier').click(function () {
+            $.ajax({
+                url: '@Url.Action("updateMembre", "Membre")',
+                type: 'POST',
+                dataType: 'html',
+                data: $('#myForms').serialize(),
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function (response) {
+                    alert("ok");
+                },
+                Error: function () {
+                    alert("pas ok");
+                }
+            })
+        });*@
+
+
+
         var dateInit = $('#dateDeNaissance').val();
 
         $('#dateDeNaissance').datepicker({
@@ -214,7 +235,7 @@
             }
 
         });
-       
+
 
         // récupere l'image pour l'afficher en preview
 
@@ -234,7 +255,10 @@
         $("#btnImportPhoto").change(function () {
             readURL(this);
         });
-        
+
+
+
+
 
     </script>
 

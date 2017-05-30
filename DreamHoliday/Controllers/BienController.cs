@@ -297,7 +297,7 @@ namespace DreamHoliday.Controllers
         public ActionResult DetailMonBien(int idBien)
         {
             Bien monBien = GetBienWithId(idBien);
-
+            monBien.noteMoyenne = Math.Round(monBien.noteMoyenne, 2);
             return View(monBien);
         }
 
