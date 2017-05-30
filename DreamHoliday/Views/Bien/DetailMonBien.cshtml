@@ -51,10 +51,18 @@
             <dt>
                 @Html.DisplayName(Resource.noteMoyenne + " : ")
             </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.noteMoyenne)
-            </dd>
+            @{ 
+                if(Model.noteMoyenne == -1)
+                {
+                    <dd>NA</dd>
+                }
+                else
+                {
+                    <dd>
+                        @Html.DisplayFor(model => model.noteMoyenne)
+                    </dd>
+                }
+            }
         </dl>
         <div class="col-md-6">
             @*  TARIFS  *@

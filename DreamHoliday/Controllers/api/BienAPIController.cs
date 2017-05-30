@@ -284,6 +284,18 @@ namespace DreamHoliday.Controllers
 
         [HttpGet]
         [Authorize]
+        [Route("GetNbreOfNoteForBien")]
+        public int GetNbreOfNoteForBien(int idBien)
+        {
+            DreamHollidayEntities dbContext = new DreamHollidayEntities();
+            int nb = dbContext.NOTE.ToList().FindAll(n => n.idBien == idBien).Count;
+
+            return nb;
+        }
+
+
+        [HttpGet]
+        [Authorize]
         [Route("GetMyMessages")]
         public List<Message> GetMyMessages(int idMembre)
         {

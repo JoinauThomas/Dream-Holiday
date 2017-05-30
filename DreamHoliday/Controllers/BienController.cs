@@ -165,6 +165,9 @@ namespace DreamHoliday.Controllers
                     readTask.Wait();
                     mesBiens = readTask.Result;
                 }
+
+
+                
             }
 
             return View("_SearchBiens", mesBiens);
