@@ -120,6 +120,15 @@
   <data name="adresse" xml:space="preserve">
     <value>Address</value>
   </data>
+  <data name="ajouterUnBien" xml:space="preserve">
+    <value>add property</value>
+  </data>
+  <data name="annee" xml:space="preserve">
+    <value>year</value>
+  </data>
+  <data name="bbq" xml:space="preserve">
+    <value>barbecue</value>
+  </data>
   <data name="Bienvenue01" xml:space="preserve">
     <value>Hello, welcome to our site.</value>
   </data>
@@ -152,6 +161,12 @@ We allow owners to safely rent their property ..</value>
   <data name="btnNvMembre" xml:space="preserve">
     <value>Register</value>
   </data>
+  <data name="chambre" xml:space="preserve">
+    <value>bedroom</value>
+  </data>
+  <data name="commentaire" xml:space="preserve">
+    <value>comment</value>
+  </data>
   <data name="Contact01" xml:space="preserve">
     <value>a question?</value>
   </data>
@@ -161,23 +176,65 @@ We allow owners to safely rent their property ..</value>
   <data name="Contact03" xml:space="preserve">
     <value>Address :</value>
   </data>
+  <data name="contacterLeProprio" xml:space="preserve">
+    <value>Contact the owner</value>
+  </data>
+  <data name="coutAdmin" xml:space="preserve">
+    <value>Administrative cost</value>
+  </data>
+  <data name="coutSejour" xml:space="preserve">
+    <value>Cost of stay</value>
+  </data>
+  <data name="coutTot" xml:space="preserve">
+    <value>Total cost of stay</value>
+  </data>
+  <data name="cuisine" xml:space="preserve">
+    <value>cooked</value>
+  </data>
+  <data name="cuisineEq" xml:space="preserve">
+    <value>equipped kitchen</value>
+  </data>
   <data name="date" xml:space="preserve">
     <value>Date</value>
   </data>
   <data name="DateArrivees" xml:space="preserve">
     <value>Arrival date</value>
   </data>
+  <data name="dateDeDepart" xml:space="preserve">
+    <value>departure date</value>
+  </data>
   <data name="dateDeNaissance" xml:space="preserve">
     <value>Birth date</value>
   </data>
+  <data name="dateEnregistrement" xml:space="preserve">
+    <value>register date</value>
+  </data>
   <data name="DateRetour" xml:space="preserve">
     <value>Return date</value>
+  </data>
+  <data name="dernierComment" xml:space="preserve">
+    <value>Latest comments</value>
+  </data>
+  <data name="description" xml:space="preserve">
+    <value>description</value>
+  </data>
+  <data name="desole" xml:space="preserve">
+    <value>Sorry</value>
+  </data>
+  <data name="detailDuBien" xml:space="preserve">
+    <value>Detail of the property</value>
+  </data>
+  <data name="dressing" xml:space="preserve">
+    <value>dressing</value>
   </data>
   <data name="enregistrezVsIci" xml:space="preserve">
     <value>Register here</value>
   </data>
   <data name="envoyer" xml:space="preserve">
     <value>Send</value>
+  </data>
+  <data name="equipement" xml:space="preserve">
+    <value>equipment</value>
   </data>
   <data name="Error_adresseRequise" xml:space="preserve">
     <value>Address required</value>
@@ -215,23 +272,83 @@ We allow owners to safely rent their property ..</value>
   <data name="Error_SujetRequis" xml:space="preserve">
     <value>subject required</value>
   </data>
+  <data name="Error_tableVide" xml:space="preserve">
+    <value>We do not have properties that matches your criteria.</value>
+  </data>
   <data name="Error_telephoneRequis" xml:space="preserve">
     <value>Phone required</value>
   </data>
   <data name="Error_VilleRequis" xml:space="preserve">
     <value>city required</value>
   </data>
+  <data name="estCommente" xml:space="preserve">
+    <value>Is commented</value>
+  </data>
+  <data name="estNote" xml:space="preserve">
+    <value>Is noted</value>
+  </data>
   <data name="estProprio" xml:space="preserve">
     <value>Is owner</value>
+  </data>
+  <data name="idBien" xml:space="preserve">
+    <value>Property ID</value>
+  </data>
+  <data name="identifiezVous" xml:space="preserve">
+    <value>Please log in.</value>
   </data>
   <data name="idMembre" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="jacuzzi" xml:space="preserve">
+    <value>jacuzzi</value>
+  </data>
+  <data name="jardin" xml:space="preserve">
+    <value>garden</value>
+  </data>
+  <data name="jour" xml:space="preserve">
+    <value>day</value>
+  </data>
+  <data name="lesPieces" xml:space="preserve">
+    <value>rooms</value>
+  </data>
+  <data name="libelle" xml:space="preserve">
+    <value>descrription</value>
+  </data>
+  <data name="louer" xml:space="preserve">
+    <value>to rent</value>
+  </data>
+  <data name="louerUnBien" xml:space="preserve">
+    <value>Rent a property</value>
+  </data>
+  <data name="machineALaver" xml:space="preserve">
+    <value>washing machine</value>
+  </data>
   <data name="mail" xml:space="preserve">
     <value>Mail</value>
   </data>
+  <data name="mesBiens" xml:space="preserve">
+    <value>my properties</value>
+  </data>
+  <data name="mesLocations" xml:space="preserve">
+    <value>My rentals</value>
+  </data>
+  <data name="mesMessages" xml:space="preserve">
+    <value>my messages</value>
+  </data>
   <data name="message" xml:space="preserve">
     <value>Message</value>
+  </data>
+  <data name="Modal_sIdentifierPourLouer" xml:space="preserve">
+    <value>Please login to be able to rent a property</value>
+  </data>
+  <data name="modifier" xml:space="preserve">
+    <value>edit</value>
+  </data>
+  <data name="mois" xml:space="preserve">
+    <value>month</value>
+  </data>
+  <data name="nbPersMax" xml:space="preserve">
+    <value>Max number of people</value>
   </data>
   <data name="nbreDePers" xml:space="preserve">
     <value>number of persons</value>
@@ -239,8 +356,23 @@ We allow owners to safely rent their property ..</value>
   <data name="nom" xml:space="preserve">
     <value>Last name</value>
   </data>
+  <data name="nombreDeNuits" xml:space="preserve">
+    <value>Number of nights</value>
+  </data>
+  <data name="nosBiens" xml:space="preserve">
+    <value>our properties</value>
+  </data>
+  <data name="noteMoyenne" xml:space="preserve">
+    <value>average grade</value>
+  </data>
+  <data name="numero" xml:space="preserve">
+    <value>number</value>
+  </data>
   <data name="parcourir" xml:space="preserve">
     <value>Browse</value>
+  </data>
+  <data name="parking" xml:space="preserve">
+    <value>car park</value>
   </data>
   <data name="password" xml:space="preserve">
     <value>Password</value>
@@ -251,11 +383,20 @@ We allow owners to safely rent their property ..</value>
   <data name="PasswordProp" xml:space="preserve">
     <value>min 6 characters</value>
   </data>
+  <data name="pays" xml:space="preserve">
+    <value>country</value>
+  </data>
   <data name="paysOuVille" xml:space="preserve">
     <value>Country or city</value>
   </data>
   <data name="photo" xml:space="preserve">
     <value>Photo</value>
+  </data>
+  <data name="pingpong" xml:space="preserve">
+    <value>pingpong</value>
+  </data>
+  <data name="piscine" xml:space="preserve">
+    <value>pool</value>
   </data>
   <data name="prenom" xml:space="preserve">
     <value>First name</value>
@@ -263,68 +404,8 @@ We allow owners to safely rent their property ..</value>
   <data name="Rechercher" xml:space="preserve">
     <value>Search</value>
   </data>
-  <data name="sujet" xml:space="preserve">
-    <value>Subject</value>
-  </data>
-  <data name="telephone" xml:space="preserve">
-    <value>Phone</value>
-  </data>
-  <data name="TitreHome" xml:space="preserve">
-    <value>Welcome to DREAMHOLIDAY</value>
-  </data>
-  <data name="trouvezVacDeReve" xml:space="preserve">
-    <value>Find your dream holiday</value>
-  </data>
-  <data name="bbq" xml:space="preserve">
-    <value>barbecue</value>
-  </data>
-  <data name="chambre" xml:space="preserve">
-    <value>bedroom</value>
-  </data>
-  <data name="cuisine" xml:space="preserve">
-    <value>cooked</value>
-  </data>
-  <data name="cuisineEq" xml:space="preserve">
-    <value>equipped kitchen</value>
-  </data>
-  <data name="dressing" xml:space="preserve">
-    <value>dressing</value>
-  </data>
-  <data name="idBien" xml:space="preserve">
-    <value>Property ID</value>
-  </data>
-  <data name="jacuzzi" xml:space="preserve">
-    <value>jacuzzi</value>
-  </data>
-  <data name="jardin" xml:space="preserve">
-    <value>garden</value>
-  </data>
-  <data name="libelle" xml:space="preserve">
-    <value>descrription</value>
-  </data>
-  <data name="machineALaver" xml:space="preserve">
-    <value>washing machine</value>
-  </data>
-  <data name="nbPersMax" xml:space="preserve">
-    <value>Max number of people</value>
-  </data>
-  <data name="noteMoyenne" xml:space="preserve">
-    <value>average grade</value>
-  </data>
-  <data name="numero" xml:space="preserve">
-    <value>number</value>
-  </data>
-  <data name="parking" xml:space="preserve">
-    <value>car park</value>
-  </data>
-  <data name="pays" xml:space="preserve">
-    <value>country</value>
-  </data>
-  <data name="pingpong" xml:space="preserve">
-    <value>pingpong</value>
-  </data>
-  <data name="piscine" xml:space="preserve">
-    <value>pool</value>
+  <data name="retour" xml:space="preserve">
+    <value>Return</value>
   </data>
   <data name="rue" xml:space="preserve">
     <value>street</value>
@@ -341,6 +422,9 @@ We allow owners to safely rent their property ..</value>
   <data name="sdb" xml:space="preserve">
     <value>bathroom</value>
   </data>
+  <data name="sujet" xml:space="preserve">
+    <value>Subject</value>
+  </data>
   <data name="tarifNettoyage" xml:space="preserve">
     <value>Cleaning fee</value>
   </data>
@@ -350,14 +434,23 @@ We allow owners to safely rent their property ..</value>
   <data name="teledistrib" xml:space="preserve">
     <value>Tv-distribution</value>
   </data>
+  <data name="telephone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
   <data name="tennis" xml:space="preserve">
     <value>tennis</value>
+  </data>
+  <data name="TitreHome" xml:space="preserve">
+    <value>Welcome to DREAMHOLIDAY</value>
   </data>
   <data name="toilette" xml:space="preserve">
     <value>toilet</value>
   </data>
   <data name="transat" xml:space="preserve">
     <value>deck chair</value>
+  </data>
+  <data name="trouvezVacDeReve" xml:space="preserve">
+    <value>Find your dream holiday</value>
   </data>
   <data name="tv" xml:space="preserve">
     <value>television</value>
@@ -368,450 +461,25 @@ We allow owners to safely rent their property ..</value>
   <data name="ville" xml:space="preserve">
     <value>city</value>
   </data>
-  <data name="wifi" xml:space="preserve">
-    <value>wifi</value>
-  </data>
-  <data name="contacterLeProprio" xml:space="preserve">
-    <value>Contact the owner</value>
-  </data>
-  <data name="coutAdmin" xml:space="preserve">
-    <value>Administrative cost</value>
-  </data>
-  <data name="coutSejour" xml:space="preserve">
-    <value>Cost of stay</value>
-  </data>
-  <data name="coutTot" xml:space="preserve">
-    <value>Total cost of stay</value>
-  </data>
-  <data name="description" xml:space="preserve">
-    <value>description</value>
-  </data>
-  <data name="detailDuBien" xml:space="preserve">
-    <value>Detail of the property</value>
-  </data>
-  <data name="equipement" xml:space="preserve">
-    <value>equipment</value>
-  </data>
-  <data name="lesPieces" xml:space="preserve">
-    <value>rooms</value>
-  </data>
-  <data name="louer" xml:space="preserve">
-    <value>to rent</value>
-  </data>
-  <data name="louerUnBien" xml:space="preserve">
-    <value>Rent a property</value>
-  </data>
-  <data name="nombreDeNuits" xml:space="preserve">
-    <value>Number of nights</value>
-  </data>
-  <data name="ajouterUnBien" xml:space="preserve">
-    <value>add property</value>
-  </data>
-  <data name="mesBiens" xml:space="preserve">
-    <value>my properties</value>
-  </data>
-  <data name="mesLocations" xml:space="preserve">
-    <value>My rentals</value>
-  </data>
-  <data name="mesMessages" xml:space="preserve">
-    <value>my messages</value>
-  </data>
-  <data name="modifier" xml:space="preserve">
-    <value>edit</value>
-  </data>
   <data name="vousAvezPasDeBien1" xml:space="preserve">
     <value>You do not have</value>
-  </data>
-  <data name="vousAvezPasDeLoc1" xml:space="preserve">
-    <value>You have not yet</value>
-  </data>
-  <data name="vousAvezPasDeMsg1" xml:space="preserve">
-    <value>You have not yet</value>
-  </data>
-  <data name="identifiezVous" xml:space="preserve">
-    <value>Please log in.</value>
-  </data>
-  <data name="Modal_sIdentifierPourLouer" xml:space="preserve">
-    <value>Please login to be able to rent a property</value>
   </data>
   <data name="vousAvezPasDeBien2" xml:space="preserve">
     <value>any property yet</value>
   </data>
+  <data name="vousAvezPasDeLoc1" xml:space="preserve">
+    <value>You have not yet</value>
+  </data>
   <data name="vousAvezPasDeLoc2" xml:space="preserve">
     <value>rented property</value>
+  </data>
+  <data name="vousAvezPasDeMsg1" xml:space="preserve">
+    <value>You have not yet</value>
   </data>
   <data name="vousAvezPasDeMsg2" xml:space="preserve">
     <value>received a message</value>
   </data>
-  <data name="commentaire" xml:space="preserve">
-    <value>comment</value>
-  </data>
-  <data name="dernierComment" xml:space="preserve">
-    <value>Latest comments</value>
-  </data>
-  <data name="adresse1" xml:space="preserve">
-    <value>Address</value>
-  </data>
-  <data name="ajouterUnBien1" xml:space="preserve">
-    <value>add property</value>
-  </data>
-  <data name="annee" xml:space="preserve">
-    <value>year</value>
-  </data>
-  <data name="bbq1" xml:space="preserve">
-    <value>barbecue</value>
-  </data>
-  <data name="Bienvenue011" xml:space="preserve">
-    <value>Hello, welcome to our site.</value>
-  </data>
-  <data name="Bienvenue021" xml:space="preserve">
-    <value>Do you have a well-being and would like to make money by renting it? Or you want to go as a couple or among friends without breaking your tire-reading?
-DREAMHOLIDAY is for YOU!
-We allow owners to safely rent their property ..</value>
-  </data>
-  <data name="btnAccueil1" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="btnConnect1" xml:space="preserve">
-    <value>login</value>
-  </data>
-  <data name="btnContact1" xml:space="preserve">
-    <value>Contact</value>
-  </data>
-  <data name="btnDeconnect1" xml:space="preserve">
-    <value>logout</value>
-  </data>
-  <data name="btnLesBiens1" xml:space="preserve">
-    <value>Our properties</value>
-  </data>
-  <data name="btnMonProfil1" xml:space="preserve">
-    <value>my profile</value>
-  </data>
-  <data name="btnNvBien1" xml:space="preserve">
-    <value>new property</value>
-  </data>
-  <data name="btnNvMembre1" xml:space="preserve">
-    <value>Register</value>
-  </data>
-  <data name="chambre1" xml:space="preserve">
-    <value>bedroom</value>
-  </data>
-  <data name="commentaire1" xml:space="preserve">
-    <value>comment</value>
-  </data>
-  <data name="Contact011" xml:space="preserve">
-    <value>a question?</value>
-  </data>
-  <data name="Contact021" xml:space="preserve">
-    <value>Contactez us at :</value>
-  </data>
-  <data name="Contact031" xml:space="preserve">
-    <value>Address :</value>
-  </data>
-  <data name="contacterLeProprio1" xml:space="preserve">
-    <value>Contact the owner</value>
-  </data>
-  <data name="coutAdmin1" xml:space="preserve">
-    <value>Administrative cost</value>
-  </data>
-  <data name="coutSejour1" xml:space="preserve">
-    <value>Cost of stay</value>
-  </data>
-  <data name="coutTot1" xml:space="preserve">
-    <value>Total cost of stay</value>
-  </data>
-  <data name="cuisine1" xml:space="preserve">
-    <value>cooked</value>
-  </data>
-  <data name="cuisineEq1" xml:space="preserve">
-    <value>equipped kitchen</value>
-  </data>
-  <data name="date1" xml:space="preserve">
-    <value>Date</value>
-  </data>
-  <data name="DateArrivees1" xml:space="preserve">
-    <value>Arrival date</value>
-  </data>
-  <data name="dateDeDepart" xml:space="preserve">
-    <value>departure date</value>
-  </data>
-  <data name="dateDeNaissance1" xml:space="preserve">
-    <value>Birth date</value>
-  </data>
-  <data name="dateEnregistrement" xml:space="preserve">
-    <value>register date</value>
-  </data>
-  <data name="DateRetour1" xml:space="preserve">
-    <value>Return date</value>
-  </data>
-  <data name="dernierComment1" xml:space="preserve">
-    <value>Latest comments</value>
-  </data>
-  <data name="description1" xml:space="preserve">
-    <value>description</value>
-  </data>
-  <data name="desole" xml:space="preserve">
-    <value>Sorry</value>
-  </data>
-  <data name="detailDuBien1" xml:space="preserve">
-    <value>Detail of the property</value>
-  </data>
-  <data name="dressing1" xml:space="preserve">
-    <value>dressing</value>
-  </data>
-  <data name="enregistrezVsIci1" xml:space="preserve">
-    <value>Register here</value>
-  </data>
-  <data name="envoyer1" xml:space="preserve">
-    <value>Send</value>
-  </data>
-  <data name="equipement1" xml:space="preserve">
-    <value>equipment</value>
-  </data>
-  <data name="Error_adresseRequise1" xml:space="preserve">
-    <value>Address required</value>
-  </data>
-  <data name="Error_DateNaissRequis1" xml:space="preserve">
-    <value>date of birth required</value>
-  </data>
-  <data name="Error_identifiantRequis1" xml:space="preserve">
-    <value>Login requiered</value>
-  </data>
-  <data name="Error_mailRequis1" xml:space="preserve">
-    <value>mail required</value>
-  </data>
-  <data name="Error_MessageRequis1" xml:space="preserve">
-    <value>message required</value>
-  </data>
-  <data name="Error_nomRequis1" xml:space="preserve">
-    <value>name required</value>
-  </data>
-  <data name="Error_NumeroRequis1" xml:space="preserve">
-    <value>house number required</value>
-  </data>
-  <data name="Error_PasswordRequis1" xml:space="preserve">
-    <value>Password required</value>
-  </data>
-  <data name="Error_PaysRequis1" xml:space="preserve">
-    <value>country required</value>
-  </data>
-  <data name="Error_PrenomRequis1" xml:space="preserve">
-    <value>first name required</value>
-  </data>
-  <data name="Error_rueRequis1" xml:space="preserve">
-    <value>street required</value>
-  </data>
-  <data name="Error_SujetRequis1" xml:space="preserve">
-    <value>subject required</value>
-  </data>
-  <data name="Error_tableVide" xml:space="preserve">
-    <value>We do not have properties that matches your criteria.</value>
-  </data>
-  <data name="Error_telephoneRequis1" xml:space="preserve">
-    <value>Phone required</value>
-  </data>
-  <data name="Error_VilleRequis1" xml:space="preserve">
-    <value>city required</value>
-  </data>
-  <data name="estCommente" xml:space="preserve">
-    <value>Is commented</value>
-  </data>
-  <data name="estNote" xml:space="preserve">
-    <value>Is noted</value>
-  </data>
-  <data name="estProprio1" xml:space="preserve">
-    <value>Is owner</value>
-  </data>
-  <data name="idBien1" xml:space="preserve">
-    <value>Property ID</value>
-  </data>
-  <data name="identifiezVous1" xml:space="preserve">
-    <value>Please log in.</value>
-  </data>
-  <data name="idMembre1" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="jacuzzi1" xml:space="preserve">
-    <value>jacuzzi</value>
-  </data>
-  <data name="jardin1" xml:space="preserve">
-    <value>garden</value>
-  </data>
-  <data name="jour" xml:space="preserve">
-    <value>day</value>
-  </data>
-  <data name="lesPieces1" xml:space="preserve">
-    <value>rooms</value>
-  </data>
-  <data name="libelle1" xml:space="preserve">
-    <value>descrription</value>
-  </data>
-  <data name="louer1" xml:space="preserve">
-    <value>to rent</value>
-  </data>
-  <data name="louerUnBien1" xml:space="preserve">
-    <value>Rent a property</value>
-  </data>
-  <data name="machineALaver1" xml:space="preserve">
-    <value>washing machine</value>
-  </data>
-  <data name="mail1" xml:space="preserve">
-    <value>Mail</value>
-  </data>
-  <data name="mesBiens1" xml:space="preserve">
-    <value>my properties</value>
-  </data>
-  <data name="mesLocations1" xml:space="preserve">
-    <value>My rentals</value>
-  </data>
-  <data name="mesMessages1" xml:space="preserve">
-    <value>my messages</value>
-  </data>
-  <data name="message1" xml:space="preserve">
-    <value>Message</value>
-  </data>
-  <data name="Modal_sIdentifierPourLouer1" xml:space="preserve">
-    <value>Please login to be able to rent a property</value>
-  </data>
-  <data name="modifier1" xml:space="preserve">
-    <value>edit</value>
-  </data>
-  <data name="mois" xml:space="preserve">
-    <value>month</value>
-  </data>
-  <data name="nbPersMax1" xml:space="preserve">
-    <value>Max number of people</value>
-  </data>
-  <data name="nbreDePers1" xml:space="preserve">
-    <value>number of persons</value>
-  </data>
-  <data name="nom1" xml:space="preserve">
-    <value>Last name</value>
-  </data>
-  <data name="nombreDeNuits1" xml:space="preserve">
-    <value>Number of nights</value>
-  </data>
-  <data name="nosBiens" xml:space="preserve">
-    <value>our properties</value>
-  </data>
-  <data name="noteMoyenne1" xml:space="preserve">
-    <value>average grade</value>
-  </data>
-  <data name="numero1" xml:space="preserve">
-    <value>number</value>
-  </data>
-  <data name="parcourir1" xml:space="preserve">
-    <value>Browse</value>
-  </data>
-  <data name="parking1" xml:space="preserve">
-    <value>car park</value>
-  </data>
-  <data name="password1" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="password21" xml:space="preserve">
-    <value>Confirm</value>
-  </data>
-  <data name="PasswordProp1" xml:space="preserve">
-    <value>min 6 characters</value>
-  </data>
-  <data name="pays1" xml:space="preserve">
-    <value>country</value>
-  </data>
-  <data name="paysOuVille1" xml:space="preserve">
-    <value>Country or city</value>
-  </data>
-  <data name="photo1" xml:space="preserve">
-    <value>Photo</value>
-  </data>
-  <data name="pingpong1" xml:space="preserve">
-    <value>pingpong</value>
-  </data>
-  <data name="piscine1" xml:space="preserve">
-    <value>pool</value>
-  </data>
-  <data name="prenom1" xml:space="preserve">
-    <value>First name</value>
-  </data>
-  <data name="Rechercher1" xml:space="preserve">
-    <value>Search</value>
-  </data>
-  <data name="retour" xml:space="preserve">
-    <value>Return</value>
-  </data>
-  <data name="rue1" xml:space="preserve">
-    <value>street</value>
-  </data>
-  <data name="salon1" xml:space="preserve">
-    <value>living room</value>
-  </data>
-  <data name="sam1" xml:space="preserve">
-    <value>dining room</value>
-  </data>
-  <data name="sauna1" xml:space="preserve">
-    <value>sauna</value>
-  </data>
-  <data name="sdb1" xml:space="preserve">
-    <value>bathroom</value>
-  </data>
-  <data name="sujet1" xml:space="preserve">
-    <value>Subject</value>
-  </data>
-  <data name="tarifNettoyage1" xml:space="preserve">
-    <value>Cleaning fee</value>
-  </data>
-  <data name="tarifNuit1" xml:space="preserve">
-    <value>Price per night</value>
-  </data>
-  <data name="teledistrib1" xml:space="preserve">
-    <value>Tv-distribution</value>
-  </data>
-  <data name="telephone1" xml:space="preserve">
-    <value>Phone</value>
-  </data>
-  <data name="tennis1" xml:space="preserve">
-    <value>tennis</value>
-  </data>
-  <data name="TitreHome1" xml:space="preserve">
-    <value>Welcome to DREAMHOLIDAY</value>
-  </data>
-  <data name="toilette1" xml:space="preserve">
-    <value>toilet</value>
-  </data>
-  <data name="transat1" xml:space="preserve">
-    <value>deck chair</value>
-  </data>
-  <data name="trouvezVacDeReve1" xml:space="preserve">
-    <value>Find your dream holiday</value>
-  </data>
-  <data name="tv1" xml:space="preserve">
-    <value>television</value>
-  </data>
-  <data name="veranda1" xml:space="preserve">
-    <value>veranda</value>
-  </data>
-  <data name="ville1" xml:space="preserve">
-    <value>city</value>
-  </data>
-  <data name="vousAvezPasDeBien11" xml:space="preserve">
-    <value>You do not have</value>
-  </data>
-  <data name="vousAvezPasDeBien21" xml:space="preserve">
-    <value>any property yet</value>
-  </data>
-  <data name="vousAvezPasDeLoc11" xml:space="preserve">
-    <value>You have not yet</value>
-  </data>
-  <data name="vousAvezPasDeLoc21" xml:space="preserve">
-    <value>rented property</value>
-  </data>
-  <data name="vousAvezPasDeMsg11" xml:space="preserve">
-    <value>You have not yet</value>
-  </data>
-  <data name="vousAvezPasDeMsg21" xml:space="preserve">
-    <value>received a message</value>
-  </data>
-  <data name="wifi1" xml:space="preserve">
+  <data name="wifi" xml:space="preserve">
     <value>wifi</value>
   </data>
 </root>
