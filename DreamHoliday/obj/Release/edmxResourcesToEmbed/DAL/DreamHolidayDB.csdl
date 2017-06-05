@@ -1,0 +1,1038 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DreamHollidayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DreamHollidayEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="addNewBien">
+      <Parameter Name="pays" Mode="In" Type="String" />
+      <Parameter Name="ville" Mode="In" Type="String" />
+      <Parameter Name="rue" Mode="In" Type="String" />
+      <Parameter Name="numero" Mode="In" Type="String" />
+      <Parameter Name="idMembre" Mode="In" Type="Int32" />
+      <Parameter Name="tarifNuit" Mode="In" Type="Int32" />
+      <Parameter Name="tarifNettoyage" Mode="In" Type="Int32" />
+      <Parameter Name="libelle" Mode="In" Type="String" />
+      <Parameter Name="nbMaxDePers" Mode="In" Type="Int32" />
+      <Parameter Name="sdb" Mode="In" Type="Int32" />
+      <Parameter Name="salon" Mode="In" Type="Int32" />
+      <Parameter Name="sam" Mode="In" Type="Int32" />
+      <Parameter Name="toilette" Mode="In" Type="Int32" />
+      <Parameter Name="cuisine" Mode="In" Type="Int32" />
+      <Parameter Name="chambre" Mode="In" Type="Int32" />
+      <Parameter Name="dressing" Mode="In" Type="Int32" />
+      <Parameter Name="veranda" Mode="In" Type="Int32" />
+      <Parameter Name="bbq" Mode="In" Type="Boolean" />
+      <Parameter Name="piscine" Mode="In" Type="Boolean" />
+      <Parameter Name="jacuzzi" Mode="In" Type="Boolean" />
+      <Parameter Name="sauna" Mode="In" Type="Boolean" />
+      <Parameter Name="tv" Mode="In" Type="Boolean" />
+      <Parameter Name="teleDistrib" Mode="In" Type="Boolean" />
+      <Parameter Name="wifi" Mode="In" Type="Boolean" />
+      <Parameter Name="pingPong" Mode="In" Type="Boolean" />
+      <Parameter Name="tennis" Mode="In" Type="Boolean" />
+      <Parameter Name="transat" Mode="In" Type="Boolean" />
+      <Parameter Name="cuisineEqu" Mode="In" Type="Boolean" />
+      <Parameter Name="machineALaver" Mode="In" Type="Boolean" />
+      <Parameter Name="jardin" Mode="In" Type="Boolean" />
+      <Parameter Name="parking" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="addNewLocation">
+      <Parameter Name="idBien" Mode="In" Type="Int32" />
+      <Parameter Name="idMembre" Mode="In" Type="Int32" />
+      <Parameter Name="dateArrivee" Mode="In" Type="DateTime" />
+      <Parameter Name="dateDepart" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="addNewMembre">
+      <Parameter Name="mail" Mode="In" Type="String" />
+      <Parameter Name="nom" Mode="In" Type="String" />
+      <Parameter Name="prenom" Mode="In" Type="String" />
+      <Parameter Name="adresse" Mode="In" Type="String" />
+      <Parameter Name="dateDeNaissance" Mode="In" Type="DateTime" />
+      <Parameter Name="telephone" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="addNewMessage">
+      <Parameter Name="nom" Mode="In" Type="String" />
+      <Parameter Name="prenom" Mode="In" Type="String" />
+      <Parameter Name="mail" Mode="In" Type="String" />
+      <Parameter Name="message" Mode="In" Type="String" />
+      <Parameter Name="idMembre" Mode="In" Type="Int32" />
+      <Parameter Name="sujet" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="addNewNote">
+      <Parameter Name="note" Mode="In" Type="Decimal" />
+      <Parameter Name="idMembre" Mode="In" Type="Int32" />
+      <Parameter Name="idBien" Mode="In" Type="Int32" />
+      <Parameter Name="idLocation" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DreamHollidayModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DreamHollidayModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="detailBienWithId" ReturnType="Collection(DreamHollidayModel.detailBienWithId_Result)">
+      <Parameter Name="idBien" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="VerifSiDateEstDispo">
+      <Parameter Name="idBien" Mode="In" Type="Int32" />
+      <Parameter Name="dateArrivee" Mode="In" Type="DateTime" />
+      <Parameter Name="dateDepart" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="VerifSiDateEstDispos" ReturnType="Collection(Int32)">
+      <Parameter Name="idBien" Mode="In" Type="Int32" />
+      <Parameter Name="dateArrivee" Mode="In" Type="DateTime" />
+      <Parameter Name="dateDepart" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="VerifSiDateEstDispo2" ReturnType="Collection(Int32)">
+      <Parameter Name="idBien" Mode="In" Type="Int32" />
+      <Parameter Name="dateArrivee" Mode="In" Type="DateTime" />
+      <Parameter Name="dateDepart" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="VerifSiDateEstDispo0" ReturnType="Collection(Int32)">
+      <Parameter Name="idBien" Mode="In" Type="Int32" />
+      <Parameter Name="dateArrivee" Mode="In" Type="DateTime" />
+      <Parameter Name="dateDepart" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="verifDates" ReturnType="Collection(DreamHollidayModel.verifDates_Result)">
+      <Parameter Name="idBie" Mode="In" Type="Int32" />
+      <Parameter Name="arrivee" Mode="In" Type="DateTime" />
+      <Parameter Name="depart" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="VerifSiDateEstDispo21" ReturnType="Collection(Int32)">
+      <Parameter Name="idBien" Mode="In" Type="Int32" />
+      <Parameter Name="dateArrivee" Mode="In" Type="DateTime" />
+      <Parameter Name="dateDepart" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="VerifSiDateEstDispos1" ReturnType="Collection(Int32)">
+      <Parameter Name="idBien" Mode="In" Type="Int32" />
+      <Parameter Name="dateArrivee" Mode="In" Type="DateTime" />
+      <Parameter Name="dateDepart" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="detailBienWithId1" ReturnType="Collection(DreamHollidayModel.detailBienWithId1_Result1)">
+      <Parameter Name="idBien" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="detailBienWithId11" ReturnType="Collection(DreamHollidayModel.detailBienWithId11_Result1)">
+      <Parameter Name="idBien" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SearchBiensDispo1" ReturnType="Collection(DreamHollidayModel.SearchBiensDispo1_Result)">
+      <Parameter Name="paysOuVille" Mode="In" Type="String" />
+      <Parameter Name="arrivee" Mode="In" Type="DateTime" />
+      <Parameter Name="depart" Mode="In" Type="DateTime" />
+      <Parameter Name="nbPers" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SearchBiensDispo2" ReturnType="Collection(DreamHollidayModel.SearchBiensDispo2_Result2)">
+      <Parameter Name="paysOuVille" Mode="In" Type="String" />
+      <Parameter Name="arrivee" Mode="In" Type="DateTime" />
+      <Parameter Name="depart" Mode="In" Type="DateTime" />
+      <Parameter Name="nbPers" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="verifDates2" ReturnType="Collection(DreamHollidayModel.verifDates2_Result)">
+      <Parameter Name="idBie" Mode="In" Type="Int32" />
+      <Parameter Name="arrivee" Mode="In" Type="DateTime" />
+      <Parameter Name="depart" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="searchBienWithOptions" ReturnType="Collection(DreamHollidayModel.searchBienWithOptions_Result)">
+      <Parameter Name="bbq" Mode="In" Type="Boolean" />
+      <Parameter Name="piscine" Mode="In" Type="Boolean" />
+      <Parameter Name="jacuzzi" Mode="In" Type="Boolean" />
+      <Parameter Name="sauna" Mode="In" Type="Boolean" />
+      <Parameter Name="tv" Mode="In" Type="Boolean" />
+      <Parameter Name="teleDis" Mode="In" Type="Boolean" />
+      <Parameter Name="wifi" Mode="In" Type="Boolean" />
+      <Parameter Name="pingpong" Mode="In" Type="Boolean" />
+      <Parameter Name="tennis" Mode="In" Type="Boolean" />
+      <Parameter Name="transat" Mode="In" Type="Boolean" />
+      <Parameter Name="cuisineEq" Mode="In" Type="Boolean" />
+      <Parameter Name="machineALaver" Mode="In" Type="Boolean" />
+      <Parameter Name="jardin" Mode="In" Type="Boolean" />
+      <Parameter Name="parking" Mode="In" Type="Boolean" />
+      <Parameter Name="nbSdb" Mode="In" Type="Int32" />
+      <Parameter Name="nbToilette" Mode="In" Type="Int32" />
+      <Parameter Name="nbChambre" Mode="In" Type="Int32" />
+      <Parameter Name="prixMax" Mode="In" Type="Int32" />
+      <Parameter Name="villeOuPays" Mode="In" Type="String" />
+      <Parameter Name="nbPersMax" Mode="In" Type="Int32" />
+      <Parameter Name="noteMoyenneMin" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateMembre">
+      <Parameter Name="idMembre" Mode="In" Type="Int32" />
+      <Parameter Name="mail" Mode="In" Type="String" />
+      <Parameter Name="nom" Mode="In" Type="String" />
+      <Parameter Name="prenom" Mode="In" Type="String" />
+      <Parameter Name="adresse" Mode="In" Type="String" />
+      <Parameter Name="dateDeNaissance" Mode="In" Type="DateTime" />
+      <Parameter Name="telephone" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RechercheDatePasDispo" ReturnType="Collection(DreamHollidayModel.RechercheDatePasDispo_Result)">
+      <Parameter Name="idBien" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getMyLocations" ReturnType="Collection(DreamHollidayModel.getMyLocations_Result)">
+      <Parameter Name="idMembre" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="addCommentAndNote">
+      <Parameter Name="note" Mode="In" Type="Int32" />
+      <Parameter Name="idLocation" Mode="In" Type="Int32" />
+      <Parameter Name="libelle" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="detailBienWithIde" ReturnType="Collection(DreamHollidayModel.detailBienWithIde_Result)">
+      <Parameter Name="idBien" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetFiveLastComment" ReturnType="Collection(DreamHollidayModel.GetFiveLastComment_Result)">
+      <Parameter Name="idBien" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="BigSearchBiens" ReturnType="Collection(DreamHollidayModel.BigSearchBiens_Result)">
+      <Parameter Name="bbq" Mode="In" Type="Boolean" />
+      <Parameter Name="piscine" Mode="In" Type="Boolean" />
+      <Parameter Name="jacuzzi" Mode="In" Type="Boolean" />
+      <Parameter Name="sauna" Mode="In" Type="Boolean" />
+      <Parameter Name="tv" Mode="In" Type="Boolean" />
+      <Parameter Name="teleDis" Mode="In" Type="Boolean" />
+      <Parameter Name="wifi" Mode="In" Type="Boolean" />
+      <Parameter Name="pingpong" Mode="In" Type="Boolean" />
+      <Parameter Name="tennis" Mode="In" Type="Boolean" />
+      <Parameter Name="transat" Mode="In" Type="Boolean" />
+      <Parameter Name="cuisineEq" Mode="In" Type="Boolean" />
+      <Parameter Name="machineALaver" Mode="In" Type="Boolean" />
+      <Parameter Name="jardin" Mode="In" Type="Boolean" />
+      <Parameter Name="parking" Mode="In" Type="Boolean" />
+      <Parameter Name="nbSdb" Mode="In" Type="Int32" />
+      <Parameter Name="nbToilette" Mode="In" Type="Int32" />
+      <Parameter Name="nbChambre" Mode="In" Type="Int32" />
+      <Parameter Name="prixMax" Mode="In" Type="Int32" />
+      <Parameter Name="villeOuPays" Mode="In" Type="String" />
+      <Parameter Name="nbPersMax" Mode="In" Type="Int32" />
+      <Parameter Name="noteMoyenneMin" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="C__MigrationHistory" EntityType="DreamHollidayModel.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="DreamHollidayModel.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="DreamHollidayModel.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserLogins" EntityType="DreamHollidayModel.AspNetUserLogins" />
+    <EntitySet Name="AspNetUsers" EntityType="DreamHollidayModel.AspNetUsers" />
+    <EntitySet Name="BIEN" EntityType="DreamHollidayModel.BIEN" />
+    <EntitySet Name="COMMENTAIRE" EntityType="DreamHollidayModel.COMMENTAIRE" />
+    <EntitySet Name="LOCATION" EntityType="DreamHollidayModel.LOCATION" />
+    <EntitySet Name="MEMBRE" EntityType="DreamHollidayModel.MEMBRE" />
+    <EntitySet Name="MESSAGE" EntityType="DreamHollidayModel.MESSAGE" />
+    <EntitySet Name="NOTE" EntityType="DreamHollidayModel.NOTE" />
+    <EntitySet Name="OPTIONS" EntityType="DreamHollidayModel.OPTIONS" />
+    <EntitySet Name="PIECE" EntityType="DreamHollidayModel.PIECE" />
+    <EntitySet Name="sysdiagrams" EntityType="DreamHollidayModel.sysdiagrams" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="DreamHollidayModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="DreamHollidayModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BIEN_MEMBRE" Association="DreamHollidayModel.FK_BIEN_MEMBRE">
+      <End Role="MEMBRE" EntitySet="MEMBRE" />
+      <End Role="BIEN" EntitySet="BIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOCATION_BIEN" Association="DreamHollidayModel.FK_LOCATION_BIEN">
+      <End Role="BIEN" EntitySet="BIEN" />
+      <End Role="LOCATION" EntitySet="LOCATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OPTIONS_BIEN" Association="DreamHollidayModel.FK_OPTIONS_BIEN">
+      <End Role="BIEN" EntitySet="BIEN" />
+      <End Role="OPTIONS" EntitySet="OPTIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PIECE_BIEN" Association="DreamHollidayModel.FK_PIECE_BIEN">
+      <End Role="BIEN" EntitySet="BIEN" />
+      <End Role="PIECE" EntitySet="PIECE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMMENTAIRE_LOCATION" Association="DreamHollidayModel.FK_COMMENTAIRE_LOCATION">
+      <End Role="LOCATION" EntitySet="LOCATION" />
+      <End Role="COMMENTAIRE" EntitySet="COMMENTAIRE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOCATION_MEMBRE" Association="DreamHollidayModel.FK_LOCATION_MEMBRE">
+      <End Role="MEMBRE" EntitySet="MEMBRE" />
+      <End Role="LOCATION" EntitySet="LOCATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOTE_LOCATION" Association="DreamHollidayModel.FK_NOTE_LOCATION">
+      <End Role="LOCATION" EntitySet="LOCATION" />
+      <End Role="NOTE" EntitySet="NOTE" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="DreamHollidayModel.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <FunctionImport Name="SearchBiensDispo" ReturnType="Collection(DreamHollidayModel.SearchBiensDispo_Result)">
+      <Parameter Name="paysOuVille" Mode="In" Type="String" />
+      <Parameter Name="arrivee" Mode="In" Type="DateTime" />
+      <Parameter Name="depart" Mode="In" Type="DateTime" />
+      <Parameter Name="nbPers" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllMyBiens" ReturnType="Collection(DreamHollidayModel.GetAllMyBiens_Result)">
+      <Parameter Name="idMembre" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SearchBiensDispo2_Result">
+    <Property Type="Int32" Name="idBien" Nullable="true" />
+    <Property Type="String" Name="pays" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="ville" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="rue" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="numero" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="idMembre" Nullable="true" />
+    <Property Type="String" Name="libelle" Nullable="true" MaxLength="500" />
+    <Property Type="Decimal" Name="noteMoyenne" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="String" Name="photo" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="tarifNettoyage" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Decimal" Name="tarifNuit" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Int32" Name="nbPersMax" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="detailBienWithId_Result">
+    <Property Type="Int32" Name="idBien" Nullable="false" />
+    <Property Type="String" Name="BIEN_Pays" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_ville" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_rue" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_numero" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="idMembre" Nullable="false" />
+    <Property Type="Decimal" Name="BIEN_tarifParNuit" Nullable="false" Precision="5" Scale="2" />
+    <Property Type="Decimal" Name="BIEN_tarifNettoyage" Nullable="false" Precision="5" Scale="2" />
+    <Property Type="Decimal" Name="BIEN_noteMoyenne" Nullable="true" Precision="2" Scale="2" />
+    <Property Type="String" Name="BIEN_libelle" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="BIEN_photo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="BIEN_nbMaxPersonnes" Nullable="false" />
+    <Property Type="Int32" Name="salleDeBain" Nullable="false" />
+    <Property Type="Int32" Name="salon" Nullable="false" />
+    <Property Type="Int32" Name="sallaAManger" Nullable="false" />
+    <Property Type="Int32" Name="toilette" Nullable="false" />
+    <Property Type="Int32" Name="cuisine" Nullable="false" />
+    <Property Type="Int32" Name="chambre" Nullable="false" />
+    <Property Type="Int32" Name="dressing" Nullable="false" />
+    <Property Type="Int32" Name="veranda" Nullable="false" />
+    <Property Type="Boolean" Name="bbq" Nullable="false" />
+    <Property Type="Boolean" Name="piscine" Nullable="false" />
+    <Property Type="Boolean" Name="jacuzzi" Nullable="false" />
+    <Property Type="Boolean" Name="sauna" Nullable="false" />
+    <Property Type="Boolean" Name="tv" Nullable="false" />
+    <Property Type="Boolean" Name="teledistribution" Nullable="false" />
+    <Property Type="Boolean" Name="wifi" Nullable="false" />
+    <Property Type="Boolean" Name="pingpong" Nullable="false" />
+    <Property Type="Boolean" Name="tennis" Nullable="false" />
+    <Property Type="Boolean" Name="transat" Nullable="false" />
+    <Property Type="Boolean" Name="jardin" Nullable="false" />
+    <Property Type="Boolean" Name="parking" Nullable="false" />
+    <Property Type="Boolean" Name="cuisine_equipee" Nullable="false" />
+    <Property Type="Boolean" Name="machine_a_laver" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="detailBienWithId1_Result">
+    <Property Type="Int32" Name="idBien" Nullable="false" />
+    <Property Type="String" Name="BIEN_Pays" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_ville" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_rue" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_numero" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="idMembre" Nullable="false" />
+    <Property Type="Decimal" Name="BIEN_tarifParNuit" Nullable="false" Precision="5" Scale="2" />
+    <Property Type="Decimal" Name="BIEN_tarifNettoyage" Nullable="false" Precision="5" Scale="2" />
+    <Property Type="Decimal" Name="BIEN_noteMoyenne" Nullable="true" Precision="2" Scale="2" />
+    <Property Type="String" Name="BIEN_libelle" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="BIEN_photo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="BIEN_nbMaxPersonnes" Nullable="false" />
+    <Property Type="Boolean" Name="bbq" Nullable="false" />
+    <Property Type="Boolean" Name="piscine" Nullable="false" />
+    <Property Type="Boolean" Name="jacuzzi" Nullable="false" />
+    <Property Type="Boolean" Name="sauna" Nullable="false" />
+    <Property Type="Boolean" Name="tv" Nullable="false" />
+    <Property Type="Boolean" Name="teledistribution" Nullable="false" />
+    <Property Type="Boolean" Name="wifi" Nullable="false" />
+    <Property Type="Boolean" Name="pingpong" Nullable="false" />
+    <Property Type="Boolean" Name="tennis" Nullable="false" />
+    <Property Type="Boolean" Name="transat" Nullable="false" />
+    <Property Type="Boolean" Name="cuisine_equipee" Nullable="false" />
+    <Property Type="Boolean" Name="machine_a_laver" Nullable="false" />
+    <Property Type="Boolean" Name="jardin" Nullable="false" />
+    <Property Type="Boolean" Name="parking" Nullable="false" />
+    <Property Type="Int32" Name="salleDeBain" Nullable="false" />
+    <Property Type="Int32" Name="salon" Nullable="false" />
+    <Property Type="Int32" Name="sallaAManger" Nullable="false" />
+    <Property Type="Int32" Name="toilette" Nullable="false" />
+    <Property Type="Int32" Name="cuisine" Nullable="false" />
+    <Property Type="Int32" Name="chambre" Nullable="false" />
+    <Property Type="Int32" Name="dressing" Nullable="false" />
+    <Property Type="Int32" Name="veranda" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="detailBienWithId11_Result">
+    <Property Type="Int32" Name="idBien" Nullable="false" />
+    <Property Type="String" Name="BIEN_Pays" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_ville" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_rue" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_numero" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="idMembre" Nullable="false" />
+    <Property Type="Decimal" Name="BIEN_tarifParNuit" Nullable="false" Precision="5" Scale="2" />
+    <Property Type="Decimal" Name="BIEN_tarifNettoyage" Nullable="false" Precision="5" Scale="2" />
+    <Property Type="Decimal" Name="BIEN_noteMoyenne" Nullable="true" Precision="2" Scale="2" />
+    <Property Type="String" Name="BIEN_libelle" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="BIEN_photo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="BIEN_nbMaxPersonnes" Nullable="false" />
+    <Property Type="Boolean" Name="bbq" Nullable="false" />
+    <Property Type="Boolean" Name="piscine" Nullable="false" />
+    <Property Type="Boolean" Name="jacuzzi" Nullable="false" />
+    <Property Type="Boolean" Name="sauna" Nullable="false" />
+    <Property Type="Boolean" Name="tv" Nullable="false" />
+    <Property Type="Boolean" Name="teledistribution" Nullable="false" />
+    <Property Type="Boolean" Name="wifi" Nullable="false" />
+    <Property Type="Boolean" Name="pingpong" Nullable="false" />
+    <Property Type="Boolean" Name="tennis" Nullable="false" />
+    <Property Type="Boolean" Name="transat" Nullable="false" />
+    <Property Type="Boolean" Name="cuisine_equipee" Nullable="false" />
+    <Property Type="Boolean" Name="machine_a_laver" Nullable="false" />
+    <Property Type="Boolean" Name="jardin" Nullable="false" />
+    <Property Type="Boolean" Name="parking" Nullable="false" />
+    <Property Type="Int32" Name="salleDeBain" Nullable="false" />
+    <Property Type="Int32" Name="salon" Nullable="false" />
+    <Property Type="Int32" Name="sallaAManger" Nullable="false" />
+    <Property Type="Int32" Name="toilette" Nullable="false" />
+    <Property Type="Int32" Name="cuisine" Nullable="false" />
+    <Property Type="Int32" Name="chambre" Nullable="false" />
+    <Property Type="Int32" Name="dressing" Nullable="false" />
+    <Property Type="Int32" Name="veranda" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="verifDates_Result">
+    <Property Type="Int32" Name="idBien" Nullable="true" />
+    <Property Type="String" Name="pays" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="ville" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="rue" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="numero" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="idMembre" Nullable="true" />
+    <Property Type="String" Name="libelle" Nullable="true" MaxLength="500" />
+    <Property Type="Decimal" Name="noteMoyenne" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="String" Name="photo" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="tarifNettoyage" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Decimal" Name="tarifNuit" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Int32" Name="nbPersMax" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SearchBiensDispo2_Result1">
+    <Property Type="Int32" Name="idBien" Nullable="true" />
+    <Property Type="String" Name="pays" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="ville" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="rue" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="numero" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="idMembre" Nullable="true" />
+    <Property Type="String" Name="libelle" Nullable="true" MaxLength="500" />
+    <Property Type="Decimal" Name="noteMoyenne" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="String" Name="photo" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="tarifNettoyage" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Decimal" Name="tarifNuit" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Int32" Name="nbPersMax" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="detailBienWithId1_Result1">
+    <Property Type="Int32" Name="idBien" Nullable="false" />
+    <Property Type="String" Name="BIEN_Pays" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_ville" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_rue" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_numero" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="idMembre" Nullable="false" />
+    <Property Type="Int32" Name="BIEN_tarifParNuit" Nullable="false" />
+    <Property Type="Int32" Name="BIEN_tarifNettoyage" Nullable="false" />
+    <Property Type="Decimal" Name="BIEN_noteMoyenne" Nullable="true" Precision="2" Scale="2" />
+    <Property Type="String" Name="BIEN_libelle" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="BIEN_photo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="BIEN_nbMaxPersonnes" Nullable="false" />
+    <Property Type="Boolean" Name="bbq" Nullable="false" />
+    <Property Type="Boolean" Name="piscine" Nullable="false" />
+    <Property Type="Boolean" Name="jacuzzi" Nullable="false" />
+    <Property Type="Boolean" Name="sauna" Nullable="false" />
+    <Property Type="Boolean" Name="tv" Nullable="false" />
+    <Property Type="Boolean" Name="teledistribution" Nullable="false" />
+    <Property Type="Boolean" Name="wifi" Nullable="false" />
+    <Property Type="Boolean" Name="pingpong" Nullable="false" />
+    <Property Type="Boolean" Name="tennis" Nullable="false" />
+    <Property Type="Boolean" Name="transat" Nullable="false" />
+    <Property Type="Boolean" Name="cuisine_equipee" Nullable="false" />
+    <Property Type="Boolean" Name="machine_a_laver" Nullable="false" />
+    <Property Type="Boolean" Name="jardin" Nullable="false" />
+    <Property Type="Boolean" Name="parking" Nullable="false" />
+    <Property Type="Int32" Name="salleDeBain" Nullable="false" />
+    <Property Type="Int32" Name="salon" Nullable="false" />
+    <Property Type="Int32" Name="sallaAManger" Nullable="false" />
+    <Property Type="Int32" Name="toilette" Nullable="false" />
+    <Property Type="Int32" Name="cuisine" Nullable="false" />
+    <Property Type="Int32" Name="chambre" Nullable="false" />
+    <Property Type="Int32" Name="dressing" Nullable="false" />
+    <Property Type="Int32" Name="veranda" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="detailBienWithId11_Result1">
+    <Property Type="Int32" Name="idBien" Nullable="false" />
+    <Property Type="String" Name="BIEN_Pays" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_ville" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_rue" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_numero" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="idMembre" Nullable="false" />
+    <Property Type="Int32" Name="BIEN_tarifParNuit" Nullable="false" />
+    <Property Type="Int32" Name="BIEN_tarifNettoyage" Nullable="false" />
+    <Property Type="Decimal" Name="BIEN_noteMoyenne" Nullable="true" Precision="2" Scale="2" />
+    <Property Type="String" Name="BIEN_libelle" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="BIEN_photo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="BIEN_nbMaxPersonnes" Nullable="false" />
+    <Property Type="Boolean" Name="bbq" Nullable="false" />
+    <Property Type="Boolean" Name="piscine" Nullable="false" />
+    <Property Type="Boolean" Name="jacuzzi" Nullable="false" />
+    <Property Type="Boolean" Name="sauna" Nullable="false" />
+    <Property Type="Boolean" Name="tv" Nullable="false" />
+    <Property Type="Boolean" Name="teledistribution" Nullable="false" />
+    <Property Type="Boolean" Name="wifi" Nullable="false" />
+    <Property Type="Boolean" Name="pingpong" Nullable="false" />
+    <Property Type="Boolean" Name="tennis" Nullable="false" />
+    <Property Type="Boolean" Name="transat" Nullable="false" />
+    <Property Type="Boolean" Name="cuisine_equipee" Nullable="false" />
+    <Property Type="Boolean" Name="machine_a_laver" Nullable="false" />
+    <Property Type="Boolean" Name="jardin" Nullable="false" />
+    <Property Type="Boolean" Name="parking" Nullable="false" />
+    <Property Type="Int32" Name="salleDeBain" Nullable="false" />
+    <Property Type="Int32" Name="salon" Nullable="false" />
+    <Property Type="Int32" Name="sallaAManger" Nullable="false" />
+    <Property Type="Int32" Name="toilette" Nullable="false" />
+    <Property Type="Int32" Name="cuisine" Nullable="false" />
+    <Property Type="Int32" Name="chambre" Nullable="false" />
+    <Property Type="Int32" Name="dressing" Nullable="false" />
+    <Property Type="Int32" Name="veranda" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SearchBiensDispo1_Result">
+    <Property Type="Int32" Name="idBien" Nullable="true" />
+    <Property Type="String" Name="pays" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="ville" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="rue" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="numero" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="idMembre" Nullable="true" />
+    <Property Type="String" Name="libelle" Nullable="true" MaxLength="500" />
+    <Property Type="Decimal" Name="noteMoyenne" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="String" Name="photo" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="tarifNettoyage" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Decimal" Name="tarifNuit" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Int32" Name="nbPersMax" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SearchBiensDispo2_Result2">
+    <Property Type="Int32" Name="idBien" Nullable="true" />
+    <Property Type="String" Name="pays" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="ville" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="rue" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="numero" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="idMembre" Nullable="true" />
+    <Property Type="String" Name="libelle" Nullable="true" MaxLength="500" />
+    <Property Type="Decimal" Name="noteMoyenne" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="String" Name="photo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="tarifNettoyage" Nullable="true" />
+    <Property Type="Int32" Name="tarifNuit" Nullable="true" />
+    <Property Type="Int32" Name="nbPersMax" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="verifDates2_Result">
+    <Property Type="Int32" Name="idBien" Nullable="true" />
+    <Property Type="String" Name="pays" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="ville" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="rue" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="numero" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="idMembre" Nullable="true" />
+    <Property Type="String" Name="libelle" Nullable="true" MaxLength="500" />
+    <Property Type="Decimal" Name="noteMoyenne" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="String" Name="photo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="tarifNettoyage" Nullable="true" />
+    <Property Type="Int32" Name="tarifNuit" Nullable="true" />
+    <Property Type="Int32" Name="nbPersMax" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="searchBienWithOptions_Result">
+    <Property Type="Int32" Name="idBien" Nullable="true" />
+    <Property Type="Boolean" Name="bbq" Nullable="true" />
+    <Property Type="Boolean" Name="piscine" Nullable="true" />
+    <Property Type="Boolean" Name="jacuzzi" Nullable="true" />
+    <Property Type="Boolean" Name="sauna" Nullable="true" />
+    <Property Type="Boolean" Name="tv" Nullable="true" />
+    <Property Type="Boolean" Name="teleDis" Nullable="true" />
+    <Property Type="Boolean" Name="wifi" Nullable="true" />
+    <Property Type="Boolean" Name="pingpong" Nullable="true" />
+    <Property Type="Boolean" Name="tennis" Nullable="true" />
+    <Property Type="Boolean" Name="transat" Nullable="true" />
+    <Property Type="Boolean" Name="cuisineEq" Nullable="true" />
+    <Property Type="Boolean" Name="machineALaver" Nullable="true" />
+    <Property Type="Boolean" Name="jardin" Nullable="true" />
+    <Property Type="Boolean" Name="parking" Nullable="true" />
+    <Property Type="Int32" Name="sdb" Nullable="true" />
+    <Property Type="Int32" Name="salon" Nullable="true" />
+    <Property Type="Int32" Name="sam" Nullable="true" />
+    <Property Type="Int32" Name="toilette" Nullable="true" />
+    <Property Type="Int32" Name="cuisine" Nullable="true" />
+    <Property Type="Int32" Name="chambre" Nullable="true" />
+    <Property Type="Int32" Name="dressing" Nullable="true" />
+    <Property Type="Int32" Name="veranda" Nullable="true" />
+    <Property Type="String" Name="pays" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="ville" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="rue" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="num" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="inMembre" Nullable="true" />
+    <Property Type="Int32" Name="tarifNuit" Nullable="true" />
+    <Property Type="Int32" Name="tarifNett" Nullable="true" />
+    <Property Type="Decimal" Name="noteM" Nullable="true" Precision="2" Scale="2" />
+    <Property Type="String" Name="libelle" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="photo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="nbPersMax" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="RechercheDatePasDispo_Result">
+    <Property Type="Int32" Name="num" Nullable="true" />
+    <Property Type="DateTime" Name="dateOcc" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="getMyLocations_Result">
+    <Property Type="Int32" Name="idLocation" Nullable="true" />
+    <Property Type="DateTime" Name="dateEnregistrement" Nullable="true" />
+    <Property Type="Int32" Name="idBien" Nullable="true" />
+    <Property Type="DateTime" Name="dateArrivee" Nullable="true" />
+    <Property Type="DateTime" Name="dateDepart" Nullable="true" />
+    <Property Type="Int32" Name="nbNuit" Nullable="true" />
+    <Property Type="String" Name="adresse" Nullable="true" MaxLength="75" />
+    <Property Type="String" Name="photo" Nullable="true" MaxLength="250" />
+    <Property Type="Boolean" Name="estCommente" Nullable="true" />
+    <Property Type="Boolean" Name="estNote" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="detailBienWithIde_Result">
+    <Property Type="Int32" Name="idBien" Nullable="false" />
+    <Property Type="String" Name="BIEN_Pays" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_ville" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_rue" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_numero" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="idMembre" Nullable="false" />
+    <Property Type="Int32" Name="BIEN_tarifParNuit" Nullable="false" />
+    <Property Type="Int32" Name="BIEN_tarifNettoyage" Nullable="false" />
+    <Property Type="Double" Name="BIEN_noteMoyenne" Nullable="true" />
+    <Property Type="String" Name="BIEN_libelle" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="BIEN_photo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="BIEN_nbMaxPersonnes" Nullable="false" />
+    <Property Type="Boolean" Name="bbq" Nullable="false" />
+    <Property Type="Boolean" Name="piscine" Nullable="false" />
+    <Property Type="Boolean" Name="jacuzzi" Nullable="false" />
+    <Property Type="Boolean" Name="sauna" Nullable="false" />
+    <Property Type="Boolean" Name="tv" Nullable="false" />
+    <Property Type="Boolean" Name="teledistribution" Nullable="false" />
+    <Property Type="Boolean" Name="wifi" Nullable="false" />
+    <Property Type="Boolean" Name="pingpong" Nullable="false" />
+    <Property Type="Boolean" Name="tennis" Nullable="false" />
+    <Property Type="Boolean" Name="transat" Nullable="false" />
+    <Property Type="Boolean" Name="cuisine_equipee" Nullable="false" />
+    <Property Type="Boolean" Name="machine_a_laver" Nullable="false" />
+    <Property Type="Boolean" Name="jardin" Nullable="false" />
+    <Property Type="Boolean" Name="parking" Nullable="false" />
+    <Property Type="Int32" Name="salleDeBain" Nullable="false" />
+    <Property Type="Int32" Name="salon" Nullable="false" />
+    <Property Type="Int32" Name="sallaAManger" Nullable="false" />
+    <Property Type="Int32" Name="toilette" Nullable="false" />
+    <Property Type="Int32" Name="cuisine" Nullable="false" />
+    <Property Type="Int32" Name="chambre" Nullable="false" />
+    <Property Type="Int32" Name="dressing" Nullable="false" />
+    <Property Type="Int32" Name="veranda" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetFiveLastComment_Result">
+    <Property Type="Int32" Name="idCommentaire" Nullable="true" />
+    <Property Type="Int32" Name="idBien" Nullable="true" />
+    <Property Type="String" Name="libelle" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="dateComment" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="BigSearchBiens_Result">
+    <Property Type="Int32" Name="idBien" Nullable="true" />
+    <Property Type="Boolean" Name="bbq" Nullable="true" />
+    <Property Type="Boolean" Name="piscine" Nullable="true" />
+    <Property Type="Boolean" Name="jacuzzi" Nullable="true" />
+    <Property Type="Boolean" Name="sauna" Nullable="true" />
+    <Property Type="Boolean" Name="tv" Nullable="true" />
+    <Property Type="Boolean" Name="teleDis" Nullable="true" />
+    <Property Type="Boolean" Name="wifi" Nullable="true" />
+    <Property Type="Boolean" Name="pingpong" Nullable="true" />
+    <Property Type="Boolean" Name="tennis" Nullable="true" />
+    <Property Type="Boolean" Name="transat" Nullable="true" />
+    <Property Type="Boolean" Name="cuisineEq" Nullable="true" />
+    <Property Type="Boolean" Name="machineALaver" Nullable="true" />
+    <Property Type="Boolean" Name="jardin" Nullable="true" />
+    <Property Type="Boolean" Name="parking" Nullable="true" />
+    <Property Type="Int32" Name="sdb" Nullable="true" />
+    <Property Type="Int32" Name="salon" Nullable="true" />
+    <Property Type="Int32" Name="sam" Nullable="true" />
+    <Property Type="Int32" Name="toilette" Nullable="true" />
+    <Property Type="Int32" Name="cuisine" Nullable="true" />
+    <Property Type="Int32" Name="chambre" Nullable="true" />
+    <Property Type="Int32" Name="dressing" Nullable="true" />
+    <Property Type="Int32" Name="veranda" Nullable="true" />
+    <Property Type="String" Name="pays" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="ville" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="rue" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="num" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="inMembre" Nullable="true" />
+    <Property Type="Int32" Name="tarifNuit" Nullable="true" />
+    <Property Type="Int32" Name="tarifNett" Nullable="true" />
+    <Property Type="Double" Name="noteM" Nullable="true" />
+    <Property Type="String" Name="libelle" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="photo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="nbPersMax" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DreamHollidayModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DreamHollidayModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DreamHollidayModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="DreamHollidayModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="DreamHollidayModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="DreamHollidayModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="BIEN">
+    <Key>
+      <PropertyRef Name="idBien" />
+    </Key>
+    <Property Name="idBien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BIEN_Pays" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="BIEN_ville" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="BIEN_rue" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="BIEN_numero" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="idMembre" Type="Int32" Nullable="false" />
+    <Property Name="BIEN_tarifParNuit" Type="Int32" Nullable="false" />
+    <Property Name="BIEN_tarifNettoyage" Type="Int32" Nullable="false" />
+    <Property Name="BIEN_noteMoyenne" Type="Double" />
+    <Property Name="BIEN_libelle" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="BIEN_photo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="BIEN_nbMaxPersonnes" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MEMBRE" Relationship="DreamHollidayModel.FK_BIEN_MEMBRE" FromRole="BIEN" ToRole="MEMBRE" />
+    <NavigationProperty Name="LOCATION" Relationship="DreamHollidayModel.FK_LOCATION_BIEN" FromRole="BIEN" ToRole="LOCATION" />
+    <NavigationProperty Name="OPTIONS" Relationship="DreamHollidayModel.FK_OPTIONS_BIEN" FromRole="BIEN" ToRole="OPTIONS" />
+    <NavigationProperty Name="PIECE" Relationship="DreamHollidayModel.FK_PIECE_BIEN" FromRole="BIEN" ToRole="PIECE" />
+  </EntityType>
+  <EntityType Name="COMMENTAIRE">
+    <Key>
+      <PropertyRef Name="idCommentaire" />
+    </Key>
+    <Property Name="idCommentaire" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idBien" Type="Int32" Nullable="false" />
+    <Property Name="idMembre" Type="Int32" Nullable="false" />
+    <Property Name="COMM_libelle" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="COMM_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idLocation" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="LOCATION" Relationship="DreamHollidayModel.FK_COMMENTAIRE_LOCATION" FromRole="COMMENTAIRE" ToRole="LOCATION" />
+  </EntityType>
+  <EntityType Name="LOCATION">
+    <Key>
+      <PropertyRef Name="idLocation" />
+    </Key>
+    <Property Name="idLocation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idBien" Type="Int32" Nullable="false" />
+    <Property Name="idMembre" Type="Int32" Nullable="false" />
+    <Property Name="LOC_dateEnregistrement" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LOC_estCommente" Type="Boolean" Nullable="false" />
+    <Property Name="LOC_estNote" Type="Boolean" Nullable="false" />
+    <Property Name="LOC_dateArrivee" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LOC_dateDepart" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LOC_nbNuits" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BIEN" Relationship="DreamHollidayModel.FK_LOCATION_BIEN" FromRole="LOCATION" ToRole="BIEN" />
+    <NavigationProperty Name="COMMENTAIRE" Relationship="DreamHollidayModel.FK_COMMENTAIRE_LOCATION" FromRole="LOCATION" ToRole="COMMENTAIRE" />
+    <NavigationProperty Name="MEMBRE" Relationship="DreamHollidayModel.FK_LOCATION_MEMBRE" FromRole="LOCATION" ToRole="MEMBRE" />
+    <NavigationProperty Name="NOTE" Relationship="DreamHollidayModel.FK_NOTE_LOCATION" FromRole="LOCATION" ToRole="NOTE" />
+  </EntityType>
+  <EntityType Name="MEMBRE">
+    <Key>
+      <PropertyRef Name="idMembre" />
+    </Key>
+    <Property Name="idMembre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MEM_mail" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MEM_nom" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MEM_prenom" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MEM_adresse" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MEM_dateDeNaissance" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MEM_telephone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="MEM_propriétaire" Type="Boolean" Nullable="false" />
+    <Property Name="MEM_Photo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BIEN" Relationship="DreamHollidayModel.FK_BIEN_MEMBRE" FromRole="MEMBRE" ToRole="BIEN" />
+    <NavigationProperty Name="LOCATION" Relationship="DreamHollidayModel.FK_LOCATION_MEMBRE" FromRole="MEMBRE" ToRole="LOCATION" />
+  </EntityType>
+  <EntityType Name="MESSAGE">
+    <Key>
+      <PropertyRef Name="idMessage" />
+    </Key>
+    <Property Name="idMessage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MES_nom" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="MES_prenom" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="MES_mail" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="MES_Sujet" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MES_message" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MES_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MES_MEM_idMembre" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NOTE">
+    <Key>
+      <PropertyRef Name="NOTE_note" />
+      <PropertyRef Name="idLocation" />
+    </Key>
+    <Property Name="NOTE_note" Type="Double" Nullable="false" />
+    <Property Name="idMembre" Type="Int32" Nullable="false" />
+    <Property Name="idBien" Type="Int32" Nullable="false" />
+    <Property Name="NOTE_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idLocation" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="LOCATION" Relationship="DreamHollidayModel.FK_NOTE_LOCATION" FromRole="NOTE" ToRole="LOCATION" />
+  </EntityType>
+  <EntityType Name="OPTIONS">
+    <Key>
+      <PropertyRef Name="idBien" />
+    </Key>
+    <Property Name="idBien" Type="Int32" Nullable="false" />
+    <Property Name="bbq" Type="Boolean" Nullable="false" />
+    <Property Name="piscine" Type="Boolean" Nullable="false" />
+    <Property Name="jacuzzi" Type="Boolean" Nullable="false" />
+    <Property Name="sauna" Type="Boolean" Nullable="false" />
+    <Property Name="tv" Type="Boolean" Nullable="false" />
+    <Property Name="teledistribution" Type="Boolean" Nullable="false" />
+    <Property Name="wifi" Type="Boolean" Nullable="false" />
+    <Property Name="pingpong" Type="Boolean" Nullable="false" />
+    <Property Name="tennis" Type="Boolean" Nullable="false" />
+    <Property Name="transat" Type="Boolean" Nullable="false" />
+    <Property Name="cuisine_equipee" Type="Boolean" Nullable="false" />
+    <Property Name="machine_a_laver" Type="Boolean" Nullable="false" />
+    <Property Name="jardin" Type="Boolean" Nullable="false" />
+    <Property Name="parking" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BIEN" Relationship="DreamHollidayModel.FK_OPTIONS_BIEN" FromRole="OPTIONS" ToRole="BIEN" />
+  </EntityType>
+  <EntityType Name="PIECE">
+    <Key>
+      <PropertyRef Name="idBien" />
+    </Key>
+    <Property Name="idBien" Type="Int32" Nullable="false" />
+    <Property Name="salleDeBain" Type="Int32" Nullable="false" />
+    <Property Name="salon" Type="Int32" Nullable="false" />
+    <Property Name="sallaAManger" Type="Int32" Nullable="false" />
+    <Property Name="toilette" Type="Int32" Nullable="false" />
+    <Property Name="cuisine" Type="Int32" Nullable="false" />
+    <Property Name="chambre" Type="Int32" Nullable="false" />
+    <Property Name="dressing" Type="Int32" Nullable="false" />
+    <Property Name="veranda" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BIEN" Relationship="DreamHollidayModel.FK_PIECE_BIEN" FromRole="PIECE" ToRole="BIEN" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="DreamHollidayModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DreamHollidayModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="DreamHollidayModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DreamHollidayModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BIEN_MEMBRE">
+    <End Type="DreamHollidayModel.MEMBRE" Role="MEMBRE" Multiplicity="1" />
+    <End Type="DreamHollidayModel.BIEN" Role="BIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEMBRE">
+        <PropertyRef Name="idMembre" />
+      </Principal>
+      <Dependent Role="BIEN">
+        <PropertyRef Name="idMembre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOCATION_BIEN">
+    <End Type="DreamHollidayModel.BIEN" Role="BIEN" Multiplicity="1" />
+    <End Type="DreamHollidayModel.LOCATION" Role="LOCATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BIEN">
+        <PropertyRef Name="idBien" />
+      </Principal>
+      <Dependent Role="LOCATION">
+        <PropertyRef Name="idBien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OPTIONS_BIEN">
+    <End Type="DreamHollidayModel.BIEN" Role="BIEN" Multiplicity="1" />
+    <End Type="DreamHollidayModel.OPTIONS" Role="OPTIONS" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="BIEN">
+        <PropertyRef Name="idBien" />
+      </Principal>
+      <Dependent Role="OPTIONS">
+        <PropertyRef Name="idBien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PIECE_BIEN">
+    <End Type="DreamHollidayModel.BIEN" Role="BIEN" Multiplicity="1" />
+    <End Type="DreamHollidayModel.PIECE" Role="PIECE" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="BIEN">
+        <PropertyRef Name="idBien" />
+      </Principal>
+      <Dependent Role="PIECE">
+        <PropertyRef Name="idBien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMMENTAIRE_LOCATION">
+    <End Type="DreamHollidayModel.LOCATION" Role="LOCATION" Multiplicity="1" />
+    <End Type="DreamHollidayModel.COMMENTAIRE" Role="COMMENTAIRE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOCATION">
+        <PropertyRef Name="idLocation" />
+      </Principal>
+      <Dependent Role="COMMENTAIRE">
+        <PropertyRef Name="idLocation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOCATION_MEMBRE">
+    <End Type="DreamHollidayModel.MEMBRE" Role="MEMBRE" Multiplicity="1" />
+    <End Type="DreamHollidayModel.LOCATION" Role="LOCATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEMBRE">
+        <PropertyRef Name="idMembre" />
+      </Principal>
+      <Dependent Role="LOCATION">
+        <PropertyRef Name="idMembre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOTE_LOCATION">
+    <End Type="DreamHollidayModel.LOCATION" Role="LOCATION" Multiplicity="1" />
+    <End Type="DreamHollidayModel.NOTE" Role="NOTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOCATION">
+        <PropertyRef Name="idLocation" />
+      </Principal>
+      <Dependent Role="NOTE">
+        <PropertyRef Name="idLocation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="DreamHollidayModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+    <End Type="DreamHollidayModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+  </Association>
+  <ComplexType Name="SearchBiensDispo_Result">
+    <Property Type="Int32" Name="idBien" Nullable="true" />
+    <Property Type="String" Name="pays" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="ville" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="rue" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="numero" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="idMembre" Nullable="true" />
+    <Property Type="String" Name="libelle" Nullable="true" MaxLength="500" />
+    <Property Type="Decimal" Name="noteMoyenne" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="String" Name="photo" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="tarifNettoyage" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Decimal" Name="tarifNuit" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Int32" Name="nbPersMax" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetAllMyBiens_Result">
+    <Property Type="Int32" Name="idBien" Nullable="false" />
+    <Property Type="String" Name="BIEN_Pays" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_ville" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_rue" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="BIEN_numero" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="idMembre" Nullable="false" />
+    <Property Type="Int32" Name="BIEN_tarifParNuit" Nullable="false" />
+    <Property Type="Int32" Name="BIEN_tarifNettoyage" Nullable="false" />
+    <Property Type="Double" Name="BIEN_noteMoyenne" Nullable="true" />
+    <Property Type="String" Name="BIEN_libelle" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="BIEN_photo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="BIEN_nbMaxPersonnes" Nullable="false" />
+  </ComplexType>
+</Schema>

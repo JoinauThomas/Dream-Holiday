@@ -1,0 +1,231 @@
+﻿@model IEnumerable<DreamHoliday.Models.Bien>
+
+@{
+    ViewBag.Title = "showAllBiens";
+}
+
+<h2>showAllBiens</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idBien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pays)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ville)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idMembre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tarifParNuit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tarifNettoyage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.noteMoyenne)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.libelle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nbPersonnesMax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.salleDeBain)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.salon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.salleAManger)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.toilette)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cuisine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.chambre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dressing)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.veranda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bbq)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.piscine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.jacuzzi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sauna)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.teleDistribution)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.wifi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pingpong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tennis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.transat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cuisineEquipee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.machineALaver)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.jardin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.parking)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idBien)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pays)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ville)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idMembre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tarifParNuit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tarifNettoyage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.noteMoyenne)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.libelle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.photo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nbPersonnesMax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.salleDeBain)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.salon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.salleAManger)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.toilette)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cuisine)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.chambre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dressing)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.veranda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bbq)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.piscine)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.jacuzzi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sauna)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.teleDistribution)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.wifi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pingpong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tennis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.transat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cuisineEquipee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.machineALaver)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.jardin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.parking)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -363,6 +363,39 @@
     <Parameter Name="jardin" Type="bit" Mode="In" />
     <Parameter Name="parking" Type="bit" Mode="In" />
   </Function>
+  <Function Name="addNewBiens" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pays" Type="nvarchar" Mode="In" />
+    <Parameter Name="ville" Type="nvarchar" Mode="In" />
+    <Parameter Name="rue" Type="nvarchar" Mode="In" />
+    <Parameter Name="numero" Type="nvarchar" Mode="In" />
+    <Parameter Name="idMembre" Type="int" Mode="In" />
+    <Parameter Name="tarifNuit" Type="numeric" Mode="In" />
+    <Parameter Name="tarifNettoyage" Type="numeric" Mode="In" />
+    <Parameter Name="libelle" Type="nvarchar" Mode="In" />
+    <Parameter Name="nbMaxDePers" Type="int" Mode="In" />
+    <Parameter Name="sdb" Type="int" Mode="In" />
+    <Parameter Name="salon" Type="int" Mode="In" />
+    <Parameter Name="sam" Type="int" Mode="In" />
+    <Parameter Name="toilette" Type="int" Mode="In" />
+    <Parameter Name="cuisine" Type="int" Mode="In" />
+    <Parameter Name="chambre" Type="int" Mode="In" />
+    <Parameter Name="dressing" Type="int" Mode="In" />
+    <Parameter Name="veranda" Type="int" Mode="In" />
+    <Parameter Name="bbq" Type="bit" Mode="In" />
+    <Parameter Name="piscine" Type="bit" Mode="In" />
+    <Parameter Name="jacuzzi" Type="bit" Mode="In" />
+    <Parameter Name="sauna" Type="bit" Mode="In" />
+    <Parameter Name="tv" Type="bit" Mode="In" />
+    <Parameter Name="teleDistrib" Type="bit" Mode="In" />
+    <Parameter Name="wifi" Type="bit" Mode="In" />
+    <Parameter Name="pingPong" Type="bit" Mode="In" />
+    <Parameter Name="tennis" Type="bit" Mode="In" />
+    <Parameter Name="transat" Type="bit" Mode="In" />
+    <Parameter Name="cuisineEqu" Type="bit" Mode="In" />
+    <Parameter Name="machineALaver" Type="bit" Mode="In" />
+    <Parameter Name="jardin" Type="bit" Mode="In" />
+    <Parameter Name="parking" Type="bit" Mode="In" />
+  </Function>
   <Function Name="addNewLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idBien" Type="int" Mode="In" />
     <Parameter Name="idMembre" Type="int" Mode="In" />
@@ -416,6 +449,39 @@
   </Function>
   <Function Name="detailBienWithIde" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idBien" Type="int" Mode="In" />
+  </Function>
+  <Function Name="editBien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pays" Type="nvarchar" Mode="In" />
+    <Parameter Name="ville" Type="nvarchar" Mode="In" />
+    <Parameter Name="rue" Type="nvarchar" Mode="In" />
+    <Parameter Name="numero" Type="nvarchar" Mode="In" />
+    <Parameter Name="tarifNuit" Type="numeric" Mode="In" />
+    <Parameter Name="tarifNettoyage" Type="numeric" Mode="In" />
+    <Parameter Name="libelle" Type="nvarchar" Mode="In" />
+    <Parameter Name="photo" Type="nvarchar" Mode="In" />
+    <Parameter Name="nbMaxDePers" Type="int" Mode="In" />
+    <Parameter Name="sdb" Type="int" Mode="In" />
+    <Parameter Name="salon" Type="int" Mode="In" />
+    <Parameter Name="sam" Type="int" Mode="In" />
+    <Parameter Name="toilette" Type="int" Mode="In" />
+    <Parameter Name="cuisine" Type="int" Mode="In" />
+    <Parameter Name="chambre" Type="int" Mode="In" />
+    <Parameter Name="dressing" Type="int" Mode="In" />
+    <Parameter Name="veranda" Type="int" Mode="In" />
+    <Parameter Name="bbq" Type="bit" Mode="In" />
+    <Parameter Name="piscine" Type="bit" Mode="In" />
+    <Parameter Name="jacuzzi" Type="bit" Mode="In" />
+    <Parameter Name="sauna" Type="bit" Mode="In" />
+    <Parameter Name="tv" Type="bit" Mode="In" />
+    <Parameter Name="teleDistrib" Type="bit" Mode="In" />
+    <Parameter Name="wifi" Type="bit" Mode="In" />
+    <Parameter Name="pingPong" Type="bit" Mode="In" />
+    <Parameter Name="tennis" Type="bit" Mode="In" />
+    <Parameter Name="transat" Type="bit" Mode="In" />
+    <Parameter Name="cuisineEqu" Type="bit" Mode="In" />
+    <Parameter Name="machineALaver" Type="bit" Mode="In" />
+    <Parameter Name="jardin" Type="bit" Mode="In" />
+    <Parameter Name="parking" Type="bit" Mode="In" />
   </Function>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="GetAllMyBiens" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">

@@ -271,6 +271,15 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Créer.
+        /// </summary>
+        public static string creer {
+            get {
+                return ResourceManager.GetString("creer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à cuisine.
         /// </summary>
         public static string cuisine {

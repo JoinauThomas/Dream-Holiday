@@ -1,0 +1,179 @@
+﻿
+
+<div style="margin-top:5%; margin-bottom:5%" class="col-md-12"><img src="~/img/images/menuPrincipal2.jpg" width="100%" /></div>
+
+<h1>@Resource.TitreHome</h1>
+@{
+    if (Session["monCompte"] != null)
+    {
+        DreamHoliday.Models.Membre moi = (DreamHoliday.Models.Membre)Session["monCompte"];
+        string nom = moi.nom;
+        string prenom = moi.prenom;
+        <h2>@prenom @nom</h2>
+    }
+}
+
+
+
+<div class="jumbotron" id="intro_home">
+    @Resource.Bienvenue01<br />
+    @Resource.Bienvenue02
+    
+</div>
+
+
+
+<div class="jumbotron">
+    <h1>@Resource.trouvezVacDeReve</h1>
+
+    <div class="col-md-offset-1 col-md-10">
+        <div class="col-lg-3, col-md-3">
+            <label>@Resource.paysOuVille :</label> <br>
+            <input type="text" id="paysOuVille" class="form-control">
+        </div>
+        <div class="col-lg-3, col-md-3">
+            <label>@Resource.DateArrivees :</label> <br>
+            <input type="date" id="dateDepart" class="form-control">
+        </div>
+        <div class="col-lg-3, col-md-3">
+            <label>@Resource.DateRetour :</label> <br>
+            <input type="date" id="dateRetour" class="form-control">
+        </div>
+        <div class="col-lg-3, col-md-3">
+            <label>@Resource.nbreDePers :</label> <br>
+            <input type="text" id="nbPers" class="form-control">
+        </div>
+    </div>
+    <br />
+    <button id="btnSearchBien" type="button" class="btn btn-info row" style="margin-top:30px; margin-bottom:20px; margin-left:30%; width:40%;"><i class="material-icons">search</i> @Resource.Rechercher </button>
+    <br />
+
+
+</div>
+
+<img id="chargement" src="~/img/loaders/ajax-loader.gif" style="display: none" alt="Chargement en cours..." class="col-md-offset-5 col-md-2 col-md-offset-5"/>
+<div id="test"></div>
+
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryui-datepicker-fr")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <script type="text/javascript">
+
+
+       // initialisation du premier datePicker
+
+            $('#dateDepart').datepicker({
+                dateFormat: "dd/mm/yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-10:+3",
+                showAnim: "bounce",
+                minDate:0
+            });
+
+
+        // initialisation du deuxieme datePicker
+          
+            $('#dateRetour').datepicker({
+                dateFormat: "dd/mm/yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-10:+3",
+                showAnim: "bounce",
+                minDate:0
+        });
+
+            $('#dateDepart').change(function () {
+                var v = $('#dateDepart').val();
+                $('#dateRetour').datepicker("option", "minDate", v);
+               
+            });
+
+            $('#dateRetour').change(function () {
+                var c = $('#dateRetour').val();
+              
+                    ;            })
+
+        // récupération et affichage de la liste des biens disponibles + affichage du chargement
+
+        $('#btnSearchBien').click(function () {
+            $("#chargement").show();
+            var a = $('#paysOuVille').val();
+            var b = $('#dateDepart').val();
+            var c = $('#dateRetour').val();
+            $.ajax({
+                type: 'POST',
+                datatype: 'html',
+                url: '@Url.Action("SearchBienss", "Bien")',
+                data: { paysOuVille: $('#paysOuVille').val(), dateDepart: $('#dateDepart').val(), dateRetour: $('#dateRetour').val(), nbPers: $('#nbPers').val() },
+                success:
+                function (response) {
+                    $("#chargement").hide();
+                    $('#test').html(response);
+                },
+                error:
+                function () {
+                    $("#chargement").hide();
+                    alert("un problème a été détecté...");
+                }
+            })
+        });
+
+
+
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="jumbotron">
+        <h1>aaa</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Getting started</h2>
+            <p>
+                ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
+                a broad range of clients, including browsers and mobile devices. ASP.NET Web API
+                is an ideal platform for building RESTful applications on the .NET Framework.
+            </p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
+        </div>
+    </div>*@

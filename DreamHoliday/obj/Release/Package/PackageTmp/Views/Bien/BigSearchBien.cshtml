@@ -1,0 +1,340 @@
+﻿@model DreamHoliday.Models.Model_FormBigSearchBien
+
+@{
+    ViewBag.Title = "BigSearchBien";
+}
+
+<h2></h2>
+
+<form id="formSearch">
+
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-horizontal formSearch row">
+        <h4>Chercher un bien</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-md-12 jumbotron">
+            <div class="col-md-12" style="margin-bottom:4%">
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.paysOuVille, htmlAttributes: new { @class = "control-label col-md-5" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.paysOuVille, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.paysOuVille, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="col-md-6 ">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.tarifParNuit, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.tarifParNuit, new { htmlAttributes = new { @class = "form-control", @Value = 0, @min = "0" } })
+                            @Html.ValidationMessageFor(model => model.tarifParNuit, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.noteMoyenne, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.noteMoyenne, new { htmlAttributes = new { @class = "form-control", @Value = 0, @min = "0" } })
+                            @Html.ValidationMessageFor(model => model.noteMoyenne, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.nbPersonnesMax, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.nbPersonnesMax, new { htmlAttributes = new { @class = "form-control", @Value = 0, @min = "0" } })
+                            @Html.ValidationMessageFor(model => model.nbPersonnesMax, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.salleDeBain, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.salleDeBain, new { htmlAttributes = new { @class = "form-control", @Value = 0, @min = "0" } })
+                            @Html.ValidationMessageFor(model => model.salleDeBain, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.toilette, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.toilette, new { htmlAttributes = new { @class = "form-control", @Value = 0, @min = "0" } })
+                            @Html.ValidationMessageFor(model => model.toilette, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.chambre, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.chambre, new { htmlAttributes = new { @class = "form-control", @Value = 0, @min = "0" } })
+                            @Html.ValidationMessageFor(model => model.chambre, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+
+
+
+
+        @*  le bloc OPTION pour la recherche  *@
+
+        <div class="col-md-12 row jumbotron" id="blocOptions">
+            <div class="col-md-3">
+                <ul>
+                    <li>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.bbq, htmlAttributes: new { @class = "control-label col-md-8 filled-in" })
+                            <div class="col-md-2">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.bbq)
+                                    @Html.ValidationMessageFor(model => model.bbq, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.piscine, htmlAttributes: new { @class = "control-label col-md-8 filled-in" })
+                            <div class="col-md-2">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.piscine)
+                                    @Html.ValidationMessageFor(model => model.piscine, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.jacuzzi, htmlAttributes: new { @class = "control-label col-md-8" })
+                            <div class="col-md-2">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.jacuzzi)
+                                    @Html.ValidationMessageFor(model => model.jacuzzi, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.sauna, htmlAttributes: new { @class = "control-label col-md-8" })
+                            <div class="col-md-2">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.sauna)
+                                    @Html.ValidationMessageFor(model => model.sauna, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <ul>
+                    <li>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.tv, htmlAttributes: new { @class = "control-label col-md-8" })
+                            <div class="col-md-2">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.tv)
+                                    @Html.ValidationMessageFor(model => model.tv, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.teleDistribution, htmlAttributes: new { @class = "control-label col-md-8" })
+                            <div class="col-md-2">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.teleDistribution)
+                                    @Html.ValidationMessageFor(model => model.teleDistribution, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.wifi, htmlAttributes: new { @class = "control-label col-md-8" })
+                            <div class="col-md-2">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.wifi)
+                                    @Html.ValidationMessageFor(model => model.wifi, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pingpong, htmlAttributes: new { @class = "control-label col-md-8" })
+                            <div class="col-md-2">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.pingpong)
+                                    @Html.ValidationMessageFor(model => model.pingpong, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <ul>
+                    <li>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.tennis, htmlAttributes: new { @class = "control-label col-md-8" })
+                            <div class="col-md-2">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.tennis)
+                                    @Html.ValidationMessageFor(model => model.tennis, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.transat, htmlAttributes: new { @class = "control-label col-md-8" })
+                            <div class="col-md-2">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.transat)
+                                    @Html.ValidationMessageFor(model => model.transat, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.cuisineEquipee, htmlAttributes: new { @class = "control-label col-md-8" })
+                            <div class="col-md-2">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.cuisineEquipee)
+                                    @Html.ValidationMessageFor(model => model.cuisineEquipee, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.machineALaver, htmlAttributes: new { @class = "control-label col-md-8" })
+                            <div class="col-md-2">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.machineALaver)
+                                    @Html.ValidationMessageFor(model => model.machineALaver, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <ul>
+                    <li>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.jardin, htmlAttributes: new { @class = "control-label col-md-8" })
+                            <div class="col-md-2">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.jardin)
+                                    @Html.ValidationMessageFor(model => model.jardin, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.parking, htmlAttributes: new { @class = "control-label col-md-8" })
+                            <div class="col-md-2">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.parking)
+                                    @Html.ValidationMessageFor(model => model.parking, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="row" >
+
+            <input type="button" id="envoiForm" value="rechercher" class=" btn-default col-md-12" />
+    </div>
+
+</form>
+
+<div class="row">
+    @Html.ActionLink("retour au menu principal", "Index", "Home")
+</div>
+<img id="chargement" src="~/img/loaders/ajax-loader.gif" style="display: none" alt="Chargement en cours..." class="col-md-offset-5 col-md-2 col-md-offset-5" />
+<div id="table"></div>
+<div id="ModalBigSearch" class="modals" style="display:none">
+    <p class="modal-contents">@Resource.Error_tableVide</p>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryui-datepicker-fr")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <script type="text/javascript">
+
+        // récupere les infos du formulaire et recupere la liste des biens dispos //
+
+        $('#envoiForm').click(function () {
+            $("#chargement").show();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("BigSearchBien", "Bien")',
+                data: $("#formSearch").serialize(),
+                success:
+                function (response) {
+                    var res = (response.length);
+                    if (res == 308)
+                    {
+                        $("#chargement").hide();
+                        $('#table').html("");
+                        $('#ModalBigSearch').dialog({
+                            resizable: false,
+                            height: "auto",
+                            width: "400",
+                            modal: true,
+                            title: '@Resource.desole',
+                            
+                            buttons: {
+                                "ok": function () { $(this).dialog("close") }
+                            }
+                        });
+                        
+                    }
+                    else
+                    {
+                        $("#chargement").hide();
+                        $('#table').html(response);
+                    }
+                },
+                Error:
+                function () {
+                    alert("pas ok");
+                }
+                
+            });
+        });
+
+
+    </script>
+
+}

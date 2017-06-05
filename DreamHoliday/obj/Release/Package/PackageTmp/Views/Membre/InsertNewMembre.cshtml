@@ -1,0 +1,226 @@
+﻿@model DreamHoliday.Models.Membre
+
+@{
+    ViewBag.Title = "InsertNewMembre";
+}
+
+<h2>@Resource.enregistrezVsIci </h2>
+<hr />
+<input id="lang" value="@Request.Cookies["_culture"].Value" style="display:none"/>
+
+@using (Html.BeginForm("InsertNewMembre", "Membre", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal col-md-12">
+        <div class="col-md-2">
+            <img id="preview" src="~/img/Membres/photo000.jpg" alt="your image" style="width:200px" />
+        </div>
+        <div class="col-md-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.photo, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    <input type="file" name="monfichier" value="photooo" id="imgInp" />
+
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.mail, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.password1, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.password1, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.password1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.password2, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.password2, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.password2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.nom, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.nom, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.nom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.prenom, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.prenom, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.prenom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.adresse, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.adresse, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.adresse, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.dateDeNaissance, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9" style="display:inline">
+                    @Html.EditorFor(model => model.dateDeNaissance, new { htmlAttributes = new { @class = "form-control", @style = "display:none" } })
+                    @Html.ValidationMessageFor(model => model.dateDeNaissance, "", new { @class = "text-danger" })
+
+                    <input type="number" placeholder="@Resource.jour" id="jour" name="jour" min="01" max="31" class="form-control_bis dateAnnif col-md-2"  />
+                    <input type="number" placeholder="@Resource.mois" id="mois" name="mois" min="1" max="12" class="form-control_bis dateAnnif col-md-offset-0 col-md-2"  />
+                    <input type="number" placeholder="@Resource.annee" id="annee" name="annee" min="1900" class="form-control_bis dateAnnif col-md-offset-0 col-md-2"  />
+                </div>
+            </div>
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.dateDeNaissance, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.dateDeNaissance, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.dateDeNaissance, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.telephone, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.telephone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.telephone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value=@Resource.btnNvMembre class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+}
+
+<div class="row">
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryui")
+
+    <script type="text/javascript">
+
+        function testBisextile(Year) {
+            return (((Year & 3) == 0) && ((Year % 100 != 0) || (Year % 400 == 0)));
+        }
+
+        $('.dateAnnif').change(function () {
+
+            var jour = $('#jour').val();
+            var mois = $('#mois').val();
+            var annee = $('#annee').val();
+
+            var j = false;
+            var m = false;
+            var a = false;
+
+
+
+            if (jour != 0 && mois != 0 && annee != 0)
+            {
+                if (((mois == 4 || mois == 6 || mois == 9 || mois == 11) && jour == 31) || (mois == 2 && testBisextile(annee) && jour > 29) || (mois == 2 && !testBisextile(annee) && jour > 28)) {
+                    $('#jour').css("border-color", "red");
+                    $('#mois').css("border-color", "red");
+                    $('#annee').css("border-color", "red");
+                }
+                else {
+                    if (jour > 31 || jour < 0) {
+                        $('#jour').css("border-color", "red");
+                    }
+                    else
+                    {
+                        $('#jour').css("border-color", "green");
+                        j = true;
+                    }
+                    if (mois > 12 || mois < 0) {
+                        $('#mois').css("border-color", "red");
+                    }
+                    else
+                    {
+                        $('#mois').css("border-color", "green");
+                        m = true;
+                    }
+                    if (annee < 1900) {
+                        $('#annee').css("border-color", "red");
+                    }
+                    else {
+                        $('#annee').css("border-color", "green");
+                        a = true;
+                    }
+                }
+
+            }
+
+            if (j == true, m == true, a == true)
+            {
+                var lang = $('#lang').val();
+                if (lang == "fr")
+                {
+                    var dateNaiss = jour + "/" + mois + "/" + annee;
+                    var a = new Date()
+                    $('#dateDeNaissance').val(dateNaiss);
+                }
+                else
+                {
+                    var dateNaiss = mois + "/" + jour + "/" + annee;
+                    var a = new Date()
+                    $('#dateDeNaissance').val(dateNaiss);
+                }
+                
+                
+            }
+        }
+        )
+
+
+        $('#dateDeNaissance').datepicker({
+            dateFormat: "dd/mm/yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-100:+0",
+            showTime: false,
+            showAnim: "bounce"
+        });
+        $.datepicker.setDefaults($.datepicker.regional['fr']);
+
+
+        // récupere l'image pour l'afficher en preview
+
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#preview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function () {
+            readURL(this);
+        });
+    </script>
+}

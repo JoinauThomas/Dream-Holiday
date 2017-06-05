@@ -19,20 +19,47 @@ namespace DreamHoliday.Controllers
         [HttpPost]
         [Authorize]
         [Route("PostNewBien")]
-        public IHttpActionResult PostNewBien(Bien nvBien)
+        public int PostNewBien(Bien nvBien)
         {
+            int idNvBien = 0;
             if (!ModelState.IsValid)
             {
-                return BadRequest("ERREUR, le formulaire a ete mal rempli!!!");
+                return idNvBien;
             }
             else
             {
                 DreamHollidayEntities dbContext = new DreamHollidayEntities();
-                dbContext.addNewBien(nvBien.pays, nvBien.ville, nvBien.rue, nvBien.numero, nvBien.idMembre, nvBien.tarifParNuit,
+                List<DAL.addNewBiens_Result> monNvBienDB = new List< addNewBiens_Result>();
+                monNvBienDB = dbContext.addNewBiens(nvBien.pays, nvBien.ville, nvBien.rue, nvBien.numero, nvBien.idMembre, nvBien.tarifParNuit,
                     nvBien.tarifNettoyage, nvBien.libelle, nvBien.nbPersonnesMax, nvBien.salleDeBain, nvBien.salon,
                     nvBien.salleAManger, nvBien.toilette, nvBien.cuisine, nvBien.chambre, nvBien.dressing, nvBien.veranda,
                     nvBien.bbq, nvBien.piscine, nvBien.jacuzzi, nvBien.sauna, nvBien.tv, nvBien.teleDistribution, nvBien.wifi,
-                    nvBien.pingpong, nvBien.tennis, nvBien.transat, nvBien.cuisineEquipee, nvBien.machineALaver, nvBien.jardin, nvBien.parking);
+                    nvBien.pingpong, nvBien.tennis, nvBien.transat, nvBien.cuisineEquipee, nvBien.machineALaver, nvBien.jardin, nvBien.parking).ToList();
+                foreach(var x in monNvBienDB)
+                {
+                    idNvBien = x.idBien;
+                }
+                return idNvBien;
+            }
+        }
+
+        [HttpPost]
+        [Authorize]
+        [Route("EditBien")]
+        public IHttpActionResult EditBien(Bien monBien)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("ERREUR dans le formulaire");
+            }
+            else
+            {
+                DreamHollidayEntities dbContext = new DreamHollidayEntities();
+                dbContext.editBien(monBien.pays, monBien.ville, monBien.rue, monBien.numero, monBien.tarifParNuit,
+                    monBien.tarifNettoyage, monBien.libelle, monBien.photo, monBien.nbPersonnesMax, monBien.salleDeBain, monBien.salon,
+                    monBien.salleAManger, monBien.toilette, monBien.cuisine, monBien.chambre, monBien.dressing, monBien.veranda,
+                    monBien.bbq, monBien.piscine, monBien.jacuzzi, monBien.sauna, monBien.tv, monBien.teleDistribution, monBien.wifi,
+                    monBien.pingpong, monBien.tennis, monBien.transat, monBien.cuisineEquipee, monBien.machineALaver, monBien.jardin, monBien.parking);
                 return Ok();
             }
         }

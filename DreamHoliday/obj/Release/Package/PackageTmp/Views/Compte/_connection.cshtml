@@ -1,0 +1,73 @@
+﻿
+@model DreamHoliday.Models.identification
+
+    
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    var i = 0;
+    string message = (string)Session["message"];
+
+    if (Session["probleme"] != null)
+    {
+        i = (int)Session["probleme"];
+        Session["probleme"] = null;
+        Session["message"] = null;
+    }
+    <input id="prob", value="@i" style="display:none" />
+    <div id="messageErreur" style="display:none; background-color:orange">
+        <p>@message</p>
+    </div>
+
+    <div class="form-horizontal">
+        <h4>identification</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:5%">
+            <div class="col-md-offset-2 col-md-10">
+                <input  type="submit" value="se connecter" class="btn btn-default col-md-3" />
+                <a class="col-md-push-1 col-md-1">@Html.ActionLink("nouveau membre", "InsertNewMembre", "Membre", new { area = "" }, null)</a>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("retour", "Index", "Home")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery-ui")
+    <script>
+
+        var prob = $('#prob').val();
+        if (prob == 1)
+        {
+            $(function () {
+                $("#messageErreur").dialog({
+                    modal: true,
+                    title: "connection impossible",
+                });
+            })
+        }
+        
+    </script>
+}

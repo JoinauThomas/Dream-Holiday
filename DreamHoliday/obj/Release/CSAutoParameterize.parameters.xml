@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Chaîne de connexion utilisée dans web.config par l’application pour accéder à la base de données." defaultValue="Data Source=(local);Initial Catalog=DreamHolliday;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\tjoin\\OneDrive\\EPHEC\\3eme\\Projet\ d'intégration\\projet\\Dream-Holiday\\DreamHoliday\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="DreamHollidayEntities-Web.config Connection String" description="DreamHollidayEntities Chaîne de connexion utilisée dans web.config par l’application pour accéder à la base de données." defaultValue="metadata=res://*/DAL.DreamHolidayDB.csdl|res://*/DAL.DreamHolidayDB.ssdl|res://*/DAL.DreamHolidayDB.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(local);initial catalog=DreamHolliday;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\tjoin\\OneDrive\\EPHEC\\3eme\\Projet\ d'intégration\\projet\\Dream-Holiday\\DreamHoliday\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DreamHollidayEntities']/@connectionString" />
+  </parameter>
+</parameters>

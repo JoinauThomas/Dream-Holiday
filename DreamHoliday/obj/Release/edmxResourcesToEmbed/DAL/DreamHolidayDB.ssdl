@@ -1,0 +1,592 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DreamHollidayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BIEN">
+    <Key>
+      <PropertyRef Name="idBien" />
+    </Key>
+    <Property Name="idBien" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BIEN_Pays" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="BIEN_ville" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="BIEN_rue" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="BIEN_numero" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="idMembre" Type="int" Nullable="false" />
+    <Property Name="BIEN_tarifParNuit" Type="int" Nullable="false" />
+    <Property Name="BIEN_tarifNettoyage" Type="int" Nullable="false" />
+    <Property Name="BIEN_noteMoyenne" Type="float" />
+    <Property Name="BIEN_libelle" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="BIEN_photo" Type="nvarchar" MaxLength="250" />
+    <Property Name="BIEN_nbMaxPersonnes" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="COMMENTAIRE">
+    <Key>
+      <PropertyRef Name="idCommentaire" />
+    </Key>
+    <Property Name="idCommentaire" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idBien" Type="int" Nullable="false" />
+    <Property Name="idMembre" Type="int" Nullable="false" />
+    <Property Name="COMM_libelle" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="COMM_date" Type="datetime" Nullable="false" />
+    <Property Name="idLocation" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LOCATION">
+    <Key>
+      <PropertyRef Name="idLocation" />
+    </Key>
+    <Property Name="idLocation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idBien" Type="int" Nullable="false" />
+    <Property Name="idMembre" Type="int" Nullable="false" />
+    <Property Name="LOC_dateEnregistrement" Type="datetime" Nullable="false" />
+    <Property Name="LOC_estCommente" Type="bit" Nullable="false" />
+    <Property Name="LOC_estNote" Type="bit" Nullable="false" />
+    <Property Name="LOC_dateArrivee" Type="datetime" Nullable="false" />
+    <Property Name="LOC_dateDepart" Type="datetime" Nullable="false" />
+    <Property Name="LOC_nbNuits" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MEMBRE">
+    <Key>
+      <PropertyRef Name="idMembre" />
+    </Key>
+    <Property Name="idMembre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MEM_mail" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="MEM_nom" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="MEM_prenom" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="MEM_adresse" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="MEM_dateDeNaissance" Type="datetime" Nullable="false" />
+    <Property Name="MEM_telephone" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="MEM_propriétaire" Type="bit" Nullable="false" />
+    <Property Name="MEM_Photo" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="MESSAGE">
+    <Key>
+      <PropertyRef Name="idMessage" />
+    </Key>
+    <Property Name="idMessage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MES_nom" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="MES_prenom" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="MES_mail" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="MES_Sujet" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MES_message" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="MES_date" Type="date" Nullable="false" />
+    <Property Name="MES_MEM_idMembre" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NOTE">
+    <Key>
+      <PropertyRef Name="NOTE_note" />
+      <PropertyRef Name="idLocation" />
+    </Key>
+    <Property Name="NOTE_note" Type="float" Nullable="false" />
+    <Property Name="idMembre" Type="int" Nullable="false" />
+    <Property Name="idBien" Type="int" Nullable="false" />
+    <Property Name="NOTE_date" Type="datetime" Nullable="false" />
+    <Property Name="idLocation" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OPTIONS">
+    <Key>
+      <PropertyRef Name="idBien" />
+    </Key>
+    <Property Name="idBien" Type="int" Nullable="false" />
+    <Property Name="bbq" Type="bit" Nullable="false" />
+    <Property Name="piscine" Type="bit" Nullable="false" />
+    <Property Name="jacuzzi" Type="bit" Nullable="false" />
+    <Property Name="sauna" Type="bit" Nullable="false" />
+    <Property Name="tv" Type="bit" Nullable="false" />
+    <Property Name="teledistribution" Type="bit" Nullable="false" />
+    <Property Name="wifi" Type="bit" Nullable="false" />
+    <Property Name="pingpong" Type="bit" Nullable="false" />
+    <Property Name="tennis" Type="bit" Nullable="false" />
+    <Property Name="transat" Type="bit" Nullable="false" />
+    <Property Name="cuisine equipee" Type="bit" Nullable="false" />
+    <Property Name="machine a laver" Type="bit" Nullable="false" />
+    <Property Name="jardin" Type="bit" Nullable="false" />
+    <Property Name="parking" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PIECE">
+    <Key>
+      <PropertyRef Name="idBien" />
+    </Key>
+    <Property Name="idBien" Type="int" Nullable="false" />
+    <Property Name="salleDeBain" Type="int" Nullable="false" />
+    <Property Name="salon" Type="int" Nullable="false" />
+    <Property Name="sallaAManger" Type="int" Nullable="false" />
+    <Property Name="toilette" Type="int" Nullable="false" />
+    <Property Name="cuisine" Type="int" Nullable="false" />
+    <Property Name="chambre" Type="int" Nullable="false" />
+    <Property Name="dressing" Type="int" Nullable="false" />
+    <Property Name="veranda" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_BIEN_MEMBRE">
+    <End Role="MEMBRE" Type="Self.MEMBRE" Multiplicity="1" />
+    <End Role="BIEN" Type="Self.BIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEMBRE">
+        <PropertyRef Name="idMembre" />
+      </Principal>
+      <Dependent Role="BIEN">
+        <PropertyRef Name="idMembre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMMENTAIRE_LOCATION">
+    <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="1" />
+    <End Role="COMMENTAIRE" Type="Self.COMMENTAIRE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOCATION">
+        <PropertyRef Name="idLocation" />
+      </Principal>
+      <Dependent Role="COMMENTAIRE">
+        <PropertyRef Name="idLocation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOCATION_BIEN">
+    <End Role="BIEN" Type="Self.BIEN" Multiplicity="1" />
+    <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BIEN">
+        <PropertyRef Name="idBien" />
+      </Principal>
+      <Dependent Role="LOCATION">
+        <PropertyRef Name="idBien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOCATION_MEMBRE">
+    <End Role="MEMBRE" Type="Self.MEMBRE" Multiplicity="1" />
+    <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEMBRE">
+        <PropertyRef Name="idMembre" />
+      </Principal>
+      <Dependent Role="LOCATION">
+        <PropertyRef Name="idMembre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOTE_LOCATION">
+    <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="1" />
+    <End Role="NOTE" Type="Self.NOTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOCATION">
+        <PropertyRef Name="idLocation" />
+      </Principal>
+      <Dependent Role="NOTE">
+        <PropertyRef Name="idLocation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OPTIONS_BIEN">
+    <End Role="BIEN" Type="Self.BIEN" Multiplicity="1" />
+    <End Role="OPTIONS" Type="Self.OPTIONS" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="BIEN">
+        <PropertyRef Name="idBien" />
+      </Principal>
+      <Dependent Role="OPTIONS">
+        <PropertyRef Name="idBien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PIECE_BIEN">
+    <End Role="BIEN" Type="Self.BIEN" Multiplicity="1" />
+    <End Role="PIECE" Type="Self.PIECE" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="BIEN">
+        <PropertyRef Name="idBien" />
+      </Principal>
+      <Dependent Role="PIECE">
+        <PropertyRef Name="idBien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="addCommentAndNote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="note" Type="int" Mode="In" />
+    <Parameter Name="idLocation" Type="int" Mode="In" />
+    <Parameter Name="libelle" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="addNewBien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pays" Type="nvarchar" Mode="In" />
+    <Parameter Name="ville" Type="nvarchar" Mode="In" />
+    <Parameter Name="rue" Type="nvarchar" Mode="In" />
+    <Parameter Name="numero" Type="nvarchar" Mode="In" />
+    <Parameter Name="idMembre" Type="int" Mode="In" />
+    <Parameter Name="tarifNuit" Type="int" Mode="In" />
+    <Parameter Name="tarifNettoyage" Type="int" Mode="In" />
+    <Parameter Name="libelle" Type="nvarchar" Mode="In" />
+    <Parameter Name="nbMaxDePers" Type="int" Mode="In" />
+    <Parameter Name="sdb" Type="int" Mode="In" />
+    <Parameter Name="salon" Type="int" Mode="In" />
+    <Parameter Name="sam" Type="int" Mode="In" />
+    <Parameter Name="toilette" Type="int" Mode="In" />
+    <Parameter Name="cuisine" Type="int" Mode="In" />
+    <Parameter Name="chambre" Type="int" Mode="In" />
+    <Parameter Name="dressing" Type="int" Mode="In" />
+    <Parameter Name="veranda" Type="int" Mode="In" />
+    <Parameter Name="bbq" Type="bit" Mode="In" />
+    <Parameter Name="piscine" Type="bit" Mode="In" />
+    <Parameter Name="jacuzzi" Type="bit" Mode="In" />
+    <Parameter Name="sauna" Type="bit" Mode="In" />
+    <Parameter Name="tv" Type="bit" Mode="In" />
+    <Parameter Name="teleDistrib" Type="bit" Mode="In" />
+    <Parameter Name="wifi" Type="bit" Mode="In" />
+    <Parameter Name="pingPong" Type="bit" Mode="In" />
+    <Parameter Name="tennis" Type="bit" Mode="In" />
+    <Parameter Name="transat" Type="bit" Mode="In" />
+    <Parameter Name="cuisineEqu" Type="bit" Mode="In" />
+    <Parameter Name="machineALaver" Type="bit" Mode="In" />
+    <Parameter Name="jardin" Type="bit" Mode="In" />
+    <Parameter Name="parking" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="addNewLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idBien" Type="int" Mode="In" />
+    <Parameter Name="idMembre" Type="int" Mode="In" />
+    <Parameter Name="dateArrivee" Type="datetime" Mode="In" />
+    <Parameter Name="dateDepart" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="addNewMembre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mail" Type="nvarchar" Mode="In" />
+    <Parameter Name="nom" Type="nvarchar" Mode="In" />
+    <Parameter Name="prenom" Type="nvarchar" Mode="In" />
+    <Parameter Name="adresse" Type="nvarchar" Mode="In" />
+    <Parameter Name="dateDeNaissance" Type="datetime" Mode="In" />
+    <Parameter Name="telephone" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="addNewMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nom" Type="nvarchar" Mode="In" />
+    <Parameter Name="prenom" Type="nvarchar" Mode="In" />
+    <Parameter Name="mail" Type="nvarchar" Mode="In" />
+    <Parameter Name="message" Type="nvarchar" Mode="In" />
+    <Parameter Name="idMembre" Type="int" Mode="In" />
+    <Parameter Name="sujet" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="addNewNote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="note" Type="numeric" Mode="In" />
+    <Parameter Name="idMembre" Type="int" Mode="In" />
+    <Parameter Name="idBien" Type="int" Mode="In" />
+    <Parameter Name="idLocation" Type="int" Mode="In" />
+  </Function>
+  <Function Name="BigSearchBiens" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bbq" Type="bit" Mode="In" />
+    <Parameter Name="piscine" Type="bit" Mode="In" />
+    <Parameter Name="jacuzzi" Type="bit" Mode="In" />
+    <Parameter Name="sauna" Type="bit" Mode="In" />
+    <Parameter Name="tv" Type="bit" Mode="In" />
+    <Parameter Name="teleDis" Type="bit" Mode="In" />
+    <Parameter Name="wifi" Type="bit" Mode="In" />
+    <Parameter Name="pingpong" Type="bit" Mode="In" />
+    <Parameter Name="tennis" Type="bit" Mode="In" />
+    <Parameter Name="transat" Type="bit" Mode="In" />
+    <Parameter Name="cuisineEq" Type="bit" Mode="In" />
+    <Parameter Name="machineALaver" Type="bit" Mode="In" />
+    <Parameter Name="jardin" Type="bit" Mode="In" />
+    <Parameter Name="parking" Type="bit" Mode="In" />
+    <Parameter Name="nbSdb" Type="int" Mode="In" />
+    <Parameter Name="nbToilette" Type="int" Mode="In" />
+    <Parameter Name="nbChambre" Type="int" Mode="In" />
+    <Parameter Name="prixMax" Type="int" Mode="In" />
+    <Parameter Name="villeOuPays" Type="nvarchar" Mode="In" />
+    <Parameter Name="nbPersMax" Type="int" Mode="In" />
+    <Parameter Name="noteMoyenneMin" Type="int" Mode="In" />
+  </Function>
+  <Function Name="detailBienWithIde" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idBien" Type="int" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="GetAllMyBiens" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idMembre" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetFiveLastComment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idBien" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getMyLocations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idMembre" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RechercheDatePasDispo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idBien" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SearchBiensDispo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="paysOuVille" Type="nvarchar" Mode="In" />
+    <Parameter Name="arrivee" Type="datetime" Mode="In" />
+    <Parameter Name="depart" Type="datetime" Mode="In" />
+    <Parameter Name="nbPers" Type="int" Mode="In" />
+  </Function>
+  <Function Name="searchBienWithOptions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bbq" Type="bit" Mode="In" />
+    <Parameter Name="piscine" Type="bit" Mode="In" />
+    <Parameter Name="jacuzzi" Type="bit" Mode="In" />
+    <Parameter Name="sauna" Type="bit" Mode="In" />
+    <Parameter Name="tv" Type="bit" Mode="In" />
+    <Parameter Name="teleDis" Type="bit" Mode="In" />
+    <Parameter Name="wifi" Type="bit" Mode="In" />
+    <Parameter Name="pingpong" Type="bit" Mode="In" />
+    <Parameter Name="tennis" Type="bit" Mode="In" />
+    <Parameter Name="transat" Type="bit" Mode="In" />
+    <Parameter Name="cuisineEq" Type="bit" Mode="In" />
+    <Parameter Name="machineALaver" Type="bit" Mode="In" />
+    <Parameter Name="jardin" Type="bit" Mode="In" />
+    <Parameter Name="parking" Type="bit" Mode="In" />
+    <Parameter Name="nbSdb" Type="int" Mode="In" />
+    <Parameter Name="nbToilette" Type="int" Mode="In" />
+    <Parameter Name="nbChambre" Type="int" Mode="In" />
+    <Parameter Name="prixMax" Type="int" Mode="In" />
+    <Parameter Name="villeOuPays" Type="nvarchar" Mode="In" />
+    <Parameter Name="nbPersMax" Type="int" Mode="In" />
+    <Parameter Name="noteMoyenneMin" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateMembre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idMembre" Type="int" Mode="In" />
+    <Parameter Name="mail" Type="nvarchar" Mode="In" />
+    <Parameter Name="nom" Type="nvarchar" Mode="In" />
+    <Parameter Name="prenom" Type="nvarchar" Mode="In" />
+    <Parameter Name="adresse" Type="nvarchar" Mode="In" />
+    <Parameter Name="dateDeNaissance" Type="datetime" Mode="In" />
+    <Parameter Name="telephone" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="verifDates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idBie" Type="int" Mode="In" />
+    <Parameter Name="arrivee" Type="datetime" Mode="In" />
+    <Parameter Name="depart" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="verifDates2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idBie" Type="int" Mode="In" />
+    <Parameter Name="arrivee" Type="datetime" Mode="In" />
+    <Parameter Name="depart" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="VerifSiDateEstDispo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idBien" Type="int" Mode="In" />
+    <Parameter Name="dateArrivee" Type="datetime" Mode="In" />
+    <Parameter Name="dateDepart" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="VerifSiDateEstDispo0" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idBien" Type="int" Mode="In" />
+    <Parameter Name="dateArrivee" Type="datetime" Mode="In" />
+    <Parameter Name="dateDepart" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="VerifSiDateEstDispo2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idBien" Type="int" Mode="In" />
+    <Parameter Name="dateArrivee" Type="datetime" Mode="In" />
+    <Parameter Name="dateDepart" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="VerifSiDateEstDispos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idBien" Type="int" Mode="In" />
+    <Parameter Name="dateArrivee" Type="datetime" Mode="In" />
+    <Parameter Name="dateDepart" Type="datetime" Mode="In" />
+  </Function>
+  <EntityContainer Name="DreamHollidayModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BIEN" EntityType="Self.BIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="COMMENTAIRE" EntityType="Self.COMMENTAIRE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOCATION" EntityType="Self.LOCATION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MEMBRE" EntityType="Self.MEMBRE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MESSAGE" EntityType="Self.MESSAGE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NOTE" EntityType="Self.NOTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OPTIONS" EntityType="Self.OPTIONS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PIECE" EntityType="Self.PIECE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_BIEN_MEMBRE" Association="Self.FK_BIEN_MEMBRE">
+      <End Role="MEMBRE" EntitySet="MEMBRE" />
+      <End Role="BIEN" EntitySet="BIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMMENTAIRE_LOCATION" Association="Self.FK_COMMENTAIRE_LOCATION">
+      <End Role="LOCATION" EntitySet="LOCATION" />
+      <End Role="COMMENTAIRE" EntitySet="COMMENTAIRE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOCATION_BIEN" Association="Self.FK_LOCATION_BIEN">
+      <End Role="BIEN" EntitySet="BIEN" />
+      <End Role="LOCATION" EntitySet="LOCATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOCATION_MEMBRE" Association="Self.FK_LOCATION_MEMBRE">
+      <End Role="MEMBRE" EntitySet="MEMBRE" />
+      <End Role="LOCATION" EntitySet="LOCATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOTE_LOCATION" Association="Self.FK_NOTE_LOCATION">
+      <End Role="LOCATION" EntitySet="LOCATION" />
+      <End Role="NOTE" EntitySet="NOTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OPTIONS_BIEN" Association="Self.FK_OPTIONS_BIEN">
+      <End Role="BIEN" EntitySet="BIEN" />
+      <End Role="OPTIONS" EntitySet="OPTIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PIECE_BIEN" Association="Self.FK_PIECE_BIEN">
+      <End Role="BIEN" EntitySet="BIEN" />
+      <End Role="PIECE" EntitySet="PIECE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

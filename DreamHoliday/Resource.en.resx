@@ -482,4 +482,7 @@ We allow owners to safely rent their property ..</value>
   <data name="wifi" xml:space="preserve">
     <value>wifi</value>
   </data>
+  <data name="creer" xml:space="preserve">
+    <value>Create</value>
+  </data>
 </root>
