@@ -485,4 +485,16 @@ We allow owners to safely rent their property ..</value>
   <data name="creer" xml:space="preserve">
     <value>Create</value>
   </data>
+  <data name="ModalDeleteTexte" xml:space="preserve">
+    <value>Are you sure you want to delete this property?</value>
+  </data>
+  <data name="ModalDeleteTitre" xml:space="preserve">
+    <value>Delete a property</value>
+  </data>
+  <data name="non" xml:space="preserve">
+    <value>no</value>
+  </data>
+  <data name="oui" xml:space="preserve">
+    <value>yes</value>
+  </data>
 </root>

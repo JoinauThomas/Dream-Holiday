@@ -110,21 +110,25 @@ namespace DreamHoliday.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult DeleteBien(int idBien)
         {
             using (var client = new HttpClient())
             {
-                //var token = Request.Cookies["myToken"].Value;
-                //client.DefaultRequestHeaders.Accept.Clear();
-                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                var token = Request.Cookies["myToken"].Value;
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
                 List<Bien> mesBiens = new List<Bien>();
 
                 client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                var responseTask = client.PostAsJsonAsync("PostDeleteBien", idBien);
+                var responseTask = client.GetAsync("DeleteBien?idBien=" + idBien);
                 responseTask.Wait();
+
+                //client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                //var responseTask = client.PostAsJsonAsync("PostDeleteBien", idBien);
+                //responseTask.Wait();
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
@@ -132,7 +136,7 @@ namespace DreamHoliday.Controllers
                     readTask.Wait();
                     mesBiens = readTask.Result;
 
-                    return PartialView("_mesBiens", mesBiens); ;
+                    return PartialView("_mesBiens", mesBiens);
                 }
                 else
                 {
@@ -206,7 +210,8 @@ namespace DreamHoliday.Controllers
 
             return View("_SearchBiens", mesBiens);
         }
-        [HttpPost]
+
+        [HttpGet]
         public ActionResult SearchBienss(string paysOuVille, string dateDepart, string dateRetour, int nbPers)
         {
             List<Bien> mesBiens = new List<Bien>();

@@ -1,10 +1,13 @@
-﻿
-@model IEnumerable<DreamHoliday.Models.Bien>
+﻿@model IEnumerable<DreamHoliday.Models.Bien>
 
-<img id="chargement" src="~/img/loaders/ajax-loader.gif" style="display: none" alt="Chargement en cours..." class="col-md-offset-5 col-md-2 col-md-offset-5" />
 <div id="mesBiens">
     @Html.Partial("~/Views/Bien/_mesBiens.cshtml")
 </div>
+
+<div id="myModal" style="display:none">
+    <p>@Resource.ModalDeleteTexte</p>
+</div>
+
 
 
 @section Scripts {
@@ -16,29 +19,34 @@
 
     <script type="text/javascript">
 
-
-        $('.btnDelete').click(function () {
-            $("#chargement").show();
-            var idBien = $(this).attr("id")
-            alert(idBien);
-            $.ajax({
-                type: 'POST',
-                datatype: 'html',
-                url: '@Url.Action("DeleteBien", "Bien")',
-                data: { idBien },
-                success:
-                function (response) {
-                    $("#chargement").hide();
-                    $('#mesBiens').html(response);
-                    alert('l article a bien ete supprimé');
-                },
-                error:
-                function () {
-                    //$("#chargement").hide();
-                    alert("un problème a été détecté...");
+        function ShowDelete(idBien) {
+            $("#myModal").dialog({
+                resizable: false,
+                height: "auto",
+                width: "400",
+                modal: true,
+                title: "@Resource.ModalDeleteTitre",
+                buttons: {
+                    "@Resource.oui": function () {
+                        $.ajax({
+                            type: 'GET',
+                            datatype: 'html',
+                            url: '@Url.Action("DeleteBien", "Bien")',
+                            data: { idBien },
+                            success:
+                            function (response) {
+                                $('#mesBiens').html(response);
+                                $("#myModal").dialog("close");
+                            },
+                            error:
+                            function () {
+                                alert("un problème a été détecté...");
+                            }
+                        })
+                    },
+                    "@Resource.non": function () { $(this).dialog("close") }
                 }
             })
-        });
-
+        }
         </script>
         }

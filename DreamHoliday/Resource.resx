@@ -486,4 +486,16 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   <data name="creer" xml:space="preserve">
     <value>Créer</value>
   </data>
+  <data name="ModalDeleteTexte" xml:space="preserve">
+    <value>Êtes-vous sûre de vouloir supprimer ce bien?</value>
+  </data>
+  <data name="ModalDeleteTitre" xml:space="preserve">
+    <value>supprimer un bien</value>
+  </data>
+  <data name="non" xml:space="preserve">
+    <value>non</value>
+  </data>
+  <data name="oui" xml:space="preserve">
+    <value>oui</value>
+  </data>
 </root>

@@ -64,8 +64,10 @@ namespace DreamHoliday.Controllers
             }
         }
 
-        [HttpPost]
-        public List<Bien> PostDeleteBien(int idBiens)
+        [HttpGet]
+        [Authorize]
+        [Route("DeleteBien")]
+        public List<Bien> DeleteBien(int idBien)
         {
             List<Bien> mesBiens = new List<Bien>();
 
@@ -73,10 +75,10 @@ namespace DreamHoliday.Controllers
 
             // recuperation d'idMembre
             List<BIEN> BiensListe = dbContext.BIEN.ToList();
-            int idMembre = BiensListe.Find(x => x.idBien == idBiens).idMembre;
+            int idMembre = BiensListe.Find(x => x.idBien == idBien).idMembre;
 
             // suppression du bien
-            dbContext.DeleteBien(idBiens);
+            dbContext.DeleteBien(idBien);
 
             // recuperation des biens du user
             List<DAL.GetAllMyBiens_Result> mesBiensDB = dbContext.GetAllMyBiens(idMembre).ToList();

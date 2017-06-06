@@ -739,6 +739,24 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Êtes-vous sûre de vouloir supprimer ce bien?.
+        /// </summary>
+        public static string ModalDeleteTexte {
+            get {
+                return ResourceManager.GetString("ModalDeleteTexte", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à supprimer un bien.
+        /// </summary>
+        public static string ModalDeleteTitre {
+            get {
+                return ResourceManager.GetString("ModalDeleteTitre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à modifier.
         /// </summary>
         public static string modifier {
@@ -793,6 +811,15 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à non.
+        /// </summary>
+        public static string non {
+            get {
+                return ResourceManager.GetString("non", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à nos biens.
         /// </summary>
         public static string nosBiens {
@@ -816,6 +843,15 @@ namespace DreamHoliday {
         public static string numero {
             get {
                 return ResourceManager.GetString("numero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à oui.
+        /// </summary>
+        public static string oui {
+            get {
+                return ResourceManager.GetString("oui", resourceCulture);
             }
         }
         
