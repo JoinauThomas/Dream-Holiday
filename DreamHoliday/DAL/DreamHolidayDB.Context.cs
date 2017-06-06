@@ -1130,5 +1130,14 @@ namespace DreamHoliday.DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<addNewBiens_Result>("addNewBiens", paysParameter, villeParameter, rueParameter, numeroParameter, idMembreParameter, tarifNuitParameter, tarifNettoyageParameter, libelleParameter, nbMaxDePersParameter, sdbParameter, salonParameter, samParameter, toiletteParameter, cuisineParameter, chambreParameter, dressingParameter, verandaParameter, bbqParameter, piscineParameter, jacuzziParameter, saunaParameter, tvParameter, teleDistribParameter, wifiParameter, pingPongParameter, tennisParameter, transatParameter, cuisineEquParameter, machineALaverParameter, jardinParameter, parkingParameter);
         }
+    
+        public virtual int DeleteBien(Nullable<int> idBien)
+        {
+            var idBienParameter = idBien.HasValue ?
+                new ObjectParameter("idBien", idBien) :
+                new ObjectParameter("idBien", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteBien", idBienParameter);
+        }
     }
 }

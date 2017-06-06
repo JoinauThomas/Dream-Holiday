@@ -110,6 +110,36 @@ namespace DreamHoliday.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult DeleteBien(int idBien)
+        {
+            using (var client = new HttpClient())
+            {
+                //var token = Request.Cookies["myToken"].Value;
+                //client.DefaultRequestHeaders.Accept.Clear();
+                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                List<Bien> mesBiens = new List<Bien>();
+
+                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                var responseTask = client.PostAsJsonAsync("PostDeleteBien", idBien);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<List<Bien>>();
+                    readTask.Wait();
+                    mesBiens = readTask.Result;
+
+                    return PartialView("_mesBiens", mesBiens); ;
+                }
+                else
+                {
+                    throw new Exception("suppression impossible");
+                }
+            }
+        }
 
         // faire une recherche en fonction du lieux et des options
 

@@ -354,6 +354,9 @@
       <Parameter Name="jardin" Mode="In" Type="Boolean" />
       <Parameter Name="parking" Mode="In" Type="Boolean" />
     </FunctionImport>
+    <FunctionImport Name="DeleteBien">
+      <Parameter Name="idBien" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -839,6 +842,7 @@
     <NavigationProperty Name="LOCATION" Relationship="DreamHollidayModel.FK_LOCATION_BIEN" FromRole="BIEN" ToRole="LOCATION" />
     <NavigationProperty Name="OPTIONS" Relationship="DreamHollidayModel.FK_OPTIONS_BIEN" FromRole="BIEN" ToRole="OPTIONS" />
     <NavigationProperty Name="PIECE" Relationship="DreamHollidayModel.FK_PIECE_BIEN" FromRole="BIEN" ToRole="PIECE" />
+    <Property Name="BIEN_estVisible" Type="Boolean" />
   </EntityType>
   <EntityType Name="COMMENTAIRE">
     <Key>

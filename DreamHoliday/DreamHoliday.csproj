@@ -555,6 +555,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Bien\DetailMonBien.cshtml" />
     <Content Include="Views\Bien\EditBien.cshtml" />
+    <Content Include="Views\Bien\_mesBiens.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

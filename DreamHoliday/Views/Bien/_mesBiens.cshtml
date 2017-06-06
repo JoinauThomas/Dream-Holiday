@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DreamHoliday.Models.Bien>
+
+<table class="table ">
+    <tr>
+        <th>
+
+        </th>
+        <th>
+            @Html.DisplayName("lieux, prix ")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.noteMoyenne)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.libelle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nbPersonnesMax)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="tableaux" style="text-align:center">
+            <td style="vertical-align:middle">
+                <img src="~/Img/Biens/photo@(item.idBien).jpg" height="70" />
+            </td>
+            <td style="vertical-align:middle">
+                @Html.DisplayFor(modelItem => item.pays) <br />
+
+                @Html.DisplayFor(modelItem => item.ville)<br />
+
+                @Html.DisplayFor(modelItem => item.tarifParNuit)
+
+            </td>
+            <td style="vertical-align:middle">
+                @{
+                    if (item.noteMoyenne == -1)
+                    {
+                        <div>NA</div>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.noteMoyenne)
+                    }
+                }
+            </td>
+            <td style="vertical-align:middle">
+                @Html.DisplayFor(modelItem => item.libelle)
+            </td>
+            <td style="vertical-align:middle">
+                @Html.DisplayFor(modelItem => item.nbPersonnesMax)
+            </td>
+            <td style="vertical-align:middle">
+                <button class="btn-warning" style="height:50px" onclick="location.href = '@Url.Action("DetailMonBien", "Bien", new { idBien = item.idBien })'">Détail</button>
+                <button class="btn-danger btnDelete" style="height:50px" id="@item.idBien">Delete</button>
+            </td>
+
+        </tr>
+
+                    }
+
+</table>
+

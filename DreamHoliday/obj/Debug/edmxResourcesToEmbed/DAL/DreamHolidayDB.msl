@@ -284,6 +284,7 @@
     <EntitySetMapping Name="BIEN">
       <EntityTypeMapping TypeName="DreamHollidayModel.BIEN">
         <MappingFragment StoreEntitySet="BIEN">
+          <ScalarProperty Name="BIEN_estVisible" ColumnName="BIEN_estVisible" />
           <ScalarProperty Name="BIEN_nbMaxPersonnes" ColumnName="BIEN_nbMaxPersonnes" />
           <ScalarProperty Name="BIEN_photo" ColumnName="BIEN_photo" />
           <ScalarProperty Name="BIEN_libelle" ColumnName="BIEN_libelle" />
@@ -476,5 +477,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DeleteBien" FunctionName="DreamHollidayModel.Store.DeleteBien" />
   </EntityContainerMapping>
 </Mapping>

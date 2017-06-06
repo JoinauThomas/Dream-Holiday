@@ -64,6 +64,43 @@ namespace DreamHoliday.Controllers
             }
         }
 
+        [HttpPost]
+        public List<Bien> PostDeleteBien(int idBiens)
+        {
+            List<Bien> mesBiens = new List<Bien>();
+
+            DAL.DreamHollidayEntities dbContext = new DreamHollidayEntities();
+
+            // recuperation d'idMembre
+            List<BIEN> BiensListe = dbContext.BIEN.ToList();
+            int idMembre = BiensListe.Find(x => x.idBien == idBiens).idMembre;
+
+            // suppression du bien
+            dbContext.DeleteBien(idBiens);
+
+            // recuperation des biens du user
+            List<DAL.GetAllMyBiens_Result> mesBiensDB = dbContext.GetAllMyBiens(idMembre).ToList();
+            foreach (var b in mesBiensDB)
+            {
+                mesBiens.Add(new Bien
+                {
+                    idBien = b.idBien,
+                    idMembre = b.idMembre,
+                    libelle = b.BIEN_libelle,
+                    noteMoyenne = Math.Round((double)b.BIEN_noteMoyenne, 2),
+                    numero = b.BIEN_numero,
+                    pays = b.BIEN_Pays,
+                    photo = b.BIEN_photo,
+                    rue = b.BIEN_rue,
+                    tarifNettoyage = b.BIEN_tarifNettoyage,
+                    tarifParNuit = b.BIEN_tarifParNuit,
+                    ville = b.BIEN_ville,
+                    nbPersonnesMax = b.BIEN_nbMaxPersonnes
+                });
+            }
+            return mesBiens;
+        }
+
         [HttpGet]
         [Route("GetAllBiens")]
         public List<Bien> GetAllBiens()
@@ -390,6 +427,8 @@ namespace DreamHoliday.Controllers
             return mesBiens;
 
         }
+
+
         //[HttpGet]
         //[Route("BigSearchBien")]
         //public List<Model_FormBigSearchBien> _BigSearchBien(string paysOuVille, string bbq, string piscine, string jacuzzi, string sauna, string tv, string teleDistribution, string wifi, string pingPong, string tennis, string transat, string cuisineEquipee, string machineALaver)

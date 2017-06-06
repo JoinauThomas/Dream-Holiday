@@ -77,6 +77,7 @@
     <Property Name="BIEN_libelle" Type="nvarchar" MaxLength="500" Nullable="false" />
     <Property Name="BIEN_photo" Type="nvarchar" MaxLength="250" />
     <Property Name="BIEN_nbMaxPersonnes" Type="int" Nullable="false" />
+    <Property Name="BIEN_estVisible" Type="bit" />
   </EntityType>
   <EntityType Name="COMMENTAIRE">
     <Key>
@@ -446,6 +447,9 @@
     <Parameter Name="villeOuPays" Type="nvarchar" Mode="In" />
     <Parameter Name="nbPersMax" Type="int" Mode="In" />
     <Parameter Name="noteMoyenneMin" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteBien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idBien" Type="int" Mode="In" />
   </Function>
   <Function Name="detailBienWithIde" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idBien" Type="int" Mode="In" />

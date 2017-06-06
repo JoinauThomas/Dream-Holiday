@@ -82,6 +82,7 @@
           <Property Name="BIEN_libelle" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="BIEN_photo" Type="nvarchar" MaxLength="250" />
           <Property Name="BIEN_nbMaxPersonnes" Type="int" Nullable="false" />
+          <Property Name="BIEN_estVisible" Type="bit" />
         </EntityType>
         <EntityType Name="COMMENTAIRE">
           <Key>
@@ -451,6 +452,9 @@
           <Parameter Name="villeOuPays" Type="nvarchar" Mode="In" />
           <Parameter Name="nbPersMax" Type="int" Mode="In" />
           <Parameter Name="noteMoyenneMin" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteBien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idBien" Type="int" Mode="In" />
         </Function>
         <Function Name="detailBienWithIde" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idBien" Type="int" Mode="In" />
@@ -1018,6 +1022,9 @@
             <Parameter Name="jardin" Mode="In" Type="Boolean" />
             <Parameter Name="parking" Mode="In" Type="Boolean" />
           </FunctionImport>
+          <FunctionImport Name="DeleteBien">
+            <Parameter Name="idBien" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1503,6 +1510,7 @@
           <NavigationProperty Name="LOCATION" Relationship="DreamHollidayModel.FK_LOCATION_BIEN" FromRole="BIEN" ToRole="LOCATION" />
           <NavigationProperty Name="OPTIONS" Relationship="DreamHollidayModel.FK_OPTIONS_BIEN" FromRole="BIEN" ToRole="OPTIONS" />
           <NavigationProperty Name="PIECE" Relationship="DreamHollidayModel.FK_PIECE_BIEN" FromRole="BIEN" ToRole="PIECE" />
+          <Property Name="BIEN_estVisible" Type="Boolean" />
         </EntityType>
         <EntityType Name="COMMENTAIRE">
           <Key>
@@ -2068,6 +2076,7 @@
           <EntitySetMapping Name="BIEN">
             <EntityTypeMapping TypeName="DreamHollidayModel.BIEN">
               <MappingFragment StoreEntitySet="BIEN">
+                <ScalarProperty Name="BIEN_estVisible" ColumnName="BIEN_estVisible" />
                 <ScalarProperty Name="BIEN_nbMaxPersonnes" ColumnName="BIEN_nbMaxPersonnes" />
                 <ScalarProperty Name="BIEN_photo" ColumnName="BIEN_photo" />
                 <ScalarProperty Name="BIEN_libelle" ColumnName="BIEN_libelle" />
@@ -2260,6 +2269,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DeleteBien" FunctionName="DreamHollidayModel.Store.DeleteBien" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
