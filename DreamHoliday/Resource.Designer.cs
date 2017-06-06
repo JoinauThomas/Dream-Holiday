@@ -208,6 +208,15 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à connexion.
+        /// </summary>
+        public static string connexion {
+            get {
+                return ResourceManager.GetString("connexion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à une question?.
         /// </summary>
         public static string Contact01 {
@@ -1014,6 +1023,15 @@ namespace DreamHoliday {
         public static string sdb {
             get {
                 return ResourceManager.GetString("sdb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à s&apos;enregistrer.
+        /// </summary>
+        public static string SEnregistrer {
+            get {
+                return ResourceManager.GetString("SEnregistrer", resourceCulture);
             }
         }
         

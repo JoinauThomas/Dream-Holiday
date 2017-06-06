@@ -498,4 +498,10 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   <data name="oui" xml:space="preserve">
     <value>oui</value>
   </data>
+  <data name="connexion" xml:space="preserve">
+    <value>connexion</value>
+  </data>
+  <data name="SEnregistrer" xml:space="preserve">
+    <value>s'enregistrer</value>
+  </data>
 </root>

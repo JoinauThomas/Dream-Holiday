@@ -173,7 +173,15 @@ namespace DreamHoliday.Controllers
                     var readTask = result.Content.ReadAsAsync<List<Bien>>();
                     readTask.Wait();
                     mesBiensList = readTask.Result;
-                    return PartialView("_SearchBiens", mesBiensList);
+                    if(mesBiensList.Count == 0)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return PartialView("_SearchBiens", mesBiensList);
+                    }
+                    
                 }
                 // erreur lors de la création de l'étudiant
                 var content = result.Content.ReadAsStringAsync();
@@ -211,7 +219,7 @@ namespace DreamHoliday.Controllers
             return View("_SearchBiens", mesBiens);
         }
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult SearchBienss(string paysOuVille, string dateDepart, string dateRetour, int nbPers)
         {
             List<Bien> mesBiens = new List<Bien>();
@@ -228,10 +236,24 @@ namespace DreamHoliday.Controllers
                     var readTask = result.Content.ReadAsAsync<List<Bien>>();
                     readTask.Wait();
                     mesBiens = readTask.Result;
+
+                    if (mesBiens.Count == 0)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return PartialView("_SearchBiens", mesBiens);
+                    }
+                    
+                }
+                else
+                {
+                    return PartialView("_SearchBiens", mesBiens);
                 }
             }
 
-            return PartialView("_SearchBiens", mesBiens);
+            
         }
 
 

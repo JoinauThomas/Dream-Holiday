@@ -497,4 +497,10 @@ We allow owners to safely rent their property ..</value>
   <data name="oui" xml:space="preserve">
     <value>yes</value>
   </data>
+  <data name="connexion" xml:space="preserve">
+    <value>connection</value>
+  </data>
+  <data name="SEnregistrer" xml:space="preserve">
+    <value>register</value>
+  </data>
 </root>

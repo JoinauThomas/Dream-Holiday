@@ -43,15 +43,15 @@
 
         <div class="form-group" style="margin-top:5%">
             <div class="col-md-offset-2 col-md-10">
-                <input  type="submit" value="se connecter" class="btn btn-default col-md-3" />
-                <a class="col-md-push-1 col-md-1">@Html.ActionLink("nouveau membre", "InsertNewMembre", "Membre", new { area = "" }, null)</a>
+                <input  type="submit" value="@Resource.connexion" class="btn btn-default col-md-3" />
+                <a class="col-md-push-1 col-md-1">@Html.ActionLink(Resource.SEnregistrer, "InsertNewMembre", "Membre", new { area = "" }, null)</a>
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("retour", "Index", "Home")
+    @Html.ActionLink(Resource.retour, "Index", "Home")
 </div>
 
 @section Scripts {

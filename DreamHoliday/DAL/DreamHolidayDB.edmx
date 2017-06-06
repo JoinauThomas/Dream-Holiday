@@ -1023,7 +1023,7 @@
             <Parameter Name="parking" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="DeleteBien">
-            <Parameter Name="idBien" Mode="In" Type="Int32" />
+          <Parameter Name="idBien" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
