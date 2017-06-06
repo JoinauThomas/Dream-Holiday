@@ -227,7 +227,7 @@ We allow owners to safely rent their property ..</value>
   <data name="dressing" xml:space="preserve">
     <value>dressing</value>
   </data>
-  <data name="enregistrezVsIci" xml:space="preserve">
+  <data name="sinscrire" xml:space="preserve">
     <value>Register here</value>
   </data>
   <data name="envoyer" xml:space="preserve">
@@ -502,5 +502,14 @@ We allow owners to safely rent their property ..</value>
   </data>
   <data name="SEnregistrer" xml:space="preserve">
     <value>register</value>
+  </data>
+  <data name="chercherUnBien" xml:space="preserve">
+    <value>search a property</value>
+  </data>
+  <data name="Error_champNecesaire" xml:space="preserve">
+    <value>Champ obligatoire</value>
+  </data>
+  <data name="Error_TarifNuitRequis" xml:space="preserve">
+    <value>Price per night required</value>
   </data>
 </root>

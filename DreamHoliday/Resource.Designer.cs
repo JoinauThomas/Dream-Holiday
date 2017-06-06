@@ -199,6 +199,15 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à chercher un bien.
+        /// </summary>
+        public static string chercherUnBien {
+            get {
+                return ResourceManager.GetString("chercherUnBien", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à commentaire.
         /// </summary>
         public static string commentaire {
@@ -406,15 +415,6 @@ namespace DreamHoliday {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Enregistrez-vous ici.
-        /// </summary>
-        public static string enregistrezVsIci {
-            get {
-                return ResourceManager.GetString("enregistrezVsIci", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Recherche une chaîne localisée semblable à Envoyer.
         /// </summary>
         public static string envoyer {
@@ -438,6 +438,15 @@ namespace DreamHoliday {
         public static string Error_adresseRequise {
             get {
                 return ResourceManager.GetString("Error_adresseRequise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Required Field.
+        /// </summary>
+        public static string Error_champNecesaire {
+            get {
+                return ResourceManager.GetString("Error_champNecesaire", resourceCulture);
             }
         }
         
@@ -546,6 +555,15 @@ namespace DreamHoliday {
         public static string Error_tableVide {
             get {
                 return ResourceManager.GetString("Error_tableVide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à tarif par nuit requis.
+        /// </summary>
+        public static string Error_TarifNuitRequis {
+            get {
+                return ResourceManager.GetString("Error_TarifNuitRequis", resourceCulture);
             }
         }
         
@@ -1032,6 +1050,15 @@ namespace DreamHoliday {
         public static string SEnregistrer {
             get {
                 return ResourceManager.GetString("SEnregistrer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Enregistrez-vous ici.
+        /// </summary>
+        public static string sinscrire {
+            get {
+                return ResourceManager.GetString("sinscrire", resourceCulture);
             }
         }
         

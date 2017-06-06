@@ -228,7 +228,7 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   <data name="dressing" xml:space="preserve">
     <value>dressing</value>
   </data>
-  <data name="enregistrezVsIci" xml:space="preserve">
+  <data name="sinscrire" xml:space="preserve">
     <value>Enregistrez-vous ici</value>
   </data>
   <data name="envoyer" xml:space="preserve">
@@ -503,5 +503,14 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   </data>
   <data name="SEnregistrer" xml:space="preserve">
     <value>s'enregistrer</value>
+  </data>
+  <data name="chercherUnBien" xml:space="preserve">
+    <value>chercher un bien</value>
+  </data>
+  <data name="Error_champNecesaire" xml:space="preserve">
+    <value>Required Field</value>
+  </data>
+  <data name="Error_TarifNuitRequis" xml:space="preserve">
+    <value>tarif par nuit requis</value>
   </data>
 </root>
