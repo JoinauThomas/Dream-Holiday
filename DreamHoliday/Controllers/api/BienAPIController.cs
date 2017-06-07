@@ -55,7 +55,7 @@ namespace DreamHoliday.Controllers
             else
             {
                 DreamHollidayEntities dbContext = new DreamHollidayEntities();
-                dbContext.editBien(monBien.pays, monBien.ville, monBien.rue, monBien.numero, monBien.tarifParNuit,
+                dbContext.editMyBien(monBien.idBien, monBien.pays, monBien.ville, monBien.rue, monBien.numero, monBien.tarifParNuit,
                     monBien.tarifNettoyage, monBien.libelle, monBien.photo, monBien.nbPersonnesMax, monBien.salleDeBain, monBien.salon,
                     monBien.salleAManger, monBien.toilette, monBien.cuisine, monBien.chambre, monBien.dressing, monBien.veranda,
                     monBien.bbq, monBien.piscine, monBien.jacuzzi, monBien.sauna, monBien.tv, monBien.teleDistribution, monBien.wifi,

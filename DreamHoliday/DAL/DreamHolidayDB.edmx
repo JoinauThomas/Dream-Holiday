@@ -464,8 +464,42 @@
           <Parameter Name="ville" Type="nvarchar" Mode="In" />
           <Parameter Name="rue" Type="nvarchar" Mode="In" />
           <Parameter Name="numero" Type="nvarchar" Mode="In" />
-          <Parameter Name="tarifNuit" Type="numeric" Mode="In" />
-          <Parameter Name="tarifNettoyage" Type="numeric" Mode="In" />
+          <Parameter Name="tarifNuit" Type="int" Mode="In" />
+          <Parameter Name="tarifNettoyage" Type="int" Mode="In" />
+          <Parameter Name="libelle" Type="nvarchar" Mode="In" />
+          <Parameter Name="photo" Type="nvarchar" Mode="In" />
+          <Parameter Name="nbMaxDePers" Type="int" Mode="In" />
+          <Parameter Name="sdb" Type="int" Mode="In" />
+          <Parameter Name="salon" Type="int" Mode="In" />
+          <Parameter Name="sam" Type="int" Mode="In" />
+          <Parameter Name="toilette" Type="int" Mode="In" />
+          <Parameter Name="cuisine" Type="int" Mode="In" />
+          <Parameter Name="chambre" Type="int" Mode="In" />
+          <Parameter Name="dressing" Type="int" Mode="In" />
+          <Parameter Name="veranda" Type="int" Mode="In" />
+          <Parameter Name="bbq" Type="bit" Mode="In" />
+          <Parameter Name="piscine" Type="bit" Mode="In" />
+          <Parameter Name="jacuzzi" Type="bit" Mode="In" />
+          <Parameter Name="sauna" Type="bit" Mode="In" />
+          <Parameter Name="tv" Type="bit" Mode="In" />
+          <Parameter Name="teleDistrib" Type="bit" Mode="In" />
+          <Parameter Name="wifi" Type="bit" Mode="In" />
+          <Parameter Name="pingPong" Type="bit" Mode="In" />
+          <Parameter Name="tennis" Type="bit" Mode="In" />
+          <Parameter Name="transat" Type="bit" Mode="In" />
+          <Parameter Name="cuisineEqu" Type="bit" Mode="In" />
+          <Parameter Name="machineALaver" Type="bit" Mode="In" />
+          <Parameter Name="jardin" Type="bit" Mode="In" />
+          <Parameter Name="parking" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="editMyBien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idBien" Type="int" Mode="In" />
+          <Parameter Name="pays" Type="nvarchar" Mode="In" />
+          <Parameter Name="ville" Type="nvarchar" Mode="In" />
+          <Parameter Name="rue" Type="nvarchar" Mode="In" />
+          <Parameter Name="numero" Type="nvarchar" Mode="In" />
+          <Parameter Name="tarifNuit" Type="int" Mode="In" />
+          <Parameter Name="tarifNettoyage" Type="int" Mode="In" />
           <Parameter Name="libelle" Type="nvarchar" Mode="In" />
           <Parameter Name="photo" Type="nvarchar" Mode="In" />
           <Parameter Name="nbMaxDePers" Type="int" Mode="In" />
@@ -961,8 +995,8 @@
             <Parameter Name="ville" Mode="In" Type="String" />
             <Parameter Name="rue" Mode="In" Type="String" />
             <Parameter Name="numero" Mode="In" Type="String" />
-            <Parameter Name="tarifNuit" Mode="In" Type="Decimal" />
-            <Parameter Name="tarifNettoyage" Mode="In" Type="Decimal" />
+            <Parameter Name="tarifNuit" Mode="In" Type="Int32" />
+            <Parameter Name="tarifNettoyage" Mode="In" Type="Int32" />
             <Parameter Name="libelle" Mode="In" Type="String" />
             <Parameter Name="photo" Mode="In" Type="String" />
             <Parameter Name="nbMaxDePers" Mode="In" Type="Int32" />
@@ -1024,6 +1058,40 @@
           </FunctionImport>
           <FunctionImport Name="DeleteBien">
           <Parameter Name="idBien" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="editMyBien">
+            <Parameter Name="idBien" Mode="In" Type="Int32" />
+            <Parameter Name="pays" Mode="In" Type="String" />
+            <Parameter Name="ville" Mode="In" Type="String" />
+            <Parameter Name="rue" Mode="In" Type="String" />
+            <Parameter Name="numero" Mode="In" Type="String" />
+            <Parameter Name="tarifNuit" Mode="In" Type="Int32" />
+            <Parameter Name="tarifNettoyage" Mode="In" Type="Int32" />
+            <Parameter Name="libelle" Mode="In" Type="String" />
+            <Parameter Name="photo" Mode="In" Type="String" />
+            <Parameter Name="nbMaxDePers" Mode="In" Type="Int32" />
+            <Parameter Name="sdb" Mode="In" Type="Int32" />
+            <Parameter Name="salon" Mode="In" Type="Int32" />
+            <Parameter Name="sam" Mode="In" Type="Int32" />
+            <Parameter Name="toilette" Mode="In" Type="Int32" />
+            <Parameter Name="cuisine" Mode="In" Type="Int32" />
+            <Parameter Name="chambre" Mode="In" Type="Int32" />
+            <Parameter Name="dressing" Mode="In" Type="Int32" />
+            <Parameter Name="veranda" Mode="In" Type="Int32" />
+            <Parameter Name="bbq" Mode="In" Type="Boolean" />
+            <Parameter Name="piscine" Mode="In" Type="Boolean" />
+            <Parameter Name="jacuzzi" Mode="In" Type="Boolean" />
+            <Parameter Name="sauna" Mode="In" Type="Boolean" />
+            <Parameter Name="tv" Mode="In" Type="Boolean" />
+            <Parameter Name="teleDistrib" Mode="In" Type="Boolean" />
+            <Parameter Name="wifi" Mode="In" Type="Boolean" />
+            <Parameter Name="pingPong" Mode="In" Type="Boolean" />
+            <Parameter Name="tennis" Mode="In" Type="Boolean" />
+            <Parameter Name="transat" Mode="In" Type="Boolean" />
+            <Parameter Name="cuisineEqu" Mode="In" Type="Boolean" />
+            <Parameter Name="machineALaver" Mode="In" Type="Boolean" />
+            <Parameter Name="jardin" Mode="In" Type="Boolean" />
+            <Parameter Name="parking" Mode="In" Type="Boolean" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -2270,6 +2338,7 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="DeleteBien" FunctionName="DreamHollidayModel.Store.DeleteBien" />
+          <FunctionImportMapping FunctionImportName="editMyBien" FunctionName="DreamHollidayModel.Store.editMyBien" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

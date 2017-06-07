@@ -176,6 +176,7 @@ input.checkbox:checked
     animation-duration: 1s;
 }
 
+
 /* l'animation du modal */
 @-webkit-keyframes animatetop {
     from {
@@ -251,4 +252,35 @@ input[type="checkbox"] {
     outline: 1px solid red;
     color: green !important;
     opacity: 1;
+}
+
+#btnEditMonBien {
+    border: 3px solid #09a7a7;
+    border-radius: 10px;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    background-color: white;
+    color: #09a7a7;
+    font-size:150%
+}
+    #btnEditMonBien:hover {
+        border: 3px solid #0070db;
+        border-radius: 10px;
+        margin-top: 3%;
+        margin-bottom: 2%;
+        background-color: white;
+        color: #0070db;
+    }
+
+.myJumbotron01 {
+    background-color: #09a7a7;
+    border-radius: 12px;
+    padding: 2% 3% 2% 3%;
+    margin-bottom: 2%;
+}
+
+.myJumbotron02 {
+    background-color: #c8c8c8;
+    border-radius: 12px;
+    padding: 2% 3% 2% 3%;
 }

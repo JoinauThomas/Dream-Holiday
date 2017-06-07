@@ -512,4 +512,16 @@ We allow owners to safely rent their property ..</value>
   <data name="Error_TarifNuitRequis" xml:space="preserve">
     <value>Price per night required</value>
   </data>
+  <data name="connectionNotOk" xml:space="preserve">
+    <value>User or password not valid</value>
+  </data>
+  <data name="connectionOk" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="connectionReussie" xml:space="preserve">
+    <value>Successful connection</value>
+  </data>
+  <data name="Error_NbPersonne" xml:space="preserve">
+    <value>Please put a number in the field "number of persons"</value>
+  </data>
 </root>

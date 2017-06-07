@@ -19,60 +19,66 @@ namespace DreamHoliday.Controllers
             return View("_connection");
         }
         [HttpPost]
-        public ActionResult connection(string userName, string Password)
+        public JsonResult connection(string userName, string Password)
         {
-            string access_token = "";
-            using (var client = new HttpClient())
+            Membre moi = new Membre();
+
+            moi = DreamHoliday.Controllers.MembreController.GetMembreByMail(userName);
+            if(moi == null)
             {
-                client.BaseAddress = new Uri("http://localhost:56077");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var formContent = new FormUrlEncodedContent(new[]
+                return null;
+            }
+            else
+            {
+                string access_token = "";
+                using (var client = new HttpClient())
                 {
+                    client.BaseAddress = new Uri("http://localhost:56077");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    var formContent = new FormUrlEncodedContent(new[]
+                    {
                     new KeyValuePair<string, string>("grant_type", "password"),
                     new KeyValuePair<string, string>("username", userName),
                     new KeyValuePair<string, string>("password", Password),
                 });
-                var responseTask = client.PostAsync("/api/MyGetToken", formContent);
-                responseTask.Wait();
-                var result = responseTask.Result;
-                if (!result.IsSuccessStatusCode)
-                {
-                    var responseString = result.Content.ReadAsStringAsync();
-                    var res = responseString.Result;
-                    Session["probleme"] = 1;
-                    Session["message"] = "user ou password pas valide\nVeuillez réessayer";
-                    return RedirectToAction("connection");
+                    var responseTask = client.PostAsync("/api/MyGetToken", formContent);
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (!result.IsSuccessStatusCode)
+                    {
+                        var responseString = result.Content.ReadAsStringAsync();
+                        var res = responseString.Result;
+                        Session["probleme"] = 1;
+                        Session["message"] = "user ou password pas valide\nVeuillez réessayer";
+
+                        return null;
+                    }
+                    else
+                    {
+                        var responseString = result.Content.ReadAsStringAsync();
+                        responseString.Wait();
+                        //get access token from response body
+                        var jObject = JObject.Parse(responseString.Result);
+                        access_token = jObject.GetValue("access_token").ToString();
+                        CookieHeaderValue cookie = new CookieHeaderValue("myToken", access_token);
+                    }
                 }
-                else
-                {
-                    var responseString = result.Content.ReadAsStringAsync();
-                    responseString.Wait();
-                    //get access token from response body
-                    var jObject = JObject.Parse(responseString.Result);
-                    access_token = jObject.GetValue("access_token").ToString();
-                    CookieHeaderValue cookie = new CookieHeaderValue("myToken", access_token);
-                }
+                HttpCookie myToken = new HttpCookie("myToken");
+                myToken.Value = access_token;
+                Response.Cookies.Add(myToken);
+
+                Session["monCompte"] = moi;
+
+                return Json(new { result = "OK", nom = moi.nom, prenom = moi.prenom });
             }
 
-
-            Membre moi = new Membre();
-
-            moi = DreamHoliday.Controllers.MembreController.GetMembreByMail(userName);
-            //////// test avec Cookies//////////
-            //HttpCookie monToken = new HttpCookie("myToken");
-            //monToken["monToken"] = access_token;
-            //Response.Cookies.Add(monToken);
-
-            // recupération du token en Session
-            HttpCookie myToken = new HttpCookie("myToken");
-            myToken.Value = access_token;
-            Response.Cookies.Add(myToken);
-
-            Session["monCompte"] = moi;
+            
 
 
-            return RedirectToAction("Index", "Home");
+           
+            
+            
 
 
         }

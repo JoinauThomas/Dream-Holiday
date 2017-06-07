@@ -873,7 +873,7 @@ namespace DreamHoliday.DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllMyBiens_Result>("GetAllMyBiens", idMembreParameter);
         }
     
-        public virtual int editBien(string pays, string ville, string rue, string numero, Nullable<decimal> tarifNuit, Nullable<decimal> tarifNettoyage, string libelle, string photo, Nullable<int> nbMaxDePers, Nullable<int> sdb, Nullable<int> salon, Nullable<int> sam, Nullable<int> toilette, Nullable<int> cuisine, Nullable<int> chambre, Nullable<int> dressing, Nullable<int> veranda, Nullable<bool> bbq, Nullable<bool> piscine, Nullable<bool> jacuzzi, Nullable<bool> sauna, Nullable<bool> tv, Nullable<bool> teleDistrib, Nullable<bool> wifi, Nullable<bool> pingPong, Nullable<bool> tennis, Nullable<bool> transat, Nullable<bool> cuisineEqu, Nullable<bool> machineALaver, Nullable<bool> jardin, Nullable<bool> parking)
+        public virtual int editBien(string pays, string ville, string rue, string numero, Nullable<int> tarifNuit, Nullable<int> tarifNettoyage, string libelle, string photo, Nullable<int> nbMaxDePers, Nullable<int> sdb, Nullable<int> salon, Nullable<int> sam, Nullable<int> toilette, Nullable<int> cuisine, Nullable<int> chambre, Nullable<int> dressing, Nullable<int> veranda, Nullable<bool> bbq, Nullable<bool> piscine, Nullable<bool> jacuzzi, Nullable<bool> sauna, Nullable<bool> tv, Nullable<bool> teleDistrib, Nullable<bool> wifi, Nullable<bool> pingPong, Nullable<bool> tennis, Nullable<bool> transat, Nullable<bool> cuisineEqu, Nullable<bool> machineALaver, Nullable<bool> jardin, Nullable<bool> parking)
         {
             var paysParameter = pays != null ?
                 new ObjectParameter("pays", pays) :
@@ -893,11 +893,11 @@ namespace DreamHoliday.DAL
     
             var tarifNuitParameter = tarifNuit.HasValue ?
                 new ObjectParameter("tarifNuit", tarifNuit) :
-                new ObjectParameter("tarifNuit", typeof(decimal));
+                new ObjectParameter("tarifNuit", typeof(int));
     
             var tarifNettoyageParameter = tarifNettoyage.HasValue ?
                 new ObjectParameter("tarifNettoyage", tarifNettoyage) :
-                new ObjectParameter("tarifNettoyage", typeof(decimal));
+                new ObjectParameter("tarifNettoyage", typeof(int));
     
             var libelleParameter = libelle != null ?
                 new ObjectParameter("libelle", libelle) :
@@ -1138,6 +1138,139 @@ namespace DreamHoliday.DAL
                 new ObjectParameter("idBien", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteBien", idBienParameter);
+        }
+    
+        public virtual int editMyBien(Nullable<int> idBien, string pays, string ville, string rue, string numero, Nullable<int> tarifNuit, Nullable<int> tarifNettoyage, string libelle, string photo, Nullable<int> nbMaxDePers, Nullable<int> sdb, Nullable<int> salon, Nullable<int> sam, Nullable<int> toilette, Nullable<int> cuisine, Nullable<int> chambre, Nullable<int> dressing, Nullable<int> veranda, Nullable<bool> bbq, Nullable<bool> piscine, Nullable<bool> jacuzzi, Nullable<bool> sauna, Nullable<bool> tv, Nullable<bool> teleDistrib, Nullable<bool> wifi, Nullable<bool> pingPong, Nullable<bool> tennis, Nullable<bool> transat, Nullable<bool> cuisineEqu, Nullable<bool> machineALaver, Nullable<bool> jardin, Nullable<bool> parking)
+        {
+            var idBienParameter = idBien.HasValue ?
+                new ObjectParameter("idBien", idBien) :
+                new ObjectParameter("idBien", typeof(int));
+    
+            var paysParameter = pays != null ?
+                new ObjectParameter("pays", pays) :
+                new ObjectParameter("pays", typeof(string));
+    
+            var villeParameter = ville != null ?
+                new ObjectParameter("ville", ville) :
+                new ObjectParameter("ville", typeof(string));
+    
+            var rueParameter = rue != null ?
+                new ObjectParameter("rue", rue) :
+                new ObjectParameter("rue", typeof(string));
+    
+            var numeroParameter = numero != null ?
+                new ObjectParameter("numero", numero) :
+                new ObjectParameter("numero", typeof(string));
+    
+            var tarifNuitParameter = tarifNuit.HasValue ?
+                new ObjectParameter("tarifNuit", tarifNuit) :
+                new ObjectParameter("tarifNuit", typeof(int));
+    
+            var tarifNettoyageParameter = tarifNettoyage.HasValue ?
+                new ObjectParameter("tarifNettoyage", tarifNettoyage) :
+                new ObjectParameter("tarifNettoyage", typeof(int));
+    
+            var libelleParameter = libelle != null ?
+                new ObjectParameter("libelle", libelle) :
+                new ObjectParameter("libelle", typeof(string));
+    
+            var photoParameter = photo != null ?
+                new ObjectParameter("photo", photo) :
+                new ObjectParameter("photo", typeof(string));
+    
+            var nbMaxDePersParameter = nbMaxDePers.HasValue ?
+                new ObjectParameter("nbMaxDePers", nbMaxDePers) :
+                new ObjectParameter("nbMaxDePers", typeof(int));
+    
+            var sdbParameter = sdb.HasValue ?
+                new ObjectParameter("sdb", sdb) :
+                new ObjectParameter("sdb", typeof(int));
+    
+            var salonParameter = salon.HasValue ?
+                new ObjectParameter("salon", salon) :
+                new ObjectParameter("salon", typeof(int));
+    
+            var samParameter = sam.HasValue ?
+                new ObjectParameter("sam", sam) :
+                new ObjectParameter("sam", typeof(int));
+    
+            var toiletteParameter = toilette.HasValue ?
+                new ObjectParameter("toilette", toilette) :
+                new ObjectParameter("toilette", typeof(int));
+    
+            var cuisineParameter = cuisine.HasValue ?
+                new ObjectParameter("cuisine", cuisine) :
+                new ObjectParameter("cuisine", typeof(int));
+    
+            var chambreParameter = chambre.HasValue ?
+                new ObjectParameter("chambre", chambre) :
+                new ObjectParameter("chambre", typeof(int));
+    
+            var dressingParameter = dressing.HasValue ?
+                new ObjectParameter("dressing", dressing) :
+                new ObjectParameter("dressing", typeof(int));
+    
+            var verandaParameter = veranda.HasValue ?
+                new ObjectParameter("veranda", veranda) :
+                new ObjectParameter("veranda", typeof(int));
+    
+            var bbqParameter = bbq.HasValue ?
+                new ObjectParameter("bbq", bbq) :
+                new ObjectParameter("bbq", typeof(bool));
+    
+            var piscineParameter = piscine.HasValue ?
+                new ObjectParameter("piscine", piscine) :
+                new ObjectParameter("piscine", typeof(bool));
+    
+            var jacuzziParameter = jacuzzi.HasValue ?
+                new ObjectParameter("jacuzzi", jacuzzi) :
+                new ObjectParameter("jacuzzi", typeof(bool));
+    
+            var saunaParameter = sauna.HasValue ?
+                new ObjectParameter("sauna", sauna) :
+                new ObjectParameter("sauna", typeof(bool));
+    
+            var tvParameter = tv.HasValue ?
+                new ObjectParameter("tv", tv) :
+                new ObjectParameter("tv", typeof(bool));
+    
+            var teleDistribParameter = teleDistrib.HasValue ?
+                new ObjectParameter("teleDistrib", teleDistrib) :
+                new ObjectParameter("teleDistrib", typeof(bool));
+    
+            var wifiParameter = wifi.HasValue ?
+                new ObjectParameter("wifi", wifi) :
+                new ObjectParameter("wifi", typeof(bool));
+    
+            var pingPongParameter = pingPong.HasValue ?
+                new ObjectParameter("pingPong", pingPong) :
+                new ObjectParameter("pingPong", typeof(bool));
+    
+            var tennisParameter = tennis.HasValue ?
+                new ObjectParameter("tennis", tennis) :
+                new ObjectParameter("tennis", typeof(bool));
+    
+            var transatParameter = transat.HasValue ?
+                new ObjectParameter("transat", transat) :
+                new ObjectParameter("transat", typeof(bool));
+    
+            var cuisineEquParameter = cuisineEqu.HasValue ?
+                new ObjectParameter("cuisineEqu", cuisineEqu) :
+                new ObjectParameter("cuisineEqu", typeof(bool));
+    
+            var machineALaverParameter = machineALaver.HasValue ?
+                new ObjectParameter("machineALaver", machineALaver) :
+                new ObjectParameter("machineALaver", typeof(bool));
+    
+            var jardinParameter = jardin.HasValue ?
+                new ObjectParameter("jardin", jardin) :
+                new ObjectParameter("jardin", typeof(bool));
+    
+            var parkingParameter = parking.HasValue ?
+                new ObjectParameter("parking", parking) :
+                new ObjectParameter("parking", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("editMyBien", idBienParameter, paysParameter, villeParameter, rueParameter, numeroParameter, tarifNuitParameter, tarifNettoyageParameter, libelleParameter, photoParameter, nbMaxDePersParameter, sdbParameter, salonParameter, samParameter, toiletteParameter, cuisineParameter, chambreParameter, dressingParameter, verandaParameter, bbqParameter, piscineParameter, jacuzziParameter, saunaParameter, tvParameter, teleDistribParameter, wifiParameter, pingPongParameter, tennisParameter, transatParameter, cuisineEquParameter, machineALaverParameter, jardinParameter, parkingParameter);
         }
     }
 }

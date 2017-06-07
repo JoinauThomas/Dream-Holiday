@@ -478,5 +478,6 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="DeleteBien" FunctionName="DreamHollidayModel.Store.DeleteBien" />
+    <FunctionImportMapping FunctionImportName="editMyBien" FunctionName="DreamHollidayModel.Store.editMyBien" />
   </EntityContainerMapping>
 </Mapping>

@@ -52,7 +52,7 @@ namespace DreamHoliday.Models
         public string photo { get; set; }
 
         [Display(ResourceType = typeof(Resource), Name = "nbPersMax")]
-        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Error_mailRequis")]
+        [Required(ErrorMessage ="aaaa")]
         public int nbPersonnesMax { get; set; }
 
         // les pieces

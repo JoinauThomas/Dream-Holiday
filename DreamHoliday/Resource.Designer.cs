@@ -217,6 +217,33 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à nom d&apos;utilisateur ou mot de pass pas valide.
+        /// </summary>
+        public static string connectionNotOk {
+            get {
+                return ResourceManager.GetString("connectionNotOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Bienvenue.
+        /// </summary>
+        public static string connectionOk {
+            get {
+                return ResourceManager.GetString("connectionOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à connexion reussie.
+        /// </summary>
+        public static string connectionReussie {
+            get {
+                return ResourceManager.GetString("connectionReussie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à connexion.
         /// </summary>
         public static string connexion {
@@ -483,6 +510,15 @@ namespace DreamHoliday {
         public static string Error_MessageRequis {
             get {
                 return ResourceManager.GetString("Error_MessageRequis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à veuillez mettre un chiffre dans le champ &quot;nombre de personnes&quot;.
+        /// </summary>
+        public static string Error_NbPersonne {
+            get {
+                return ResourceManager.GetString("Error_NbPersonne", resourceCulture);
             }
         }
         

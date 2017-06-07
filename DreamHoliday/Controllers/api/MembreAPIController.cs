@@ -19,9 +19,16 @@ namespace DreamHoliday.Controllers.api
             DAL.DreamHollidayEntities dbContext = new DAL.DreamHollidayEntities();
 
             DAL.MEMBRE moiDB = dbContext.MEMBRE.ToList().Find(m => m.MEM_mail == mail);
-            Membre moi = new Membre { mail = moiDB.MEM_mail, nom = moiDB.MEM_nom, adresse = moiDB.MEM_adresse, dateDeNaissance = moiDB.MEM_dateDeNaissance, estProprietaire = moiDB.MEM_propriétaire, idMembre = moiDB.idMembre, photo = moiDB.MEM_Photo, prenom = moiDB.MEM_prenom, telephone = moiDB.MEM_telephone };
-
-            return moi;
+            if(moiDB == null)
+            {
+                return null;
+            }
+            else
+            {
+                Membre moi = new Membre { mail = moiDB.MEM_mail, nom = moiDB.MEM_nom, adresse = moiDB.MEM_adresse, dateDeNaissance = moiDB.MEM_dateDeNaissance, estProprietaire = moiDB.MEM_propriétaire, idMembre = moiDB.idMembre, photo = moiDB.MEM_Photo, prenom = moiDB.MEM_prenom, telephone = moiDB.MEM_telephone };
+                return moi;
+            }
+            
         }
 
         [HttpGet]

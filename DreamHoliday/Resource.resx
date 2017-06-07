@@ -513,4 +513,16 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   <data name="Error_TarifNuitRequis" xml:space="preserve">
     <value>tarif par nuit requis</value>
   </data>
+  <data name="connectionNotOk" xml:space="preserve">
+    <value>nom d'utilisateur ou mot de pass pas valide</value>
+  </data>
+  <data name="connectionOk" xml:space="preserve">
+    <value>Bienvenue</value>
+  </data>
+  <data name="connectionReussie" xml:space="preserve">
+    <value>connexion reussie</value>
+  </data>
+  <data name="Error_NbPersonne" xml:space="preserve">
+    <value>veuillez mettre un chiffre dans le champ "nombre de personnes"</value>
+  </data>
 </root>

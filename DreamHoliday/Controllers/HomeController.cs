@@ -50,8 +50,6 @@ namespace DreamHoliday.Controllers
 
         public ActionResult Index()
         {
-            Session["probleme"] = 0;
-            Session["message"] = "";
 
             CultureInfo maCulture = Thread.CurrentThread.CurrentCulture;
 
@@ -117,45 +115,7 @@ namespace DreamHoliday.Controllers
 
 
         }
-
-        //[HttpPost]
-        //public ActionResult Contact(string nom, string prenom, string mail, string question)
-        //{
-        //    if(ModelState.IsValid)
-        //    {
-        //        using (var client = new HttpClient())
-        //        {
-        //            question qu = new question { nom = nom, prenom = prenom, message = question, mail = mail };
-
-        //            client.BaseAddress = new Uri("http://localhost:56077/api/HomeAPI/");
-        //            var responseTask = client.PostAsJsonAsync("PostQuestion", qu);
-        //            responseTask.Wait();
-        //            var result = responseTask.Result;
-
-        //            if (result.IsSuccessStatusCode)
-        //            {
-        //                return RedirectToAction("Index", "Home");
-        //            }
-        //            else
-        //            {
-        //                return RedirectToAction("Contact");
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return View();
-        //    }
-
-        //}
-
-
-
-
-
-
-
-
+        
 
     }
 }

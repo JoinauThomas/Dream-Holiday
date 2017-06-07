@@ -86,8 +86,13 @@ namespace DreamHoliday.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditBien(Bien monBien)
+        public ActionResult EditBien(Bien monBien, HttpPostedFileBase monfichier)
         {
+            if (monfichier != null && monfichier.ContentLength > 0)
+            {
+                string path = Path.Combine(Server.MapPath("~/Img/Biens"), "photo" + monBien.idBien.ToString() + ".jpg");
+                monfichier.SaveAs(path);
+            }
             using (var client = new HttpClient())
             {
                 var token = Request.Cookies["myToken"].Value;
@@ -101,6 +106,7 @@ namespace DreamHoliday.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
+                    
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -222,36 +228,44 @@ namespace DreamHoliday.Controllers
         [HttpPost]
         public ActionResult SearchBienss(string paysOuVille, string dateDepart, string dateRetour, int nbPers)
         {
-            List<Bien> mesBiens = new List<Bien>();
-
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                var responseTask = client.GetAsync("SearchBiens?paysOuVille=" + paysOuVille + "&dateDepart=" + dateDepart + "&dateRetour=" + dateRetour + "&nbPers=" + nbPers);
+                List<Bien> mesBiens = new List<Bien>();
 
-                responseTask.Wait();
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
+                using (var client = new HttpClient())
                 {
-                    var readTask = result.Content.ReadAsAsync<List<Bien>>();
-                    readTask.Wait();
-                    mesBiens = readTask.Result;
+                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    var responseTask = client.GetAsync("SearchBiens?paysOuVille=" + paysOuVille + "&dateDepart=" + dateDepart + "&dateRetour=" + dateRetour + "&nbPers=" + nbPers);
 
-                    if (mesBiens.Count == 0)
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
                     {
-                        return null;
+                        var readTask = result.Content.ReadAsAsync<List<Bien>>();
+                        readTask.Wait();
+                        mesBiens = readTask.Result;
+
+                        if (mesBiens.Count == 0)
+                        {
+                            return null;
+                        }
+                        else
+                        {
+                            return PartialView("_SearchBiens", mesBiens);
+                        }
+
                     }
                     else
                     {
                         return PartialView("_SearchBiens", mesBiens);
                     }
-                    
-                }
-                else
-                {
-                    return PartialView("_SearchBiens", mesBiens);
                 }
             }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            
 
             
         }
