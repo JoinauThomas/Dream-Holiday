@@ -49,8 +49,6 @@ namespace DreamHoliday.Controllers
                     {
                         var responseString = result.Content.ReadAsStringAsync();
                         var res = responseString.Result;
-                        Session["probleme"] = 1;
-                        Session["message"] = "user ou password pas valide\nVeuillez réessayer";
 
                         return null;
                     }
@@ -87,6 +85,17 @@ namespace DreamHoliday.Controllers
         {
             Session["monToken"] = null;
             Session["monCompte"] = null;
+
+            HttpCookie myToken;
+            string cookieName;
+            int limit = Request.Cookies.Count;
+            for (int i = 0; i < limit; i++)
+            {
+                cookieName = Request.Cookies[i].Name;
+                myToken = new HttpCookie(cookieName);
+                myToken.Value = "";
+                Response.Cookies.Add(myToken);
+            }
 
 
             return RedirectToAction("Index", "Home");

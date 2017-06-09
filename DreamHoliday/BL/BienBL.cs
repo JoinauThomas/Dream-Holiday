@@ -1,4 +1,5 @@
-﻿using DreamHoliday.Models;
+﻿using DreamHoliday.Controllers;
+using DreamHoliday.Models;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -13,20 +14,10 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
-// 56077
-
-namespace DreamHoliday.Controllers
+namespace DreamHoliday.BL
 {
-    
-    public class BienController : BaseController
+    public class BienBL : BaseController
     {
-        CultureInfo maCulture = Thread.CurrentThread.CurrentCulture;
-
-        //public static string token = "";
-
-
-        // ajouter un nouveau bien
-
         [HttpGet]
         public ActionResult addNewBien()
         {
@@ -55,7 +46,7 @@ namespace DreamHoliday.Controllers
                 if (result.IsSuccessStatusCode)
                 {
                     // le bien a été créé
-                    
+
                     var readTask = result.Content.ReadAsAsync<int>();
                     readTask.Wait();
                     int idNvBien = readTask.Result;
@@ -106,7 +97,7 @@ namespace DreamHoliday.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -179,7 +170,7 @@ namespace DreamHoliday.Controllers
                     var readTask = result.Content.ReadAsAsync<List<Bien>>();
                     readTask.Wait();
                     mesBiensList = readTask.Result;
-                    if(mesBiensList.Count == 0)
+                    if (mesBiensList.Count == 0)
                     {
                         return null;
                     }
@@ -187,7 +178,7 @@ namespace DreamHoliday.Controllers
                     {
                         return PartialView("_SearchBiens", mesBiensList);
                     }
-                    
+
                 }
                 // erreur lors de la création de l'étudiant
                 var content = result.Content.ReadAsStringAsync();
@@ -219,7 +210,7 @@ namespace DreamHoliday.Controllers
                 }
 
 
-                
+
             }
 
             return View("_SearchBiens", mesBiens);
@@ -261,13 +252,13 @@ namespace DreamHoliday.Controllers
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
-            
 
-            
+
+
         }
 
 
@@ -363,38 +354,9 @@ namespace DreamHoliday.Controllers
         public ActionResult VoirMesBiens(int idMembre)
         {
             List<Bien> mesBiens = new List<Bien>();
-            Membre moi = new Membre { idMembre = idMembre };
-            using (var client = new HttpClient())
-            {
-                var token = Request.Cookies["myToken"].Value;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                var responseTask = client.PostAsJsonAsync("VoirmesBiens", moi);
+            mesBiens = GetMesBiens(idMembre);
 
-                //client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                //var responseTask = client.GetAsync("GetmesBiens?idMembre=" + idMembre);
-                responseTask.Wait();
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    var readTask = result.Content.ReadAsAsync<List<Bien>>();
-                    readTask.Wait();
-                    mesBiens = readTask.Result;
-                }
-                else
-                {
-                    string probleme = result.ReasonPhrase.ToString();
-
-                    if (probleme == "Unauthorized")
-                    {
-                        ViewBag.erreur = "pas autorisé à accéder a cette page";
-                        return View("Error");
-                    }
-                }
-            }
             return View(mesBiens);
         }
 
@@ -496,7 +458,32 @@ namespace DreamHoliday.Controllers
             return (monBien);
         }
 
-       
+        public List<Bien> GetMesBiens(int idMembre)
+        {
+            List<Bien> mesBiens = new List<Bien>();
+
+            using (var client = new HttpClient())
+            {
+                var token = Request.Cookies["myToken"].Value;
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                var responseTask = client.GetAsync("GetmesBiens?idMembre=" + idMembre);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<List<Bien>>();
+                    readTask.Wait();
+                    mesBiens = readTask.Result;
+                }
+            }
+            return mesBiens;
+        }
+
+
 
         // récupere les dates pas disponibles
         [HttpGet]
@@ -632,9 +619,5 @@ namespace DreamHoliday.Controllers
             }
             return View("showAllBiens22", mesBiens);
         }
-
-        
-
-
     }
 }

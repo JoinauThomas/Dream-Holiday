@@ -398,11 +398,12 @@ namespace DreamHoliday.Controllers
             return monMessage;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Authorize]
-        [Route("GetmesBiens")]
-        public List<Bien> GetmesBiens(int idMembre)
+        [Route("VoirmesBiens")]
+        public List<Bien> VoirmesBiens(Membre moi)
         {
+            int idMembre = moi.idMembre;
             DAL.DreamHollidayEntities dbContext = new DreamHollidayEntities();
 
             List<DAL.GetAllMyBiens_Result> mesBiensDB = dbContext.GetAllMyBiens(idMembre).ToList();

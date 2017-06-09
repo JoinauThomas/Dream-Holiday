@@ -227,6 +227,9 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="BL\BienBL.cs" />
+    <Compile Include="BL\HomeBL.cs" />
+    <Compile Include="BL\MembreBL.cs" />
     <Compile Include="Controllers\api\AccountController.cs" />
     <Compile Include="Controllers\api\BienAPIController.cs" />
     <Compile Include="Controllers\api\HomeAPIController.cs" />
@@ -559,7 +562,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="BL\" />
     <Folder Include="img\Biens\" />
     <Folder Include="img\images\" />
     <Folder Include="img\loaders\" />

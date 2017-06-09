@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace DreamHoliday.Models
 {
+    [Bind(Exclude ="idMembre")]
     public class Membre
     {
+        
         [Display(ResourceType = typeof(Resource), Name = "idMembre")]
         public int idMembre { get; set; }
         [Display(ResourceType = typeof(Resource), Name = "mail")]
