@@ -13,19 +13,8 @@ namespace DreamHoliday.Controllers
     public class MembreController : BaseController
     {
         private static int idMembreBien;
-        //public ActionResult GetallMembres()
-        //{
-        //    DAL.DreamHollidayEntities dbContext = new DAL.DreamHollidayEntities();
-        //    List<DAL.MEMBRE> mesMem = dbContext.MEMBRE.ToList();
-        //    List<Membre> mesMembres = new List<Membre>();
+        
 
-        //    foreach (var i in mesMem)
-        //    {
-        //        mesMembres.Add(new Membre { idMembre = i.idMembre, adresse = i.MEM_adresse, dateDeNaissance = i.MEM_dateDeNaissance, estProprietaire = i.MEM_propriétaire, mail = i.MEM_mail, nom = i.MEM_nom, photo = i.MEM_Photo, prenom = i.MEM_prenom, telephone = i.MEM_telephone });
-        //    }
-
-        //    return View(mesMembres);
-        //}
         [HttpGet]
         public static Membre GetMembreByMail(string mail)
         {
@@ -134,15 +123,15 @@ namespace DreamHoliday.Controllers
         {
             Membre monCpte = (Membre)Session["monCompte"];
 
-            int idMembre = monCpte.idMembre;
+            string identifiant = monCpte.identifiant;
 
-            editProfile moi = GetMembreByIdForProfile(idMembre);
+            editProfile moi = GetMembreByIdForProfile(identifiant);
 
 
-            int nbLoc = GetCountOfMyLocations(idMembre);
+            int nbLoc = GetCountOfMyLocations(identifiant);
             ViewBag.nombreLoc = nbLoc;
 
-            int nbMessage = GetCountOfMyMessages(idMembre);
+            int nbMessage = GetCountOfMyMessages(identifiant);
             ViewBag.nbMsg = nbMessage;
 
             return View(moi);
@@ -173,7 +162,7 @@ namespace DreamHoliday.Controllers
 
                 if (result.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("VoirMonProfile", moi);
+                    return RedirectToAction("VoirMonProfile");
                 }
                 else
                 {
@@ -226,9 +215,9 @@ namespace DreamHoliday.Controllers
         }
 
         [HttpGet]
-        public ActionResult mesMessages(int idMembre)
+        public ActionResult mesMessages()
         {
-            List<Message> mesMessages = GetMyMessages(idMembre);
+            List<Message> mesMessages = GetMyMessages();
 
             return View(mesMessages);
         }
@@ -245,6 +234,7 @@ namespace DreamHoliday.Controllers
         {
             Membre moi = (Membre)Session["monCompte"];
             int idMembre = moi.idMembre;
+            string identifiant = moi.identifiant;
 
             List<MesLocations> mesLocations = new List<MesLocations>();
 
@@ -256,7 +246,7 @@ namespace DreamHoliday.Controllers
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
                 client.BaseAddress = new Uri("http://localhost:56077/api/MembreAPI/");
-                var responseTask = client.GetAsync("GetMyLocations?idMembre=" + idMembre);
+                var responseTask = client.GetAsync("GetMyLocations?identifiant=" + identifiant);
                 responseTask.Wait();
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
@@ -294,7 +284,7 @@ namespace DreamHoliday.Controllers
         }
 
         [HttpGet]
-        public editProfile GetMembreByIdForProfile(int idMembre)
+        public editProfile GetMembreByIdForProfile(string identifiant)
         {
             editProfile moi = new editProfile();
             using (var client = new HttpClient())
@@ -305,7 +295,7 @@ namespace DreamHoliday.Controllers
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
                 client.BaseAddress = new Uri("http://localhost:56077/api/MembreAPI/");
-                var responseTask = client.GetAsync("GetMembreByIdForProfile?idMembre=" + idMembre);
+                var responseTask = client.GetAsync("GetMembreByIdForProfile?identifiant=" + identifiant);
                 responseTask.Wait();
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
@@ -319,7 +309,7 @@ namespace DreamHoliday.Controllers
         }
 
         [HttpGet]
-        public int GetCountOfMyLocations(int idMembre)
+        public int GetCountOfMyLocations(string identifiant)
         {
             int nbDeLocations = 0;
             using (var client = new HttpClient())
@@ -330,7 +320,7 @@ namespace DreamHoliday.Controllers
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
                 client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                var responseTask = client.GetAsync("GetCountOfMyLocations?idMembre=" + idMembre);
+                var responseTask = client.GetAsync("GetCountOfMyLocations?identifiant=" + identifiant);
                 responseTask.Wait();
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
@@ -344,7 +334,7 @@ namespace DreamHoliday.Controllers
         }
 
         [HttpGet]
-        public int GetCountOfMyMessages(int idMembre)
+        public int GetCountOfMyMessages(string identifiant)
         {
             int nbMessage = 0;
             using (var client = new HttpClient())
@@ -355,7 +345,7 @@ namespace DreamHoliday.Controllers
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
                 client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                var responseTask = client.GetAsync("GetCountOfMyMessages?idMembre=" + idMembre);
+                var responseTask = client.GetAsync("GetCountOfMyMessages?identifiant=" + identifiant);
                 responseTask.Wait();
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
@@ -369,8 +359,9 @@ namespace DreamHoliday.Controllers
         }
 
         [HttpGet]
-        public List<Message> GetMyMessages(int idMembre)
+        public List<Message> GetMyMessages()
         {
+            Membre moi = (Membre)Session["monCompte"];
             List<Message> mesMessages = new List<Message>();
             using (var client = new HttpClient())
             {
@@ -380,7 +371,7 @@ namespace DreamHoliday.Controllers
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
                 client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                var responseTask = client.GetAsync("GetMyMessages?idMembre=" + idMembre);
+                var responseTask = client.GetAsync("GetMyMessages?identifiant=" + moi.identifiant);
                 responseTask.Wait();
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)

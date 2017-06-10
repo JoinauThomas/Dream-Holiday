@@ -284,6 +284,7 @@
     <EntitySetMapping Name="BIEN">
       <EntityTypeMapping TypeName="DreamHollidayModel.BIEN">
         <MappingFragment StoreEntitySet="BIEN">
+          <ScalarProperty Name="MEM_identifiant" ColumnName="MEM_identifiant" />
           <ScalarProperty Name="BIEN_estVisible" ColumnName="BIEN_estVisible" />
           <ScalarProperty Name="BIEN_nbMaxPersonnes" ColumnName="BIEN_nbMaxPersonnes" />
           <ScalarProperty Name="BIEN_photo" ColumnName="BIEN_photo" />
@@ -303,6 +304,7 @@
     <EntitySetMapping Name="COMMENTAIRE">
       <EntityTypeMapping TypeName="DreamHollidayModel.COMMENTAIRE">
         <MappingFragment StoreEntitySet="COMMENTAIRE">
+          <ScalarProperty Name="MEM_identifiant" ColumnName="MEM_identifiant" />
           <ScalarProperty Name="idLocation" ColumnName="idLocation" />
           <ScalarProperty Name="COMM_date" ColumnName="COMM_date" />
           <ScalarProperty Name="COMM_libelle" ColumnName="COMM_libelle" />
@@ -315,6 +317,7 @@
     <EntitySetMapping Name="LOCATION">
       <EntityTypeMapping TypeName="DreamHollidayModel.LOCATION">
         <MappingFragment StoreEntitySet="LOCATION">
+          <ScalarProperty Name="MEM_identifiant" ColumnName="MEM_identifiant" />
           <ScalarProperty Name="LOC_nbNuits" ColumnName="LOC_nbNuits" />
           <ScalarProperty Name="LOC_dateDepart" ColumnName="LOC_dateDepart" />
           <ScalarProperty Name="LOC_dateArrivee" ColumnName="LOC_dateArrivee" />
@@ -330,6 +333,7 @@
     <EntitySetMapping Name="MEMBRE">
       <EntityTypeMapping TypeName="DreamHollidayModel.MEMBRE">
         <MappingFragment StoreEntitySet="MEMBRE">
+          <ScalarProperty Name="identifiant" ColumnName="identifiant" />
           <ScalarProperty Name="MEM_Photo" ColumnName="MEM_Photo" />
           <ScalarProperty Name="MEM_propriétaire" ColumnName="MEM_propriétaire" />
           <ScalarProperty Name="MEM_telephone" ColumnName="MEM_telephone" />
@@ -345,6 +349,7 @@
     <EntitySetMapping Name="MESSAGE">
       <EntityTypeMapping TypeName="DreamHollidayModel.MESSAGE">
         <MappingFragment StoreEntitySet="MESSAGE">
+          <ScalarProperty Name="MEM_identifiant" ColumnName="MEM_identifiant" />
           <ScalarProperty Name="MES_MEM_idMembre" ColumnName="MES_MEM_idMembre" />
           <ScalarProperty Name="MES_date" ColumnName="MES_date" />
           <ScalarProperty Name="MES_message" ColumnName="MES_message" />

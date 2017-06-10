@@ -19,7 +19,7 @@
             <div class="col-md-12 row" style="margin-top:5%">
 
 
-
+                <input id="identifiant" name="identifiant" value="@Model.identifiant" class="form-control" style="display:none" />
 
                 <section class="col-md-3">
                     <div>
@@ -124,7 +124,7 @@
                             else
                             {
                                 <li>
-                                    <button type="button" id="msg" class="btnProfile btn btn-warning col-md-12 " style="margin-bottom:5%" onclick="location.href = '@Url.Action("VoirMesBiens", "Bien", new { idMembre = Model.idMembre })'">@Resource.mesBiens</button>
+                                    <button type="button" id="msg" class="btnProfile btn btn-warning col-md-12 " style="margin-bottom:5%" onclick="location.href = '@Url.Action("VoirMesBiens", "Bien")'">@Resource.mesBiens</button>
                                 </li>
                             }
 
@@ -150,7 +150,7 @@
                             else
                             {
                                 <li>
-                                    <button type="button" id="msg" class="btnProfile btn btn-warning col-md-12 " style="margin-bottom:5%" onclick="location.href = '@Url.Action("mesMessages", "Membre", new { idMembre = Model.idMembre })'">@Resource.mesMessages  <i class="glyphicon glyphicon-envelope"></i></button>
+                                    <button type="button" id="msg" class="btnProfile btn btn-warning col-md-12 " style="margin-bottom:5%" onclick="location.href = '@Url.Action("mesMessages", "Membre")'">@Resource.mesMessages  <i class="glyphicon glyphicon-envelope"></i></button>
                                 </li>
                             }
                         }

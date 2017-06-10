@@ -20,6 +20,7 @@ namespace DreamHoliday.DAL
         public string COMM_libelle { get; set; }
         public System.DateTime COMM_date { get; set; }
         public int idLocation { get; set; }
+        public string MEM_identifiant { get; set; }
     
         public virtual LOCATION LOCATION { get; set; }
     }

@@ -30,6 +30,7 @@ namespace DreamHoliday.DAL
         public System.DateTime LOC_dateArrivee { get; set; }
         public System.DateTime LOC_dateDepart { get; set; }
         public int LOC_nbNuits { get; set; }
+        public string MEM_identifiant { get; set; }
     
         public virtual BIEN BIEN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

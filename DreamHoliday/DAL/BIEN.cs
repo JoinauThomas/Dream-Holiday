@@ -33,6 +33,7 @@ namespace DreamHoliday.DAL
         public string BIEN_photo { get; set; }
         public int BIEN_nbMaxPersonnes { get; set; }
         public Nullable<bool> BIEN_estVisible { get; set; }
+        public string MEM_identifiant { get; set; }
     
         public virtual MEMBRE MEMBRE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

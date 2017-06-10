@@ -30,5 +30,7 @@ namespace DreamHoliday.Models
 
         public int idMembre { get; set; }
 
+        public string identifiant { get; set; }
+
     }
 }

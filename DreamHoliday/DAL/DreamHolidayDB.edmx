@@ -83,6 +83,7 @@
           <Property Name="BIEN_photo" Type="nvarchar" MaxLength="250" />
           <Property Name="BIEN_nbMaxPersonnes" Type="int" Nullable="false" />
           <Property Name="BIEN_estVisible" Type="bit" />
+          <Property Name="MEM_identifiant" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="COMMENTAIRE">
           <Key>
@@ -91,6 +92,7 @@
           <Property Name="idCommentaire" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idBien" Type="int" Nullable="false" />
           <Property Name="idMembre" Type="int" Nullable="false" />
+          <Property Name="MEM_identifiant" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="COMM_libelle" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="COMM_date" Type="datetime" Nullable="false" />
           <Property Name="idLocation" Type="int" Nullable="false" />
@@ -108,12 +110,14 @@
           <Property Name="LOC_dateArrivee" Type="datetime" Nullable="false" />
           <Property Name="LOC_dateDepart" Type="datetime" Nullable="false" />
           <Property Name="LOC_nbNuits" Type="int" Nullable="false" />
+          <Property Name="MEM_identifiant" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="MEMBRE">
           <Key>
             <PropertyRef Name="idMembre" />
           </Key>
           <Property Name="idMembre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="identifiant" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="MEM_mail" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="MEM_nom" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="MEM_prenom" Type="nvarchar" MaxLength="250" Nullable="false" />
@@ -135,6 +139,7 @@
           <Property Name="MES_message" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="MES_date" Type="date" Nullable="false" />
           <Property Name="MES_MEM_idMembre" Type="int" Nullable="false" />
+          <Property Name="MEM_identifiant" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="NOTE">
           <Key>
@@ -528,13 +533,13 @@
         </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="GetAllMyBiens" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="idMembre" Type="int" Mode="In" />
+          <Parameter Name="identifiant" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="GetFiveLastComment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idBien" Type="int" Mode="In" />
         </Function>
         <Function Name="getMyLocations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="idMembre" Type="int" Mode="In" />
+          <Parameter Name="identifiant" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="RechercheDatePasDispo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idBien" Type="int" Mode="In" />
@@ -599,7 +604,7 @@
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="UpdateMembre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="idMembre" Type="int" Mode="In" />
+          <Parameter Name="identifiant" Type="nvarchar" Mode="In" />
           <Parameter Name="mail" Type="nvarchar" Mode="In" />
           <Parameter Name="nom" Type="nvarchar" Mode="In" />
           <Parameter Name="prenom" Type="nvarchar" Mode="In" />
@@ -879,7 +884,7 @@
             <Parameter Name="noteMoyenneMin" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="UpdateMembre">
-            <Parameter Name="idMembre" Mode="In" Type="Int32" />
+            <Parameter Name="identifiant" Mode="In" Type="String" />
             <Parameter Name="mail" Mode="In" Type="String" />
             <Parameter Name="nom" Mode="In" Type="String" />
             <Parameter Name="prenom" Mode="In" Type="String" />
@@ -891,7 +896,7 @@
           <Parameter Name="idBien" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getMyLocations" ReturnType="Collection(DreamHollidayModel.getMyLocations_Result)">
-          <Parameter Name="idMembre" Mode="In" Type="Int32" />
+          <Parameter Name="identifiant" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="addCommentAndNote">
             <Parameter Name="note" Mode="In" Type="Int32" />
@@ -988,7 +993,7 @@
             <Parameter Name="nbPers" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetAllMyBiens" ReturnType="Collection(DreamHollidayModel.GetAllMyBiens_Result)">
-          <Parameter Name="idMembre" Mode="In" Type="Int32" />
+          <Parameter Name="identifiant" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="editBien">
             <Parameter Name="pays" Mode="In" Type="String" />
@@ -1579,6 +1584,7 @@
           <NavigationProperty Name="OPTIONS" Relationship="DreamHollidayModel.FK_OPTIONS_BIEN" FromRole="BIEN" ToRole="OPTIONS" />
           <NavigationProperty Name="PIECE" Relationship="DreamHollidayModel.FK_PIECE_BIEN" FromRole="BIEN" ToRole="PIECE" />
           <Property Name="BIEN_estVisible" Type="Boolean" />
+          <Property Name="MEM_identifiant" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="COMMENTAIRE">
           <Key>
@@ -1591,6 +1597,7 @@
           <Property Name="COMM_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="idLocation" Type="Int32" Nullable="false" />
           <NavigationProperty Name="LOCATION" Relationship="DreamHollidayModel.FK_COMMENTAIRE_LOCATION" FromRole="COMMENTAIRE" ToRole="LOCATION" />
+          <Property Name="MEM_identifiant" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="LOCATION">
           <Key>
@@ -1609,6 +1616,7 @@
           <NavigationProperty Name="COMMENTAIRE" Relationship="DreamHollidayModel.FK_COMMENTAIRE_LOCATION" FromRole="LOCATION" ToRole="COMMENTAIRE" />
           <NavigationProperty Name="MEMBRE" Relationship="DreamHollidayModel.FK_LOCATION_MEMBRE" FromRole="LOCATION" ToRole="MEMBRE" />
           <NavigationProperty Name="NOTE" Relationship="DreamHollidayModel.FK_NOTE_LOCATION" FromRole="LOCATION" ToRole="NOTE" />
+          <Property Name="MEM_identifiant" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="MEMBRE">
           <Key>
@@ -1625,6 +1633,7 @@
           <Property Name="MEM_Photo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BIEN" Relationship="DreamHollidayModel.FK_BIEN_MEMBRE" FromRole="MEMBRE" ToRole="BIEN" />
           <NavigationProperty Name="LOCATION" Relationship="DreamHollidayModel.FK_LOCATION_MEMBRE" FromRole="MEMBRE" ToRole="LOCATION" />
+          <Property Name="identifiant" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="MESSAGE">
           <Key>
@@ -1638,6 +1647,7 @@
           <Property Name="MES_message" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="MES_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="MES_MEM_idMembre" Type="Int32" Nullable="false" />
+          <Property Name="MEM_identifiant" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="NOTE">
           <Key>
@@ -2144,6 +2154,7 @@
           <EntitySetMapping Name="BIEN">
             <EntityTypeMapping TypeName="DreamHollidayModel.BIEN">
               <MappingFragment StoreEntitySet="BIEN">
+                <ScalarProperty Name="MEM_identifiant" ColumnName="MEM_identifiant" />
                 <ScalarProperty Name="BIEN_estVisible" ColumnName="BIEN_estVisible" />
                 <ScalarProperty Name="BIEN_nbMaxPersonnes" ColumnName="BIEN_nbMaxPersonnes" />
                 <ScalarProperty Name="BIEN_photo" ColumnName="BIEN_photo" />
@@ -2163,6 +2174,7 @@
           <EntitySetMapping Name="COMMENTAIRE">
             <EntityTypeMapping TypeName="DreamHollidayModel.COMMENTAIRE">
               <MappingFragment StoreEntitySet="COMMENTAIRE">
+                <ScalarProperty Name="MEM_identifiant" ColumnName="MEM_identifiant" />
                 <ScalarProperty Name="idLocation" ColumnName="idLocation" />
                 <ScalarProperty Name="COMM_date" ColumnName="COMM_date" />
                 <ScalarProperty Name="COMM_libelle" ColumnName="COMM_libelle" />
@@ -2175,6 +2187,7 @@
           <EntitySetMapping Name="LOCATION">
             <EntityTypeMapping TypeName="DreamHollidayModel.LOCATION">
               <MappingFragment StoreEntitySet="LOCATION">
+                <ScalarProperty Name="MEM_identifiant" ColumnName="MEM_identifiant" />
                 <ScalarProperty Name="LOC_nbNuits" ColumnName="LOC_nbNuits" />
                 <ScalarProperty Name="LOC_dateDepart" ColumnName="LOC_dateDepart" />
                 <ScalarProperty Name="LOC_dateArrivee" ColumnName="LOC_dateArrivee" />
@@ -2190,6 +2203,7 @@
           <EntitySetMapping Name="MEMBRE">
             <EntityTypeMapping TypeName="DreamHollidayModel.MEMBRE">
               <MappingFragment StoreEntitySet="MEMBRE">
+                <ScalarProperty Name="identifiant" ColumnName="identifiant" />
                 <ScalarProperty Name="MEM_Photo" ColumnName="MEM_Photo" />
                 <ScalarProperty Name="MEM_propriétaire" ColumnName="MEM_propriétaire" />
                 <ScalarProperty Name="MEM_telephone" ColumnName="MEM_telephone" />
@@ -2205,6 +2219,7 @@
           <EntitySetMapping Name="MESSAGE">
             <EntityTypeMapping TypeName="DreamHollidayModel.MESSAGE">
               <MappingFragment StoreEntitySet="MESSAGE">
+                <ScalarProperty Name="MEM_identifiant" ColumnName="MEM_identifiant" />
                 <ScalarProperty Name="MES_MEM_idMembre" ColumnName="MES_MEM_idMembre" />
                 <ScalarProperty Name="MES_date" ColumnName="MES_date" />
                 <ScalarProperty Name="MES_message" ColumnName="MES_message" />

@@ -33,6 +33,7 @@ namespace DreamHoliday.Models
         [Display(ResourceType = typeof(Resource), Name = "idMembre")]
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Error_mailRequis")]
         public int idMembre { get; set; }
+        public string identifiant { get; set; }
 
         [Display(ResourceType = typeof(Resource), Name = "tarifNuit")]
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Error_mailRequis")]
