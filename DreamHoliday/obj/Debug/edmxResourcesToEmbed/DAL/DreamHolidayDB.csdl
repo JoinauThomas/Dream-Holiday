@@ -177,7 +177,7 @@
       <Parameter Name="noteMoyenneMin" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="UpdateMembre">
-      <Parameter Name="identifiant" Mode="In" Type="String" />
+      <Parameter Name="idMembre" Mode="In" Type="Int32" />
       <Parameter Name="mail" Mode="In" Type="String" />
       <Parameter Name="nom" Mode="In" Type="String" />
       <Parameter Name="prenom" Mode="In" Type="String" />
@@ -189,7 +189,7 @@
       <Parameter Name="idBien" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="getMyLocations" ReturnType="Collection(DreamHollidayModel.getMyLocations_Result)">
-      <Parameter Name="identifiant" Mode="In" Type="String" />
+      <Parameter Name="idMembre" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="addCommentAndNote">
       <Parameter Name="note" Mode="In" Type="Int32" />
@@ -286,7 +286,7 @@
       <Parameter Name="nbPers" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="GetAllMyBiens" ReturnType="Collection(DreamHollidayModel.GetAllMyBiens_Result)">
-      <Parameter Name="identifiant" Mode="In" Type="String" />
+      <Parameter Name="idMembre" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="editBien">
       <Parameter Name="pays" Mode="In" Type="String" />
@@ -877,7 +877,6 @@
     <NavigationProperty Name="OPTIONS" Relationship="DreamHollidayModel.FK_OPTIONS_BIEN" FromRole="BIEN" ToRole="OPTIONS" />
     <NavigationProperty Name="PIECE" Relationship="DreamHollidayModel.FK_PIECE_BIEN" FromRole="BIEN" ToRole="PIECE" />
     <Property Name="BIEN_estVisible" Type="Boolean" />
-    <Property Name="MEM_identifiant" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="COMMENTAIRE">
     <Key>
@@ -890,7 +889,6 @@
     <Property Name="COMM_date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="idLocation" Type="Int32" Nullable="false" />
     <NavigationProperty Name="LOCATION" Relationship="DreamHollidayModel.FK_COMMENTAIRE_LOCATION" FromRole="COMMENTAIRE" ToRole="LOCATION" />
-    <Property Name="MEM_identifiant" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="LOCATION">
     <Key>
@@ -909,7 +907,6 @@
     <NavigationProperty Name="COMMENTAIRE" Relationship="DreamHollidayModel.FK_COMMENTAIRE_LOCATION" FromRole="LOCATION" ToRole="COMMENTAIRE" />
     <NavigationProperty Name="MEMBRE" Relationship="DreamHollidayModel.FK_LOCATION_MEMBRE" FromRole="LOCATION" ToRole="MEMBRE" />
     <NavigationProperty Name="NOTE" Relationship="DreamHollidayModel.FK_NOTE_LOCATION" FromRole="LOCATION" ToRole="NOTE" />
-    <Property Name="MEM_identifiant" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="MEMBRE">
     <Key>
@@ -926,7 +923,6 @@
     <Property Name="MEM_Photo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="BIEN" Relationship="DreamHollidayModel.FK_BIEN_MEMBRE" FromRole="MEMBRE" ToRole="BIEN" />
     <NavigationProperty Name="LOCATION" Relationship="DreamHollidayModel.FK_LOCATION_MEMBRE" FromRole="MEMBRE" ToRole="LOCATION" />
-    <Property Name="identifiant" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="MESSAGE">
     <Key>
@@ -940,7 +936,6 @@
     <Property Name="MES_message" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="MES_date" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="MES_MEM_idMembre" Type="Int32" Nullable="false" />
-    <Property Name="MEM_identifiant" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="NOTE">
     <Key>

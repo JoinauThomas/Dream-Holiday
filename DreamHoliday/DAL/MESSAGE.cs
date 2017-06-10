@@ -22,6 +22,5 @@ namespace DreamHoliday.DAL
         public string MES_message { get; set; }
         public System.DateTime MES_date { get; set; }
         public int MES_MEM_idMembre { get; set; }
-        public string MEM_identifiant { get; set; }
     }
 }

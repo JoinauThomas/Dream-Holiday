@@ -25,7 +25,7 @@ namespace DreamHoliday.Controllers.api
             }
             else
             {
-                Membre moi = new Membre { mail = moiDB.MEM_mail, nom = moiDB.MEM_nom, adresse = moiDB.MEM_adresse, dateDeNaissance = moiDB.MEM_dateDeNaissance, estProprietaire = moiDB.MEM_propriétaire, idMembre = moiDB.idMembre, photo = moiDB.MEM_Photo, prenom = moiDB.MEM_prenom, telephone = moiDB.MEM_telephone, identifiant = moiDB.identifiant };
+                Membre moi = new Membre { mail = moiDB.MEM_mail, nom = moiDB.MEM_nom, adresse = moiDB.MEM_adresse, dateDeNaissance = moiDB.MEM_dateDeNaissance, estProprietaire = moiDB.MEM_propriétaire, idMembre = moiDB.idMembre, photo = moiDB.MEM_Photo, prenom = moiDB.MEM_prenom, telephone = moiDB.MEM_telephone };
                 return moi;
             }
             
@@ -34,15 +34,15 @@ namespace DreamHoliday.Controllers.api
         [HttpGet]
         [Authorize]
         [Route("GetMembreByIdForProfile")]
-        public editProfile GetMembreByIdForProfile(string identifiant)
+        public editProfile GetMembreByIdForProfile(int idMembre)
         {
             DAL.MEMBRE moi_Db = new DAL.MEMBRE();
 
             DAL.DreamHollidayEntities dbContext = new DAL.DreamHollidayEntities();
             List<DAL.MEMBRE> mesMem = dbContext.MEMBRE.ToList();
 
-            moi_Db = mesMem.Find(m => m.identifiant == identifiant);
-            editProfile moi = new editProfile { idMembre = moi_Db.idMembre, adresse = moi_Db.MEM_adresse, dateDeNaissance = moi_Db.MEM_dateDeNaissance, estProprietaire = moi_Db.MEM_propriétaire, mail = moi_Db.MEM_mail, nom = moi_Db.MEM_nom, photo = moi_Db.MEM_Photo, prenom = moi_Db.MEM_prenom, telephone = moi_Db.MEM_telephone, identifiant = moi_Db.identifiant };
+            moi_Db = mesMem.Find(m => m.idMembre == idMembre);
+            editProfile moi = new editProfile { idMembre = moi_Db.idMembre, adresse = moi_Db.MEM_adresse, dateDeNaissance = moi_Db.MEM_dateDeNaissance, estProprietaire = moi_Db.MEM_propriétaire, mail = moi_Db.MEM_mail, nom = moi_Db.MEM_nom, photo = moi_Db.MEM_Photo, prenom = moi_Db.MEM_prenom, telephone = moi_Db.MEM_telephone };
 
             return moi;
         }
@@ -78,7 +78,7 @@ namespace DreamHoliday.Controllers.api
             else
             {
                 DAL.DreamHollidayEntities dbContext = new DAL.DreamHollidayEntities();
-                dbContext.UpdateMembre(moi.identifiant, moi.mail, moi.nom, moi.prenom, moi.adresse, moi.dateDeNaissance, moi.telephone);
+                dbContext.UpdateMembre(moi.idMembre, moi.mail, moi.nom, moi.prenom, moi.adresse, moi.dateDeNaissance, moi.telephone);
                 return Ok();
             }
         }
@@ -103,14 +103,14 @@ namespace DreamHoliday.Controllers.api
         [HttpGet]
         [Authorize]
         [Route("GetMyLocations")]
-        public List<MesLocations> GetMyLocations(string identifiant)
+        public List<MesLocations> GetMyLocations(int idMembre)
         {
             try
             {
                 DAL.DreamHollidayEntities dbContext = new DAL.DreamHollidayEntities();
                 List<MesLocations> mesLocations = new List<MesLocations>();
 
-                List<DAL.getMyLocations_Result> mesLocationsDB = dbContext.getMyLocations(identifiant).ToList();
+                List<DAL.getMyLocations_Result> mesLocationsDB = dbContext.getMyLocations(idMembre).ToList();
 
                 foreach (var l in mesLocationsDB)
                 {

@@ -40,9 +40,6 @@ namespace DreamHoliday.Controllers
         [HttpPost]
         public ActionResult addNewBien(Bien nvBien, HttpPostedFileBase monfichier)
         {
-            Membre monCpte = (Membre)Session["monCompte"];
-            nvBien.idMembre = monCpte.idMembre;
-
             using (var client = new HttpClient())
             {
                 var token = Request.Cookies["myToken"].Value;
@@ -366,6 +363,7 @@ namespace DreamHoliday.Controllers
         public ActionResult VoirMesBiens()
         {
             Membre moi = (Membre)Session["monCompte"];
+
             List<Bien> mesBiens = new List<Bien>();
             using (var client = new HttpClient())
             {

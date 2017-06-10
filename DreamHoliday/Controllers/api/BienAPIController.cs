@@ -75,13 +75,13 @@ namespace DreamHoliday.Controllers
 
             // recuperation d'idMembre
             List<BIEN> BiensListe = dbContext.BIEN.ToList();
-            string identifiant = BiensListe.Find(x => x.idBien == idBien).MEM_identifiant;
+            int idMembre = BiensListe.Find(x => x.idBien == idBien).idMembre;
 
             // suppression du bien
             dbContext.DeleteBien(idBien);
 
             // recuperation des biens du user
-            List<DAL.GetAllMyBiens_Result> mesBiensDB = dbContext.GetAllMyBiens(identifiant).ToList();
+            List<DAL.GetAllMyBiens_Result> mesBiensDB = dbContext.GetAllMyBiens(idMembre).ToList();
             foreach (var b in mesBiensDB)
             {
                 mesBiens.Add(new Bien
@@ -321,14 +321,14 @@ namespace DreamHoliday.Controllers
         [HttpGet]
         [Authorize]
         [Route("GetCountOfMyLocations")]
-        public int GetCountOfMyLocations(string identifiant)
+        public int GetCountOfMyLocations(int idMembre)
         {
             DreamHollidayEntities dbContext = new DreamHollidayEntities();
 
             List<LOCATION> listeLoc = dbContext.LOCATION.ToList();
             List<LOCATION> MesLocs = dbContext.LOCATION.ToList();
 
-            MesLocs = listeLoc.FindAll(m => m.MEM_identifiant == identifiant);
+            MesLocs = listeLoc.FindAll(m => m.idMembre == idMembre);
             int nbLoc = MesLocs.Count();
 
             return nbLoc;
@@ -338,11 +338,11 @@ namespace DreamHoliday.Controllers
         [HttpGet]
         [Authorize]
         [Route("GetCountOfMyMessages")]
-        public int GetCountOfMyMessages(string identifiant)
+        public int GetCountOfMyMessages(int idMembre)
 
         {
             DreamHollidayEntities dbContext = new DreamHollidayEntities();
-            List<MESSAGE> mesMess = dbContext.MESSAGE.ToList().FindAll(m => m.MEM_identifiant == identifiant);
+            List<MESSAGE> mesMess = dbContext.MESSAGE.ToList().FindAll(m => m.MES_MEM_idMembre == idMembre);
             int nbMessage = mesMess.Count;
 
             return nbMessage;
@@ -363,10 +363,10 @@ namespace DreamHoliday.Controllers
         [HttpGet]
         [Authorize]
         [Route("GetMyMessages")]
-        public List<Message> GetMyMessages(string identifiant)
+        public List<Message> GetMyMessages(int idMembre)
         {
             DreamHollidayEntities dbContext = new DreamHollidayEntities();
-            List<MESSAGE> tousLesMessages = dbContext.MESSAGE.ToList().FindAll(x => x.MEM_identifiant == identifiant);
+            List<MESSAGE> tousLesMessages = dbContext.MESSAGE.ToList().FindAll(x => x.MES_MEM_idMembre == idMembre);
             List<Message> mesMessages = new List<Message>();
             foreach (var m in tousLesMessages)
             {
@@ -403,10 +403,10 @@ namespace DreamHoliday.Controllers
         [Route("VoirmesBiens")]
         public List<Bien> VoirmesBiens(Membre moi)
         {
-            string identifiant = moi.identifiant;
+            int idMembre = moi.idMembre;
             DAL.DreamHollidayEntities dbContext = new DreamHollidayEntities();
 
-            List<DAL.GetAllMyBiens_Result> mesBiensDB = dbContext.GetAllMyBiens(identifiant).ToList();
+            List<DAL.GetAllMyBiens_Result> mesBiensDB = dbContext.GetAllMyBiens(idMembre).ToList();
             List<Bien> mesBiens = new List<Bien>();
 
             foreach(var b in mesBiensDB)

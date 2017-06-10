@@ -668,11 +668,11 @@ namespace DreamHoliday.DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<searchBienWithOptions_Result>("searchBienWithOptions", bbqParameter, piscineParameter, jacuzziParameter, saunaParameter, tvParameter, teleDisParameter, wifiParameter, pingpongParameter, tennisParameter, transatParameter, cuisineEqParameter, machineALaverParameter, jardinParameter, parkingParameter, nbSdbParameter, nbToiletteParameter, nbChambreParameter, prixMaxParameter, villeOuPaysParameter, nbPersMaxParameter, noteMoyenneMinParameter);
         }
     
-        public virtual int UpdateMembre(string identifiant, string mail, string nom, string prenom, string adresse, Nullable<System.DateTime> dateDeNaissance, string telephone)
+        public virtual int UpdateMembre(Nullable<int> idMembre, string mail, string nom, string prenom, string adresse, Nullable<System.DateTime> dateDeNaissance, string telephone)
         {
-            var identifiantParameter = identifiant != null ?
-                new ObjectParameter("identifiant", identifiant) :
-                new ObjectParameter("identifiant", typeof(string));
+            var idMembreParameter = idMembre.HasValue ?
+                new ObjectParameter("idMembre", idMembre) :
+                new ObjectParameter("idMembre", typeof(int));
     
             var mailParameter = mail != null ?
                 new ObjectParameter("mail", mail) :
@@ -698,7 +698,7 @@ namespace DreamHoliday.DAL
                 new ObjectParameter("telephone", telephone) :
                 new ObjectParameter("telephone", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateMembre", identifiantParameter, mailParameter, nomParameter, prenomParameter, adresseParameter, dateDeNaissanceParameter, telephoneParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateMembre", idMembreParameter, mailParameter, nomParameter, prenomParameter, adresseParameter, dateDeNaissanceParameter, telephoneParameter);
         }
     
         public virtual ObjectResult<RechercheDatePasDispo_Result> RechercheDatePasDispo(Nullable<int> idBien)
@@ -710,13 +710,13 @@ namespace DreamHoliday.DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RechercheDatePasDispo_Result>("RechercheDatePasDispo", idBienParameter);
         }
     
-        public virtual ObjectResult<getMyLocations_Result> getMyLocations(string identifiant)
+        public virtual ObjectResult<getMyLocations_Result> getMyLocations(Nullable<int> idMembre)
         {
-            var identifiantParameter = identifiant != null ?
-                new ObjectParameter("identifiant", identifiant) :
-                new ObjectParameter("identifiant", typeof(string));
+            var idMembreParameter = idMembre.HasValue ?
+                new ObjectParameter("idMembre", idMembre) :
+                new ObjectParameter("idMembre", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getMyLocations_Result>("getMyLocations", identifiantParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getMyLocations_Result>("getMyLocations", idMembreParameter);
         }
     
         public virtual int addCommentAndNote(Nullable<int> note, Nullable<int> idLocation, string libelle)
@@ -864,13 +864,13 @@ namespace DreamHoliday.DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SearchBiensDispo_Result>("SearchBiensDispo", paysOuVilleParameter, arriveeParameter, departParameter, nbPersParameter);
         }
     
-        public virtual ObjectResult<GetAllMyBiens_Result> GetAllMyBiens(string identifiant)
+        public virtual ObjectResult<GetAllMyBiens_Result> GetAllMyBiens(Nullable<int> idMembre)
         {
-            var identifiantParameter = identifiant != null ?
-                new ObjectParameter("identifiant", identifiant) :
-                new ObjectParameter("identifiant", typeof(string));
+            var idMembreParameter = idMembre.HasValue ?
+                new ObjectParameter("idMembre", idMembre) :
+                new ObjectParameter("idMembre", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllMyBiens_Result>("GetAllMyBiens", identifiantParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllMyBiens_Result>("GetAllMyBiens", idMembreParameter);
         }
     
         public virtual int editBien(string pays, string ville, string rue, string numero, Nullable<int> tarifNuit, Nullable<int> tarifNettoyage, string libelle, string photo, Nullable<int> nbMaxDePers, Nullable<int> sdb, Nullable<int> salon, Nullable<int> sam, Nullable<int> toilette, Nullable<int> cuisine, Nullable<int> chambre, Nullable<int> dressing, Nullable<int> veranda, Nullable<bool> bbq, Nullable<bool> piscine, Nullable<bool> jacuzzi, Nullable<bool> sauna, Nullable<bool> tv, Nullable<bool> teleDistrib, Nullable<bool> wifi, Nullable<bool> pingPong, Nullable<bool> tennis, Nullable<bool> transat, Nullable<bool> cuisineEqu, Nullable<bool> machineALaver, Nullable<bool> jardin, Nullable<bool> parking)

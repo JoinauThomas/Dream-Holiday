@@ -10,9 +10,6 @@ namespace DreamHoliday.Models
     {
         [Display(ResourceType = typeof(Resource), Name = "idMembre")]
         public int idMembre { get; set; }
-
-        public string identifiant { get; set; }
-
         [Display(ResourceType = typeof(Resource), Name = "mail")]
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Error_mailRequis")]
         public string mail { get; set; }

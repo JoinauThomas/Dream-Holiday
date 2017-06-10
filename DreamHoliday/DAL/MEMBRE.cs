@@ -30,7 +30,6 @@ namespace DreamHoliday.DAL
         public string MEM_telephone { get; set; }
         public bool MEM_propriétaire { get; set; }
         public string MEM_Photo { get; set; }
-        public string identifiant { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BIEN> BIEN { get; set; }

@@ -12,10 +12,7 @@ namespace DreamHoliday.Models
     {
         
         [Display(ResourceType = typeof(Resource), Name = "idMembre")]
-        public int idMembre { get; set;}
-
-        public string identifiant { get; set; }
-
+        public int idMembre { get; set; }
         [Display(ResourceType = typeof(Resource), Name = "mail")]
         [DataType(DataType.EmailAddress, ErrorMessageResourceName = "Error_mailRequis")]
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Error_mailRequis")]
