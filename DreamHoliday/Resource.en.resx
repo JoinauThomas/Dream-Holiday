@@ -524,4 +524,13 @@ We allow owners to safely rent their property ..</value>
   <data name="Error_NbPersonne" xml:space="preserve">
     <value>Please put a number in the field "number of persons"</value>
   </data>
+  <data name="merci" xml:space="preserve">
+    <value>thank you</value>
+  </data>
+  <data name="messageOkAjoutNewBien1" xml:space="preserve">
+    <value>Your property has been created.</value>
+  </data>
+  <data name="messageOkAjoutNewBien2" xml:space="preserve">
+    <value>Thank you for your trust</value>
+  </data>
 </root>

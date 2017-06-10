@@ -21,6 +21,7 @@ namespace DreamHoliday.Controllers
         [Route("PostNewBien")]
         public int PostNewBien(Bien nvBien)
         {
+
             int idNvBien = 0;
             if (!ModelState.IsValid)
             {

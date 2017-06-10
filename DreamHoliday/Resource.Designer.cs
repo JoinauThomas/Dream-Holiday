@@ -757,6 +757,15 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à merci.
+        /// </summary>
+        public static string merci {
+            get {
+                return ResourceManager.GetString("merci", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à mes biens.
         /// </summary>
         public static string mesBiens {
@@ -789,6 +798,24 @@ namespace DreamHoliday {
         public static string message {
             get {
                 return ResourceManager.GetString("message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Votre bien a bien été créé..
+        /// </summary>
+        public static string messageOkAjoutNewBien1 {
+            get {
+                return ResourceManager.GetString("messageOkAjoutNewBien1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Merci pour votre confiance.
+        /// </summary>
+        public static string messageOkAjoutNewBien2 {
+            get {
+                return ResourceManager.GetString("messageOkAjoutNewBien2", resourceCulture);
             }
         }
         

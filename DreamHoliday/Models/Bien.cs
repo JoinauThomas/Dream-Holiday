@@ -14,6 +14,8 @@ namespace DreamHoliday.Models
         [Display(ResourceType = typeof(Resource), Name = "idBien")]
         public int idBien { get; set; }
 
+        public HttpPostedFileBase monFichier { get; set; }
+
         [Display(ResourceType = typeof(Resource), Name = "pays")]
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Error_mailRequis")]
         public string pays { get; set; }

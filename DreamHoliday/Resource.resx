@@ -525,4 +525,13 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   <data name="Error_NbPersonne" xml:space="preserve">
     <value>veuillez mettre un chiffre dans le champ "nombre de personnes"</value>
   </data>
+  <data name="merci" xml:space="preserve">
+    <value>merci</value>
+  </data>
+  <data name="messageOkAjoutNewBien1" xml:space="preserve">
+    <value>Votre bien a bien été créé.</value>
+  </data>
+  <data name="messageOkAjoutNewBien2" xml:space="preserve">
+    <value>Merci pour votre confiance</value>
+  </data>
 </root>

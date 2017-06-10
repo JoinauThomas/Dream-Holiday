@@ -38,8 +38,13 @@ namespace DreamHoliday.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult addNewBien(Bien nvBien, HttpPostedFileBase monfichier)
+        public ActionResult addNewBien(Bien nvBien)
         {
+            Membre moi = (Membre)Session["monCompte"];
+            nvBien.idMembre = moi.idMembre;
+            HttpPostedFileBase monFichier = nvBien.monFichier;
+            nvBien.monFichier = null;
+
             using (var client = new HttpClient())
             {
                 var token = Request.Cookies["myToken"].Value;
@@ -60,10 +65,10 @@ namespace DreamHoliday.Controllers
                     readTask.Wait();
                     int idNvBien = readTask.Result;
 
-                    if (monfichier != null && monfichier.ContentLength > 0)
+                    if (monFichier != null && monFichier.ContentLength > 0)
                     {
                         string path = Path.Combine(Server.MapPath("~/Img/Biens"), "photo" + idNvBien.ToString() + ".jpg");
-                        monfichier.SaveAs(path);
+                        monFichier.SaveAs(path);
                     }
                 }
                 else
