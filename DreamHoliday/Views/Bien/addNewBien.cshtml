@@ -371,7 +371,10 @@
                             modal: true,
                             title: '@Resource.merci',
                             buttons: {
-                                "ok": function () { $(this).dialog("close") }
+                                "ok": function () {
+                                    $(this).dialog("close");
+                                    location.href = "../Home/Index";}
+                                
                             }
                         })
                 },

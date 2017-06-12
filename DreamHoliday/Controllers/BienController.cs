@@ -21,9 +21,7 @@ namespace DreamHoliday.Controllers
     public class BienController : BaseController
     {
         CultureInfo maCulture = Thread.CurrentThread.CurrentCulture;
-
-        //public static string token = "";
-
+        
 
         // ajouter un nouveau bien
 
@@ -40,120 +38,152 @@ namespace DreamHoliday.Controllers
         [HttpPost]
         public ActionResult addNewBien(Bien nvBien)
         {
-            Membre moi = (Membre)Session["monCompte"];
-            nvBien.idMembre = moi.idMembre;
-            HttpPostedFileBase monFichier = nvBien.monFichier;
-            nvBien.monFichier = null;
-
-            using (var client = new HttpClient())
+            try
             {
-                var token = Request.Cookies["myToken"].Value;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                Membre moi = (Membre)Session["monCompte"];
+                nvBien.idMembre = moi.idMembre;
+                HttpPostedFileBase monFichier = nvBien.monFichier;
+                nvBien.monFichier = null;
 
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                var responseTask = client.PostAsJsonAsync("PostNewBien", nvBien);
-                responseTask.Wait();
-                var result = responseTask.Result;
-
-                if (result.IsSuccessStatusCode)
+                using (var client = new HttpClient())
                 {
-                    // le bien a été créé
-                    
-                    var readTask = result.Content.ReadAsAsync<int>();
-                    readTask.Wait();
-                    int idNvBien = readTask.Result;
+                    var token = Request.Cookies["myToken"].Value;
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                    if (monFichier != null && monFichier.ContentLength > 0)
+                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    var responseTask = client.PostAsJsonAsync("PostNewBien", nvBien);
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+
+                    if (result.IsSuccessStatusCode)
                     {
-                        string path = Path.Combine(Server.MapPath("~/Img/Biens"), "photo" + idNvBien.ToString() + ".jpg");
-                        monFichier.SaveAs(path);
+                        // le bien a été créé
+
+                        var readTask = result.Content.ReadAsAsync<int>();
+                        readTask.Wait();
+                        int idNvBien = readTask.Result;
+
+                        if (monFichier != null && monFichier.ContentLength > 0)
+                        {
+                            string path = Path.Combine(Server.MapPath("~/Img/Biens"), "photo" + idNvBien.ToString() + ".jpg");
+                            monFichier.SaveAs(path);
+                        }
                     }
-                }
-                else
-                {
-                    var content = result.Content.ReadAsStringAsync();
-                    content.Wait();
-                    ModelState.AddModelError(string.Empty, content.Result);
+                    else
+                    {
+                        var content = result.Content.ReadAsStringAsync();
+                        content.Wait();
+                        ModelState.AddModelError(string.Empty, content.Result);
 
-                    return RedirectToAction("nvBien");
-                }
+                        return RedirectToAction("nvBien");
+                    }
 
-                return RedirectToAction("index", "Home");
+                    return RedirectToAction("index", "Home");
+                }
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
         [HttpGet]
         public ActionResult EditBien(int idBien)
         {
-            Bien monBien = GetBienWithId(idBien);
-            return View(monBien);
+            try
+            {
+                Bien monBien = GetBienWithId(idBien);
+                return View(monBien);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         [HttpPost]
         public ActionResult EditBien(Bien monBien, HttpPostedFileBase monfichier)
         {
-            if (monfichier != null && monfichier.ContentLength > 0)
+            try
             {
-                string path = Path.Combine(Server.MapPath("~/Img/Biens"), "photo" + monBien.idBien.ToString() + ".jpg");
-                monfichier.SaveAs(path);
-            }
-            using (var client = new HttpClient())
-            {
-                var token = Request.Cookies["myToken"].Value;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                if (monfichier != null && monfichier.ContentLength > 0)
+                {
+                    string path = Path.Combine(Server.MapPath("~/Img/Biens"), "photo" + monBien.idBien.ToString() + ".jpg");
+                    monfichier.SaveAs(path);
+                }
+                using (var client = new HttpClient())
+                {
+                    var token = Request.Cookies["myToken"].Value;
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                var responseTask = client.PostAsJsonAsync("EditBien", monBien);
-                responseTask.Wait();
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    return View(monBien);
+                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    var responseTask = client.PostAsJsonAsync("EditBien", monBien);
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        return View(monBien);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         [HttpGet]
         public ActionResult DeleteBien(int idBien)
         {
-            using (var client = new HttpClient())
+            try
             {
-                var token = Request.Cookies["myToken"].Value;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                List<Bien> mesBiens = new List<Bien>();
-
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                var responseTask = client.GetAsync("DeleteBien?idBien=" + idBien);
-                responseTask.Wait();
-
-                //client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                //var responseTask = client.PostAsJsonAsync("PostDeleteBien", idBien);
-                //responseTask.Wait();
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
+                using (var client = new HttpClient())
                 {
-                    var readTask = result.Content.ReadAsAsync<List<Bien>>();
-                    readTask.Wait();
-                    mesBiens = readTask.Result;
+                    var token = Request.Cookies["myToken"].Value;
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                    return PartialView("_mesBiens", mesBiens);
-                }
-                else
-                {
-                    throw new Exception("suppression impossible");
+                    List<Bien> mesBiens = new List<Bien>();
+
+                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    var responseTask = client.GetAsync("DeleteBien?idBien=" + idBien);
+                    responseTask.Wait();
+
+                    //client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    //var responseTask = client.PostAsJsonAsync("PostDeleteBien", idBien);
+                    //responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsAsync<List<Bien>>();
+                        readTask.Wait();
+                        mesBiens = readTask.Result;
+
+                        return PartialView("_mesBiens", mesBiens);
+                    }
+                    else
+                    {
+                        throw new Exception("suppression impossible");
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+           
         }
 
         // faire une recherche en fonction du lieux et des options
@@ -167,6 +197,14 @@ namespace DreamHoliday.Controllers
         [HttpPost]
         public ActionResult BigSearchBien(Model_FormBigSearchBien monBien)
         {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             if (monBien.paysOuVille == null)
             {
                 monBien.paysOuVille = "";
@@ -209,25 +247,30 @@ namespace DreamHoliday.Controllers
         [HttpGet]
         public ActionResult SearchBiens()
         {
-            List<Bien> mesBiens = new List<Bien>();
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                var responseTask = client.GetAsync("GetAllBiens");
-                responseTask.Wait();
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
+                List<Bien> mesBiens = new List<Bien>();
+                using (var client = new HttpClient())
                 {
-                    var readTask = result.Content.ReadAsAsync<List<Bien>>();
-                    readTask.Wait();
-                    mesBiens = readTask.Result;
+                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    var responseTask = client.GetAsync("GetAllBiens");
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsAsync<List<Bien>>();
+                        readTask.Wait();
+                        mesBiens = readTask.Result;
+                    }
                 }
 
-
-                
+                return View("_SearchBiens", mesBiens);
             }
-
-            return View("_SearchBiens", mesBiens);
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         [HttpPost]
@@ -270,9 +313,6 @@ namespace DreamHoliday.Controllers
             {
                 throw ex;
             }
-            
-
-            
         }
 
 
@@ -281,27 +321,35 @@ namespace DreamHoliday.Controllers
         [HttpGet]
         public ActionResult DetailBien(int idBien)
         {
-            Bien monBien = GetBienWithId(idBien);
-
-
-            List<listeCommentaireDuBien> listeComment = new List<listeCommentaireDuBien>();
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                var responseTask = client.GetAsync("GetListComment?idBien=" + idBien);
+                Bien monBien = GetBienWithId(idBien);
 
-                responseTask.Wait();
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
+
+                List<listeCommentaireDuBien> listeComment = new List<listeCommentaireDuBien>();
+                using (var client = new HttpClient())
                 {
-                    var readTask = result.Content.ReadAsAsync<List<listeCommentaireDuBien>>();
-                    readTask.Wait();
-                    listeComment = readTask.Result;
-                }
-            }
+                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    var responseTask = client.GetAsync("GetListComment?idBien=" + idBien);
 
-            ViewBag.comments = listeComment;
-            return View(monBien);
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsAsync<List<listeCommentaireDuBien>>();
+                        readTask.Wait();
+                        listeComment = readTask.Result;
+                    }
+                }
+
+                ViewBag.comments = listeComment;
+                return View(monBien);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
 
@@ -310,12 +358,20 @@ namespace DreamHoliday.Controllers
         [HttpGet]
         public ActionResult LouerUnBien(Bien monBien)
         {
-            Membre moi = (Membre)Session["monCompte"];
+            try
+            {
+                Membre moi = (Membre)Session["monCompte"];
 
-            LocationBien newLoc = new LocationBien { idBien = monBien.idBien, tarifNettoyage = monBien.tarifNettoyage, tarifNuit = monBien.tarifParNuit, idMembre = moi.idMembre };
-            ViewBag.probleme = 0;
+                LocationBien newLoc = new LocationBien { idBien = monBien.idBien, tarifNettoyage = monBien.tarifNettoyage, tarifNuit = monBien.tarifParNuit, idMembre = moi.idMembre };
+                ViewBag.probleme = 0;
 
-            return View(newLoc);
+                return View(newLoc);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+           
         }
 
 
@@ -367,87 +423,118 @@ namespace DreamHoliday.Controllers
         [HttpGet]
         public ActionResult VoirMesBiens()
         {
-            Membre moi = (Membre)Session["monCompte"];
-
-            List<Bien> mesBiens = new List<Bien>();
-            using (var client = new HttpClient())
+            try
             {
-                var token = Request.Cookies["myToken"].Value;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                Membre moi = (Membre)Session["monCompte"];
 
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                var responseTask = client.PostAsJsonAsync("VoirmesBiens", moi);
-
-                //client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                //var responseTask = client.GetAsync("GetmesBiens?idMembre=" + idMembre);
-                responseTask.Wait();
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
+                List<Bien> mesBiens = new List<Bien>();
+                using (var client = new HttpClient())
                 {
-                    var readTask = result.Content.ReadAsAsync<List<Bien>>();
-                    readTask.Wait();
-                    mesBiens = readTask.Result;
-                }
-                else
-                {
-                    string probleme = result.ReasonPhrase.ToString();
+                    var token = Request.Cookies["myToken"].Value;
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                    if (probleme == "Unauthorized")
+                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    var responseTask = client.PostAsJsonAsync("VoirmesBiens", moi);
+
+                    //client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    //var responseTask = client.GetAsync("GetmesBiens?idMembre=" + idMembre);
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
                     {
-                        ViewBag.erreur = "pas autorisé à accéder a cette page";
-                        return View("Error");
+                        var readTask = result.Content.ReadAsAsync<List<Bien>>();
+                        readTask.Wait();
+                        mesBiens = readTask.Result;
+                    }
+                    else
+                    {
+                        string probleme = result.ReasonPhrase.ToString();
+
+                        if (probleme == "Unauthorized")
+                        {
+                            ViewBag.erreur = "pas autorisé à accéder a cette page";
+                            return View("Error");
+                        }
                     }
                 }
+                return View(mesBiens);
             }
-            return View(mesBiens);
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         public ActionResult DetailMonBien(int idBien)
         {
-            Bien monBien = GetBienWithId(idBien);
-            monBien.noteMoyenne = Math.Round(monBien.noteMoyenne, 2);
-            return View(monBien);
+            try
+            {
+                Bien monBien = GetBienWithId(idBien);
+                monBien.noteMoyenne = Math.Round(monBien.noteMoyenne, 2);
+                return View(monBien);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         [HttpGet]
         public ActionResult PostCommentAndNote(int idLoc)
         {
-            Membre moi = (Membre)Session["monCompte"];
+            try
+            {
+                Membre moi = (Membre)Session["monCompte"];
 
+                commentaireEtNote monCommentaire = new commentaireEtNote { idMembre = moi.idMembre, idLocation = idLoc };
 
-            commentaireEtNote monCommentaire = new commentaireEtNote { idMembre = moi.idMembre, idLocation = idLoc };
-
-            return PartialView("_PostCommentAndNote", monCommentaire);
+                return PartialView("_PostCommentAndNote", monCommentaire);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         [HttpPost]
         public ActionResult PostCommentAndNote(commentaireEtNote monCommEtNote)
         {
-            using (var client = new HttpClient())
+            try
             {
-                var token = Request.Cookies["myToken"].Value;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                var responseTask = client.PostAsJsonAsync("PostCommentAndNote", monCommEtNote);
-                double aaa = monCommEtNote.note;
-                responseTask.Wait();
-                var result = responseTask.Result;
-
-                if (result.IsSuccessStatusCode)
+                using (var client = new HttpClient())
                 {
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    return View("mesLocations", "Membre");
-                }
+                    var token = Request.Cookies["myToken"].Value;
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
+                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    var responseTask = client.PostAsJsonAsync("PostCommentAndNote", monCommEtNote);
+                    double aaa = monCommEtNote.note;
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+
+                    if (result.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        return View("mesLocations", "Membre");
+                    }
+
+                }
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
 
@@ -458,48 +545,64 @@ namespace DreamHoliday.Controllers
         [HttpGet]
         public List<Bien> showAllBiens()
         {
-            HttpCookie monCookie = Request.Cookies["monToken"];
-            string token = "";
-            if (monCookie != null)
+            try
             {
-                token = monCookie["monToken"];
-            }
-
-            List<Bien> mesBiens = new List<Bien>();
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                var responseTask = client.GetAsync("GetAllBiens");
-                responseTask.Wait();
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
+                HttpCookie monCookie = Request.Cookies["monToken"];
+                string token = "";
+                if (monCookie != null)
                 {
-                    var readTask = result.Content.ReadAsAsync<List<Bien>>();
-                    readTask.Wait();
-                    mesBiens = readTask.Result;
+                    token = monCookie["monToken"];
                 }
+
+                List<Bien> mesBiens = new List<Bien>();
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    var responseTask = client.GetAsync("GetAllBiens");
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsAsync<List<Bien>>();
+                        readTask.Wait();
+                        mesBiens = readTask.Result;
+                    }
+                }
+                return (mesBiens);
             }
-            return (mesBiens);
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+           
         }
 
         [HttpGet]
         public Bien GetBienWithId(int idBien)
         {
-            Bien monBien = new Bien();
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                var responseTask = client.GetAsync("GetBienWithId?idBien=" + idBien);
-                responseTask.Wait();
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
+                Bien monBien = new Bien();
+                using (var client = new HttpClient())
                 {
-                    var readTask = result.Content.ReadAsAsync<Bien>();
-                    readTask.Wait();
-                    monBien = readTask.Result;
+                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    var responseTask = client.GetAsync("GetBienWithId?idBien=" + idBien);
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsAsync<Bien>();
+                        readTask.Wait();
+                        monBien = readTask.Result;
+                    }
                 }
+                return (monBien);
             }
-            return (monBien);
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
        
@@ -508,31 +611,39 @@ namespace DreamHoliday.Controllers
         [HttpGet]
         public JsonResult RechercheDatesPasDispo(int idBien)
         {
-            List<DateTime> dates = new List<DateTime>();
-            List<string> datesStr = new List<string>();
-
-
-
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-                var responseTask = client.GetAsync("GETDatesPasDispo?idBien=" + idBien);
+                List<DateTime> dates = new List<DateTime>();
+                List<string> datesStr = new List<string>();
 
-                responseTask.Wait();
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    var readTask = result.Content.ReadAsAsync<List<DateTime>>();
-                    readTask.Wait();
-                    dates = readTask.Result;
-                }
-                foreach (var i in dates)
-                {
-                    datesStr.Add(i.ToShortDateString());
-                }
 
-                return Json(new { result = "OK", dates = dates }, JsonRequestBehavior.AllowGet);
+
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    var responseTask = client.GetAsync("GETDatesPasDispo?idBien=" + idBien);
+
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsAsync<List<DateTime>>();
+                        readTask.Wait();
+                        dates = readTask.Result;
+                    }
+                    foreach (var i in dates)
+                    {
+                        datesStr.Add(i.ToShortDateString());
+                    }
+
+                    return Json(new { result = "OK", dates = dates }, JsonRequestBehavior.AllowGet);
+                }
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         //public JsonResult SearchBienss (string paysOuVille, DateTime? dateDepart, DateTime? dateRetour, int nbPers)
@@ -561,82 +672,96 @@ namespace DreamHoliday.Controllers
         [HttpGet]
         public ActionResult showAllBiens22()
         {
-
-            List<Bien> mesBiens = new List<Bien>();
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
-
-
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var formContent = new FormUrlEncodedContent(new[]
+                List<Bien> mesBiens = new List<Bien>();
+                using (var client = new HttpClient())
                 {
+                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+
+
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    var formContent = new FormUrlEncodedContent(new[]
+                    {
                     new KeyValuePair<string, string>("grant_type", "password"),
                     new KeyValuePair<string, string>("username", "stedesco@ephec.be"),
                     new KeyValuePair<string, string>("password", "stedesco"),
                 });
-                var responseTaskId = client.PostAsync("/api/MyGetToken", formContent);
-                responseTaskId.Wait();
-                var resultId = responseTaskId.Result;
-                if (!resultId.IsSuccessStatusCode)
-                {
-                    var responseString = resultId.Content.ReadAsStringAsync();
-                    var res = responseString.Result;
-                }
-                else
-                {
-                    var responseString = resultId.Content.ReadAsStringAsync();
-                    responseString.Wait();
-                    //get access token from response body
-                    var jObject = JObject.Parse(responseString.Result);
-                    string access_token = jObject.GetValue("access_token").ToString();
-                    CookieHeaderValue cookie = new CookieHeaderValue("myToken", access_token);
-                }
+                    var responseTaskId = client.PostAsync("/api/MyGetToken", formContent);
+                    responseTaskId.Wait();
+                    var resultId = responseTaskId.Result;
+                    if (!resultId.IsSuccessStatusCode)
+                    {
+                        var responseString = resultId.Content.ReadAsStringAsync();
+                        var res = responseString.Result;
+                    }
+                    else
+                    {
+                        var responseString = resultId.Content.ReadAsStringAsync();
+                        responseString.Wait();
+                        //get access token from response body
+                        var jObject = JObject.Parse(responseString.Result);
+                        string access_token = jObject.GetValue("access_token").ToString();
+                        CookieHeaderValue cookie = new CookieHeaderValue("myToken", access_token);
+                    }
 
-                var responseTask = client.GetAsync("GetAllBiens");
-                responseTask.Wait();
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    var readTask = result.Content.ReadAsAsync<List<Bien>>();
-                    readTask.Wait();
-                    mesBiens = readTask.Result;
+                    var responseTask = client.GetAsync("GetAllBiens");
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsAsync<List<Bien>>();
+                        readTask.Wait();
+                        mesBiens = readTask.Result;
+                    }
                 }
+                return View(mesBiens);
             }
-            return View(mesBiens);
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+           
         }
 
         [HttpGet]
         public ActionResult showAllBiens33()
         {
-
-            List<Bien> mesBiens = new List<Bien>();
-            using (var client = new HttpClient())
+            try
             {
-
-                string token = (string)Session["monToken"];
-
-                client.BaseAddress = new Uri("http://localhost:56077/api/Values/");
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-
-                var responseTaskLog = client.GetAsync("Values");
-                responseTaskLog.Wait();
-                var resultLog = responseTaskLog.Result;
-                var responseString = resultLog.Content.ReadAsStringAsync();
-
-                var responseTask = client.GetAsync("GetAllBiens");
-                responseTask.Wait();
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
+                List<Bien> mesBiens = new List<Bien>();
+                using (var client = new HttpClient())
                 {
-                    var readTask = result.Content.ReadAsAsync<List<Bien>>();
-                    readTask.Wait();
-                    mesBiens = readTask.Result;
+
+                    string token = (string)Session["monToken"];
+
+                    client.BaseAddress = new Uri("http://localhost:56077/api/Values/");
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+
+                    var responseTaskLog = client.GetAsync("Values");
+                    responseTaskLog.Wait();
+                    var resultLog = responseTaskLog.Result;
+                    var responseString = resultLog.Content.ReadAsStringAsync();
+
+                    var responseTask = client.GetAsync("GetAllBiens");
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsAsync<List<Bien>>();
+                        readTask.Wait();
+                        mesBiens = readTask.Result;
+                    }
                 }
+                return View("showAllBiens22", mesBiens);
             }
-            return View("showAllBiens22", mesBiens);
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         

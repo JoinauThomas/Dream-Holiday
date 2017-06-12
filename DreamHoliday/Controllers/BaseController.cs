@@ -12,17 +12,25 @@ namespace DreamHoliday.Controllers
     {
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
         {
-            string cultureName = null;
-            // Attempt to read the culture cookie from Request
-            HttpCookie cultureCookie = Request.Cookies["_culture"];
-            if (cultureCookie != null)
-                cultureName = cultureCookie.Value;
-            // Validate culture name
-            cultureName = CultureHelper.GetImplementedCulture(cultureName); // This is safe
-                                                                            // Modify current thread's cultures
-            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(cultureName);
-            Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
-            return base.BeginExecuteCore(callback, state);
+            try
+            {
+                string cultureName = null;
+                // Attempt to read the culture cookie from Request
+                HttpCookie cultureCookie = Request.Cookies["_culture"];
+                if (cultureCookie != null)
+                    cultureName = cultureCookie.Value;
+                // Validate culture name
+                cultureName = CultureHelper.GetImplementedCulture(cultureName); // This is safe
+                                                                                // Modify current thread's cultures
+                Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(cultureName);
+                Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+                return base.BeginExecuteCore(callback, state);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            
         }
     }
 }

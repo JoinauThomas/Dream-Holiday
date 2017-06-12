@@ -16,36 +16,38 @@ namespace DreamHoliday.Controllers
     {
         public ActionResult SetCulture(string culture)
         {
-            CultureInfo maCulture = Thread.CurrentThread.CurrentCulture;
-            // Validate input
-            culture = CultureHelper.GetImplementedCulture(culture);
-
-
-
-
-            DateTimeFormatInfo frenchDateTimeFormat = new CultureInfo("fr").DateTimeFormat;
-            Thread.CurrentThread.CurrentCulture.DateTimeFormat = frenchDateTimeFormat;
-            maCulture = Thread.CurrentThread.CurrentCulture;
-
-
-
-
-            // Save culture in a cookie
-            HttpCookie cookie = Request.Cookies["_culture"];
-            if (cookie != null)
+            try
             {
-                cookie.Value = culture; // update cookie value
+                CultureInfo maCulture = Thread.CurrentThread.CurrentCulture;
+                // Validate input
+                culture = CultureHelper.GetImplementedCulture(culture);
+
+                DateTimeFormatInfo frenchDateTimeFormat = new CultureInfo("fr").DateTimeFormat;
+                Thread.CurrentThread.CurrentCulture.DateTimeFormat = frenchDateTimeFormat;
+                maCulture = Thread.CurrentThread.CurrentCulture;
+
+                // Save culture in a cookie
+                HttpCookie cookie = Request.Cookies["_culture"];
+                if (cookie != null)
+                {
+                    cookie.Value = culture; // update cookie value
 
 
+                }
+                else
+                {
+                    cookie = new HttpCookie("_culture");
+                    cookie.Value = culture;
+                    cookie.Expires = DateTime.Now.AddYears(1);
+                }
+                Response.Cookies.Add(cookie);
+                return Redirect(Request.UrlReferrer.AbsoluteUri);
             }
-            else
+            catch(Exception ex)
             {
-                cookie = new HttpCookie("_culture");
-                cookie.Value = culture;
-                cookie.Expires = DateTime.Now.AddYears(1);
+                throw ex;
             }
-            Response.Cookies.Add(cookie);
-            return Redirect(Request.UrlReferrer.AbsoluteUri);
+            
         }
 
         public ActionResult Index()

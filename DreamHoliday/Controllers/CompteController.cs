@@ -21,84 +21,90 @@ namespace DreamHoliday.Controllers
         [HttpPost]
         public JsonResult connection(string userName, string Password)
         {
-            Membre moi = new Membre();
+            try
+            {
+                Membre moi = new Membre();
 
-            moi = DreamHoliday.Controllers.MembreController.GetMembreByMail(userName);
-            if(moi == null)
-            {
-                return null;
-            }
-            else
-            {
-                string access_token = "";
-                using (var client = new HttpClient())
+                moi = DreamHoliday.Controllers.MembreController.GetMembreByMail(userName);
+                if (moi == null)
                 {
-                    client.BaseAddress = new Uri("http://localhost:56077");
-                    client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    var formContent = new FormUrlEncodedContent(new[]
+                    return null;
+                }
+                else
+                {
+                    string access_token = "";
+                    using (var client = new HttpClient())
                     {
+                        client.BaseAddress = new Uri("http://localhost:56077");
+                        client.DefaultRequestHeaders.Accept.Clear();
+                        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                        var formContent = new FormUrlEncodedContent(new[]
+                        {
                     new KeyValuePair<string, string>("grant_type", "password"),
                     new KeyValuePair<string, string>("username", userName),
                     new KeyValuePair<string, string>("password", Password),
                 });
-                    var responseTask = client.PostAsync("/api/MyGetToken", formContent);
-                    responseTask.Wait();
-                    var result = responseTask.Result;
-                    if (!result.IsSuccessStatusCode)
-                    {
-                        var responseString = result.Content.ReadAsStringAsync();
-                        var res = responseString.Result;
+                        var responseTask = client.PostAsync("/api/MyGetToken", formContent);
+                        responseTask.Wait();
+                        var result = responseTask.Result;
+                        if (!result.IsSuccessStatusCode)
+                        {
+                            var responseString = result.Content.ReadAsStringAsync();
+                            var res = responseString.Result;
 
-                        return null;
+                            return null;
+                        }
+                        else
+                        {
+                            var responseString = result.Content.ReadAsStringAsync();
+                            responseString.Wait();
+                            //get access token from response body
+                            var jObject = JObject.Parse(responseString.Result);
+                            access_token = jObject.GetValue("access_token").ToString();
+                            CookieHeaderValue cookie = new CookieHeaderValue("myToken", access_token);
+                        }
                     }
-                    else
-                    {
-                        var responseString = result.Content.ReadAsStringAsync();
-                        responseString.Wait();
-                        //get access token from response body
-                        var jObject = JObject.Parse(responseString.Result);
-                        access_token = jObject.GetValue("access_token").ToString();
-                        CookieHeaderValue cookie = new CookieHeaderValue("myToken", access_token);
-                    }
+                    HttpCookie myToken = new HttpCookie("myToken");
+                    myToken.Value = access_token;
+                    Response.Cookies.Add(myToken);
+
+                    Session["monCompte"] = moi;
+
+                    return Json(new { result = "OK", nom = moi.nom, prenom = moi.prenom });
                 }
-                HttpCookie myToken = new HttpCookie("myToken");
-                myToken.Value = access_token;
-                Response.Cookies.Add(myToken);
-
-                Session["monCompte"] = moi;
-
-                return Json(new { result = "OK", nom = moi.nom, prenom = moi.prenom });
             }
-
-            
-
-
-           
-            
-            
-
-
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public ActionResult deconnexion()
         {
-            Session["monToken"] = null;
-            Session["monCompte"] = null;
-
-            HttpCookie myToken;
-            string cookieName;
-            int limit = Request.Cookies.Count;
-            for (int i = 0; i < limit; i++)
+            try
             {
-                cookieName = Request.Cookies[i].Name;
-                myToken = new HttpCookie(cookieName);
-                myToken.Value = "";
-                Response.Cookies.Add(myToken);
+                Session["monToken"] = null;
+                Session["monCompte"] = null;
+
+                HttpCookie myToken;
+                string cookieName;
+                int limit = Request.Cookies.Count;
+                for (int i = 0; i < limit; i++)
+                {
+                    cookieName = Request.Cookies[i].Name;
+                    myToken = new HttpCookie(cookieName);
+                    myToken.Value = "";
+                    Response.Cookies.Add(myToken);
+                }
+
+
+                return RedirectToAction("Index", "Home");
             }
-
-
-            return RedirectToAction("Index", "Home");
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            
         }
     }
 }
