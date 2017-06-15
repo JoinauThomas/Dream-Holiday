@@ -8,118 +8,165 @@
 <hr />
 <input id="lang" value="@Request.Cookies["_culture"].Value" style="display:none"/>
 
-@using (Html.BeginForm("InsertNewMembre", "Membre", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    <div class="form-horizontal col-md-12">
-        <div class="col-md-2">
-            <img id="preview" src="~/img/Membres/photo000.jpg" alt="your image" style="width:200px" />
-        </div>
-        <div class="col-md-10">
-            <div class="form-group">
-                @Html.LabelFor(model => model.photo, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    <input type="file" name="monfichier" value="photooo" id="imgInp" />
 
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.mail, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
-                </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.password1, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.password1, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.password1, "", new { @class = "text-danger" })
-                </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.password2, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.password2, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.password2, "", new { @class = "text-danger" })
-                </div>
+    <form id="formAjoutMembre" enctype="multipart/form-data" method="post">
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal col-md-12">
+            <div class="col-md-2">
+                <img id="preview" src="~/img/Membres/photo000.jpg" alt="your image" style="width:200px" />
             </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.nom, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.nom, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.nom, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.prenom, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.prenom, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.prenom, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.adresse, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.adresse, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.adresse, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.dateDeNaissance, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9" style="display:inline">
-                    @Html.EditorFor(model => model.dateDeNaissance, new { htmlAttributes = new { @class = "form-control", @style = "display:none" } })
-                    @Html.ValidationMessageFor(model => model.dateDeNaissance, "", new { @class = "text-danger" })
-
-                    <input type="number" placeholder="@Resource.jour" id="jour" name="jour" min="01" max="31" class="form-control_bis dateAnnif col-md-2"  />
-                    <input type="number" placeholder="@Resource.mois" id="mois" name="mois" min="1" max="12" class="form-control_bis dateAnnif col-md-offset-0 col-md-2"  />
-                    <input type="number" placeholder="@Resource.annee" id="annee" name="annee" min="1900" class="form-control_bis dateAnnif col-md-offset-0 col-md-2"  />
-                </div>
-            </div>
-            <input id="dateNaiss" value="" name="dateNaiss" />
-            @*<div class="form-group">
-                    @Html.LabelFor(model => model.dateDeNaissance, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-10">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.photo, htmlAttributes: new { @class = "control-label col-md-3" })
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.dateDeNaissance, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.dateDeNaissance, "", new { @class = "text-danger" })
+                        <input type="file" name="monfichier" value="photooo" id="imgInp" />
                     </div>
-                </div>*@
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.telephone, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.telephone, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.telephone, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.mail, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.password1, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.password1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.password1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.password2, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.password2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.password2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.nom, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.nom, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.nom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.prenom, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.prenom, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.prenom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.adresse, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.adresse, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.adresse, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.dateDeNaissance, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9" style="display:inline">
+                        @Html.EditorFor(model => model.dateDeNaissance, new { htmlAttributes = new { @class = "form-control", @style = "display:none" } })
+                        @Html.ValidationMessageFor(model => model.dateDeNaissance, "", new { @class = "text-danger" })
+                        <input type="number" placeholder="@Resource.jour" id="jour" name="jour" min="01" max="31" class="form-control_bis dateAnnif col-md-2" />
+                        <input type="number" placeholder="@Resource.mois" id="mois" name="mois" min="1" max="12" class="form-control_bis dateAnnif col-md-offset-0 col-md-2" />
+                        <input type="number" placeholder="@Resource.annee" id="annee" name="annee" min="1900" class="form-control_bis dateAnnif col-md-offset-0 col-md-2" />
+                    </div>
+                </div>
+                <input id="dateNaiss" value="" name="dateNaiss" style="display:none" />
+                @*<div class="form-group">
+                        @Html.LabelFor(model => model.dateDeNaissance, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.dateDeNaissance, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.dateDeNaissance, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+                <div class="form-group">
+                    @Html.LabelFor(model => model.telephone, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.telephone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.telephone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input id="btnAjoutMembre" type="button" value=@Resource.btnNvMembre class="btn btn-default" />
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value=@Resource.btnNvMembre class="btn btn-default" />
-                </div>
-            </div>
         </div>
 
 
+        <img id="chargement" src="~/img/loaders/ajax-loader.gif" style="display: none" alt="Chargement en cours..." class="col-md-offset-5 col-md-2 col-md-offset-5" />
 
-    </div>
+        <div id="Modal" style="display:none">
+            <p id="modalTexte" class="modal-contents">@Resource.Error_tableVide</p>
+        </div>
+        </form>
 
-}
+        <div class="row">
+            @Html.ActionLink(Resource.retour, "Index")
+        </div>
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryui")
+            <script type="text/javascript">
 
-<div class="row">
-    @Html.ActionLink(Resource.retour, "Index")
-</div>
+                $('#btnAjoutMembre').click(function () {
+                    var formData = new FormData($('#formAjoutMembre')[0]);
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("InsertNewMembre", "Membre")',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        contentType: false,
+                        success:
+                        function (response) {
+                            $('#Modal').html("@Resource.messageAjoutNvCompte");
+                            $('#Modal').dialog({
+                                open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
+                                resizable: false,
+                                height: "auto",
+                                width: "400",
+                                modal: true,
+                                title: '@Resource.merci',
+                                buttons: {
+                                    "ok": function () {
+                                        $(this).dialog("close");
+                                        location.href = "../Home/Index";
+                                    }
 
-@section Scripts {
+                                }
+                            })
+                        },
+                        error:
+                        function () {
+                            $('#Modal').html("@Resource.probleme");
+                            $('#Modal').dialog({
+                                open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
+                                resizable: false,
+                                height: "auto",
+                                width: "400",
+                                modal: true,
+                                title: '@Resource.desole',
+                                buttons: {
+                                    "ok": function () {
+                                        $(this).dialog("close");
+                                    }
 
-    @Scripts.Render("~/bundles/jqueryui")
+                                }
+                            })
+                        }
+                    })
+                })
 
-    <script type="text/javascript">
+
+
+
 
         function testBisextile(Year) {
             return (((Year & 3) == 0) && ((Year % 100 != 0) || (Year % 400 == 0)));
@@ -175,23 +222,23 @@
             if (j == true, m == true, a == true)
             {
                 var dateNaiss = jour + "/" + mois + "/" + annee;
-                $('#dateNaiss').val(dateNaiss.toString());
+                $('#dateNaiss').val(dateNaiss);
 
                 //var lang = $('#lang').val();
                 //if (lang == "fr")
                 //{
                 //    var dateNaiss = jour.toString() + "/" + mois.toString() + "/" + annee.toString();
-                    
+
                 //    $('#dateNaiss').val(dateNaiss);
                 //}
                 //else
                 //{
-                    
+
                 //    var dateNaiss = mois + "/" + jour + "/" + annee;
                 //    $('#dateNaiss').val(dateNaiss);
                 //}
-                
-                
+
+
             }
         }
         )
@@ -226,5 +273,5 @@
         $("#imgInp").change(function () {
             readURL(this);
         });
-    </script>
-}
+            </script>
+        }

@@ -536,4 +536,10 @@ We allow owners to safely rent their property ..</value>
   <data name="inscription" xml:space="preserve">
     <value>subscription</value>
   </data>
+  <data name="messageAjoutNvCompte" xml:space="preserve">
+    <value>Your account has been created.</value>
+  </data>
+  <data name="probleme" xml:space="preserve">
+    <value>A problem has been detected ...</value>
+  </data>
 </root>

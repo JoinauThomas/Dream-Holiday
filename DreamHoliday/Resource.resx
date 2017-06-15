@@ -537,4 +537,10 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   <data name="wifi" xml:space="preserve">
     <value>wifi</value>
   </data>
+  <data name="messageAjoutNvCompte" xml:space="preserve">
+    <value>Votre compte a bien été créé.</value>
+  </data>
+  <data name="probleme" xml:space="preserve">
+    <value>un problème a été détecté...</value>
+  </data>
 </root>

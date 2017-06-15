@@ -811,6 +811,15 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Votre compte a bien été créé..
+        /// </summary>
+        public static string messageAjoutNvCompte {
+            get {
+                return ResourceManager.GetString("messageAjoutNvCompte", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Votre bien a bien été créé..
         /// </summary>
         public static string messageOkAjoutNewBien1 {
@@ -1050,6 +1059,15 @@ namespace DreamHoliday {
         public static string prenom {
             get {
                 return ResourceManager.GetString("prenom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à un problème a été détecté....
+        /// </summary>
+        public static string probleme {
+            get {
+                return ResourceManager.GetString("probleme", resourceCulture);
             }
         }
         
