@@ -4,7 +4,7 @@
     ViewBag.Title = "InsertNewMembre";
 }
 
-<h2>@Resource.enregistrezVsIci </h2>
+<h3>@Resource.sinscrire</h3>
 <hr />
 <input id="lang" value="@Request.Cookies["_culture"].Value" style="display:none"/>
 
@@ -81,6 +81,7 @@
                     <input type="number" placeholder="@Resource.annee" id="annee" name="annee" min="1900" class="form-control_bis dateAnnif col-md-offset-0 col-md-2"  />
                 </div>
             </div>
+            <input id="dateNaiss" value="" name="dateNaiss" />
             @*<div class="form-group">
                     @Html.LabelFor(model => model.dateDeNaissance, htmlAttributes: new { @class = "control-label col-md-3" })
                     <div class="col-md-9">
@@ -111,7 +112,7 @@
 }
 
 <div class="row">
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(Resource.retour, "Index")
 </div>
 
 @section Scripts {
@@ -173,19 +174,22 @@
 
             if (j == true, m == true, a == true)
             {
-                var lang = $('#lang').val();
-                if (lang == "fr")
-                {
-                    var dateNaiss = jour + "/" + mois + "/" + annee;
-                    var a = new Date()
-                    $('#dateDeNaissance').val(dateNaiss);
-                }
-                else
-                {
-                    var dateNaiss = mois + "/" + jour + "/" + annee;
-                    var a = new Date()
-                    $('#dateDeNaissance').val(dateNaiss);
-                }
+                var dateNaiss = jour + "/" + mois + "/" + annee;
+                $('#dateNaiss').val(dateNaiss.toString());
+
+                //var lang = $('#lang').val();
+                //if (lang == "fr")
+                //{
+                //    var dateNaiss = jour.toString() + "/" + mois.toString() + "/" + annee.toString();
+                    
+                //    $('#dateNaiss').val(dateNaiss);
+                //}
+                //else
+                //{
+                    
+                //    var dateNaiss = mois + "/" + jour + "/" + annee;
+                //    $('#dateNaiss').val(dateNaiss);
+                //}
                 
                 
             }

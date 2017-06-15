@@ -10,90 +10,93 @@
 
 @*  image et lieu du bien  *@
 
-<div class=" row jumbotron02">
 
-    <div class="col-md-3">
-        <img src="~/img/Biens/photo@(Model.idBien).jpg" height="170" />
-    </div>
-    <div class="col-md-offset-1 col-md-8 jumbotron01">
-        <dl class="dl-horizontals col-md-6">
-            <dt>
-                @Html.DisplayName(Resource.pays + ": ")
-            </dt>
+    <div class="col-md-12 myJumbotron01">
+        <div class="row">
+            <div class=" col-md-3">
+                <img src="~/img/Biens/photo@(Model.idBien).jpg" height="230" />
+            </div>
+            <div class="myJumbotron02 col-md-offset-1 col-md-8 ">
+                <dl class="dl-horizontals col-md-6">
+                    <dt>
+                        @Html.DisplayName(Resource.pays + ": ")
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.pays)
-            </dd>
-
-            <dt>
-                @Html.DisplayName(Resource.ville + " : ")
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.ville)
-            </dd>
-
-            <dt>
-                @Html.DisplayName(Resource.rue + " : ")
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.rue)
-            </dd>
-
-            <dt>
-                @Html.DisplayName(Resource.numero + " : ")
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.numero)
-            </dd>
-            <dt>
-                @Html.DisplayName(Resource.noteMoyenne + " : ")
-            </dt>
-            @{ 
-                if(Model.noteMoyenne == -1)
-                {
-                    <dd>NA</dd>
-                }
-                else
-                {
                     <dd>
-                        @Html.DisplayFor(model => model.noteMoyenne)
+                        @Html.DisplayFor(model => model.pays)
                     </dd>
-                }
-            }
-        </dl>
-        <div class="col-md-6">
-            @*  TARIFS  *@
+
+                    <dt>
+                        @Html.DisplayName(Resource.ville + " : ")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ville)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayName(Resource.rue + " : ")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.rue)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayName(Resource.numero + " : ")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.numero)
+                    </dd>
+                    <dt>
+                        @Html.DisplayName(Resource.noteMoyenne + " : ")
+                    </dt>
+                    @{
+                        if (Model.noteMoyenne == -1)
+                        {
+                            <dd>NA</dd>
+                        }
+                        else
+                        {
+                            <dd>
+                                @Html.DisplayFor(model => model.noteMoyenne)
+                            </dd>
+                        }
+                    }
+                </dl>
+                <div class="col-md-6">
+                    @*  TARIFS  *@
 
 
-            <dl class="dl-horizontals DetailBien_Tarif">
-                <dt>
-                    @Html.DisplayName(Resource.tarifNuit + " : ")
-                </dt>
+                    <dl class="dl-horizontals DetailBien_Tarif">
+                        <dt>
+                            @Html.DisplayName(Resource.tarifNuit + " : ")
+                        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.tarifParNuit)
-                </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.tarifParNuit)
+                        </dd>
 
-                <dt>
-                    @Html.DisplayName(Resource.tarifNettoyage + " : ")
-                </dt>
+                        <dt>
+                            @Html.DisplayName(Resource.tarifNettoyage + " : ")
+                        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.tarifNettoyage)
-                </dd>
-            </dl>
+                        <dd>
+                            @Html.DisplayFor(model => model.tarifNettoyage)
+                        </dd>
+                    </dl>
 
+                </div>
+                <button id="btnEditMonBien" class="col-md-offset-1 col-md-10 row" style="height:50px" onclick="location.href = '@Url.Action("EditBien", "Bien", new { idBien = Model.idBien })'">@Resource.modifier</button>
+            </div>
         </div>
+        
     </div>
-</div>
-
 
 @*  déscription du bien  *@
 
-<div class=" row jumbotron02">
+<div class="col-md-12 myJumbotron01">
     <h3>@Resource.description</h3>
     <p>
         @Html.DisplayFor(model => model.libelle)
@@ -101,11 +104,11 @@
 </div>
 
 @*  image et lieu du bien  *@
-<div class="row ">
+<div class="col-md-12 myJumbotron01 ">
 
     @*  PIECES  *@
 
-    <div class=" jumbotron02 col-md-3 ">
+    <div class="col-md-3 ">
         <h3>@Resource.lesPieces</h3>
         <dl class="dl-horizontals">
 
@@ -177,7 +180,7 @@
 
     @*  EQUIPEMENT  *@
 
-    <div class="jumbotron02 col-md-offset-1 col-md-8" id="equipementDisabled">
+    <div class=" col-md-offset-1 col-md-8" id="equipementDisabled">
         <h3>@Resource.equipement</h3>
 
 
@@ -304,7 +307,6 @@
 </div>
 
 
-<p class="row col-lg-12 row">
-    @Html.ActionLink(Resource.modifier, "EditBien", new { idBien = Model.idBien }) |
-    @Html.ActionLink(Resource.retour, "VoirMesBiens", new { idMembre = Model.idMembre }))
-    </p>
+    
+    @Html.ActionLink(Resource.retour, "VoirMesBiens", new { idMembre = Model.idMembre })
+    

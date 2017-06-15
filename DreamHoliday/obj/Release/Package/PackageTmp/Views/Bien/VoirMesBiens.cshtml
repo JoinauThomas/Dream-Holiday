@@ -1,65 +1,52 @@
-﻿
-@model IEnumerable<DreamHoliday.Models.Bien>
+﻿@model IEnumerable<DreamHoliday.Models.Bien>
 
-<table class="table " >
-    <tr>
-        <th>
+<div id="mesBiens">
+    @Html.Partial("~/Views/Bien/_mesBiens.cshtml")
+</div>
 
-        </th>
-        <th>
-            @Html.DisplayName("lieux, prix ")
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.noteMoyenne)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.libelle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nbPersonnesMax)
-        </th>
-        <th></th>
-    </tr>
+<div id="myModal" style="display:none">
+    <p>@Resource.ModalDeleteTexte</p>
+</div>
 
-    @foreach (var item in Model)
-    {
-        <tr class="tableaux" style="text-align:center" >
-            <td style="vertical-align:middle" >
-                <img src="~/Img/Biens/photo@(item.idBien).jpg" height="70" />
-            </td >
-            <td style="vertical-align:middle">
-                @Html.DisplayFor(modelItem => item.pays) <br />
 
-                @Html.DisplayFor(modelItem => item.ville)<br />
 
-                @Html.DisplayFor(modelItem => item.tarifParNuit)
-                
-            </td>
-            <td style="vertical-align:middle">
-                @{ 
-                    if(item.noteMoyenne == -1)
-                    {
-                        <div>NA</div>
-                    }
-                    else
-                    {
-                        @Html.DisplayFor(modelItem => item.noteMoyenne)
-                    }
+@section Scripts {
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryui-datepicker-fr")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <script type="text/javascript">
+
+        function ShowDelete(idBien) {
+            $("#myModal").dialog({
+                resizable: false,
+                height: "auto",
+                width: "400",
+                modal: true,
+                title: "@Resource.ModalDeleteTitre",
+                buttons: {
+                    "@Resource.oui": function () {
+                        $.ajax({
+                            type: 'GET',
+                            datatype: 'html',
+                            url: '@Url.Action("DeleteBien", "Bien")',
+                            data: { idBien },
+                            success:
+                            function (response) {
+                                $('#mesBiens').html(response);
+                                $("#myModal").dialog("close");
+                            },
+                            error:
+                            function () {
+                                alert("un problème a été détecté...");
+                            }
+                        })
+                    },
+                    "@Resource.non": function () { $(this).dialog("close") }
                 }
-            </td>
-            <td style="vertical-align:middle">
-                @Html.DisplayFor(modelItem => item.libelle)
-            </td>
-            <td style="vertical-align:middle">
-                @Html.DisplayFor(modelItem => item.nbPersonnesMax)
-            </td>
-            <td style="vertical-align:middle">
-                <button class="btn-warning" style="height:50px" onclick="location.href = '@Url.Action("DetailMonBien", "Bien", new { idBien = item.idBien })'">Détail</button>
-
-            </td>
-            
-        </tr>
-        
-    }
-
-</table>
+            })
+        }
+        </script>
+        }

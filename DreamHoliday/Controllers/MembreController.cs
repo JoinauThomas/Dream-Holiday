@@ -1,4 +1,7 @@
 ﻿using DreamHoliday.Models;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,6 +10,9 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.WindowsAzure.Storage.Auth;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace DreamHoliday.Controllers
 {
@@ -22,7 +28,7 @@ namespace DreamHoliday.Controllers
                 using (var client = new HttpClient())
                 {
                     Membre moi = new Membre();
-                    client.BaseAddress = new Uri("http://localhost:56077/api/MembreAPI/");
+                    client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/api/MembreAPI/");
                     var responseTask = client.GetAsync("GetMembreByMail?mail=" + mail);
                     responseTask.Wait();
                     var result = responseTask.Result;
@@ -50,7 +56,7 @@ namespace DreamHoliday.Controllers
                 using (var client = new HttpClient())
                 {
 
-                    client.BaseAddress = new Uri("http://localhost:56077");
+                    client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     var formContent = new FormUrlEncodedContent(new[]
@@ -91,13 +97,15 @@ namespace DreamHoliday.Controllers
         }
 
         [HttpPost]
-        public ActionResult InsertNewMembre(Membre nouveauMembre, HttpPostedFileBase monfichier)
+        public ActionResult InsertNewMembre( string dateNaiss, Membre nouveauMembre, HttpPostedFileBase monfichier)
         {
             try
             {
+                DateTime dateNaissance = DateTime.ParseExact(dateNaiss, "dd/MM/yyyy", null);
+                nouveauMembre.dateDeNaissance = dateNaissance;
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("http://localhost:56077/api/MembreAPI/");
+                    client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/api/MembreAPI/");
                     var responseTask = client.PostAsJsonAsync("PostNewMembre", nouveauMembre);
                     responseTask.Wait();
                     var result = responseTask.Result;
@@ -115,6 +123,40 @@ namespace DreamHoliday.Controllers
 
                         if (monfichier != null && monfichier.ContentLength > 0)
                         {
+                            //string accountName = "dreamholidayresource";
+                            //string accessKey = "LPty8J8Q44CoRBXCCk/JLpd83gYrzQYXldG3wDrGn+lh5QVNelRbu44nY4Y5W2QsZ9NdH9TuCL3TdOIYifd3Rw==";
+                            //string connectStr = "DefaultEndpointsProtocol=https;AccountName=dreamholidayresource;AccountKey=cJp91hGWZMvGQz4wi2MhyFtomq9T0v7RF2+gLkrZpkEB5SxbOoh8C0nK53mBncLHpxscP/vnVVggCUGWn+knsA==;EndpointSuffix=core.windows.net";
+
+
+
+                            //StorageCredentials creden = new StorageCredentials(accountName, accessKey);
+                            //CloudStorageAccount storageAccount = new CloudStorageAccount(creden, useHttps: false);
+                            //CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+
+                            //CloudBlobContainer container = blobClient.GetContainerReference("dreamholidaycontener");
+                            //container.CreateIfNotExists();
+                            //container.SetPermissions(
+                            //    new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob }
+                            //    );
+                            //CloudBlockBlob blockBlob = container.GetBlockBlobReference(monfichier.FileName);
+                            //MemoryStream ms = new MemoryStream();
+                            //Image img = Image.FromStream(monfichier.InputStream);
+                            //img.Save(ms, ImageFormat.Jpeg);
+                            //ms.Position = 0;
+                            //blockBlob.UploadFromStream(ms);
+
+
+                            //string sConn = "DefaultEndpointsProtocol=https;AccountName=dreamholidayresource;AccountKey=LPty8J8Q44CoRBXCCk/JLpd83gYrzQYXldG3wDrGn+lh5QVNelRbu44nY4Y5W2QsZ9NdH9TuCL3TdOIYifd3Rw==;EndpointSuffix=core.windows.net";
+                            //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectStr);
+                            //string aa = "ee";
+                            //CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+                            //CloudBlobContainer blobContainer = blobClient.GetContainerReference("mycontainer");
+                            //blobContainer.CreateIfNotExists();
+                            //blobContainer.SetPermissions(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Container });
+                            //CloudBlockBlob blob = blobContainer.GetBlockBlobReference(monfichier.FileName);
+                            //blob.Properties.ContentType = monfichier.ContentType;
+                            //blob.UploadFromStream(monfichier.InputStream);
+
                             string path = Path.Combine(Server.MapPath("~/Img/membres"), "photo" + idMembre.ToString() + ".jpg");
                             monfichier.SaveAs(path);
                         }
@@ -184,7 +226,7 @@ namespace DreamHoliday.Controllers
                     }
 
 
-                    client.BaseAddress = new Uri("http://localhost:56077/api/MembreAPI/");
+                    client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/api/MembreAPI/");
                     var responseTask = client.PostAsJsonAsync("PostUpdateMembre", moi);
 
                     responseTask.Wait();
@@ -237,7 +279,7 @@ namespace DreamHoliday.Controllers
                     {
                         questionaire.idMembre = idMembreBien;
                         idMembreBien = 0;
-                        client.BaseAddress = new Uri("http://localhost:56077/api/MembreAPI/");
+                        client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/api/MembreAPI/");
                         var responseTask = client.PostAsJsonAsync("PostQuestion", questionaire);
                         responseTask.Wait();
                         var result = responseTask.Result;
@@ -280,7 +322,7 @@ namespace DreamHoliday.Controllers
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/api/BienAPI/");
                     var responseTask = client.GetAsync("GetMyMessages?idMembre=" + moi.idMembre);
                     responseTask.Wait();
                     var result = responseTask.Result;
@@ -332,7 +374,7 @@ namespace DreamHoliday.Controllers
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                    client.BaseAddress = new Uri("http://localhost:56077/api/MembreAPI/");
+                    client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/api/MembreAPI/");
                     var responseTask = client.GetAsync("GetMyLocations?idMembre=" + idMembre);
                     responseTask.Wait();
                     var result = responseTask.Result;
@@ -364,7 +406,7 @@ namespace DreamHoliday.Controllers
                 List<Membre> mesMembres = new List<Membre>();
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("http://localhost:56077/api/MembreAPI/");
+                    client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/api/MembreAPI/");
                     var responseTask = client.GetAsync("GetAllMembres");
                     responseTask.Wait();
                     var result = responseTask.Result;
@@ -397,7 +439,7 @@ namespace DreamHoliday.Controllers
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                    client.BaseAddress = new Uri("http://localhost:56077/api/MembreAPI/");
+                    client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/api/MembreAPI/");
                     var responseTask = client.GetAsync("GetMembreByIdForProfile?idMembre=" + idMembre);
                     responseTask.Wait();
                     var result = responseTask.Result;
@@ -430,7 +472,7 @@ namespace DreamHoliday.Controllers
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/api/BienAPI/");
                     var responseTask = client.GetAsync("GetCountOfMyLocations?idMembre=" + idMembre);
                     responseTask.Wait();
                     var result = responseTask.Result;
@@ -463,7 +505,7 @@ namespace DreamHoliday.Controllers
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/api/BienAPI/");
                     var responseTask = client.GetAsync("GetCountOfMyMessages?idMembre=" + idMembre);
                     responseTask.Wait();
                     var result = responseTask.Result;
@@ -498,7 +540,7 @@ namespace DreamHoliday.Controllers
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/api/BienAPI/");
                     var responseTask = client.GetAsync("GetDetailOfMyMessage?idMessage=" + idMessage);
                     responseTask.Wait();
                     var result = responseTask.Result;

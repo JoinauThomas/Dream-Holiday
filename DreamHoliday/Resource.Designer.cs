@@ -676,6 +676,15 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à inscription.
+        /// </summary>
+        public static string inscription {
+            get {
+                return ResourceManager.GetString("inscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à jacuzzi.
         /// </summary>
         public static string jacuzzi {

@@ -165,8 +165,23 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   <data name="chambre" xml:space="preserve">
     <value>chambre</value>
   </data>
+  <data name="chercherUnBien" xml:space="preserve">
+    <value>chercher un bien</value>
+  </data>
   <data name="commentaire" xml:space="preserve">
     <value>commentaire</value>
+  </data>
+  <data name="connectionNotOk" xml:space="preserve">
+    <value>nom d'utilisateur ou mot de pass pas valide</value>
+  </data>
+  <data name="connectionOk" xml:space="preserve">
+    <value>Bienvenue</value>
+  </data>
+  <data name="connectionReussie" xml:space="preserve">
+    <value>connexion reussie</value>
+  </data>
+  <data name="connexion" xml:space="preserve">
+    <value>connexion</value>
   </data>
   <data name="Contact01" xml:space="preserve">
     <value>une question?</value>
@@ -188,6 +203,9 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   </data>
   <data name="coutTot" xml:space="preserve">
     <value>cout total du séjour</value>
+  </data>
+  <data name="creer" xml:space="preserve">
+    <value>Créer</value>
   </data>
   <data name="cuisine" xml:space="preserve">
     <value>cuisine</value>
@@ -228,9 +246,6 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   <data name="dressing" xml:space="preserve">
     <value>dressing</value>
   </data>
-  <data name="sinscrire" xml:space="preserve">
-    <value>Enregistrez-vous ici</value>
-  </data>
   <data name="envoyer" xml:space="preserve">
     <value>Envoyer</value>
   </data>
@@ -239,6 +254,9 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   </data>
   <data name="Error_adresseRequise" xml:space="preserve">
     <value>adresse requise</value>
+  </data>
+  <data name="Error_champNecesaire" xml:space="preserve">
+    <value>Required Field</value>
   </data>
   <data name="Error_DateNaissRequis" xml:space="preserve">
     <value>date de naissance requise</value>
@@ -251,6 +269,9 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   </data>
   <data name="Error_MessageRequis" xml:space="preserve">
     <value>mesage requis</value>
+  </data>
+  <data name="Error_NbPersonne" xml:space="preserve">
+    <value>veuillez mettre un chiffre dans le champ "nombre de personnes"</value>
   </data>
   <data name="Error_nomRequis" xml:space="preserve">
     <value>nom requis</value>
@@ -276,6 +297,9 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   <data name="Error_tableVide" xml:space="preserve">
     <value>nous n'avons pas de biens qui correspond à vos critères.</value>
   </data>
+  <data name="Error_TarifNuitRequis" xml:space="preserve">
+    <value>tarif par nuit requis</value>
+  </data>
   <data name="Error_telephoneRequis" xml:space="preserve">
     <value>num de téléphone requis</value>
   </data>
@@ -299,6 +323,9 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   </data>
   <data name="idMembre" xml:space="preserve">
     <value>Identifiant</value>
+  </data>
+  <data name="inscription" xml:space="preserve">
+    <value>inscription</value>
   </data>
   <data name="jacuzzi" xml:space="preserve">
     <value>jacuzzi</value>
@@ -327,6 +354,9 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   <data name="mail" xml:space="preserve">
     <value>Mail</value>
   </data>
+  <data name="merci" xml:space="preserve">
+    <value>merci</value>
+  </data>
   <data name="mesBiens" xml:space="preserve">
     <value>mes biens</value>
   </data>
@@ -338,6 +368,18 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   </data>
   <data name="message" xml:space="preserve">
     <value>Message</value>
+  </data>
+  <data name="messageOkAjoutNewBien1" xml:space="preserve">
+    <value>Votre bien a bien été créé.</value>
+  </data>
+  <data name="messageOkAjoutNewBien2" xml:space="preserve">
+    <value>Merci pour votre confiance</value>
+  </data>
+  <data name="ModalDeleteTexte" xml:space="preserve">
+    <value>Êtes-vous sûre de vouloir supprimer ce bien?</value>
+  </data>
+  <data name="ModalDeleteTitre" xml:space="preserve">
+    <value>supprimer un bien</value>
   </data>
   <data name="Modal_sIdentifierPourLouer" xml:space="preserve">
     <value>veuillez vous connecter pour pouvoir louer un bien svp</value>
@@ -360,6 +402,9 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   <data name="nombreDeNuits" xml:space="preserve">
     <value>nombre de nuit</value>
   </data>
+  <data name="non" xml:space="preserve">
+    <value>non</value>
+  </data>
   <data name="nosBiens" xml:space="preserve">
     <value>nos biens</value>
   </data>
@@ -368,6 +413,9 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   </data>
   <data name="numero" xml:space="preserve">
     <value>numéro</value>
+  </data>
+  <data name="oui" xml:space="preserve">
+    <value>oui</value>
   </data>
   <data name="parcourir" xml:space="preserve">
     <value>Parcourir</value>
@@ -422,6 +470,12 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   </data>
   <data name="sdb" xml:space="preserve">
     <value>salle de bain</value>
+  </data>
+  <data name="SEnregistrer" xml:space="preserve">
+    <value>s'enregistrer</value>
+  </data>
+  <data name="sinscrire" xml:space="preserve">
+    <value>Enregistrez-vous ici</value>
   </data>
   <data name="sujet" xml:space="preserve">
     <value>Sujet</value>
@@ -482,56 +536,5 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   </data>
   <data name="wifi" xml:space="preserve">
     <value>wifi</value>
-  </data>
-  <data name="creer" xml:space="preserve">
-    <value>Créer</value>
-  </data>
-  <data name="ModalDeleteTexte" xml:space="preserve">
-    <value>Êtes-vous sûre de vouloir supprimer ce bien?</value>
-  </data>
-  <data name="ModalDeleteTitre" xml:space="preserve">
-    <value>supprimer un bien</value>
-  </data>
-  <data name="non" xml:space="preserve">
-    <value>non</value>
-  </data>
-  <data name="oui" xml:space="preserve">
-    <value>oui</value>
-  </data>
-  <data name="connexion" xml:space="preserve">
-    <value>connexion</value>
-  </data>
-  <data name="SEnregistrer" xml:space="preserve">
-    <value>s'enregistrer</value>
-  </data>
-  <data name="chercherUnBien" xml:space="preserve">
-    <value>chercher un bien</value>
-  </data>
-  <data name="Error_champNecesaire" xml:space="preserve">
-    <value>Required Field</value>
-  </data>
-  <data name="Error_TarifNuitRequis" xml:space="preserve">
-    <value>tarif par nuit requis</value>
-  </data>
-  <data name="connectionNotOk" xml:space="preserve">
-    <value>nom d'utilisateur ou mot de pass pas valide</value>
-  </data>
-  <data name="connectionOk" xml:space="preserve">
-    <value>Bienvenue</value>
-  </data>
-  <data name="connectionReussie" xml:space="preserve">
-    <value>connexion reussie</value>
-  </data>
-  <data name="Error_NbPersonne" xml:space="preserve">
-    <value>veuillez mettre un chiffre dans le champ "nombre de personnes"</value>
-  </data>
-  <data name="merci" xml:space="preserve">
-    <value>merci</value>
-  </data>
-  <data name="messageOkAjoutNewBien1" xml:space="preserve">
-    <value>Votre bien a bien été créé.</value>
-  </data>
-  <data name="messageOkAjoutNewBien2" xml:space="preserve">
-    <value>Merci pour votre confiance</value>
   </data>
 </root>

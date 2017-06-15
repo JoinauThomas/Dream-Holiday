@@ -284,6 +284,7 @@
     <EntitySetMapping Name="BIEN">
       <EntityTypeMapping TypeName="DreamHollidayModel.BIEN">
         <MappingFragment StoreEntitySet="BIEN">
+          <ScalarProperty Name="BIEN_estVisible" ColumnName="BIEN_estVisible" />
           <ScalarProperty Name="BIEN_nbMaxPersonnes" ColumnName="BIEN_nbMaxPersonnes" />
           <ScalarProperty Name="BIEN_photo" ColumnName="BIEN_photo" />
           <ScalarProperty Name="BIEN_libelle" ColumnName="BIEN_libelle" />
@@ -457,5 +458,26 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="editBien" FunctionName="DreamHollidayModel.Store.editBien" />
+    <FunctionImportMapping FunctionImportName="addNewBiens" FunctionName="DreamHollidayModel.Store.addNewBiens">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DreamHollidayModel.addNewBiens_Result">
+          <ScalarProperty Name="idBien" ColumnName="idBien" />
+          <ScalarProperty Name="BIEN_Pays" ColumnName="BIEN_Pays" />
+          <ScalarProperty Name="BIEN_ville" ColumnName="BIEN_ville" />
+          <ScalarProperty Name="BIEN_rue" ColumnName="BIEN_rue" />
+          <ScalarProperty Name="BIEN_numero" ColumnName="BIEN_numero" />
+          <ScalarProperty Name="idMembre" ColumnName="idMembre" />
+          <ScalarProperty Name="BIEN_tarifParNuit" ColumnName="BIEN_tarifParNuit" />
+          <ScalarProperty Name="BIEN_tarifNettoyage" ColumnName="BIEN_tarifNettoyage" />
+          <ScalarProperty Name="BIEN_noteMoyenne" ColumnName="BIEN_noteMoyenne" />
+          <ScalarProperty Name="BIEN_libelle" ColumnName="BIEN_libelle" />
+          <ScalarProperty Name="BIEN_photo" ColumnName="BIEN_photo" />
+          <ScalarProperty Name="BIEN_nbMaxPersonnes" ColumnName="BIEN_nbMaxPersonnes" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DeleteBien" FunctionName="DreamHollidayModel.Store.DeleteBien" />
+    <FunctionImportMapping FunctionImportName="editMyBien" FunctionName="DreamHollidayModel.Store.editMyBien" />
   </EntityContainerMapping>
 </Mapping>

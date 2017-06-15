@@ -38,7 +38,7 @@ namespace DreamHoliday.BL
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
                 var responseTask = client.PostAsJsonAsync("PostNewBien", nvBien);
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -91,7 +91,7 @@ namespace DreamHoliday.BL
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
                 var responseTask = client.PostAsJsonAsync("EditBien", monBien);
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -119,11 +119,11 @@ namespace DreamHoliday.BL
 
                 List<Bien> mesBiens = new List<Bien>();
 
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
                 var responseTask = client.GetAsync("DeleteBien?idBien=" + idBien);
                 responseTask.Wait();
 
-                //client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                //client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
                 //var responseTask = client.PostAsJsonAsync("PostDeleteBien", idBien);
                 //responseTask.Wait();
                 var result = responseTask.Result;
@@ -161,7 +161,7 @@ namespace DreamHoliday.BL
             using (var client = new HttpClient())
             {
                 List<Bien> mesBiensList = new List<Bien>();
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
                 var responseTask = client.PostAsJsonAsync("BigSearchBien", monBien);
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -198,7 +198,7 @@ namespace DreamHoliday.BL
             List<Bien> mesBiens = new List<Bien>();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
                 var responseTask = client.GetAsync("GetAllBiens");
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -225,7 +225,7 @@ namespace DreamHoliday.BL
 
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
                     var responseTask = client.GetAsync("SearchBiens?paysOuVille=" + paysOuVille + "&dateDepart=" + dateDepart + "&dateRetour=" + dateRetour + "&nbPers=" + nbPers);
 
                     responseTask.Wait();
@@ -273,7 +273,7 @@ namespace DreamHoliday.BL
             List<listeCommentaireDuBien> listeComment = new List<listeCommentaireDuBien>();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
                 var responseTask = client.GetAsync("GetListComment?idBien=" + idBien);
 
                 responseTask.Wait();
@@ -323,7 +323,7 @@ namespace DreamHoliday.BL
 
                     LocationBien nvLocation = new LocationBien { dateArrivee = dateArrivees, dateDepart = dateDeparts, idBien = idBien, idMembre = idMembre, tarifNettoyage = Nettoyage, tarifNuit = Nuit, nbNuits = (int)nbNuits, prixSejour = coutVoyage, prixtotal = coutTotal, tarifAdmin = coutAdmin };
 
-                    client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
                     var responseTask = client.PostAsJsonAsync("PostNewLocation", nvLocation);
                     responseTask.Wait();
                     var result = responseTask.Result;
@@ -388,7 +388,7 @@ namespace DreamHoliday.BL
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
                 var responseTask = client.PostAsJsonAsync("PostCommentAndNote", monCommEtNote);
                 double aaa = monCommEtNote.note;
                 responseTask.Wait();
@@ -424,7 +424,7 @@ namespace DreamHoliday.BL
             List<Bien> mesBiens = new List<Bien>();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
                 var responseTask = client.GetAsync("GetAllBiens");
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -444,7 +444,7 @@ namespace DreamHoliday.BL
             Bien monBien = new Bien();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
                 var responseTask = client.GetAsync("GetBienWithId?idBien=" + idBien);
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -469,7 +469,7 @@ namespace DreamHoliday.BL
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
                 var responseTask = client.GetAsync("GetmesBiens?idMembre=" + idMembre);
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -496,7 +496,7 @@ namespace DreamHoliday.BL
 
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
                 var responseTask = client.GetAsync("GETDatesPasDispo?idBien=" + idBien);
 
                 responseTask.Wait();
@@ -523,7 +523,7 @@ namespace DreamHoliday.BL
         //    string dateRetours = dateRetour.Value.ToShortDateString();
         //    using (var client = new HttpClient())
         //    {
-        //        client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+        //        client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
         //        var responseTask = client.GetAsync("SearchBiens?paysOuVille=" + paysOuVille + "&dateDepart=" + dateDeparts + "&dateRetour=" + dateRetours + "&nbPers=" + nbPers);
         //        // COMMENT AJOUTER LES PARAMETRES DANS LE REQUETE???
         //        responseTask.Wait();
@@ -546,7 +546,7 @@ namespace DreamHoliday.BL
             List<Bien> mesBiens = new List<Bien>();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
 
 
                 client.DefaultRequestHeaders.Accept.Clear();
@@ -598,7 +598,7 @@ namespace DreamHoliday.BL
 
                 string token = (string)Session["monToken"];
 
-                client.BaseAddress = new Uri("http://localhost:56077/api/Values/");
+                client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/api/Values/");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
 

@@ -14,7 +14,6 @@
 }
 
 
-
 <div class="jumbotron" id="intro_home">
     @Resource.Bienvenue01<br />
     @Resource.Bienvenue02
@@ -33,11 +32,11 @@
         </div>
         <div class="col-lg-3, col-md-3">
             <label>@Resource.DateArrivees :</label> <br>
-            <input type="date" id="dateDepart" class="form-control">
+            <input type="text" id="dateDepart" class="form-control">
         </div>
         <div class="col-lg-3, col-md-3">
             <label>@Resource.DateRetour :</label> <br>
-            <input type="date" id="dateRetour" class="form-control">
+            <input type="text" id="dateRetour" class="form-control">
         </div>
         <div class="col-lg-3, col-md-3">
             <label>@Resource.nbreDePers :</label> <br>
@@ -50,7 +49,9 @@
 
 
 </div>
-
+<div id="ModalBigSearch" class="modals" style="display:none">
+    <p id="modal_text" class="modal-contents"></p>
+</div>
 <img id="chargement" src="~/img/loaders/ajax-loader.gif" style="display: none" alt="Chargement en cours..." class="col-md-offset-5 col-md-2 col-md-offset-5"/>
 <div id="test"></div>
 
@@ -69,39 +70,34 @@
     <script type="text/javascript">
 
 
-       // initialisation du premier datePicker
+        // initialisation du premier datePicker
 
-            $('#dateDepart').datepicker({
-                dateFormat: "dd/mm/yy",
-                changeMonth: true,
-                changeYear: true,
-                yearRange: "-10:+3",
-                showAnim: "bounce",
-                minDate:0
-            });
+        $('#dateDepart').datepicker({
+            dateFormat: "dd/mm/yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-10:+3",
+            showAnim: "bounce",
+            minDate: 0
+        });
 
 
         // initialisation du deuxieme datePicker
-          
-            $('#dateRetour').datepicker({
-                dateFormat: "dd/mm/yy",
-                changeMonth: true,
-                changeYear: true,
-                yearRange: "-10:+3",
-                showAnim: "bounce",
-                minDate:0
+
+        $('#dateRetour').datepicker({
+            dateFormat: "dd/mm/yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-10:+3",
+            showAnim: "bounce",
+            minDate: 0
         });
 
-            $('#dateDepart').change(function () {
-                var v = $('#dateDepart').val();
-                $('#dateRetour').datepicker("option", "minDate", v);
-               
-            });
+        $('#dateDepart').change(function () {
+            var v = $('#dateDepart').val();
+            $('#dateRetour').datepicker("option", "minDate", v);
 
-            $('#dateRetour').change(function () {
-                var c = $('#dateRetour').val();
-              
-                    ;            })
+        });
 
         // récupération et affichage de la liste des biens disponibles + affichage du chargement
 
@@ -110,20 +106,68 @@
             var a = $('#paysOuVille').val();
             var b = $('#dateDepart').val();
             var c = $('#dateRetour').val();
+            var d = $('#nbPers').val();
+            if (b == "")
+            {
+                b = "01/01/1900";
+            }
+            if (c == "")
+            {
+                c = "02/01/1900";
+            }
+            if (d == "")
+            {
+                d = 0;
+            }
             $.ajax({
                 type: 'POST',
                 datatype: 'html',
                 url: '@Url.Action("SearchBienss", "Bien")',
-                data: { paysOuVille: $('#paysOuVille').val(), dateDepart: $('#dateDepart').val(), dateRetour: $('#dateRetour').val(), nbPers: $('#nbPers').val() },
+                data: { paysOuVille: a, dateDepart: b, dateRetour: c, nbPers: d },
                 success:
                 function (response) {
-                    $("#chargement").hide();
-                    $('#test').html(response);
+                    var res = (response.length);
+                    if (res == 0) {
+                        $("#chargement").hide();
+                        $("#modal_text").html("@Resource.Error_tableVide")
+                        $('#table').html("");
+                        $('#ModalBigSearch').dialog({
+                            resizable: false,
+                            height: "auto",
+                            width: "400",
+                            modal: true,
+                            title: '@Resource.desole',
+
+                            buttons: {
+                                "ok": function () { $(this).dialog("close") }
+                            }
+                        })
+                    }
+                    else
+                    {
+                        $("#chargement").hide();
+                        $('#test').html(response);
+                    }
                 },
                 error:
                 function () {
+                    if ((typeof d) != "int")
+                    {
+                        $("#modal_text").html("@Resource.Error_NbPersonne")
+                    }
+                        $('#table').html("");
+                        $('#ModalBigSearch').dialog({
+                            resizable: false,
+                            height: "auto",
+                            width: "400",
+                            modal: true,
+                            title: '@Resource.desole',
+
+                            buttons: {
+                                "ok": function () { $(this).dialog("close") }
+                            }
+                        })
                     $("#chargement").hide();
-                    alert("un problème a été détecté...");
                 }
             })
         });

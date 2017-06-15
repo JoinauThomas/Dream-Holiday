@@ -36,9 +36,12 @@
     </div>
 }
 
+<img id="chargement" src="~/img/loaders/ajax-loader.gif" style="display: none" alt="Chargement en cours..." class="col-md-offset-5 col-md-2 col-md-offset-5" />
+
 <div id="modal_connection"  style="display:none">
     <p id="modalTexte" class="modal-contents">@Resource.Error_tableVide</p>
 </div>
+
 
 <div>
     @Html.ActionLink(Resource.retour, "Index", "Home")
@@ -50,6 +53,7 @@
 
        
         $('#connection').click(function () {
+            $("#chargement").show();
             var a = $('#UserName').val();
             var b = $('#Password').val();
             $.ajax({
@@ -61,6 +65,7 @@
                 function (response) {
                     if (response.result != "OK")
                     {
+                        $("#chargement").hide();
                         $('#modalTexte').html("@Resource.connectionNotOk");
                         $('#modal_connection').dialog({
                             open: function (event, ui,e) {$(".ui-dialog-titlebar-close").hide();},
@@ -76,6 +81,7 @@
                     }
                     else
                     {
+                        $("#chargement").hide();
                         $('#modalTexte').html("@Resource.connectionOk"+" " + response.nom + " " + response.prenom);
                         $('#modal_connection').dialog({
 
@@ -97,8 +103,8 @@
                     }
                     },
                 error:
-                function () {
-                    alert("un problème a été détecté...");
+                function (response) {
+                    alert("un problème a été détecté... " + response.nom);
                 }
             })
         });

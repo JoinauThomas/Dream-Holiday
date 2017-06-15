@@ -533,4 +533,7 @@ We allow owners to safely rent their property ..</value>
   <data name="messageOkAjoutNewBien2" xml:space="preserve">
     <value>Thank you for your trust</value>
   </data>
+  <data name="inscription" xml:space="preserve">
+    <value>subscription</value>
+  </data>
 </root>

@@ -82,7 +82,7 @@ namespace DreamHoliday.Controllers
                 {
                     using (var client = new HttpClient())
                     {
-                        client.BaseAddress = new Uri("http://localhost:56077/api/HomeAPI/");
+                        client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/api/HomeAPI/");
 
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                         var responseTask = client.PostAsJsonAsync("PostQuestion", questionaire);

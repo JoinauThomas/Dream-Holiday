@@ -12,7 +12,7 @@
 
 
     <div class="form-horizontal formSearch row">
-        <h4>Chercher un bien</h4>
+        <h3>@Resource.chercherUnBien</h3>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -266,15 +266,15 @@
         </div>
 
     </div>
-    <div class="row" >
+    <div class="row col-md-12" >
 
-            <input type="button" id="envoiForm" value="rechercher" class=" btn-default col-md-12" />
+            <input type="button" id="envoiForm" value="@Resource.Rechercher" class=" col-md-12" />
     </div>
 
 </form>
 
 <div class="row">
-    @Html.ActionLink("retour au menu principal", "Index", "Home")
+    @Html.ActionLink(Resource.retour, "Index", "Home")
 </div>
 <img id="chargement" src="~/img/loaders/ajax-loader.gif" style="display: none" alt="Chargement en cours..." class="col-md-offset-5 col-md-2 col-md-offset-5" />
 <div id="table"></div>
@@ -303,7 +303,7 @@
                 success:
                 function (response) {
                     var res = (response.length);
-                    if (res == 308)
+                    if (res == 0)
                     {
                         $("#chargement").hide();
                         $('#table').html("");

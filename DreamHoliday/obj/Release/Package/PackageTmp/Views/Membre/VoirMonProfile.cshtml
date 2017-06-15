@@ -2,16 +2,7 @@
 
 @{
     ViewBag.Title = "VoirMonProfile";
-
-    int prob = (int)Session["probleme"];
-
-    string message = (string)Session["message"];
-
 }
-<input id="prob" value="@prob" style="display:none" />
-<div id="messageErreur" style="display:none; background-color:orange">
-    <p>@message</p>
-</div>
 
 
 <h2>Mon Profile</h2>
@@ -133,7 +124,7 @@
                             else
                             {
                                 <li>
-                                    <button type="button" id="msg" class="btnProfile btn btn-warning col-md-12 " style="margin-bottom:5%" onclick="location.href = '@Url.Action("VoirMesBiens", "Bien", new { idMembre = Model.idMembre })'">@Resource.mesBiens</button>
+                                    <button type="button" id="msg" class="btnProfile btn btn-warning col-md-12 " style="margin-bottom:5%" onclick="location.href = '@Url.Action("VoirMesBiens", "Bien")'">@Resource.mesBiens</button>
                                 </li>
                             }
 
@@ -159,7 +150,7 @@
                             else
                             {
                                 <li>
-                                    <button type="button" id="msg" class="btnProfile btn btn-warning col-md-12 " style="margin-bottom:5%" onclick="location.href = '@Url.Action("mesMessages", "Membre", new { idMembre = Model.idMembre })'">@Resource.mesMessages  <i class="glyphicon glyphicon-envelope"></i></button>
+                                    <button type="button" id="msg" class="btnProfile btn btn-warning col-md-12 " style="margin-bottom:5%" onclick="location.href = '@Url.Action("mesMessages", "Membre")'">@Resource.mesMessages  <i class="glyphicon glyphicon-envelope"></i></button>
                                 </li>
                             }
                         }
@@ -187,28 +178,7 @@
     @Scripts.Render("~/bundles/jquery-ui")
 
     <script type="text/javascript">
-
-
-        @*$('#btnModifier').click(function () {
-            $.ajax({
-                url: '@Url.Action("updateMembre", "Membre")',
-                type: 'POST',
-                dataType: 'html',
-                data: $('#myForms').serialize(),
-                processData: false,
-                contentType: false,
-                cache: false,
-                success: function (response) {
-                    alert("ok");
-                },
-                Error: function () {
-                    alert("pas ok");
-                }
-            })
-        });*@
-
-
-
+        
         var dateInit = $('#dateDeNaissance').val();
 
         $('#dateDeNaissance').datepicker({
@@ -235,8 +205,6 @@
             }
 
         });
-
-
         // récupere l'image pour l'afficher en preview
 
         function readURL(input) {

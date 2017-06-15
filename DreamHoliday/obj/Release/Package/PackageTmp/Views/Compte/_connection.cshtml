@@ -7,20 +7,6 @@
 {
     @Html.AntiForgeryToken()
 
-    var i = 0;
-    string message = (string)Session["message"];
-
-    if (Session["probleme"] != null)
-    {
-        i = (int)Session["probleme"];
-        Session["probleme"] = null;
-        Session["message"] = null;
-    }
-    <input id="prob", value="@i" style="display:none" />
-    <div id="messageErreur" style="display:none; background-color:orange">
-        <p>@message</p>
-    </div>
-
     <div class="form-horizontal">
         <h4>identification</h4>
         <hr />
@@ -43,31 +29,85 @@
 
         <div class="form-group" style="margin-top:5%">
             <div class="col-md-offset-2 col-md-10">
-                <input  type="submit" value="se connecter" class="btn btn-default col-md-3" />
-                <a class="col-md-push-1 col-md-1">@Html.ActionLink("nouveau membre", "InsertNewMembre", "Membre", new { area = "" }, null)</a>
+                <input id="connection"  type="button" value="@Resource.connexion" class="btn btn-default col-md-3" />
+                <a class="col-md-push-1 col-md-1">@Html.ActionLink(Resource.SEnregistrer, "InsertNewMembre", "Membre", new { area = "" }, null)</a>
             </div>
         </div>
     </div>
 }
 
+<img id="chargement" src="~/img/loaders/ajax-loader.gif" style="display: none" alt="Chargement en cours..." class="col-md-offset-5 col-md-2 col-md-offset-5" />
+
+<div id="modal_connection"  style="display:none">
+    <p id="modalTexte" class="modal-contents">@Resource.Error_tableVide</p>
+</div>
+
+
 <div>
-    @Html.ActionLink("retour", "Index", "Home")
+    @Html.ActionLink(Resource.retour, "Index", "Home")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jquery-ui")
     <script>
 
-        var prob = $('#prob').val();
-        if (prob == 1)
-        {
-            $(function () {
-                $("#messageErreur").dialog({
-                    modal: true,
-                    title: "connection impossible",
-                });
+       
+        $('#connection').click(function () {
+            $("#chargement").show();
+            var a = $('#UserName').val();
+            var b = $('#Password').val();
+            $.ajax({
+                type: 'POST',
+                datatype: 'json',
+                url: '@Url.Action("connection", "Compte")',
+                data: { userName: a, Password: b, },
+                success:
+                function (response) {
+                    if (response.result != "OK")
+                    {
+                        $("#chargement").hide();
+                        $('#modalTexte').html("@Resource.connectionNotOk");
+                        $('#modal_connection').dialog({
+                            open: function (event, ui,e) {$(".ui-dialog-titlebar-close").hide();},
+                            resizable: false,
+                            height: "auto",
+                            width: "400",
+                            modal: true,
+                            title: '@Resource.desole',
+                            buttons: {
+                                "ok": function () { $(this).dialog("close") }
+                            }
+                        })
+                    }
+                    else
+                    {
+                        $("#chargement").hide();
+                        $('#modalTexte').html("@Resource.connectionOk"+" " + response.nom + " " + response.prenom);
+                        $('#modal_connection').dialog({
+
+                            open: function (event, ui) { $(".ui-dialog-titlebar-close").hide(); },
+                            resizable: false,
+                            height: "auto",
+                            width: "400",
+                            modal: true,
+                            title: '@Resource.connectionReussie',
+
+                            buttons: {
+                                "ok": function () {
+                                    $(this).dialog("close");
+                                    location.href = "../Home/Index";
+                                }
+                            }
+                        });
+                        
+                    }
+                    },
+                error:
+                function (response) {
+                    alert("un problème a été détecté... " + response.nom);
+                }
             })
-        }
-        
+        });
+
     </script>
 }

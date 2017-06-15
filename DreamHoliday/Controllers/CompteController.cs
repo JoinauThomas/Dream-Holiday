@@ -35,7 +35,7 @@ namespace DreamHoliday.Controllers
                     string access_token = "";
                     using (var client = new HttpClient())
                     {
-                        client.BaseAddress = new Uri("http://localhost:56077");
+                        client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/");
                         client.DefaultRequestHeaders.Accept.Clear();
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                         var formContent = new FormUrlEncodedContent(new[]
