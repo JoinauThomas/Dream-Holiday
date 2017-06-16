@@ -1,11 +1,14 @@
-﻿using DreamHoliday.Helpers;
+﻿
+using DreamHoliday.Helpers;
 using DreamHoliday.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
@@ -50,18 +53,17 @@ namespace DreamHoliday.Controllers
             
         }
 
+        
         public ActionResult Index()
         {
-
+           
             CultureInfo maCulture = Thread.CurrentThread.CurrentCulture;
 
             if (Request.Cookies["_culture"] != null)
             {
                 string lg = Server.HtmlEncode(Request.Cookies["_culture"].Value);
             }
-
-
-
+            
             ViewBag.Title = "Home Page";
 
             return View();
@@ -117,7 +119,9 @@ namespace DreamHoliday.Controllers
 
 
         }
-        
+
+
 
     }
+
 }

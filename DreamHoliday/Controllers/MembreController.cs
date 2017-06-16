@@ -13,6 +13,8 @@ using System.Web.Mvc;
 using Microsoft.WindowsAzure.Storage.Auth;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Web.Security;
+using System.Text;
 
 namespace DreamHoliday.Controllers
 {
@@ -42,11 +44,11 @@ namespace DreamHoliday.Controllers
                     return moi;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
-            
+
         }
         public static bool ajoutNewUser(string mail, string psw1, string psw2)
         {
@@ -86,7 +88,7 @@ namespace DreamHoliday.Controllers
             {
                 throw ex;
             }
-            
+
         }
 
 
@@ -97,8 +99,9 @@ namespace DreamHoliday.Controllers
         }
 
         [HttpPost]
-        public ActionResult InsertNewMembre( string dateNaiss, Membre nouveauMembre, HttpPostedFileBase monfichier)
+        public ActionResult InsertNewMembre(string dateNaiss, Membre nouveauMembre, HttpPostedFileBase monfichier)
         {
+            //if(ModelState.)
             try
             {
                 DateTime dateNaissance = DateTime.ParseExact(dateNaiss, "dd/MM/yyyy", null);
@@ -123,39 +126,6 @@ namespace DreamHoliday.Controllers
 
                         if (monfichier != null && monfichier.ContentLength > 0)
                         {
-                            //string accountName = "dreamholidayresource";
-                            //string accessKey = "LPty8J8Q44CoRBXCCk/JLpd83gYrzQYXldG3wDrGn+lh5QVNelRbu44nY4Y5W2QsZ9NdH9TuCL3TdOIYifd3Rw==";
-                            //string connectStr = "DefaultEndpointsProtocol=https;AccountName=dreamholidayresource;AccountKey=cJp91hGWZMvGQz4wi2MhyFtomq9T0v7RF2+gLkrZpkEB5SxbOoh8C0nK53mBncLHpxscP/vnVVggCUGWn+knsA==;EndpointSuffix=core.windows.net";
-
-
-
-                            //StorageCredentials creden = new StorageCredentials(accountName, accessKey);
-                            //CloudStorageAccount storageAccount = new CloudStorageAccount(creden, useHttps: false);
-                            //CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-
-                            //CloudBlobContainer container = blobClient.GetContainerReference("dreamholidaycontener");
-                            //container.CreateIfNotExists();
-                            //container.SetPermissions(
-                            //    new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob }
-                            //    );
-                            //CloudBlockBlob blockBlob = container.GetBlockBlobReference(monfichier.FileName);
-                            //MemoryStream ms = new MemoryStream();
-                            //Image img = Image.FromStream(monfichier.InputStream);
-                            //img.Save(ms, ImageFormat.Jpeg);
-                            //ms.Position = 0;
-                            //blockBlob.UploadFromStream(ms);
-
-
-                            //string sConn = "DefaultEndpointsProtocol=https;AccountName=dreamholidayresource;AccountKey=LPty8J8Q44CoRBXCCk/JLpd83gYrzQYXldG3wDrGn+lh5QVNelRbu44nY4Y5W2QsZ9NdH9TuCL3TdOIYifd3Rw==;EndpointSuffix=core.windows.net";
-                            //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectStr);
-                            //string aa = "ee";
-                            //CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-                            //CloudBlobContainer blobContainer = blobClient.GetContainerReference("mycontainer");
-                            //blobContainer.CreateIfNotExists();
-                            //blobContainer.SetPermissions(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Container });
-                            //CloudBlockBlob blob = blobContainer.GetBlockBlobReference(monfichier.FileName);
-                            //blob.Properties.ContentType = monfichier.ContentType;
-                            //blob.UploadFromStream(monfichier.InputStream);
 
                             string path = Path.Combine(Server.MapPath("~/Img/membres"), "photo" + idMembre.ToString() + ".jpg");
                             monfichier.SaveAs(path);
@@ -173,12 +143,16 @@ namespace DreamHoliday.Controllers
 
                 }
             }
+
+
+
             catch (Exception ex)
             {
                 throw ex;
             }
-            
         }
+
+    
 
         [HttpGet]
         public ActionResult VoirMonProfile()
@@ -560,5 +534,6 @@ namespace DreamHoliday.Controllers
             
         }
 
+        
     }
 }

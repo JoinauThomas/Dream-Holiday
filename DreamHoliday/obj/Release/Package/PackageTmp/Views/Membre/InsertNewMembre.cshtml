@@ -101,7 +101,7 @@
         </div>
 
 
-        <img id="chargement" src="~/img/loaders/ajax-loader.gif" style="display: none" alt="Chargement en cours..." class="col-md-offset-5 col-md-2 col-md-offset-5" />
+        <img id="chargement" src="~/img/loaders/infini.gif" style="display: none" alt="Chargement en cours..." class="loaderRecherche col-md-offset-5 col-md-2 col-md-offset-5" />
 
         <div id="Modal" style="display:none">
             <p id="modalTexte" class="modal-contents">@Resource.Error_tableVide</p>
@@ -116,6 +116,7 @@
             <script type="text/javascript">
 
                 $('#btnAjoutMembre').click(function () {
+                    $("#chargement").show();
                     var formData = new FormData($('#formAjoutMembre')[0]);
                     $.ajax({
                         type: 'POST',
@@ -126,6 +127,7 @@
                         contentType: false,
                         success:
                         function (response) {
+                            $("#chargement").hide();
                             $('#Modal').html("@Resource.messageAjoutNvCompte");
                             $('#Modal').dialog({
                                 open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
@@ -145,6 +147,7 @@
                         },
                         error:
                         function () {
+                            $("#chargement").hide();
                             $('#Modal').html("@Resource.probleme");
                             $('#Modal').dialog({
                                 open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },

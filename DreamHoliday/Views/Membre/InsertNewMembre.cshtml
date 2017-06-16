@@ -6,165 +6,258 @@
 
 <h3>@Resource.sinscrire</h3>
 <hr />
-<input id="lang" value="@Request.Cookies["_culture"].Value" style="display:none"/>
+<input id="lang" value="@Request.Cookies["_culture"].Value" style="display:none" />
 
 
 
 
-    <form id="formAjoutMembre" enctype="multipart/form-data" method="post">
-        @Html.AntiForgeryToken()
-        <div class="form-horizontal col-md-12">
-            <div class="col-md-2">
-                <img id="preview" src="~/img/Membres/photo000.jpg" alt="your image" style="width:200px" />
+<form id="formAjoutMembre" enctype="multipart/form-data" method="post">
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal col-md-12">
+        <div class="col-md-2">
+            <img id="preview" src="~/img/Membres/photo000.jpg" alt="your image" style="width:200px" />
+        </div>
+        <div class="col-md-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.photo, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    <input type="file" name="monfichier" value="photooo" id="imgInp" />
+                </div>
             </div>
-            <div class="col-md-10">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.photo, htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9">
-                        <input type="file" name="monfichier" value="photooo" id="imgInp" />
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.mail, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control" } })
+                    <span id="errorMail" class="text-danger"></span>
+                    @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.mail, htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9">
-                        @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
-                    </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.password1, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.password1, new { htmlAttributes = new { @class = "form-control" } })
+                    <span id="errorPassword1" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.password1, htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9">
-                        @Html.EditorFor(model => model.password1, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.password1, "", new { @class = "text-danger" })
-                    </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.password2, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.password2, new { htmlAttributes = new { @class = "form-control" } })
+                    <span id="errorPassword2" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.password2, htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9">
-                        @Html.EditorFor(model => model.password2, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.password2, "", new { @class = "text-danger" })
-                    </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.nom, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.nom, new { htmlAttributes = new { @class = "form-control" } })
+                    <span id="errorNom" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.nom, htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9">
-                        @Html.EditorFor(model => model.nom, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.nom, "", new { @class = "text-danger" })
-                    </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.prenom, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.prenom, new { htmlAttributes = new { @class = "form-control" } })
+                    <span id="errorPrenom" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.prenom, htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9">
-                        @Html.EditorFor(model => model.prenom, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.prenom, "", new { @class = "text-danger" })
-                    </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.adresse, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.adresse, new { htmlAttributes = new { @class = "form-control" } })
+                    <span id="errorAdresse" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.adresse, htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9">
-                        @Html.EditorFor(model => model.adresse, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.adresse, "", new { @class = "text-danger" })
-                    </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.dateDeNaissance, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9" style="display:inline">
+                    @Html.EditorFor(model => model.dateDeNaissance, new { htmlAttributes = new { @class = "form-control", @style = "display:none" } })
+                    @Html.ValidationMessageFor(model => model.dateDeNaissance, "", new { @class = "text-danger" })
+                    <input type="number" placeholder="@Resource.jour" id="jour" name="jour" min="01" max="31" class="form-control_bis dateAnnif col-md-2" />
+                    <input type="number" placeholder="@Resource.mois" id="mois" name="mois" min="1" max="12" class="form-control_bis dateAnnif col-md-offset-0 col-md-2" />
+                    <input type="number" placeholder="@Resource.annee" id="annee" name="annee" min="1900" class="form-control_bis dateAnnif col-md-offset-0 col-md-2" />
                 </div>
-                <div class="form-group">
+            </div>
+            <input id="dateNaiss" value="" name="dateNaiss" style="display:none" />
+            @*<div class="form-group">
                     @Html.LabelFor(model => model.dateDeNaissance, htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9" style="display:inline">
-                        @Html.EditorFor(model => model.dateDeNaissance, new { htmlAttributes = new { @class = "form-control", @style = "display:none" } })
-                        @Html.ValidationMessageFor(model => model.dateDeNaissance, "", new { @class = "text-danger" })
-                        <input type="number" placeholder="@Resource.jour" id="jour" name="jour" min="01" max="31" class="form-control_bis dateAnnif col-md-2" />
-                        <input type="number" placeholder="@Resource.mois" id="mois" name="mois" min="1" max="12" class="form-control_bis dateAnnif col-md-offset-0 col-md-2" />
-                        <input type="number" placeholder="@Resource.annee" id="annee" name="annee" min="1900" class="form-control_bis dateAnnif col-md-offset-0 col-md-2" />
-                    </div>
-                </div>
-                <input id="dateNaiss" value="" name="dateNaiss" style="display:none" />
-                @*<div class="form-group">
-                        @Html.LabelFor(model => model.dateDeNaissance, htmlAttributes: new { @class = "control-label col-md-3" })
-                        <div class="col-md-9">
-                            @Html.EditorFor(model => model.dateDeNaissance, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.dateDeNaissance, "", new { @class = "text-danger" })
-                        </div>
-                    </div>*@
-                <div class="form-group">
-                    @Html.LabelFor(model => model.telephone, htmlAttributes: new { @class = "control-label col-md-3" })
                     <div class="col-md-9">
-                        @Html.EditorFor(model => model.telephone, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.telephone, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.dateDeNaissance, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.dateDeNaissance, "", new { @class = "text-danger" })
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input id="btnAjoutMembre" type="button" value=@Resource.btnNvMembre class="btn btn-default" />
-                    </div>
+                </div>*@
+            <div class="form-group">
+                @Html.LabelFor(model => model.telephone, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.telephone, new { htmlAttributes = new { @class = "form-control" } })
+                    <span id="errorTelephone" class="text-danger"></span>
                 </div>
             </div>
-
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input id="btnAjoutMembre" type="button" value=@Resource.btnNvMembre class="btn btn-default" />
+                </div>
+            </div>
         </div>
 
+    </div>
 
-        <img id="chargement" src="~/img/loaders/ajax-loader.gif" style="display: none" alt="Chargement en cours..." class="col-md-offset-5 col-md-2 col-md-offset-5" />
 
-        <div id="Modal" style="display:none">
-            <p id="modalTexte" class="modal-contents">@Resource.Error_tableVide</p>
-        </div>
-        </form>
+    <img id="chargement" src="~/img/loaders/infini.gif" style="display: none" alt="Chargement en cours..." class="loaderRecherche col-md-offset-5 col-md-2 col-md-offset-5" />
 
-        <div class="row">
-            @Html.ActionLink(Resource.retour, "Index")
-        </div>
-        @section Scripts {
-            @Scripts.Render("~/bundles/jqueryui")
-            <script type="text/javascript">
+    <div id="Modal" style="display:none">
+        <p id="modalTexte" class="modal-contents">@Resource.Error_tableVide</p>
+    </div>
+</form>
 
-                $('#btnAjoutMembre').click(function () {
-                    var formData = new FormData($('#formAjoutMembre')[0]);
-                    $.ajax({
-                        type: 'POST',
-                        url: '@Url.Action("InsertNewMembre", "Membre")',
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        contentType: false,
-                        success:
-                        function (response) {
-                            $('#Modal').html("@Resource.messageAjoutNvCompte");
-                            $('#Modal').dialog({
-                                open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
-                                resizable: false,
-                                height: "auto",
-                                width: "400",
-                                modal: true,
-                                title: '@Resource.merci',
-                                buttons: {
-                                    "ok": function () {
-                                        $(this).dialog("close");
-                                        location.href = "../Home/Index";
+<div class="row">
+    @Html.ActionLink(Resource.retour, "Index")
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    <script type="text/javascript">
+
+        function verifForm(mail, password1, password2, nom, prenom, adresse, telephone) {
+
+            if (mail == "") {
+                $('#errorMail').html("mail requis")
+            }
+            else {
+                $('#errorMail').html("")
+            }
+            if (nom == "") {
+                $('#errorNom').html("mail requis")
+            }
+            else {
+                $('#errorNom').html("")
+            }
+            if (prenom == "") {
+                $('#errorPrenom').html("mail requis")
+            }
+            else {
+                $('#errorPrenom').html("")
+            }
+            if (adresse == "") {
+                $('#errorAdresse').html("mail requis")
+            }
+            else {
+                $('#errorAdresse').html("")
+            }
+            if (telephone == "") {
+                $('#errorTelephone').html("mail requis")
+            }
+            else {
+                $('#errorTelephone').html("")
+            }
+            if (password1 == "") {
+                $('#errorPassword1').html("password requis")
+            }
+
+            else if (password1.length < 8) {
+                $('#errorPassword1').html("le mot de passe doit contenir plus de 8 carctères")
+            }
+
+            else {
+                $('#errorPassword1').html("")
+            }
+            if (password2 == "") {
+                $('#errorPassword2').html("password requis")
+            }
+
+            else if (password2.length < 8) {
+                $('#errorPassword2').html("le mot de passe doit contenir plus de 8 carctères")
+            }
+            else if (password1 != password2) {
+                $('#errorPassword1').html("les passwords ne sont pas identiques")
+                $('#errorPassword2').html("les passwords ne sont pas identiques")
+            }
+            else {
+                $('#errorPassword2').html("")
+            }
+        }
+
+
+        $('#btnAjoutMembre').click(function () {
+            verifDate()
+                    var mail = $('#mail').val();
+                    var password1 = $('#password1').val();
+                    var password2 = $('#password2').val();
+                    var nom = $('#nom').val();
+                    var prenom = $('#prenom').val();
+                    var adresse = $('#adresse').val();
+                    var telephone = $('#telephone').val();
+
+                    if (mail == "" || password1 == "" || password1.length < 8 || password2 == "" || password2.length < 8 || password1 != password2 || nom == "" || prenom == "" || adresse == "" || telephone == "")
+                    {
+                        verifForm(mail, password1, password2, nom, prenom, adresse, telephone)
+                    }
+                    else {
+                        $("#chargement").show();
+                        var formData = new FormData($('#formAjoutMembre')[0]);
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("InsertNewMembre", "Membre")',
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            contentType: false,
+                            success:
+                            function (response) {
+                                $("#chargement").hide();
+                                $('#Modal').html("@Resource.messageAjoutNvCompte");
+                                $('#Modal').dialog({
+                                    open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
+                                    resizable: false,
+                                    height: "auto",
+                                    width: "400",
+                                    modal: true,
+                                    title: '@Resource.merci',
+                                    buttons: {
+                                        "ok": function () {
+                                            $(this).dialog("close");
+                                            location.href = "../Home/Index";
+                                        }
+
                                     }
+                                })
+                            },
+                            error:
+                            function () {
+                                $("#chargement").hide();
+                                $('#Modal').html("@Resource.probleme");
+                                $('#Modal').dialog({
+                                    open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
+                                    resizable: false,
+                                    height: "auto",
+                                    width: "400",
+                                    modal: true,
+                                    title: '@Resource.desole',
+                                    buttons: {
+                                        "ok": function () {
+                                            $(this).dialog("close");
+                                        }
 
-                                }
-                            })
-                        },
-                        error:
-                        function () {
-                            $('#Modal').html("@Resource.probleme");
-                            $('#Modal').dialog({
-                                open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
-                                resizable: false,
-                                height: "auto",
-                                width: "400",
-                                modal: true,
-                                title: '@Resource.desole',
-                                buttons: {
-                                    "ok": function () {
-                                        $(this).dialog("close");
                                     }
+                                })
+                            }
+                        })
+                    }
 
-                                }
-                            })
-                        }
-                    })
+
                 })
 
+                function verifDate() {
+                    var jour = $('#jour').val();
+                    var mois = $('#mois').val();
+                    var annee = $('#annee').val();
 
+                    if (jour <= 9)
+                        jour = "0" + jour;
+
+                    if (mois <= 9)
+                        mois = "0" + mois;
+                    var dateNaiss = jour + "/" + mois + "/" + annee;
+                    $('#dateNaiss').val(dateNaiss);
+                }
 
 
 
@@ -221,6 +314,11 @@
 
             if (j == true, m == true, a == true)
             {
+                if (jour <= 9)
+                    jour = "0" + jour;
+
+                if (mois <= 9)
+                    mois = "0" + mois;
                 var dateNaiss = jour + "/" + mois + "/" + annee;
                 $('#dateNaiss').val(dateNaiss);
 
@@ -273,5 +371,5 @@
         $("#imgInp").change(function () {
             readURL(this);
         });
-            </script>
-        }
+    </script>
+}

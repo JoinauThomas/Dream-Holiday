@@ -284,3 +284,26 @@ input[type="checkbox"] {
     border-radius: 12px;
     padding: 2% 3% 2% 3%;
 }
+
+.loaderConnection {
+    position: fixed;
+    background-color: #FFF;
+    padding: 10px;
+    border: 5px solid #CCC;
+    z-index: 200;
+    left: 0;
+    right: 0;
+    bottom:33%;
+}
+
+.loaderRecherche {
+    position: fixed;
+    background-color: #FFF;
+    padding: 10px;
+    border: 5px solid #CCC;
+    z-index: 200;
+    left: 0;
+    right: 0;
+    width:15%;
+    bottom: 35%;
+}
