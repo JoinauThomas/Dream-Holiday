@@ -399,6 +399,7 @@
     <Compile Include="Models\identification.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\listeCommentaireDuBien.cs" />
+    <Compile Include="Models\listeDeroulante.cs" />
     <Compile Include="Models\LocationBien.cs" />
     <Compile Include="Models\Membre.cs" />
     <Compile Include="Models\MesLocations.cs" />

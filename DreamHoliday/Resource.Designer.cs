@@ -88,6 +88,24 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Aout.
+        /// </summary>
+        public static string aout {
+            get {
+                return ResourceManager.GetString("aout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Avr.
+        /// </summary>
+        public static string avril {
+            get {
+                return ResourceManager.GetString("avril", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à barbecue.
         /// </summary>
         public static string bbq {
@@ -107,9 +125,9 @@ namespace DreamHoliday {
         
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Vous avez un bien inhabité et aimeriez gagner de l&apos;argent en le louant? 
-        ///ou vous voullez partir en couple ou entre amis sans casser votre tire-lire?
+        ///ou vous voulez partir en couple ou entre amis sans casser votre tire-lire?
         ///DREAMHOLIDAY est fait pour VOUS!
-        ///Nous permettons aux propriétaires de mettre leur bien en location en toute sécurité....
+        ///Nous permettons aux propriétaires de mettre leur bien en location en toute sécurité..
         /// </summary>
         public static string Bienvenue02 {
             get {
@@ -163,7 +181,7 @@ namespace DreamHoliday {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Mon profile.
+        ///   Recherche une chaîne localisée semblable à Mon profil.
         /// </summary>
         public static string btnMonProfil {
             get {
@@ -208,7 +226,7 @@ namespace DreamHoliday {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à commentaire.
+        ///   Recherche une chaîne localisée semblable à commentaire(s).
         /// </summary>
         public static string commentaire {
             get {
@@ -298,7 +316,7 @@ namespace DreamHoliday {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à coût du séjout.
+        ///   Recherche une chaîne localisée semblable à coût du séjour.
         /// </summary>
         public static string coutSejour {
             get {
@@ -397,6 +415,15 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Dec.
+        /// </summary>
+        public static string decembre {
+            get {
+                return ResourceManager.GetString("decembre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à derniers commentaires.
         /// </summary>
         public static string dernierComment {
@@ -424,7 +451,7 @@ namespace DreamHoliday {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à détail du bien.
+        ///   Recherche une chaîne localisée semblable à détails du bien.
         /// </summary>
         public static string detailDuBien {
             get {
@@ -496,6 +523,15 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à commentaire requis.
+        /// </summary>
+        public static string ERROR_LibelleRequis {
+            get {
+                return ResourceManager.GetString("ERROR_LibelleRequis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à mail requis.
         /// </summary>
         public static string Error_mailRequis {
@@ -514,11 +550,20 @@ namespace DreamHoliday {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à veuillez mettre un chiffre dans le champ &quot;nombre de personnes&quot;.
+        ///   Recherche une chaîne localisée semblable à &quot;nombre de parsonne&quot; requis.
         /// </summary>
         public static string Error_NbPersonne {
             get {
                 return ResourceManager.GetString("Error_NbPersonne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à tarif nettoyage requis.
+        /// </summary>
+        public static string Error_NetoyageRequis {
+            get {
+                return ResourceManager.GetString("Error_NetoyageRequis", resourceCulture);
             }
         }
         
@@ -537,6 +582,24 @@ namespace DreamHoliday {
         public static string Error_NumeroRequis {
             get {
                 return ResourceManager.GetString("Error_NumeroRequis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à le mot de passe doit contenir plus de 8 carctères.
+        /// </summary>
+        public static string ERROR_passwordMin8Carac {
+            get {
+                return ResourceManager.GetString("ERROR_passwordMin8Carac", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à les passwords ne sont pas identiques.
+        /// </summary>
+        public static string ERROR_passwordPasIdentiques {
+            get {
+                return ResourceManager.GetString("ERROR_passwordPasIdentiques", resourceCulture);
             }
         }
         
@@ -649,6 +712,15 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Fev.
+        /// </summary>
+        public static string fevrier {
+            get {
+                return ResourceManager.GetString("fevrier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à identifiant du bien.
         /// </summary>
         public static string idBien {
@@ -694,6 +766,15 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Jan.
+        /// </summary>
+        public static string janvier {
+            get {
+                return ResourceManager.GetString("janvier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à jardin.
         /// </summary>
         public static string jardin {
@@ -708,6 +789,24 @@ namespace DreamHoliday {
         public static string jour {
             get {
                 return ResourceManager.GetString("jour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Juil.
+        /// </summary>
+        public static string juillet {
+            get {
+                return ResourceManager.GetString("juillet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Juin.
+        /// </summary>
+        public static string juin {
+            get {
+                return ResourceManager.GetString("juin", resourceCulture);
             }
         }
         
@@ -757,11 +856,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mai.
+        /// </summary>
+        public static string mai {
+            get {
+                return ResourceManager.GetString("mai", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Mail.
         /// </summary>
         public static string mail {
             get {
                 return ResourceManager.GetString("mail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mar.
+        /// </summary>
+        public static string mars {
+            get {
+                return ResourceManager.GetString("mars", resourceCulture);
             }
         }
         
@@ -820,6 +937,24 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Votre compte a bien été mis à jour..
+        /// </summary>
+        public static string messagecompteMAJ {
+            get {
+                return ResourceManager.GetString("messagecompteMAJ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à votre message a bien été envoyé.
+        /// </summary>
+        public static string messageEnvoye {
+            get {
+                return ResourceManager.GetString("messageEnvoye", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Votre bien a bien été créé..
         /// </summary>
         public static string messageOkAjoutNewBien1 {
@@ -834,6 +969,15 @@ namespace DreamHoliday {
         public static string messageOkAjoutNewBien2 {
             get {
                 return ResourceManager.GetString("messageOkAjoutNewBien2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Erreur : votre message n&apos;a pas pu être envoyé.
+        /// </summary>
+        public static string messagePasEnvoye {
+            get {
+                return ResourceManager.GetString("messagePasEnvoye", resourceCulture);
             }
         }
         
@@ -883,7 +1027,7 @@ namespace DreamHoliday {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à nbre de personne max.
+        ///   Recherche une chaîne localisée semblable à nbre de personne(s) max.
         /// </summary>
         public static string nbPersMax {
             get {
@@ -946,11 +1090,29 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Nov.
+        /// </summary>
+        public static string novembre {
+            get {
+                return ResourceManager.GetString("novembre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à numéro.
         /// </summary>
         public static string numero {
             get {
                 return ResourceManager.GetString("numero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Oct.
+        /// </summary>
+        public static string octobre {
+            get {
+                return ResourceManager.GetString("octobre", resourceCulture);
             }
         }
         
@@ -1144,6 +1306,15 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Sep.
+        /// </summary>
+        public static string septembre {
+            get {
+                return ResourceManager.GetString("septembre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Enregistrez-vous ici.
         /// </summary>
         public static string sinscrire {
@@ -1158,6 +1329,15 @@ namespace DreamHoliday {
         public static string sujet {
             get {
                 return ResourceManager.GetString("sujet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à aucun bien ne correspond à vos critères car vous avez indiqué vouloir chercher des biens gratuits.
+        /// </summary>
+        public static string TarifAZero {
+            get {
+                return ResourceManager.GetString("TarifAZero", resourceCulture);
             }
         }
         

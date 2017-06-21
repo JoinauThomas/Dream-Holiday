@@ -308,6 +308,7 @@
                         $("#chargement").hide();
                         $('#table').html("");
                         $('#ModalBigSearch').dialog({
+                            open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
                             resizable: false,
                             height: "auto",
                             width: "400",

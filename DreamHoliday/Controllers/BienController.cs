@@ -38,14 +38,6 @@ namespace DreamHoliday.Controllers
         [HttpPost]
         public ActionResult addNewBien(Bien nvBien)
         {
-            if(!ModelState.IsValid)
-            {
-                string aa = "";
-            }
-            else
-            {
-                string bb = "";
-            }
             try
             {
                 Membre moi = (Membre)Session["monCompte"];

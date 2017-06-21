@@ -542,4 +542,64 @@ We allow owners to safely rent their property ..</value>
   <data name="probleme" xml:space="preserve">
     <value>A problem has been detected ...</value>
   </data>
+  <data name="aout" xml:space="preserve">
+    <value>Aug</value>
+  </data>
+  <data name="avril" xml:space="preserve">
+    <value>Apr</value>
+  </data>
+  <data name="decembre" xml:space="preserve">
+    <value>Dec</value>
+  </data>
+  <data name="fevrier" xml:space="preserve">
+    <value>Feb</value>
+  </data>
+  <data name="janvier" xml:space="preserve">
+    <value>Jan</value>
+  </data>
+  <data name="juillet" xml:space="preserve">
+    <value>Jul</value>
+  </data>
+  <data name="juin" xml:space="preserve">
+    <value>Jum</value>
+  </data>
+  <data name="mai" xml:space="preserve">
+    <value>May</value>
+  </data>
+  <data name="mars" xml:space="preserve">
+    <value>Mar</value>
+  </data>
+  <data name="novembre" xml:space="preserve">
+    <value>Nov</value>
+  </data>
+  <data name="octobre" xml:space="preserve">
+    <value>Oct</value>
+  </data>
+  <data name="septembre" xml:space="preserve">
+    <value>Sep</value>
+  </data>
+  <data name="messagecompteMAJ" xml:space="preserve">
+    <value>Your account has been updated.</value>
+  </data>
+  <data name="ERROR_LibelleRequis" xml:space="preserve">
+    <value>Required comment</value>
+  </data>
+  <data name="Error_NetoyageRequis" xml:space="preserve">
+    <value>Cleaning fee required</value>
+  </data>
+  <data name="ERROR_passwordMin8Carac" xml:space="preserve">
+    <value>The password must contain more than 8 characters</value>
+  </data>
+  <data name="ERROR_passwordPasIdentiques" xml:space="preserve">
+    <value>The passwords are not identical</value>
+  </data>
+  <data name="messageEnvoye" xml:space="preserve">
+    <value>Your message has been sent</value>
+  </data>
+  <data name="messagePasEnvoye" xml:space="preserve">
+    <value>Error: Your message could not be sent</value>
+  </data>
+  <data name="TarifAZero" xml:space="preserve">
+    <value>No property corresponds to your criteria because you have indicated you want to look for free goods</value>
+  </data>
 </root>

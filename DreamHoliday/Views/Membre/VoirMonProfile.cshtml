@@ -8,8 +8,8 @@
 <h2>Mon Profile</h2>
 
 
-   @using (Html.BeginForm("updateMembre", "Membre", FormMethod.Post, new { enctype = "multipart/form-data", id = "myForms" }))
-   {
+
+    <form id="formUpdateMembre" enctype="multipart/form-data" method="post">
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
@@ -52,7 +52,7 @@
                         @Html.LabelFor(model => model.nom, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.EditorFor(model => model.nom, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.nom, "", new { @class = "text-danger" })
+                            <span id="errorNom" class="text-danger"></span>
                         </div>
                     </div>
 
@@ -60,7 +60,7 @@
                         @Html.LabelFor(model => model.prenom, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.EditorFor(model => model.prenom, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.prenom, "", new { @class = "text-danger" })
+                            <span id="errorPrenom" class="text-danger"></span>
                         </div>
                     </div>
 
@@ -68,23 +68,25 @@
                         @Html.LabelFor(model => model.adresse, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.EditorFor(model => model.adresse, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.adresse, "", new { @class = "text-danger" })
+                            <span id="errorAdresse" class="text-danger"></span>
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.dateDeNaissance, htmlAttributes: new { @class = "control-label col-md-4" })
-                        <div class="col-md-8">
-                            @Html.EditorFor(model => model.dateDeNaissance, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.dateDeNaissance, "", new { @class = "text-danger" })
+                        <div id="dateDeNaissance" class="col-md-8">
+                            <input type="text" id="dateNaiss" name="dateNaiss" style="display:none" />
+                            <div id="jour" >@Html.DropDownList("listeJours", (SelectList)ViewBag.ListedatesJours, new { @class = "col-md-3 form-controlDateNaissance" })</div>
+                            <div id="mois">@Html.DropDownList("listeMois", (SelectList)ViewBag.ListedatesMois, new { @class = "form-controlDateNaissance col-md-3 col-md-offset-1 " })</div>
+                            <div id="annee">@Html.DropDownList("listeAnnees", (SelectList)ViewBag.ListedatesAnnees, new { @class = "form-controlDateNaissance col-md-3 col-md-offset-1 " })</div>
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group ">
                         @Html.LabelFor(model => model.telephone, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.EditorFor(model => model.telephone, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.telephone, "", new { @class = "text-danger" })
+                            <span id="errorTelephone" class="text-danger"></span>
                         </div>
                     </div>
 
@@ -94,12 +96,12 @@
                         @Html.LabelFor(model => model.mail, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+                            <span id="errorMail" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-3 col-md-9">
-                            <input id="btnModifier" type="submit" value=@Resource.modifier class="btn btn-warning col-md-12" style="margin-top:5%" />
+                            <input id="btnModifier" type="button" value=@Resource.modifier class="btn btn-warning col-md-12" style="margin-top:5%" />
                         </div>
                     </div>
 
@@ -161,35 +163,165 @@
             </div>
 
         </div>
-                            }
-
-<div>
-    @Html.ActionLink("Retour", "Index")
-</div>
-
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/datatables")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/jqueryui")
-    @Scripts.Render("~/bundles/jqueryui-datepicker-fr")
-    @Styles.Render("~/Content/cssjqryUi")
-    @Scripts.Render("~/bundles/jquery-ui")
-
-    <script type="text/javascript">
         
+        </form>
+
+        <div>
+            @Html.ActionLink("Retour", "Index")
+        </div>
+
+        <img id="chargement" src="~/img/loaders/infini.gif" style="display: none" alt="Chargement en cours..." class="loaderRecherche col-md-offset-5 col-md-2 col-md-offset-5" />
+
+        <div id="Modal" style="display:none">
+            <p id="modalTexte" class="modal-contents">@Resource.Error_tableVide</p>
+        </div>
+
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+            @Scripts.Render("~/bundles/datatables")
+            @Scripts.Render("~/bundles/jqueryval")
+            @Scripts.Render("~/bundles/jqueryui")
+            @Scripts.Render("~/bundles/jqueryui-datepicker-fr")
+            @Styles.Render("~/Content/cssjqryUi")
+            @Scripts.Render("~/bundles/jquery-ui")
+
+            <script type="text/javascript">
+
+        $(document).ready(function () {
+            var jour = $('#listeJours').val();
+            var mois = $('#listeMois').val();
+            var annee = $('#listeAnnees').val();
+
+            var dateNaiss = jour + "/" + mois + "/" + annee;
+            $('#dateNaiss').val(dateNaiss);
+        });
+
+        function verifForm(mail, nom, prenom, adresse, telephone) {
+
+            if (mail == "") {
+                $('#errorMail').html("mail requis")
+            }
+            else {
+                $('#errorMail').html("")
+            }
+            if (nom == "") {
+                $('#errorNom').html("mail requis")
+            }
+            else {
+                $('#errorNom').html("")
+            }
+            if (prenom == "") {
+                $('#errorPrenom').html("mail requis")
+            }
+            else {
+                $('#errorPrenom').html("")
+            }
+            if (adresse == "") {
+                $('#errorAdresse').html("mail requis")
+            }
+            else {
+                $('#errorAdresse').html("")
+            }
+            if (telephone == "") {
+                $('#errorTelephone').html("mail requis")
+            }
+            else {
+                $('#errorTelephone').html("")
+            }
+        }
+
+        $('#btnModifier').click(function () {
+                    var mail = $('#mail').val();
+                    var nom = $('#nom').val();
+                    var prenom = $('#prenom').val();
+                    var adresse = $('#adresse').val();
+                    var telephone = $('#telephone').val();
+
+                    if (mail == "" ||  nom == "" || prenom == "" || adresse == "" || telephone == "")
+                    {
+                        verifForm(mail, nom, prenom, adresse, telephone)
+                    }
+                    else {
+                        $("#chargement").show();
+                        var formData = new FormData($('#formUpdateMembre')[0]);
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("updateMembre", "Membre")',
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            contentType: false,
+                            success:
+                            function (response) {
+                                $("#chargement").hide();
+                                $('#Modal').html("@Resource.messagecompteMAJ");
+                                $('#Modal').dialog({
+                                    open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
+                                    resizable: false,
+                                    height: "auto",
+                                    width: "400",
+                                    modal: true,
+                                    title: '@Resource.merci',
+                                    buttons: {
+                                        "ok": function () {
+                                            $(this).dialog("close");
+                                            url: "http://dreamholiday.azurewebsites.net"
+                                        }
+
+                                    }
+                                })
+                            },
+                            error:
+                            function () {
+                                $("#chargement").hide();
+                                $('#Modal').html("@Resource.probleme");
+                                $('#Modal').dialog({
+                                    open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
+                                    resizable: false,
+                                    height: "auto",
+                                    width: "400",
+                                    modal: true,
+                                    title: '@Resource.desole',
+                                    buttons: {
+                                        "ok": function () {
+                                            $(this).dialog("close");
+                                        }
+
+                                    }
+                                })
+                            }
+                        })
+                    }
+
+
+                })
+
+
+
         var dateInit = $('#dateDeNaissance').val();
 
-        $('#dateDeNaissance').datepicker({
-            dateFormat: "dd-mm-yy",
-            changeMonth: true,
-            changeYear: true,
-            yearRange: "-100:+0",
-            showTime: false,
-            showAnim: "clip",
-            defaultDate: dateInit
+        $('#dateDeNaissance').change(function () {
+            var jour = $('#listeJours').val();
+            var mois = $('#listeMois').val();
+            var annee = $('#listeAnnees').val();
+
+            var dateNaiss = jour + "/" + mois + "/" + annee;
+            $('#dateNaiss').val(dateNaiss);
         });
+
+
+
+
+        //$('#dateDeNaissance').datepicker({
+        //    dateFormat: "dd-mm-yy",
+        //    changeMonth: true,
+        //    changeYear: true,
+        //    yearRange: "-100:+0",
+        //    showTime: false,
+        //    showAnim: "clip",
+        //    defaultDate: dateInit
+        //});
 
         var dateInit = $('#dateDeNaissance').datepicker('getDate');
 
@@ -228,7 +360,7 @@
 
 
 
-    </script>
+            </script>
 
 
-}
+        }

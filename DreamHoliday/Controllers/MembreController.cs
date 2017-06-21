@@ -18,9 +18,61 @@ using System.Text;
 
 namespace DreamHoliday.Controllers
 {
+    
     public class MembreController : BaseController
     {
         private static int idMembreBien;
+        private static List<listeDeroulante> datesJours()
+        {
+            List<listeDeroulante> jours = new List<listeDeroulante>();
+
+            jours.Add(new listeDeroulante { id = Resource.jour , valeur = "" });
+            for (int i = 1; i<=31; i++)
+            {
+                if (i < 10)
+                    jours.Add(new listeDeroulante { id = "0"+i.ToString(), valeur = "0"+i.ToString() });
+                else
+                    jours.Add(new listeDeroulante { id = i.ToString(), valeur = i.ToString() });
+            }
+            return jours;
+        }
+        private static List<listeDeroulante> datesMois()
+        {
+            List<listeDeroulante> mois = new List<listeDeroulante>();
+
+            mois.Add(new listeDeroulante { id = Resource.mois, valeur = "" });
+            mois.Add(new listeDeroulante { id = Resource.janvier, valeur = "01" });
+            mois.Add(new listeDeroulante { id = Resource.fevrier, valeur = "02" });
+            mois.Add(new listeDeroulante { id = Resource.mars, valeur = "03" });
+            mois.Add(new listeDeroulante { id = Resource.avril, valeur = "04" });
+            mois.Add(new listeDeroulante { id = Resource.mai, valeur = "05" });
+            mois.Add(new listeDeroulante { id = Resource.juin, valeur = "06" });
+            mois.Add(new listeDeroulante { id = Resource.juillet, valeur = "07" });
+            mois.Add(new listeDeroulante { id = Resource.aout, valeur = "08" });
+            mois.Add(new listeDeroulante { id = Resource.septembre, valeur = "09" });
+            mois.Add(new listeDeroulante { id = Resource.octobre, valeur = "10" });
+            mois.Add(new listeDeroulante { id = Resource.novembre, valeur = "11" });
+            mois.Add(new listeDeroulante { id = Resource.decembre, valeur = "12" });
+
+            return mois;
+        }
+        private static List<listeDeroulante> datesAnnees()
+        {
+            int anneeActuelle = DateTime.Now.Year;
+            int anneeMin = anneeActuelle - 140;
+            List<listeDeroulante> annees = new List<listeDeroulante>();
+
+            annees.Add(new listeDeroulante { id = Resource.annee, valeur = "" });
+            for (int i = anneeActuelle; i >= anneeMin; i--)
+            {
+                annees.Add(new listeDeroulante { id = i.ToString(), valeur = i.ToString() });
+            }
+            return annees;
+        }
+
+        private List<listeDeroulante> ListedatesJours = datesJours();
+        private List<listeDeroulante> ListedatesMois = datesMois();
+        private List<listeDeroulante> ListedatesAnnees = datesAnnees();
 
         [HttpGet]
         public static Membre GetMembreByMail(string mail)
@@ -95,6 +147,10 @@ namespace DreamHoliday.Controllers
         [HttpGet]
         public ActionResult InsertNewMembre()
         {
+            ViewBag.ListedatesJours = new SelectList(ListedatesJours, "valeur", "id");
+            ViewBag.ListedatesMois = new SelectList(ListedatesMois, "valeur", "id");
+            ViewBag.ListedatesAnnees = new SelectList(ListedatesAnnees, "valeur", "id");
+
             return View();
         }
 
@@ -104,6 +160,7 @@ namespace DreamHoliday.Controllers
             //if(ModelState.)
             try
             {
+
                 DateTime dateNaissance = DateTime.ParseExact(dateNaiss, "dd/MM/yyyy", null);
                 nouveauMembre.dateDeNaissance = dateNaissance;
                 using (var client = new HttpClient())
@@ -161,6 +218,39 @@ namespace DreamHoliday.Controllers
             {
                 Membre monCpte = (Membre)Session["monCompte"];
 
+                DateTime dateNaissance = monCpte.dateDeNaissance;
+                int jourNais = dateNaissance.Day;
+                int moisNais = dateNaissance.Month;
+                string jour = "";
+                string mois = "";
+                string annee = dateNaissance.Year.ToString();
+
+                if (jourNais <= 9)
+                {
+                    jour = "0" + jourNais.ToString();
+                }
+                else
+                {
+                    jour = jourNais.ToString();
+                }
+                if (moisNais <= 9)
+                {
+                    mois = "0" + moisNais.ToString();
+                }
+                else
+                {
+                    mois = moisNais.ToString();
+                }
+
+                
+
+                ViewBag.ListedatesJours = new SelectList(ListedatesJours, "valeur", "id", jour);
+                ViewBag.ListedatesMois = new SelectList(ListedatesMois, "valeur", "id", mois);
+                ViewBag.ListedatesAnnees = new SelectList(ListedatesAnnees, "valeur", "id", annee);
+
+
+
+
                 int idMembre = monCpte.idMembre;
 
                 editProfile moi = GetMembreByIdForProfile(idMembre);
@@ -182,10 +272,12 @@ namespace DreamHoliday.Controllers
         }
 
         [HttpPost]
-        public ActionResult updateMembre(editProfile moi, HttpPostedFileBase monfichier)
+        public ActionResult updateMembre(string dateNaiss, editProfile moi, HttpPostedFileBase monfichier)
         {
             try
             {
+                DateTime dateNaissance = DateTime.ParseExact(dateNaiss, "dd/MM/yyyy", null);
+                moi.dateDeNaissance = dateNaissance;
                 using (var client = new HttpClient())
                 {
                     var token = Request.Cookies["myToken"].Value;
@@ -208,6 +300,17 @@ namespace DreamHoliday.Controllers
 
                     if (result.IsSuccessStatusCode)
                     {
+                        Membre monCpte = (Membre)Session["monCompte"];
+                        monCpte.nom = moi.nom;
+                        monCpte.prenom = moi.prenom;
+                        monCpte.adresse = moi.adresse;
+                        monCpte.dateDeNaissance = moi.dateDeNaissance;
+                        monCpte.telephone = moi.telephone;
+                        monCpte.mail = moi.mail;
+                        monCpte.photo = moi.photo;
+
+                        Session["monCompte"] = monCpte;
+
                         return RedirectToAction("VoirMonProfile", moi);
                     }
                     else

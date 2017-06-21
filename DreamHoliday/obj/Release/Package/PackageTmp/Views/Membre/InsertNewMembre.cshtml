@@ -6,168 +6,247 @@
 
 <h3>@Resource.sinscrire</h3>
 <hr />
-<input id="lang" value="@Request.Cookies["_culture"].Value" style="display:none"/>
+<input id="lang" value="@Request.Cookies["_culture"].Value" style="display:none" />
 
 
 
 
-    <form id="formAjoutMembre" enctype="multipart/form-data" method="post">
-        @Html.AntiForgeryToken()
-        <div class="form-horizontal col-md-12">
-            <div class="col-md-2">
-                <img id="preview" src="~/img/Membres/photo000.jpg" alt="your image" style="width:200px" />
+<form id="formAjoutMembre" enctype="multipart/form-data" method="post">
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal col-md-12">
+        <div class="col-md-2">
+            <img id="preview" src="~/img/Membres/photo000.jpg" alt="your image" style="width:200px" />
+        </div>
+        <div class="col-md-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.photo, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    <input type="file" name="monfichier" value="photooo" id="imgInp" />
+                </div>
             </div>
-            <div class="col-md-10">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.photo, htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9">
-                        <input type="file" name="monfichier" value="photooo" id="imgInp" />
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.mail, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control" } })
+                    <span id="errorMail" class="text-danger"></span>
+                    @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.mail, htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9">
-                        @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
-                    </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.password1, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.password1, new { htmlAttributes = new { @class = "form-control" } })
+                    <span id="errorPassword1" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.password1, htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9">
-                        @Html.EditorFor(model => model.password1, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.password1, "", new { @class = "text-danger" })
-                    </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.password2, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.password2, new { htmlAttributes = new { @class = "form-control" } })
+                    <span id="errorPassword2" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.password2, htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9">
-                        @Html.EditorFor(model => model.password2, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.password2, "", new { @class = "text-danger" })
-                    </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.nom, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.nom, new { htmlAttributes = new { @class = "form-control" } })
+                    <span id="errorNom" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.nom, htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9">
-                        @Html.EditorFor(model => model.nom, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.nom, "", new { @class = "text-danger" })
-                    </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.prenom, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.prenom, new { htmlAttributes = new { @class = "form-control" } })
+                    <span id="errorPrenom" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.prenom, htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9">
-                        @Html.EditorFor(model => model.prenom, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.prenom, "", new { @class = "text-danger" })
-                    </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.adresse, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.adresse, new { htmlAttributes = new { @class = "form-control" } })
+                    <span id="errorAdresse" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.adresse, htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9">
-                        @Html.EditorFor(model => model.adresse, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.adresse, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.dateDeNaissance, htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9" style="display:inline">
-                        @Html.EditorFor(model => model.dateDeNaissance, new { htmlAttributes = new { @class = "form-control", @style = "display:none" } })
-                        @Html.ValidationMessageFor(model => model.dateDeNaissance, "", new { @class = "text-danger" })
-                        <input type="number" placeholder="@Resource.jour" id="jour" name="jour" min="01" max="31" class="form-control_bis dateAnnif col-md-2" />
-                        <input type="number" placeholder="@Resource.mois" id="mois" name="mois" min="1" max="12" class="form-control_bis dateAnnif col-md-offset-0 col-md-2" />
-                        <input type="number" placeholder="@Resource.annee" id="annee" name="annee" min="1900" class="form-control_bis dateAnnif col-md-offset-0 col-md-2" />
-                    </div>
-                </div>
-                <input id="dateNaiss" value="" name="dateNaiss" style="display:none" />
-                @*<div class="form-group">
-                        @Html.LabelFor(model => model.dateDeNaissance, htmlAttributes: new { @class = "control-label col-md-3" })
-                        <div class="col-md-9">
-                            @Html.EditorFor(model => model.dateDeNaissance, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.dateDeNaissance, "", new { @class = "text-danger" })
-                        </div>
-                    </div>*@
-                <div class="form-group">
-                    @Html.LabelFor(model => model.telephone, htmlAttributes: new { @class = "control-label col-md-3" })
-                    <div class="col-md-9">
-                        @Html.EditorFor(model => model.telephone, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.telephone, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input id="btnAjoutMembre" type="button" value=@Resource.btnNvMembre class="btn btn-default" />
-                    </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.dateDeNaissance, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div id="dateDeNaissance" class="col-md-9" style="display:inline">
+
+
+                    <div id="jour" class="col-md-2">@Html.DropDownList("listeJours", (SelectList)ViewBag.ListedatesJours, new { @class = "form-control " })</div>
+                    <div id="mois" class="col-md-3">@Html.DropDownList("listeMois", (SelectList)ViewBag.ListedatesMois, new { @class = "form-control" })</div>
+                    <div id="annee" class="col-md-3">@Html.DropDownList("listeAnnees", (SelectList)ViewBag.ListedatesAnnees, new { @class = "form-control" })</div>
                 </div>
             </div>
 
+            
+            <input type="text" id="dateNaiss" name="dateNaiss" style="display:none" />
+            <div class="form-group">
+                @Html.LabelFor(model => model.telephone, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.telephone, new { htmlAttributes = new { @class = "form-control" } })
+                    <span id="errorTelephone" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input id="btnAjoutMembre" type="button" value=@Resource.btnNvMembre class="btn btn-default" />
+                </div>
+            </div>
         </div>
 
+    </div>
 
-        <img id="chargement" src="~/img/loaders/infini.gif" style="display: none" alt="Chargement en cours..." class="loaderRecherche col-md-offset-5 col-md-2 col-md-offset-5" />
 
-        <div id="Modal" style="display:none">
-            <p id="modalTexte" class="modal-contents">@Resource.Error_tableVide</p>
-        </div>
-        </form>
+    <img id="chargement" src="~/img/loaders/infini.gif" style="display: none" alt="Chargement en cours..." class="loaderRecherche col-md-offset-5 col-md-2 col-md-offset-5" />
 
-        <div class="row">
-            @Html.ActionLink(Resource.retour, "Index")
-        </div>
-        @section Scripts {
-            @Scripts.Render("~/bundles/jqueryui")
-            <script type="text/javascript">
+    <div id="Modal" style="display:none">
+        <p id="modalTexte" class="modal-contents">@Resource.Error_tableVide</p>
+    </div>
+</form>
 
-                $('#btnAjoutMembre').click(function () {
-                    $("#chargement").show();
-                    var formData = new FormData($('#formAjoutMembre')[0]);
-                    $.ajax({
-                        type: 'POST',
-                        url: '@Url.Action("InsertNewMembre", "Membre")',
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        contentType: false,
-                        success:
-                        function (response) {
-                            $("#chargement").hide();
-                            $('#Modal').html("@Resource.messageAjoutNvCompte");
-                            $('#Modal').dialog({
-                                open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
-                                resizable: false,
-                                height: "auto",
-                                width: "400",
-                                modal: true,
-                                title: '@Resource.merci',
-                                buttons: {
-                                    "ok": function () {
-                                        $(this).dialog("close");
-                                        location.href = "../Home/Index";
+<div class="row">
+    @Html.ActionLink(Resource.retour, "Index")
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    <script type="text/javascript">
+
+        function verifForm(mail, password1, password2, nom, prenom, adresse, telephone) {
+
+            if (mail == "") {
+                $('#errorMail').html("@Resource.Error_mailRequis")
+            }
+            else {
+                $('#errorMail').html("")
+            }
+            if (nom == "") {
+                $('#errorNom').html("@Resource.Error_nomRequis")
+            }
+            else {
+                $('#errorNom').html("")
+            }
+            if (prenom == "") {
+                $('#errorPrenom').html("@Resource.Error_PrenomRequis")
+            }
+            else {
+                $('#errorPrenom').html("")
+            }
+            if (adresse == "") {
+                $('#errorAdresse').html("@Resource.Error_adresseRequise")
+            }
+            else {
+                $('#errorAdresse').html("")
+            }
+            if (telephone == "") {
+                $('#errorTelephone').html("@Resource.Error_telephoneRequis")
+            }
+            else {
+                $('#errorTelephone').html("")
+            }
+            if (password1 == "") {
+                $('#errorPassword1').html("@Resource.Error_PasswordRequis")
+            }
+
+            else if (password1.length < 8) {
+                $('#errorPassword1').html("@Resource.ERROR_passwordMin8Carac")
+            }
+
+            else {
+                $('#errorPassword1').html("")
+            }
+            if (password2 == "") {
+                $('#errorPassword2').html("@Resource.Error_PasswordRequis")
+            }
+
+            else if (password2.length < 8) {
+                $('#errorPassword2').html("@Resource.ERROR_passwordMin8Carac")
+            }
+            else if (password1 != password2) {
+                $('#errorPassword1').html("@Resource.ERROR_passwordPasIdentiques")
+                $('#errorPassword2').html("@Resource.ERROR_passwordPasIdentiques")
+            }
+            else {
+                $('#errorPassword2').html("")
+            }
+        }
+
+
+        $('#btnAjoutMembre').click(function () {
+                    var mail = $('#mail').val();
+                    var nom = $('#nom').val();
+                    var prenom = $('#prenom').val();
+                    var adresse = $('#adresse').val();
+                    var telephone = $('#telephone').val();
+                    var password1 = $('#password1').val();
+                    var password2 = $('#password2').val();
+
+                    if (mail == "" || password1 == "" || password1.length < 8 || password2 == "" || password2.length < 8 || password1 != password2 || nom == "" || prenom == "" || adresse == "" || telephone == "")
+                    {
+                        verifForm(mail, password1, password2, nom, prenom, adresse, telephone)
+                    }
+                    else {
+                        $("#chargement").show();
+                        var formData = new FormData($('#formAjoutMembre')[0]);
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("InsertNewMembre", "Membre")',
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            contentType: false,
+                            success:
+                            function (response) {
+                                $("#chargement").hide();
+                                $('#Modal').html("@Resource.messageAjoutNvCompte");
+                                $('#Modal').dialog({
+                                    open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
+                                    resizable: false,
+                                    height: "auto",
+                                    width: "400",
+                                    modal: true,
+                                    title: '@Resource.merci',
+                                    buttons: {
+                                        "ok": function () {
+                                            $(this).dialog("close");
+                                            location.href = "../Home/Index";
+                                        }
+
                                     }
+                                })
+                            },
+                            error:
+                            function () {
+                                $("#chargement").hide();
+                                $('#Modal').html("@Resource.probleme");
+                                $('#Modal').dialog({
+                                    open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
+                                    resizable: false,
+                                    height: "auto",
+                                    width: "400",
+                                    modal: true,
+                                    title: '@Resource.desole',
+                                    buttons: {
+                                        "ok": function () {
+                                            $(this).dialog("close");
+                                        }
 
-                                }
-                            })
-                        },
-                        error:
-                        function () {
-                            $("#chargement").hide();
-                            $('#Modal').html("@Resource.probleme");
-                            $('#Modal').dialog({
-                                open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
-                                resizable: false,
-                                height: "auto",
-                                width: "400",
-                                modal: true,
-                                title: '@Resource.desole',
-                                buttons: {
-                                    "ok": function () {
-                                        $(this).dialog("close");
                                     }
+                                })
+                            }
+                        })
+                    }
 
-                                }
-                            })
-                        }
-                    })
+
                 })
 
+                function verifDate() {
+                    var jour = $('#jour').val();
+                    var mois = $('#mois').val();
+                    var annee = $('#annee').val();
 
+                    var dateNaiss = jour + "/" + mois + "/" + annee;
+                    $('#dateNaiss').val(dateNaiss);
+                }
 
 
 
@@ -175,11 +254,11 @@
             return (((Year & 3) == 0) && ((Year % 100 != 0) || (Year % 400 == 0)));
         }
 
-        $('.dateAnnif').change(function () {
+        $('#dateDeNaissance').change(function () {
 
-            var jour = $('#jour').val();
-            var mois = $('#mois').val();
-            var annee = $('#annee').val();
+            var jour = $('#listeJours').val();
+            var mois = $('#listeMois').val();
+            var annee = $('#listeAnnees').val();
 
             var j = false;
             var m = false;
@@ -190,32 +269,32 @@
             if (jour != 0 && mois != 0 && annee != 0)
             {
                 if (((mois == 4 || mois == 6 || mois == 9 || mois == 11) && jour == 31) || (mois == 2 && testBisextile(annee) && jour > 29) || (mois == 2 && !testBisextile(annee) && jour > 28)) {
-                    $('#jour').css("border-color", "red");
-                    $('#mois').css("border-color", "red");
-                    $('#annee').css("border-color", "red");
+                    $('#listeJours').css("border-color", "red");
+                    $('#listeMois').css("border-color", "red");
+                    $('#listeAnnees').css("border-color", "red");
                 }
                 else {
                     if (jour > 31 || jour < 0) {
-                        $('#jour').css("border-color", "red");
+                        $('#listeJours').css("border-color", "red");
                     }
                     else
                     {
-                        $('#jour').css("border-color", "green");
+                        $('#listeJours').css("border-color", "green");
                         j = true;
                     }
                     if (mois > 12 || mois < 0) {
-                        $('#mois').css("border-color", "red");
+                        $('#listeMois').css("border-color", "red");
                     }
                     else
                     {
-                        $('#mois').css("border-color", "green");
+                        $('#listeMois').css("border-color", "green");
                         m = true;
                     }
-                    if (annee < 1900) {
-                        $('#annee').css("border-color", "red");
+                    if (annee < 1800) {
+                        $('#listeAnnees').css("border-color", "red");
                     }
                     else {
-                        $('#annee').css("border-color", "green");
+                        $('#listeAnnees').css("border-color", "green");
                         a = true;
                     }
                 }
@@ -227,35 +306,10 @@
                 var dateNaiss = jour + "/" + mois + "/" + annee;
                 $('#dateNaiss').val(dateNaiss);
 
-                //var lang = $('#lang').val();
-                //if (lang == "fr")
-                //{
-                //    var dateNaiss = jour.toString() + "/" + mois.toString() + "/" + annee.toString();
-
-                //    $('#dateNaiss').val(dateNaiss);
-                //}
-                //else
-                //{
-
-                //    var dateNaiss = mois + "/" + jour + "/" + annee;
-                //    $('#dateNaiss').val(dateNaiss);
-                //}
-
 
             }
         }
         )
-
-
-        $('#dateDeNaissance').datepicker({
-            dateFormat: "dd/mm/yy",
-            changeMonth: true,
-            changeYear: true,
-            yearRange: "-100:+0",
-            showTime: false,
-            showAnim: "bounce"
-        });
-        $.datepicker.setDefaults($.datepicker.regional['fr']);
 
 
         // récupere l'image pour l'afficher en preview
@@ -276,5 +330,5 @@
         $("#imgInp").change(function () {
             readURL(this);
         });
-            </script>
-        }
+    </script>
+}

@@ -30,42 +30,42 @@
                         @Html.LabelFor(model => model.pays, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.EditorFor(model => model.pays, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.pays, "", new { @class = "text-danger" })
+                            <span id="errorPays" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(model => model.ville, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.EditorFor(model => model.ville, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ville, "", new { @class = "text-danger" })
+                            <span id="errorVille" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(model => model.rue, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.EditorFor(model => model.rue, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.rue, "", new { @class = "text-danger" })
+                            <span id="errorRue" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(model => model.numero, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.EditorFor(model => model.numero, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.numero, "", new { @class = "text-danger" })
+                            <span id="errorNumero" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(model => model.libelle, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.EditorFor(model => model.libelle, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.libelle, "", new { @class = "text-danger" })
+                            <span id="errorLibelle" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(model => model.nbPersonnesMax, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.EditorFor(model => model.nbPersonnesMax, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.nbPersonnesMax, "", new { @class = "text-danger" })
+                            <span id="errorNbPersonne" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                         @Html.LabelFor(model => model.tarifParNuit, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.EditorFor(model => model.tarifParNuit, new { htmlAttributes = new { @class = "form-control", @min = "0" } })
-                            @Html.ValidationMessageFor(model => model.tarifParNuit, "", new { @class = "text-danger" })
+                            <span id="errorTarif" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                         @Html.LabelFor(model => model.tarifNettoyage, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.EditorFor(model => model.tarifNettoyage, new { htmlAttributes = new { @class = "form-control", @min = "0" } })
-                            @Html.ValidationMessageFor(model => model.tarifNettoyage, "", new { @class = "text-danger" })
+                            <span id="errorNettoyage" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
@@ -324,6 +324,8 @@
     <p id="modalTexte" class="modal-contents">@Resource.Error_tableVide</p>
 </div>
 
+<img id="chargement" src="~/img/loaders/infini.gif" style="display: none" alt="Chargement en cours..." class="loaderRecherche col-md-offset-5 col-md-2 col-md-offset-5" />
+
 @section Scripts {
 
     @Scripts.Render("~/bundles/jqueryui")
@@ -351,8 +353,22 @@
         });
 
         $('#btnAddBien').click(function () {
-            var formData = new FormData($('#formAddNewBien')[0]);
+            var pays = $('#pays').val();
+            var ville = $('#ville').val();
+            var rue = $('#rue').val();
+            var numero = $('#numero').val();
+            var libelle = $('#libelle').val();
+            var nbPersMax = $('#nbPersonnesMax').val();
+            var tarifParNuit = $('#tarifParNuit').val();
+            var tarifNet = $('#tarifNettoyage').val();
 
+            if (pays == "" || ville == "" || rue == "" || numero == "" || libelle == "" || nbPersMax == "" || tarifParNuit == "" || tarifNet == "" )
+            {
+                verifForm(pays, ville, rue, numero, libelle, nbPersMax, tarifParNuit, tarifNet, )
+            }
+            else {
+                $("#chargement").show();
+                var formData = new FormData($('#formAddNewBien')[0]);
             $.ajax({
                 type: 'POST',
                 url: '@Url.Action("addNewBien", "Bien")',
@@ -362,6 +378,7 @@
                 contentType: false,
                 success:
                 function (response) {
+                    $("#chargement").hide();
                     $('#Modal').html("@Resource.messageOkAjoutNewBien1 </br>@Resource.messageOkAjoutNewBien2");
                     $('#Modal').dialog({
                             open: function (event, ui,e) {$(".ui-dialog-titlebar-close").hide();},
@@ -374,7 +391,7 @@
                                 "ok": function () {
                                     $(this).dialog("close");
                                     location.href = "../Home/Index";}
-                                
+
                             }
                         })
                 },
@@ -383,6 +400,60 @@
                     alert("un problème a été détecté...");
                 }
             })
+            }
+
         })
+
+
+
+        function verifForm(pays, ville, rue, num, libelle, nbPersPax, tarifNuit, nettoyage) {
+
+            if (pays == "") {
+                $('#errorPays').html("@Resource.Error_PaysRequis")
+            }
+            else {
+                $('#errorPays').html("")
+            }
+            if (ville == "") {
+                $('#errorVille').html("@Resource.Error_VilleRequis")
+            }
+            else {
+                $('#errorVille').html("")
+            }
+            if (rue == "") {
+                $('#errorRue').html("@Resource.Error_rueRequis")
+            }
+            else {
+                $('#errorRue').html("")
+            }
+            if (num == "") {
+                $('#errorNumero').html("@Resource.Error_NumeroRequis")
+            }
+            else {
+                $('#errorNumero').html("")
+            }
+            if (libelle == "") {
+                $('#errorLibelle').html("@Resource.ERROR_LibelleRequis")
+            }
+            else {
+                $('#errorLibelle').html("")
+            }
+            if (nbPersPax == "") {
+                $('#errorNbPersonne').html("@Resource.Error_NbPersonne")
+            }
+
+            else if (tarifNuit == "") {
+                $('#errorTarif').html("@Resource.Error_TarifNuitRequis")
+            }
+
+            else {
+                $('#errorTarif').html("")
+            }
+            if (nettoyage == "") {
+                $('#errorNettoyage').html("@Resource.Error_NetoyageRequis")
+            }
+
+
+        }
     </script>
 }

@@ -134,9 +134,9 @@
   </data>
   <data name="Bienvenue02" xml:space="preserve">
     <value>Vous avez un bien inhabité et aimeriez gagner de l'argent en le louant? 
-ou vous voullez partir en couple ou entre amis sans casser votre tire-lire?
+ou vous voulez partir en couple ou entre amis sans casser votre tire-lire?
 DREAMHOLIDAY est fait pour VOUS!
-Nous permettons aux propriétaires de mettre leur bien en location en toute sécurité...</value>
+Nous permettons aux propriétaires de mettre leur bien en location en toute sécurité.</value>
   </data>
   <data name="btnAccueil" xml:space="preserve">
     <value>Accueil</value>
@@ -154,7 +154,7 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
     <value>Nos biens </value>
   </data>
   <data name="btnMonProfil" xml:space="preserve">
-    <value>Mon profile</value>
+    <value>Mon profil</value>
   </data>
   <data name="btnNvBien" xml:space="preserve">
     <value>Nouveau Bien</value>
@@ -169,7 +169,7 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
     <value>chercher un bien</value>
   </data>
   <data name="commentaire" xml:space="preserve">
-    <value>commentaire</value>
+    <value>commentaire(s)</value>
   </data>
   <data name="connectionNotOk" xml:space="preserve">
     <value>nom d'utilisateur ou mot de pass pas valide</value>
@@ -199,7 +199,7 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
     <value>coût administratif</value>
   </data>
   <data name="coutSejour" xml:space="preserve">
-    <value>coût du séjout</value>
+    <value>coût du séjour</value>
   </data>
   <data name="coutTot" xml:space="preserve">
     <value>cout total du séjour</value>
@@ -241,7 +241,7 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
     <value>Desole</value>
   </data>
   <data name="detailDuBien" xml:space="preserve">
-    <value>détail du bien</value>
+    <value>détails du bien</value>
   </data>
   <data name="dressing" xml:space="preserve">
     <value>dressing</value>
@@ -271,7 +271,7 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
     <value>mesage requis</value>
   </data>
   <data name="Error_NbPersonne" xml:space="preserve">
-    <value>veuillez mettre un chiffre dans le champ "nombre de personnes"</value>
+    <value>"nombre de parsonne" requis</value>
   </data>
   <data name="Error_nomRequis" xml:space="preserve">
     <value>nom requis</value>
@@ -391,7 +391,7 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
     <value>mois</value>
   </data>
   <data name="nbPersMax" xml:space="preserve">
-    <value>nbre de personne max</value>
+    <value>nbre de personne(s) max</value>
   </data>
   <data name="nbreDePers" xml:space="preserve">
     <value>nombre de personne(s)</value>
@@ -542,5 +542,65 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   </data>
   <data name="probleme" xml:space="preserve">
     <value>un problème a été détecté...</value>
+  </data>
+  <data name="aout" xml:space="preserve">
+    <value>Aout</value>
+  </data>
+  <data name="avril" xml:space="preserve">
+    <value>Avr</value>
+  </data>
+  <data name="decembre" xml:space="preserve">
+    <value>Dec</value>
+  </data>
+  <data name="fevrier" xml:space="preserve">
+    <value>Fev</value>
+  </data>
+  <data name="janvier" xml:space="preserve">
+    <value>Jan</value>
+  </data>
+  <data name="juillet" xml:space="preserve">
+    <value>Juil</value>
+  </data>
+  <data name="juin" xml:space="preserve">
+    <value>Juin</value>
+  </data>
+  <data name="mai" xml:space="preserve">
+    <value>Mai</value>
+  </data>
+  <data name="mars" xml:space="preserve">
+    <value>Mar</value>
+  </data>
+  <data name="novembre" xml:space="preserve">
+    <value>Nov</value>
+  </data>
+  <data name="octobre" xml:space="preserve">
+    <value>Oct</value>
+  </data>
+  <data name="septembre" xml:space="preserve">
+    <value>Sep</value>
+  </data>
+  <data name="messagecompteMAJ" xml:space="preserve">
+    <value>Votre compte a bien été mis à jour.</value>
+  </data>
+  <data name="ERROR_LibelleRequis" xml:space="preserve">
+    <value>commentaire requis</value>
+  </data>
+  <data name="Error_NetoyageRequis" xml:space="preserve">
+    <value>tarif nettoyage requis</value>
+  </data>
+  <data name="ERROR_passwordMin8Carac" xml:space="preserve">
+    <value>le mot de passe doit contenir plus de 8 carctères</value>
+  </data>
+  <data name="ERROR_passwordPasIdentiques" xml:space="preserve">
+    <value>les passwords ne sont pas identiques</value>
+  </data>
+  <data name="messageEnvoye" xml:space="preserve">
+    <value>votre message a bien été envoyé</value>
+  </data>
+  <data name="messagePasEnvoye" xml:space="preserve">
+    <value>Erreur : votre message n'a pas pu être envoyé</value>
+  </data>
+  <data name="TarifAZero" xml:space="preserve">
+    <value>aucun bien ne correspond à vos critères car vous avez indiqué vouloir chercher des biens gratuits</value>
   </data>
 </root>

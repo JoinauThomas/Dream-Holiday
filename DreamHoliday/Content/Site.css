@@ -110,18 +110,18 @@ textarea {
     font-size: 0.9em;
 }
 .bouton_a {
-    color: #000;
-    background: #444;
-    background: linear-gradient( #555, #2C2C2C);
+    color: white;
+    background-color: blue !important;
+    background: linear-gradient( #181d55, #1680a4);
     box-shadow: 1px 1px 10px black inset, 0 1px 0 rgba( 255, 255, 255, 0.4);
     height: 100px;
     border-radius: 20px;
 }
 
     .bouton_a:hover {
-        color: #222;
+        color: white;
         background: #555;
-        background: linear-gradient( #777, #333);
+        background: linear-gradient( #826565, #333);
     }
 
 .jumbotron01 {
@@ -306,4 +306,22 @@ input[type="checkbox"] {
     right: 0;
     width:15%;
     bottom: 35%;
+}
+
+.form-controlDateNaissance {
+    display: block;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
