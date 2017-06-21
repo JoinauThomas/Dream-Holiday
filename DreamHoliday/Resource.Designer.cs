@@ -739,6 +739,15 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à identifiant.
+        /// </summary>
+        public static string idLocation {
+            get {
+                return ResourceManager.GetString("idLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Identifiant.
         /// </summary>
         public static string idMembre {

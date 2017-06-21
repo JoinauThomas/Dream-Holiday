@@ -594,6 +594,9 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   <data name="ERROR_passwordPasIdentiques" xml:space="preserve">
     <value>les passwords ne sont pas identiques</value>
   </data>
+  <data name="idLocation" xml:space="preserve">
+    <value>identifiant</value>
+  </data>
   <data name="messageEnvoye" xml:space="preserve">
     <value>votre message a bien été envoyé</value>
   </data>
