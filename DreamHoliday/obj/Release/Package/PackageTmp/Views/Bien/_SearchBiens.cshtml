@@ -29,7 +29,7 @@
 
                 @Html.DisplayFor(modelItem => item.ville)<br />
 
-                @Html.DisplayFor(modelItem => item.tarifParNuit) €<br />
+                @Html.DisplayFor(modelItem => item.tarifParNuit) € / N<br />
                 @{ 
                     if(item.noteMoyenne == -1)
                     {
@@ -37,7 +37,7 @@
                     }
                     else
                     {
-                        @Html.DisplayFor(modelItem => item.noteMoyenne)
+                        <div>@Html.DisplayFor(modelItem => item.noteMoyenne) / 20</div> ;
                     }
                 }
                 

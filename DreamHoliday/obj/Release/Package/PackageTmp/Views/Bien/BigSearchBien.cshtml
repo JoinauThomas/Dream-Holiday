@@ -276,10 +276,13 @@
 <div class="row">
     @Html.ActionLink(Resource.retour, "Index", "Home")
 </div>
-<img id="chargement" src="~/img/loaders/ajax-loader.gif" style="display: none" alt="Chargement en cours..." class="col-md-offset-5 col-md-2 col-md-offset-5" />
+<img id="chargement" src="~/img/loaders/infini.gif" style="display: none" alt="Chargement en cours..." class="loaderRecherche col-md-offset-5 col-md-2 col-md-offset-5" />
 <div id="table"></div>
 <div id="ModalBigSearch" class="modals" style="display:none">
     <p class="modal-contents">@Resource.Error_tableVide</p>
+</div>
+<div id="Modal" class="modals" style="display:none">
+    <p id="modalContent" class="modal-contents"></p>
 </div>
 
 
@@ -295,8 +298,32 @@
         // récupere les infos du formulaire et recupere la liste des biens dispos //
 
         $('#envoiForm').click(function () {
-            $("#chargement").show();
-            $.ajax({
+            
+            var tarif = $('#tarifParNuit').val()
+            if (tarif == 0)
+            {
+                $('#modalContent').html("@Resource.TarifAZero");
+                $('#tarifParNuit').css("border-color", "red");
+                $('#Modal').dialog({
+                            open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
+                            resizable: false,
+                            height: "auto",
+                            width: "400",
+                            modal: true,
+                            title: '@Resource.desole',
+
+                            buttons: {
+                                "ok": function () {
+                                    $(this).dialog("close");
+                                }
+                            }
+                        });
+            }
+            else
+            {
+                $("#chargement").show();
+                $('#tarifParNuit').css("border-color", "#ccc");
+                 $.ajax({
                 type: "POST",
                 url: '@Url.Action("BigSearchBien", "Bien")',
                 data: $("#formSearch").serialize(),
@@ -314,12 +341,12 @@
                             width: "400",
                             modal: true,
                             title: '@Resource.desole',
-                            
+
                             buttons: {
                                 "ok": function () { $(this).dialog("close") }
                             }
                         });
-                        
+
                     }
                     else
                     {
@@ -331,8 +358,10 @@
                 function () {
                     alert("pas ok");
                 }
-                
+
             });
+            }
+
         });
 
 
