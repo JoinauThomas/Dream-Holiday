@@ -350,6 +350,13 @@ namespace DreamHoliday.Controllers
         {
             try
             {
+                // preparation pour recupérer l'id de l'envoyeur si celui ci est connecté
+                int id = 0;
+                Membre monCpte = (Membre)Session["monCompte"];
+                if(monCpte != null)
+                {
+                    id = monCpte.idMembre;
+                }
                 if (ModelState.IsValid)
                 {
                     using (var client = new HttpClient())
