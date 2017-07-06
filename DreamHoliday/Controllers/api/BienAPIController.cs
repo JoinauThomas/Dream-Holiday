@@ -80,11 +80,11 @@ namespace DreamHoliday.Controllers
             
         }
 
-        [HttpGet]
-        [Authorize]
+        [HttpPost]
         [Route("DeleteBien")]
-        public List<Bien> DeleteBien(int idBien)
+        public List<Bien> DeleteBien(Bien monBienASapp)
         {
+            int idBien = monBienASapp.idBien;
             try
             {
                 List<Bien> mesBiens = new List<Bien>();

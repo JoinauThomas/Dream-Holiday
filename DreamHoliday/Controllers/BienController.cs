@@ -157,8 +157,19 @@ namespace DreamHoliday.Controllers
 
                     List<Bien> mesBiens = new List<Bien>();
 
+                    //client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/api/BienAPI/");
+                    //var responseTask = client.GetAsync("DeleteBien?idBien=" + idBien);
+                    //responseTask.Wait();
+
+                    //AAAAAAAAAAAAA
+                    //Bien monBienASapp = new Bien { idBien = idBien };
+                    //client.BaseAddress = new Uri("http://localhost:56077/api/BienAPI/");
+                    //var responseTask = client.PostAsJsonAsync("DeleteBien", monBienASapp);
+                    //responseTask.Wait();
+
+                    Bien monBienASapp = new Bien { idBien = idBien };
                     client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/api/BienAPI/");
-                    var responseTask = client.GetAsync("DeleteBien?idBien=" + idBien);
+                    var responseTask = client.PostAsJsonAsync("DeleteBien", monBienASapp);
                     responseTask.Wait();
 
                     //client.BaseAddress = new Uri("http://dreamholiday.azurewebsites.net/api/BienAPI/");
@@ -175,6 +186,7 @@ namespace DreamHoliday.Controllers
                     }
                     else
                     {
+                       
                         throw new Exception("suppression impossible");
                     }
                 }
