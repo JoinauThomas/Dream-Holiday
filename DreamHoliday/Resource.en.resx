@@ -602,4 +602,13 @@ We allow owners to safely rent their property ..</value>
   <data name="TarifAZero" xml:space="preserve">
     <value>No property corresponds to your criteria because you have indicated you want to look for free goods</value>
   </data>
+  <data name="nonMerci" xml:space="preserve">
+    <value>no thanks</value>
+  </data>
+  <data name="SeConnecter" xml:space="preserve">
+    <value>to log in</value>
+  </data>
+  <data name="OKSuppressionBien" xml:space="preserve">
+    <value>Your property has been deleted</value>
+  </data>
 </root>

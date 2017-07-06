@@ -1081,6 +1081,15 @@ namespace DreamHoliday {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à non merci.
+        /// </summary>
+        public static string nonMerci {
+            get {
+                return ResourceManager.GetString("nonMerci", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à nos biens.
         /// </summary>
         public static string nosBiens {
@@ -1122,6 +1131,15 @@ namespace DreamHoliday {
         public static string octobre {
             get {
                 return ResourceManager.GetString("octobre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à votre bien a bien ete supprime.
+        /// </summary>
+        public static string OKSuppressionBien {
+            get {
+                return ResourceManager.GetString("OKSuppressionBien", resourceCulture);
             }
         }
         
@@ -1302,6 +1320,15 @@ namespace DreamHoliday {
         public static string sdb {
             get {
                 return ResourceManager.GetString("sdb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à se connecter.
+        /// </summary>
+        public static string SeConnecter {
+            get {
+                return ResourceManager.GetString("SeConnecter", resourceCulture);
             }
         }
         

@@ -397,8 +397,23 @@
             if (x == 0) {
                 $(function () {
                     $("#monModal").dialog({
+                        open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
                         modal: true,
                         title: "@Resource.identifiezVous",
+                        buttons: {
+                            "@Resource.SeConnecter": function () {
+                                $(this).dialog("close");
+                                location.href = "../Compte/connection";
+                            },
+                            
+                            "@Resource.nonMerci": function () {
+                                $(this).dialog("close");
+                            }
+                        
+                            }
+                        
+                        
+                        
                     });
                 })
             }

@@ -5,7 +5,7 @@
 </div>
 
 <div id="myModal" style="display:none">
-    <p>@Resource.ModalDeleteTexte</p>
+    <p id="modalText"></p>
 </div>
 
 
@@ -20,7 +20,9 @@
     <script type="text/javascript">
 
         function ShowDelete(idBien) {
+            $('#modalText').html('@Resource.ModalDeleteTexte');
             $("#myModal").dialog({
+                open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
                 resizable: false,
                 height: "auto",
                 width: "400",
@@ -35,8 +37,24 @@
                             data: { idBien },
                             success:
                             function (response) {
+
                                 $('#mesBiens').html(response);
                                 $("#myModal").dialog("close");
+                                 $('#modalText').html('@Resource.OKSuppressionBien');
+                                 $('#myModal').dialog({
+                                    open: function (event, ui, e) { $(".ui-dialog-titlebar-close").hide(); },
+                                    resizable: false,
+                                    height: "auto",
+                                    width: "400",
+                                    modal: true,
+                                    title: '@Resource.merci',
+                                    buttons: {
+                                        "ok": function () {
+                                            $(this).dialog("close");
+                                        }
+
+                                    }
+                                })
                             },
                             error:
                             function () {

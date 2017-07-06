@@ -606,4 +606,13 @@ Nous permettons aux propriétaires de mettre leur bien en location en toute séc
   <data name="TarifAZero" xml:space="preserve">
     <value>aucun bien ne correspond à vos critères car vous avez indiqué vouloir chercher des biens gratuits</value>
   </data>
+  <data name="nonMerci" xml:space="preserve">
+    <value>non merci</value>
+  </data>
+  <data name="SeConnecter" xml:space="preserve">
+    <value>se connecter</value>
+  </data>
+  <data name="OKSuppressionBien" xml:space="preserve">
+    <value>votre bien a bien ete supprime</value>
+  </data>
 </root>
